@@ -1,0 +1,4 @@
+org.openmap4u.plugin.builder.symbol.RectanglePlugin
+org.openmap4u.plugin.builder.symbol.TrianglePlugin
+org.openmap4u.plugin.builder.symbol.CrossPlugin
+org.openmap4u.plugin.builder.symbol.CirclePlugin

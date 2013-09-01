@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/DECORATION/1.3.0"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/DECORATION/1.3.0 http://maven.apache.org/xsd/decoration-1.3.0.xsd">
+
+
+<bannerLeft>
+<name>openMap4u</name>
+<href>http://openMap4u.github.com/openMap4u/</href>
+</bannerLeft>
+
+<skin>
+<groupId>org.apache.maven.skins</groupId>
+<artifactId>maven-fluido-skin</artifactId>
+<version>1.3.0</version>
+</skin>
+<custom>
+<fluidoSkin>
+<sideBarEnabled>true</sideBarEnabled>
+<!-- <googleSearch>
+<sitesearch />
+</googleSearch> -->
+<gitHub>
+<projectId>openMap4u/openMap4u</projectId>
+<ribbonOrientation>right</ribbonOrientation>
+<ribbonColor>black</ribbonColor>
+</gitHub>
+<facebookLike />
+<googlePlusOne />
+<profile>pre-release</profile>
+</fluidoSkin>
+<custom>
+
+
+</custom>
+</custom>
+<body>
+<links>
+<item name="openMap4u" href="https://github.com/openMap4u/openMap4u" />
+<item name="git" href="git://github.com/openMap4u/openMap4u.git" />
+</links>
+
+<menu ref="reports"/>
+
+
+</body>
+</project>
