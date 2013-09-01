@@ -27,7 +27,7 @@ xsi:schemaLocation="http://maven.apache.org/DECORATION/1.3.0 http://maven.apache
 </gitHub>
 <facebookLike />
 <googlePlusOne />
-<profile>pre-release</profile>
+<profile>release</profile>
 </fluidoSkin>
 <custom>
 
