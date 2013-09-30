@@ -13,7 +13,7 @@ import org.openmap4u.unit.Length;
 
 /**
  * Contains the default values. It also allows to override the defaults with
- * user defined custom values.
+ * user defined custom values (if necessary).
  * 
  * @author Michael Hadrbolec
  * 
@@ -30,8 +30,19 @@ public final class Defaults implements Serializable {
 	 */
 	private Locale mDefaultLocale;
 
+	/**
+	 * Stores the default world units.
+	 */
 	private Length mDefaultWorldUnits = Length.M;
+
+	/**
+	 * Stores the default drawing units.
+	 */
 	private Length mDefaultDrawingUnits = Length.CM;
+
+	/**
+	 * Stores the default stroke units.
+	 */
 	private Length mDefaultStrokeUnits = Length.MM;
 
 	/**
@@ -41,11 +52,15 @@ public final class Defaults implements Serializable {
 	/**
 	 * Stores the default shape style.
 	 */
-	private ShapeStyleable mDefaultShapeStyle = new ShapeStyle();
+	private ShapeStyleable mDefaultShapeStyle = new ShapeStyle().setStrokeSize(
+			Globals.DEFAULT_STROKE_SIZE).setStrokeColor(
+			Globals.DEFAULT_STROKE_COLOR);
 	/**
 	 * Stores the default text style.
 	 */
-	private TextStyleable mDefaultTextStyle = new TextStyle();
+	private TextStyleable mDefaultTextStyle = new TextStyle().setFontSize(
+			Globals.DEFAULT_FONT_SIZE).setFontColor(
+			Globals.DEFAULT_STROKE_COLOR);
 
 	/**
 	 * Creates a new instance.
@@ -128,8 +143,7 @@ public final class Defaults implements Serializable {
 	}
 
 	/**
-	 * Sets the default value for world units (see {@link Length}).
-	 * .
+	 * Sets the default value for world units (see {@link Length}). .
 	 * 
 	 * @param worldUnits
 	 *            The default value for world units.

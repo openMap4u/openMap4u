@@ -9,8 +9,7 @@ package org.openmap4u.canvas;
  * to the provided output stream.
  * 
  * @author Michael Hadrbolec
- * @param <V>
  */
-public interface DrawOrWrite<V> extends Draw<V>, Write, AddFunction<V> {
+public interface DrawOrWrite extends Draw, Write  {
 
 }

@@ -3,8 +3,8 @@ package org.openmap4u.plugin.builder.symbol;
 import java.awt.Shape;
 import java.awt.geom.Path2D;
 
+import org.openmap4u.Globals;
 import org.openmap4u.builder.ShapeBuilder;
-import org.openmap4u.defaults.Globals;
 
 /**
  * Cross symbol.

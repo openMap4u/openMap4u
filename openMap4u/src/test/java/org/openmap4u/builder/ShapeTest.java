@@ -62,6 +62,9 @@ public class ShapeTest extends AbstractShapeBuilderTest<Shape> {
     @Override
     protected Shape getBuilder() {
         Shape shapeBuilder = this.getDefaultOpenMap4u().getBuilder().getShape();
+        
+       
+        
         shapeBuilder.setMoveTo(-.5, -.5).setLineTo(.5, -.5).setQuadTo(1, .25, 0, .5).setBezierTo(-.5, 0.5, -1, .25, -.5, -.5).setMoveTo(-.25, -.25).setLineTo(.25 ,- .25).setLineTo(0, .25).setLineTo(-.25, -.25);
         return shapeBuilder;
     }

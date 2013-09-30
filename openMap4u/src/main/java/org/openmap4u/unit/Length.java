@@ -1,6 +1,6 @@
 package org.openmap4u.unit;
 
-import org.openmap4u.defaults.Globals;
+import org.openmap4u.Globals;
 
 /*
  * #%L

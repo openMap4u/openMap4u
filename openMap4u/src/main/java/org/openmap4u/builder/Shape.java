@@ -1,5 +1,6 @@
 package org.openmap4u.builder;
 
+import java.awt.Paint;
 import java.awt.geom.Path2D;
 
  
@@ -9,11 +10,6 @@ import java.awt.geom.Path2D;
  * @param <F>
  */
 public final class Shape  extends ShapeBuilder<Shape >   {
-
-    /**
-     * Stores a reference to the path.
-     */
-    private Path2D.Double mPath = null;
 
     /**
      * Moves the path to the given point without drawing anything. It is used to
@@ -29,12 +25,7 @@ public final class Shape  extends ShapeBuilder<Shape >   {
      * @return The Shape itself (method chaining pattern).
      */
     public Shape setMoveTo(double toX, double toY) {
-        if (this.mPath == null) {
-            this.mPath = new Path2D.Double(Path2D.WIND_EVEN_ODD);
-            this.setPrimitive(mPath);
-        }
-        this.mPath.moveTo(toX, toY);
-        return this;
+        return super.setMoveTo(toX, toY);
     }
 
     /**
@@ -47,8 +38,7 @@ public final class Shape  extends ShapeBuilder<Shape >   {
      * @return The Shape itself (method chaining pattern).
      */
     public Shape setLineTo(double toX, double toY) {
-        this.mPath.lineTo(toX, toY);
-        return this;
+        return super.setLineTo(toX, toY);
     }
 
     /**
@@ -65,8 +55,7 @@ public final class Shape  extends ShapeBuilder<Shape >   {
      * @return The Shape itself (method chaining pattern).
      */
     public Shape setQuadTo(double cpX, double cpY, double toX, double toY) {
-        this.mPath.quadTo(cpX, cpY, toY, toY);
-        return this;
+        return super.setQuadTo(cpX, cpY, toY, toY);
     }
 
     /**
@@ -88,22 +77,21 @@ public final class Shape  extends ShapeBuilder<Shape >   {
      */
     public Shape setBezierTo(double cp1X, double cp1Y, double cp2X,
             double cp2Y, double toX, double toY) {
-        this.mPath.curveTo(cp1X, cp1Y, cp2X, cp2Y, toY, toY);
-        return this;
+        return super.setBezierTo(cp1X, cp1Y, cp2X, cp2Y, toY, toY);
     }
 
     /**
      * Sets an awt shape geometry.
      * 
-     * @param awtShape
+     * @param shape
      *            The awt shape geometry.
      * @return The Shape itself (method chaining pattern).
      */
-    public Shape setShape(java.awt.Shape awtShape) {
-        this.mPath = new Path2D.Double(awtShape);
-        return this;
+    public Shape setShape(java.awt.Shape shape) {
+              return super.setShape(shape);
     }
 
+	 
 	 
 
 }

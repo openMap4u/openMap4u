@@ -9,9 +9,8 @@ import org.openmap4u.commons.Plugable;
 /**
  * 
  * @author Michael Hadrbolec
- * @param <V>
  */
-public interface Canvas<V> extends Plugable, SetUp, DrawOrWrite<V>,
-        SetAreaOfInterestOrDraw<V>, AddFunctionOrProcess<V> {
+public interface Canvas  extends Plugable, SetUp, DrawOrWrite,
+        SetAreaOfInterestOrDraw   {
 
 }

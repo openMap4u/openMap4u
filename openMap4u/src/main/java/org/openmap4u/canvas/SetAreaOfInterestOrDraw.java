@@ -6,9 +6,8 @@ package org.openmap4u.canvas;
 
 /**
  * 
- * @author zwotti
- * @param <V>
+ * @author Michael Hadrbolec
  */
-public interface SetAreaOfInterestOrDraw<V> extends SetAreaOfInterest, Draw<V> {
+public interface SetAreaOfInterestOrDraw extends SetAreaOfInterest, Draw {
 
 }

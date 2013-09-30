@@ -30,13 +30,11 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.stream.Stream;
 
+import org.openmap4u.Globals;
 import org.openmap4u.commons.TransformHelper;
 import org.openmap4u.commons.Util;
-import org.openmap4u.defaults.Globals;
 import org.openmap4u.outputformat.OutputableFormat;
 import org.openmap4u.plugin.outputformat.graphics2d.PngPlugin;
 import org.openmap4u.primitive.Primitive;
@@ -49,17 +47,13 @@ import org.openmap4u.style.Styleable;
 import org.openmap4u.style.TextStyleable;
 import org.openmap4u.unit.Length;
 
-import com.google.common.base.Function;
-
- 
 /**
- * Abstract base class of all drawing canvas.
- * 
+ * Default implementation of the Canvas interface.
+ *
  * @author Michael Hadrbolec
- * @param <V>
- * 
+ *
  */
-public class CanvasPlugin<V> implements Canvas<V> {
+public class CanvasPlugin  implements Canvas   {
 
     /**
      *
@@ -83,7 +77,7 @@ public class CanvasPlugin<V> implements Canvas<V> {
     /**
      * Gets the width of the drawing canvas in drawing units {@link
      * AbstractCanvas.getDrawingUnits()}.
-     * 
+     *
      * @return Gets the width of the drawing canvas in drawing units.
      */
     protected final double getWidth() {
@@ -93,7 +87,7 @@ public class CanvasPlugin<V> implements Canvas<V> {
     /**
      * Gets the height of the drawing canvas in drawing units {@link
      * AbstractCanvas.getDrawingUnits()}.
-     * 
+     *
      * @return Gets the height of the drawing canvas in drawing units.
      */
     protected final double getHeight() {
@@ -102,7 +96,7 @@ public class CanvasPlugin<V> implements Canvas<V> {
 
     /**
      * Gets the world units.
-     * 
+     *
      * @return The drawing units.
      */
     protected final Length getWorldUnits() {
@@ -111,7 +105,7 @@ public class CanvasPlugin<V> implements Canvas<V> {
 
     /**
      * Gets the drawing units.
-     * 
+     *
      * @return The drawing units.
      */
     protected final Length getDrawingUnits() {
@@ -120,7 +114,7 @@ public class CanvasPlugin<V> implements Canvas<V> {
 
     /**
      * Gets the stroke units.
-     * 
+     *
      * @return The stroke units.
      */
     protected final Length getStrokeUnits() {
@@ -129,12 +123,10 @@ public class CanvasPlugin<V> implements Canvas<V> {
 
     /**
      * Writes the rendering result into the given output stream.
-     * 
-     * @param out
-     *            The output stream into which the rendering result will be
-     *            written.
-     * @throws IOException
-     *             Is thrown in the case an error occurs.
+     *
+     * @param out The output stream into which the rendering result will be
+     * written.
+     * @throws IOException Is thrown in the case an error occurs.
      */
     @Override
     public void write(OutputStream out) throws IOException {
@@ -161,7 +153,7 @@ public class CanvasPlugin<V> implements Canvas<V> {
     }
 
     @Override
-    public SetAreaOfInterestOrDraw<V> setSize(double width, double height) {
+    public SetAreaOfInterestOrDraw  setSize(double width, double height) {
         this.mWidth = width;
         this.mHeight = height;
 
@@ -169,7 +161,7 @@ public class CanvasPlugin<V> implements Canvas<V> {
     }
 
     @Override
-    public SetAreaOfInterestOrDraw<V> setScale(double scaleFactor) {
+    public SetAreaOfInterestOrDraw  setScale(double scaleFactor) {
         this.setScale(scaleFactor, scaleFactor);
         return this;
     }
@@ -177,14 +169,12 @@ public class CanvasPlugin<V> implements Canvas<V> {
     /**
      * Currently only internal. Allows to set different scale factors in x and y
      * direction.
-     * 
-     * @param scaleXFactor
-     *            The scaleFactor in x direction.
-     * @param scaleYFactor
-     *            The scaleFactor in y direction.
+     *
+     * @param scaleXFactor The scaleFactor in x direction.
+     * @param scaleYFactor The scaleFactor in y direction.
      * @return Allows to change the area of interest.
      */
-    public SetAreaOfInterestOrDraw<V> setScale(double scaleXFactor,
+    public SetAreaOfInterestOrDraw  setScale(double scaleXFactor,
             double scaleYFactor) {
         this.mTransformHelper.setScaleX(scaleXFactor);
         this.mTransformHelper.setScaleY(scaleYFactor);
@@ -192,14 +182,14 @@ public class CanvasPlugin<V> implements Canvas<V> {
     }
 
     @Override
-    public SetAreaOfInterestOrDraw<V> setCenter(double centerX, double centerY) {
+    public SetAreaOfInterestOrDraw  setCenter(double centerX, double centerY) {
         this.mTransformHelper.setX(centerX);
         this.mTransformHelper.setY(centerY);
         return this;
     }
 
     @Override
-    public SetAreaOfInterestOrDraw<V> setRotate(double rotation) {
+    public SetAreaOfInterestOrDraw  setRotate(double rotation) {
         this.mTransformHelper.setRotate(rotation);
         return this;
     }
@@ -208,13 +198,13 @@ public class CanvasPlugin<V> implements Canvas<V> {
     public <T extends OutputableFormat> SetUp setOutputFormat(Class<T> outputFormat) {
         this.mDrawablePlugin = Util.get().getPlugin(outputFormat);
         return this;
-      }
+    }
 
     void initializeOuputFormat() {
     }
 
     @Override
-    public DrawOrWrite<V> setDraw(
+    public DrawOrWrite  setDraw(
             Primitive<?, ? extends Styleable> primitive) {
         /* check wethter the ouptputable format has been initialized */
         if (!this.mDrawablePlugin.isInitialized()) {
@@ -243,15 +233,18 @@ public class CanvasPlugin<V> implements Canvas<V> {
         return this;
     }
 
+    @Override
+    public DrawOrWrite setDraw(Stream<Primitive<?, ? extends Styleable>> primitives2Draw) {
+        primitives2Draw.forEach(primitive -> this.setDraw(primitive));
+        return this;
+    }
+
     /**
      * Draws the primitive.
-     * 
-     * @param <T>
-     *            The type of the primitive.
-     * @param <S>
-     *            The style of the primitive to be drawn.
-     * @param primitive
-     *            The primitiveto be drawn.
+     *
+     * @param <T> The type of the primitive.
+     * @param <S> The style of the primitive to be drawn.
+     * @param primitive The primitiveto be drawn.
      */
     final <T, S extends Styleable<S>> void draw(Point2D.Double point,
             Primitive<T, S> primitive) {
@@ -278,7 +271,7 @@ public class CanvasPlugin<V> implements Canvas<V> {
 
     /**
      * Gets the global transformation.
-     * 
+     *
      * @return The global transformation.
      */
     final AffineTransform getGlobalTransform() {
@@ -290,30 +283,4 @@ public class CanvasPlugin<V> implements Canvas<V> {
         write(Files.newOutputStream(out));
     }
 
-    private List<com.google.common.base.Function<V, Primitive<?, ? extends Styleable>>> mFunctions = null;
-
-    @Override
-    public AddFunctionOrProcess<V> setFunction(
-            Function<V, Primitive<?, ? extends Styleable>> function) {
-        if (this.mFunctions == null) {
-            this.mFunctions = new ArrayList<>();
-        }
-        this.mFunctions.add(function);
-        return this;
-    }
-
-    @Override
-    public DrawOrWrite<V> setProcess(Iterable<V> values) {
-        /* process the values */
-        Iterator<V> iterator = values.iterator();
-        while (iterator.hasNext()) {
-            for (Function<V, Primitive<?, ? extends Styleable>> function : this.mFunctions) {
-                setDraw(function.apply(iterator.next()));
-            }
-        }
-
-        /* reset the functions */
-        this.mFunctions = null;
-        return this;
-    }
 }

@@ -44,7 +44,7 @@ import javax.activation.MimeType;
 import javax.activation.MimeTypeParseException;
 import javax.imageio.ImageIO;
 
-import org.openmap4u.defaults.Globals;
+import org.openmap4u.Globals;
 import org.openmap4u.unit.Length;
 
 /**

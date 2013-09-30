@@ -31,7 +31,7 @@ import org.openmap4u.unit.Length;
  * 
  * @author Michael Hadrbolec
  */
-public abstract class AbstractBuilderTest<T extends Buildable> extends
+public abstract class AbstractBuilderLambdaTest<T extends Buildable> extends
 		AbstractOpenMap4uTest {
 
 	
@@ -97,7 +97,7 @@ public abstract class AbstractBuilderTest<T extends Buildable> extends
 			Font.SANS_SERIF);
 	private List<Actions> mActions = null;
 
-	AbstractBuilderTest() {
+	AbstractBuilderLambdaTest() {
 		super();
 		mActions = new ArrayList();
 		mActions.add(new Actions("none"));
@@ -185,7 +185,7 @@ public abstract class AbstractBuilderTest<T extends Buildable> extends
 
 	final void process(List<Actions> actions, Draw draw, String outputFileName)
 			throws IOException {
-         	for (int row = 0; row < actions.size() + 1; row++) {
+           	for (int row = 0; row < actions.size() + 1; row++) {
 			/* draw horizontal raster line */
 			draw.setDraw(this.getDefaultOpenMap4u().getBuilder()
 					.getShape().setStrokeColor(Color.LIGHT_GRAY)
@@ -199,7 +199,7 @@ public abstract class AbstractBuilderTest<T extends Buildable> extends
 						.setText(actions.get(row).getDescription()));
 			}
 		}
-		for (int column = 0; column < actions.size(); column++) {
+            	for (int column = 0; column < actions.size(); column++) {
 			/* draw vertical raster line */
 			if (column < 12) {
 				draw.setDraw(this.getDefaultOpenMap4u().getBuilder()

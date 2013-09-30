@@ -9,7 +9,7 @@ import java.io.OutputStream;
 import java.nio.file.Path;
 
 /**
- * Writes the result into the given output stream.
+ * Writes the drawing result.
  * 
  * @author Michael Hadrbolec
  */

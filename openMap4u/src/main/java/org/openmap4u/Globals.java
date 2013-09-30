@@ -1,4 +1,4 @@
-package org.openmap4u.defaults;
+package org.openmap4u;
 
 import java.awt.Color;
 import java.awt.Paint;

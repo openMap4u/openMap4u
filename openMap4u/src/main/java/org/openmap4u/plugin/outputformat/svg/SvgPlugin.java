@@ -25,10 +25,10 @@ import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 
+import org.openmap4u.Globals;
 import org.openmap4u.commons.HorizontalAlign;
 import org.openmap4u.commons.Util;
 import org.openmap4u.commons.VerticalAlign;
-import org.openmap4u.defaults.Globals;
 import org.openmap4u.outputformat.OutputFormat;
 import org.openmap4u.style.ImageStyleable;
 import org.openmap4u.style.ShapeStyleable;
