@@ -153,7 +153,7 @@ public class CanvasPlugin  implements Canvas   {
     }
 
     @Override
-    public SetAreaOfInterestOrDraw  setSize(double width, double height) {
+    public SetAreaOfInterestOrDrawOrWrite  setSize(double width, double height) {
         this.mWidth = width;
         this.mHeight = height;
 
@@ -161,7 +161,7 @@ public class CanvasPlugin  implements Canvas   {
     }
 
     @Override
-    public SetAreaOfInterestOrDraw  setScale(double scaleFactor) {
+    public SetAreaOfInterestOrDrawOrWrite  setScale(double scaleFactor) {
         this.setScale(scaleFactor, scaleFactor);
         return this;
     }
@@ -174,7 +174,7 @@ public class CanvasPlugin  implements Canvas   {
      * @param scaleYFactor The scaleFactor in y direction.
      * @return Allows to change the area of interest.
      */
-    public SetAreaOfInterestOrDraw  setScale(double scaleXFactor,
+    public SetAreaOfInterestOrDrawOrWrite  setScale(double scaleXFactor,
             double scaleYFactor) {
         this.mTransformHelper.setScaleX(scaleXFactor);
         this.mTransformHelper.setScaleY(scaleYFactor);
@@ -182,14 +182,14 @@ public class CanvasPlugin  implements Canvas   {
     }
 
     @Override
-    public SetAreaOfInterestOrDraw  setCenter(double centerX, double centerY) {
+    public SetAreaOfInterestOrDrawOrWrite  setCenter(double centerX, double centerY) {
         this.mTransformHelper.setX(centerX);
         this.mTransformHelper.setY(centerY);
         return this;
     }
 
     @Override
-    public SetAreaOfInterestOrDraw  setRotate(double rotation) {
+    public SetAreaOfInterestOrDrawOrWrite  setRotate(double rotation) {
         this.mTransformHelper.setRotate(rotation);
         return this;
     }
@@ -233,11 +233,7 @@ public class CanvasPlugin  implements Canvas   {
         return this;
     }
 
-    @Override
-    public DrawOrWrite setDraw(Stream<Primitive<?, ? extends Styleable>> primitives2Draw) {
-        primitives2Draw.forEach(primitive -> this.setDraw(primitive));
-        return this;
-    }
+    
 
     /**
      * Draws the primitive.

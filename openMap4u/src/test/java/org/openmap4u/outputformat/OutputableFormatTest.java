@@ -7,7 +7,7 @@ package org.openmap4u.outputformat;
 import java.io.IOException;
 
 import org.openmap4u.AbstractOpenMap4uTest;
-import org.openmap4u.canvas.SetAreaOfInterestOrDraw;
+import org.openmap4u.canvas.SetAreaOfInterestOrDrawOrWrite;
 import org.openmap4u.plugin.builder.symbol.Circle;
 import org.openmap4u.unit.Length;
 
@@ -17,7 +17,7 @@ import org.openmap4u.unit.Length;
  */
 public abstract class OutputableFormatTest extends AbstractOpenMap4uTest {
 
-    protected final SetAreaOfInterestOrDraw getDraw(Class<? extends OutputableFormat> outputableFormat) throws IOException {
+    protected final SetAreaOfInterestOrDrawOrWrite getDraw(Class<? extends OutputableFormat> outputableFormat) throws IOException {
         return this.getDefaultOpenMap4u().getCanvas().setOutputFormat(outputableFormat).setDrawingUnits(Length.CM).setWorldUnits(Length.CM).setSize(2, 2);
     }
 

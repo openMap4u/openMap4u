@@ -11,6 +11,6 @@ import org.openmap4u.commons.Plugable;
  * @author Michael Hadrbolec
  */
 public interface Canvas  extends Plugable, SetUp, DrawOrWrite,
-        SetAreaOfInterestOrDraw   {
+        SetAreaOfInterestOrDrawOrWrite   {
 
 }

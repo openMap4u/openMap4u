@@ -24,8 +24,8 @@ public final class Shape  extends ShapeBuilder<Shape >   {
      *            draw.
      * @return The Shape itself (method chaining pattern).
      */
-    public Shape setMoveTo(double toX, double toY) {
-        return super.setMoveTo(toX, toY);
+    public Shape moveTo(double toX, double toY) {
+        return super.moveTo(toX, toY);
     }
 
     /**
@@ -37,8 +37,8 @@ public final class Shape  extends ShapeBuilder<Shape >   {
      *            The y coordinate where to draw to.
      * @return The Shape itself (method chaining pattern).
      */
-    public Shape setLineTo(double toX, double toY) {
-        return super.setLineTo(toX, toY);
+    public Shape lineTo(double toX, double toY) {
+        return super.lineTo(toX, toY);
     }
 
     /**
@@ -54,8 +54,8 @@ public final class Shape  extends ShapeBuilder<Shape >   {
      *            The y coordinate.
      * @return The Shape itself (method chaining pattern).
      */
-    public Shape setQuadTo(double cpX, double cpY, double toX, double toY) {
-        return super.setQuadTo(cpX, cpY, toY, toY);
+    public Shape quadTo(double cpX, double cpY, double toX, double toY) {
+        return super.quadTo(cpX, cpY, toY, toY);
     }
 
     /**
@@ -75,9 +75,9 @@ public final class Shape  extends ShapeBuilder<Shape >   {
      *            The y coordinate.
      * @return The Shape itself (method chaining pattern).
      */
-    public Shape setBezierTo(double cp1X, double cp1Y, double cp2X,
+    public Shape bezierTo(double cp1X, double cp1Y, double cp2X,
             double cp2Y, double toX, double toY) {
-        return super.setBezierTo(cp1X, cp1Y, cp2X, cp2Y, toY, toY);
+        return super.bezierTo(cp1X, cp1Y, cp2X, cp2Y, toY, toY);
     }
 
     /**

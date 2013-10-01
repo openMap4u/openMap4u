@@ -12,7 +12,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.junit.runner.RunWith;
-import org.openmap4u.canvas.SetAreaOfInterestOrDraw;
+import org.openmap4u.canvas.SetAreaOfInterestOrDrawOrWrite;
 import org.openmap4u.outputformat.OutputableFormat;
 import org.openmap4u.plugin.outputformat.graphics2d.PngPlugin;
 import org.openmap4u.plugin.outputformat.svg.SvgPlugin;
@@ -48,7 +48,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 		return this.defaultOpenMap4u;
 	}
 
-	public SetAreaOfInterestOrDraw getCanvas(Length worldUnits,
+	public SetAreaOfInterestOrDrawOrWrite getCanvas(Length worldUnits,
 			Length drawingUnits, Length strokeUnits,
 			Class<? extends OutputableFormat> outputFromat, double width,
 			double height) {

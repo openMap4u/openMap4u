@@ -16,14 +16,11 @@ import org.junit.Test;
 import org.openmap4u.AbstractOpenMap4uTest;
 import org.openmap4u.OutputFormat;
 import org.openmap4u.builder.Action.MockupAction;
-import org.openmap4u.canvas.Draw;
-import org.openmap4u.canvas.Write;
-import org.openmap4u.commons.FontStyle;
+import org.openmap4u.canvas.DrawOrWrite;
+ import org.openmap4u.commons.FontStyle;
 import org.openmap4u.commons.HorizontalAlign;
 import org.openmap4u.commons.VerticalAlign;
-import org.openmap4u.outputformat.OutputableFormat;
 import org.openmap4u.plugin.builder.symbol.Cross;
-import org.openmap4u.plugin.outputformat.graphics2d.PngPlugin;
 import org.openmap4u.unit.Length;
 
 /**
@@ -183,14 +180,14 @@ public abstract class AbstractBuilderLambdaTest<T extends Buildable> extends
 		process(getActions(), getFileName());
 	}
 
-	final void process(List<Actions> actions, Draw draw, String outputFileName)
+	final void process(List<Actions> actions, DrawOrWrite draw, String outputFileName)
 			throws IOException {
            	for (int row = 0; row < actions.size() + 1; row++) {
 			/* draw horizontal raster line */
 			draw.setDraw(this.getDefaultOpenMap4u().getBuilder()
 					.getShape().setStrokeColor(Color.LIGHT_GRAY)
-					.setStrokeSize(0.3).setMoveTo(0, row * 2)
-					.setLineTo(30, row * 2));
+					.setStrokeSize(0.3).moveTo(0, row * 2)
+					.lineTo(30, row * 2));
 			/* draw the focus of the test */
 			if (row < actions.size()) {
 				draw.setDraw(this.getDefaultOpenMap4u().getBuilder()
@@ -204,8 +201,8 @@ public abstract class AbstractBuilderLambdaTest<T extends Buildable> extends
 			if (column < 12) {
 				draw.setDraw(this.getDefaultOpenMap4u().getBuilder()
 						.getShape().setStrokeColor(Color.LIGHT_GRAY)
-						.setStrokeSize(0.3).setMoveTo(column * 2, 0)
-						.setLineTo(column * 2, actions.size() * 2));
+						.setStrokeSize(0.3).moveTo(column * 2, 0)
+						.lineTo(column * 2, actions.size() * 2));
 			}
 			for (int row = 0; row < 11; row++) {
 				/* draw a cross in each center */
@@ -239,7 +236,7 @@ public abstract class AbstractBuilderLambdaTest<T extends Buildable> extends
 			}
 		}
 		/* write the result into the given */
-		((Write) draw).write(FileSystems.getDefault().getPath(
+		  draw.write(FileSystems.getDefault().getPath(
 				".\\target\\test-classes", outputFileName));
 
 	}

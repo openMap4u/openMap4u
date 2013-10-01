@@ -19,6 +19,6 @@ public abstract class AbstractNashornTest {
 		return mScriptEngine;
 	}
         
-        protected
+      
 
 }

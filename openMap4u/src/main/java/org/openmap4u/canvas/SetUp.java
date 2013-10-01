@@ -61,5 +61,5 @@ public interface SetUp {
      * @return Allows either to set the area of interest or to directly add
      *         primitives.
      */
-    SetAreaOfInterestOrDraw setSize(double width, double height);
+    SetAreaOfInterestOrDrawOrWrite setSize(double width, double height);
 }

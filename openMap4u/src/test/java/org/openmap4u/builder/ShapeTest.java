@@ -28,7 +28,7 @@ public class ShapeTest extends AbstractShapeBuilderTest<Shape> {
      */
     @Test
     public void testSetMoveTo() {
-        this.mShape.setMoveTo(1, 2);
+        this.mShape.moveTo(1, 2);
         assertThat(this.mShape.getPrimitive(), notNullValue());
     }
 
@@ -37,7 +37,7 @@ public class ShapeTest extends AbstractShapeBuilderTest<Shape> {
      */
     @Test
     public void testSetLineTo() {
-        this.mShape.setMoveTo(1, 2).setLineTo(4, 5);
+        this.mShape.moveTo(1, 2).lineTo(4, 5);
         assertThat(this.mShape.getPrimitive(), notNullValue());
     }
 
@@ -46,7 +46,7 @@ public class ShapeTest extends AbstractShapeBuilderTest<Shape> {
      */
     @Test
     public void testSetQuadTo() {
-        this.mShape.setMoveTo(1, 2).setQuadTo(2, 3, 4, 5);
+        this.mShape.moveTo(1,2).quadTo(2, 3, 4, 5);
         assertThat(this.mShape.getPrimitive(), notNullValue());
     }
 
@@ -55,17 +55,14 @@ public class ShapeTest extends AbstractShapeBuilderTest<Shape> {
      */
     @Test
     public void testSeBezierTo() {
-        this.mShape.setMoveTo(1, 2).setBezierTo(1.2, 1.4, 2, 3, 4, 5);
+        this.mShape.moveTo(1,2).bezierTo(1.2, 1.4, 2, 3, 4, 5);
         assertThat(this.mShape.getPrimitive(), notNullValue());
     }
 
     @Override
     protected Shape getBuilder() {
         Shape shapeBuilder = this.getDefaultOpenMap4u().getBuilder().getShape();
-        
-       
-        
-        shapeBuilder.setMoveTo(-.5, -.5).setLineTo(.5, -.5).setQuadTo(1, .25, 0, .5).setBezierTo(-.5, 0.5, -1, .25, -.5, -.5).setMoveTo(-.25, -.25).setLineTo(.25 ,- .25).setLineTo(0, .25).setLineTo(-.25, -.25);
+        shapeBuilder.moveTo(-.5,-.5).quadTo(1, .25, 0, .5).bezierTo(-.5, 0.5, -1, .25, -.5, -.5).moveTo(-.25, -.25).lineTo(.25 ,- .25).lineTo(0, .25).lineTo(-.25, -.25);
         return shapeBuilder;
     }
 

@@ -20,7 +20,7 @@ public interface SetAreaOfInterest {
      *            The y coordinate of the center.
      * @return Allows to setup the area of interest of the drawing canvas.
      */
-    SetAreaOfInterestOrDraw setCenter(double x, double y);
+    SetAreaOfInterestOrDrawOrWrite setCenter(double x, double y);
 
     /**
      * Sets the scale of the area of interest of the drawing canvas.
@@ -29,7 +29,7 @@ public interface SetAreaOfInterest {
      *            The scale factor of the area of interest.
      * @return Allows to setup the area of interest of the drawing canvas.
      */
-    SetAreaOfInterestOrDraw setScale(double scaleFactor);
+    SetAreaOfInterestOrDrawOrWrite setScale(double scaleFactor);
 
     /**
      * Sets the roation of the area of interest of the drawing canvas.
@@ -38,5 +38,5 @@ public interface SetAreaOfInterest {
      *            The rotation angle.
      * @return Allows to setup the area of interest of the drawing canvas.
      */
-    SetAreaOfInterestOrDraw setRotate(double rotation);
+    SetAreaOfInterestOrDrawOrWrite setRotate(double rotation);
 }

@@ -79,7 +79,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
 	 * @return The Shape itself (method chaining pattern).
 	 */
 	@SuppressWarnings("unchecked")
-	protected B setBezierTo(double cp1X, double cp1Y, double cp2X,
+	protected B bezierTo(double cp1X, double cp1Y, double cp2X,
 	        double cp2Y, double toX, double toY) {
 	    this.mPath.curveTo(cp1X, cp1Y, cp2X, cp2Y, toY, toY);
 	    return (B)this;
@@ -95,7 +95,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
 	 * @return The Shape itself (method chaining pattern).
 	 */
 	@SuppressWarnings("unchecked")
-	protected B setLineTo(double toX, double toY) {
+	protected B lineTo(double toX, double toY) {
 	    this.mPath.lineTo(toX, toY);
 	    return (B)this;
 	}
@@ -114,7 +114,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
 	 * @return The Shape itself (method chaining pattern).
 	 */
 	@SuppressWarnings("unchecked")
-	protected B setMoveTo(double toX, double toY) {
+	protected B moveTo(double toX, double toY) {
 	    if (this.mPath == null) {
 	        this.mPath = new Path2D.Double(Path2D.WIND_EVEN_ODD);
 	        this.setPrimitive(mPath);
@@ -137,7 +137,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
 	 * @return The Shape itself (method chaining pattern).
 	 */
 	@SuppressWarnings("unchecked")
-	protected B setQuadTo(double cpX, double cpY, double toX, double toY) {
+	protected B quadTo(double cpX, double cpY, double toX, double toY) {
 	    this.mPath.quadTo(cpX, cpY, toY, toY);
 	    return (B)this;
 	}
