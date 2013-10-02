@@ -25,7 +25,7 @@ public interface DrawOrWrite    {
      * @return Allow by applying the method chaining pattern either to draw more
      * primitive(s) or to write the resulting map.
      */
-    DrawOrWrite setDraw(Primitive<?, ? extends Styleable> primitive);
+    DrawOrWrite draw(Primitive<?, ? extends Styleable> primitive);
     
    
     

@@ -30,7 +30,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      * @return The builder itself (method chaining pattern).
      */
     @SuppressWarnings("unchecked")
-	public final B setStrokeSize(double strokeSize) {
+	protected B strokeSize(double strokeSize) {
         this.getStyle().setStrokeSize(strokeSize);
           return (B) this;
     }
@@ -43,7 +43,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      * @return The builder itself (method chaining pattern).
      */
     @SuppressWarnings("unchecked")
-	public final B setStrokeColor(Paint strokeColor) {
+	protected B strokeColor(Paint strokeColor) {
         this.getStyle().setStrokeColor(strokeColor);
         return (B) this;
     }
@@ -56,7 +56,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      * @return The builder itself (method chaining pattern).
      */
     @SuppressWarnings("unchecked")
-	public final B setStrokeFill(Paint strokeFill) {
+	protected B strokeFill(Paint strokeFill) {
         this.getStyle().setStrokeFill(strokeFill);
         return (B) this;
     }
@@ -150,7 +150,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
 	 * @return The Shape itself (method chaining pattern).
 	 */
 	@SuppressWarnings("unchecked")
-	protected B setShape(java.awt.Shape awtShape) {
+	protected B shape(java.awt.Shape awtShape) {
 	    this.mPath = new Path2D.Double(awtShape);
 	    return (B)this;
 	}

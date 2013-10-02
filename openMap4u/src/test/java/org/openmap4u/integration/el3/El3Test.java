@@ -22,8 +22,9 @@ public class El3Test extends AbstractEl3Test {
 
     @Test
     public void testSinglePrimitive() {
+    	getELProcessor().getELManager().
         getELProcessor().eval("n=4+3");
-        getELProcessor().eval("oM4u.getCanvas().setSize(10,8)");
-       // getELProcessor().eval("oM4u.canvas().size(10,8).draw(oM4u.builder().shape().moveTo(1,3).lineTo(7,3)).write('C:/temp/test.png');");
+        getELProcessor().eval("oM4u.getCanvas().size(10,8)");
+        getELProcessor().eval("oM4u.getCanvas().size(10,8).draw(oM4u.getBuilder().getShape().moveTo(1,3).lineTo(7,3)).write('C:/temp/test.png')");
     }
 }

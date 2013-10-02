@@ -1,7 +1,7 @@
 package org.openmap4u.builder;
 
 import java.awt.Paint;
-import java.awt.geom.Path2D;
+
 
  
 /**
@@ -87,9 +87,42 @@ public final class Shape  extends ShapeBuilder<Shape >   {
      *            The awt shape geometry.
      * @return The Shape itself (method chaining pattern).
      */
-    public Shape setShape(java.awt.Shape shape) {
-              return super.setShape(shape);
+    public Shape shape(java.awt.Shape shape) {
+              return super.shape(shape);
     }
+
+	/**
+	 * Sets the stroke color.
+	 * 
+	 * @param strokeColor
+	 *            The stroke color.
+	 * @return The builder itself (method chaining pattern).
+	 */
+	public Shape strokeColor(Paint strokeColor) {
+	   return super.strokeColor(strokeColor);
+	}
+
+	/**
+	 * Sets the sroke fill.
+	 * 
+	 * @param strokeFill
+	 *            The stroke fill.
+	 * @return The builder itself (method chaining pattern).
+	 */
+	public Shape strokeFill(Paint strokeFill) {
+	    return super.strokeFill(strokeFill);
+	}
+
+	/**
+	 * Sets the stroke size in stroke units.
+	 * 
+	 * @param strokeSize
+	 *            The stroke size in stroke units.
+	 * @return The builder itself (method chaining pattern).
+	 */
+	public Shape strokeSize(double strokeSize) {
+	      return super.strokeSize(strokeSize);
+	}
 
 	 
 	 

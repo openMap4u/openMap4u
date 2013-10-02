@@ -52,9 +52,9 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 			Length drawingUnits, Length strokeUnits,
 			Class<? extends OutputableFormat> outputFromat, double width,
 			double height) {
-		return defaultOpenMap4u.getCanvas().setWorldUnits(worldUnits)
-				.setDrawingUnits(drawingUnits).setStrokeUnits(strokeUnits)
-				.setOutputFormat(outputFromat).setSize(width, height);
+		return defaultOpenMap4u.getCanvas().worldUnits(worldUnits)
+				.drawingUnits(drawingUnits).strokeUnits(strokeUnits)
+				.outputFormat(outputFromat).size(width, height);
 	}
 
 	public OpenMap4u getOverriddenOpenMap4u() {

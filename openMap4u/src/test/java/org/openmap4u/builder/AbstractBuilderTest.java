@@ -123,28 +123,28 @@ public abstract class AbstractBuilderTest<T extends Buildable> extends
 
 	protected void setBuilder(Actions actions, T builder, int index) {
 		if (actions.contains(MockupAction.OFFSET_X)) {
-			builder.setOffsetX((double) actions
+			builder.offsetX((double) actions
 					.getValues(MockupAction.OFFSET_X)[index]);
 		}
 		if (actions.contains(MockupAction.OFFSET_Y)) {
-			builder.setOffsetY((double) actions
+			builder.offsetY((double) actions
 					.getValues(MockupAction.OFFSET_Y)[index]);
 		}
 		if (actions.contains(MockupAction.SCALE_X)) {
-			builder.setScaleX((double) actions.getValues(MockupAction.SCALE_X)[index]);
+			builder.scaleX((double) actions.getValues(MockupAction.SCALE_X)[index]);
 		}
 		if (actions.contains(MockupAction.SCALE_Y)) {
-			builder.setScaleY((double) actions.getValues(MockupAction.SCALE_Y)[index]);
+			builder.scaleY((double) actions.getValues(MockupAction.SCALE_Y)[index]);
 		}
 		if (actions.contains(MockupAction.ROTATE)) {
 			builder.setRotation((double) actions.getValues(MockupAction.ROTATE)[index]);
 		}
 		if (actions.contains(MockupAction.OPACITY)) {
-			builder.setTransparence((double) actions
+			builder.transparence((double) actions
 					.getValues(MockupAction.OPACITY)[index]);
 		}
 		if (actions.contains(MockupAction.VERTICAL_ALIGN)) {
-			builder.setVerticalAlign((VerticalAlign) actions
+			builder.verticalAlign((VerticalAlign) actions
 					.getValues(MockupAction.VERTICAL_ALIGN)[index]);
 		}
 		if (actions.contains(MockupAction.HORIZONTAL_ALIGN)) {
@@ -186,13 +186,13 @@ public abstract class AbstractBuilderTest<T extends Buildable> extends
 			throws IOException {
          	for (int row = 0; row < actions.size() + 1; row++) {
 			/* draw horizontal raster line */
-			draw.setDraw(this.getDefaultOpenMap4u().getBuilder()
+			draw.draw(this.getDefaultOpenMap4u().getBuilder()
 					.getShape().setStrokeColor(Color.LIGHT_GRAY)
 					.setStrokeSize(0.3).moveTo(0, row * 2)
 					.lineTo(30, row * 2));
 			/* draw the focus of the test */
 			if (row < actions.size()) {
-				draw.setDraw(this.getDefaultOpenMap4u().getBuilder()
+				draw.draw(this.getDefaultOpenMap4u().getBuilder()
 						.getText().setFontSize(5)
 						.setPoint(23, row * 2 + 1)
 						.setText(actions.get(row).getDescription()));
@@ -201,20 +201,20 @@ public abstract class AbstractBuilderTest<T extends Buildable> extends
 		for (int column = 0; column < actions.size(); column++) {
 			/* draw vertical raster line */
 			if (column < 12) {
-				draw.setDraw(this.getDefaultOpenMap4u().getBuilder()
+				draw.draw(this.getDefaultOpenMap4u().getBuilder()
 						.getShape().setStrokeColor(Color.LIGHT_GRAY)
 						.setStrokeSize(0.3).moveTo(column * 2, 0)
 						.lineTo(column * 2, actions.size() * 2));
 			}
 			for (int row = 0; row < 11; row++) {
 				/* draw a cross in each center */
-				draw.setDraw(this.getDefaultOpenMap4u().getBuilder()
+				draw.draw(this.getDefaultOpenMap4u().getBuilder()
 						.getCustomBuilder(Cross.class)
 						.setPoint(row * 2 + 1, column * 2 + 1)
 						.setStrokeSize(0.1).setSize(.3));
 				/* draw a cross in each center */
 
-				draw.setDraw(this
+				draw.draw(this
 						.getDefaultOpenMap4u()
 						.getBuilder()
 						.getText()
@@ -222,7 +222,7 @@ public abstract class AbstractBuilderTest<T extends Buildable> extends
 						.setFontSize(2.5)
 						.setPoint(row * 2 + 1, column * 2 + 1)
 						.setAlign(HorizontalAlign.LEFT, VerticalAlign.TOP)
-						.setOffset(-.9, .9)
+						.offset(-.9, .9)
 						.setText(
 								new StringBuilder().append(row).append("/")
 										.append(column).toString()));
@@ -234,7 +234,7 @@ public abstract class AbstractBuilderTest<T extends Buildable> extends
 				T builder = getBuilder();
 				builder.setPoint(row * 2 + 1, column * 2 + 1);
 				this.setBuilder(actions.get(column), builder, row);
-				draw.setDraw(builder);
+				draw.draw(builder);
 			}
 		}
 		/* write the result into the given */
@@ -270,37 +270,37 @@ public abstract class AbstractBuilderTest<T extends Buildable> extends
 			process(actions,
 					getCanvas(Length.CM, Length.CM, Length.MM,
 							outputFormat.getOutputableFormat(), 30,
-							(actions.size() + 1) * 2).setCenter(centerX,
+							(actions.size() + 1) * 2).center(centerX,
 							centerY),
 					outputFormat.getFileneame("offset", outputFileName));
 			/* process scale */
 			process(actions,
 					getCanvas(Length.CM, Length.CM, Length.MM,
 							outputFormat.getOutputableFormat(), 30,
-							(actions.size() + 1) * 2).setScale(scale),
+							(actions.size() + 1) * 2).scale(scale),
 					outputFormat.getFileneame("scale",
 							 outputFileName));
 			/* process rotate */
 			process(actions,
 					getCanvas(Length.CM, Length.CM, Length.MM,
 							outputFormat.getOutputableFormat(), 30,
-							(actions.size() + 1) * 2).setRotate(rotate),
+							(actions.size() + 1) * 2).rotate(rotate),
 					outputFormat.getFileneame("rotate",
 							outputFileName));
 			/* process offset scale */
 			process(actions,
 					getCanvas(Length.CM, Length.CM, Length.MM,
 							outputFormat.getOutputableFormat(), 30,
-							(actions.size() + 1) * 2).setCenter(centerX,
-							centerY).setScale(scale),
+							(actions.size() + 1) * 2).center(centerX,
+							centerY).scale(scale),
 					outputFormat
 							.getFileneame("offset","scale",outputFileName));
 			/* process offset rotate */
 			process(actions,
 					getCanvas(Length.CM, Length.CM, Length.MM,
 							outputFormat.getOutputableFormat(), 30,
-							(actions.size() + 1) * 2).setCenter(centerX,
-							centerY).setRotate(rotate),
+							(actions.size() + 1) * 2).center(centerX,
+							centerY).rotate(rotate),
 					outputFormat
 							.getFileneame("offset","rotate",outputFileName));
 			/* process offset sclae rotate */
@@ -308,8 +308,8 @@ public abstract class AbstractBuilderTest<T extends Buildable> extends
 					getCanvas(Length.CM, Length.CM, Length.MM,
 							outputFormat.getOutputableFormat(), 30,
 							(actions.size() + 1) * 2)
-							.setCenter(centerX, centerY).setScale(scale)
-							.setRotate(rotate),
+							.center(centerX, centerY).scale(scale)
+							.rotate(rotate),
 					outputFormat.getFileneame(
 							"offset","scale","rotate",outputFileName)
 							);

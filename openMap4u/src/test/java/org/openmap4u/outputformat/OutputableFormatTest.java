@@ -18,7 +18,7 @@ import org.openmap4u.unit.Length;
 public abstract class OutputableFormatTest extends AbstractOpenMap4uTest {
 
     protected final SetAreaOfInterestOrDrawOrWrite getDraw(Class<? extends OutputableFormat> outputableFormat) throws IOException {
-        return this.getDefaultOpenMap4u().getCanvas().setOutputFormat(outputableFormat).setDrawingUnits(Length.CM).setWorldUnits(Length.CM).setSize(2, 2);
+        return this.getDefaultOpenMap4u().getCanvas().outputFormat(outputableFormat).drawingUnits(Length.CM).worldUnits(Length.CM).size(2, 2);
     }
 
     Circle getCircle() {

@@ -27,7 +27,7 @@ public abstract class AbstractSpatialTest extends AbstractOpenMap4uTest {
 	public void testCenter() throws IOException {
 		for (OutputFormat outputFormat : getOutputFormats()) {
 			process(this.getCanvas(Length.CM, Length.CM, Length.MM, outputFormat.getOutputableFormat(), 36,
-					18).setCenter(0, 0), getNameWithSuffix("center",outputFormat));
+					18).center(0, 0), getNameWithSuffix("center",outputFormat));
 		}
 	}
 
@@ -37,7 +37,7 @@ public abstract class AbstractSpatialTest extends AbstractOpenMap4uTest {
 			process(this
 					.getCanvas(Length.CM, Length.CM, Length.MM,
 							outputFormat.getOutputableFormat(), 36, 18)
-					.setCenter(0, 0).setScale(0.1),
+					.center(0, 0).scale(0.1),
 					getNameWithSuffix("center_scale",outputFormat));
 		}
 	}
@@ -48,7 +48,7 @@ public abstract class AbstractSpatialTest extends AbstractOpenMap4uTest {
 			process(this
 					.getCanvas(Length.CM, Length.CM, Length.MM,
 							outputFormat.getOutputableFormat(), 36, 18)
-					.setCenter(0, 0).setScale(.1).setRotate(30),
+					.center(0, 0).scale(.1).rotate(30),
 					getNameWithSuffix("center_scale_rotate",outputFormat));
 		}
 	}

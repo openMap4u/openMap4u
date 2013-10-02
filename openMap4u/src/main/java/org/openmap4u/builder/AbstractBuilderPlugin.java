@@ -28,7 +28,7 @@ import org.openmap4u.unit.Transparence;
     private static final double TRANSPARENT = 100;
 
     @Override
-    public B setVisible(boolean isVisible) {
+    public B visible(boolean isVisible) {
         this.mVisible = isVisible;
         return (B) this;
     }
@@ -39,7 +39,7 @@ import org.openmap4u.unit.Transparence;
     }
 
     @Override
-    public B setTransparence(double tranparence) {
+    public B transparence(double tranparence) {
         this.getStyle().setAlpha(mTransparence.convert(tranparence));
         return (B) this;
     }
@@ -48,12 +48,12 @@ import org.openmap4u.unit.Transparence;
     public B setAlign(HorizontalAlign horizontalAlign,
             VerticalAlign verticalAlign) {
         setHorizontalAlign(horizontalAlign);
-        setVerticalAlign(verticalAlign);
+        verticalAlign(verticalAlign);
         return (B) this;
     }
 
     @Override
-    public B setVerticalAlign(VerticalAlign verticalAlign) {
+    public B verticalAlign(VerticalAlign verticalAlign) {
         this.getStyle().setVerticalAlign(verticalAlign);
         return (B) this;
     }
@@ -65,44 +65,44 @@ import org.openmap4u.unit.Transparence;
     }
 
     @Override
-    public final B setOffset(double offsetX, double offsetY) {
-        setOffsetX(offsetX);
-        setOffsetY(offsetY);
+    public final B offset(double offsetX, double offsetY) {
+        offsetX(offsetX);
+        offsetY(offsetY);
         return (B) this;
     }
 
     @Override
-    public final B setOffsetX(double offsetX) {
+    public final B offsetX(double offsetX) {
         this.mTransformHelper.setX(offsetX);
         return (B) this;
     }
 
     @Override
-    public final B setOffsetY(double offsetY) {
+    public final B offsetY(double offsetY) {
         this.mTransformHelper.setY(offsetY);
         return (B) this;
     }
 
     @Override
-    public final B setScale(double scaleFactor) {
-        return setScale(scaleFactor, scaleFactor);
+    public final B scale(double scaleFactor) {
+        return scale(scaleFactor, scaleFactor);
     }
 
     @Override
-    public final B setScale(double scaleX, double scaleY) {
-        setScaleX(scaleX);
-        setScaleY(scaleY);
+    public final B scale(double scaleX, double scaleY) {
+        scaleX(scaleX);
+        scaleY(scaleY);
         return (B) this;
     }
 
     @Override
-    public final B setScaleX(double scaleX) {
+    public final B scaleX(double scaleX) {
         this.mTransformHelper.setScaleX(scaleX);
         return (B) this;
     }
 
     @Override
-    public final B setScaleY(double scaleY) {
+    public final B scaleY(double scaleY) {
         this.mTransformHelper.setScaleY(scaleY);
         return (B) this;
     }

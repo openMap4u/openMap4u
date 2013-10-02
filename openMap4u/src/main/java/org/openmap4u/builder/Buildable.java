@@ -26,7 +26,7 @@ public interface Buildable<T, S extends Styleable<S>, B extends Buildable<T, S,B
      *            <code>false</code>).
      * @return The Buildable itself (method chaining pattern).
      */
-    B setVisible(boolean isVisible);
+    B visible(boolean isVisible);
 
     /**
      * Checks whether the primitive is visible (which means either the
@@ -63,7 +63,7 @@ public interface Buildable<T, S extends Styleable<S>, B extends Buildable<T, S,B
      *            (not transparent at all).</li></ul>
      * @return The Buildable itself (method chaining pattern).
      */
-    B setTransparence(double tranparence);
+    B transparence(double tranparence);
 
     /**
      * Sets the offset of the primitive drawing units.<br/>
@@ -84,7 +84,7 @@ public interface Buildable<T, S extends Styleable<S>, B extends Buildable<T, S,B
      * 
      * @return The Buildable itself (method chaining pattern).
      */
-    B setOffset(double offsetX, double offsetY);
+    B offset(double offsetX, double offsetY);
 
     /**
      * Sets the  x offset of the primitive drawing units.<br/>
@@ -98,7 +98,7 @@ public interface Buildable<T, S extends Styleable<S>, B extends Buildable<T, S,B
      * 
       * @return The Buildable itself (method chaining pattern).
      */
-    B setOffsetX(double offsetX);
+    B offsetX(double offsetX);
 
     /**
      * Sets the y offset of the primitive drawing units.<br/>
@@ -113,7 +113,7 @@ public interface Buildable<T, S extends Styleable<S>, B extends Buildable<T, S,B
      * 
      * @return The Buildable itself (method chaining pattern).
      */
-    B setOffsetY(double offsetY);
+    B offsetY(double offsetY);
 
     /**
      * Sets a constant scale factor for x as well as for y axis direction.<br/>
@@ -132,7 +132,7 @@ public interface Buildable<T, S extends Styleable<S>, B extends Buildable<T, S,B
      *            direction.
      * @return The Buildable itself (method chaining pattern).
      */
-    B setScale(double scaleFactor);
+    B scale(double scaleFactor);
 
     /**
      * Sets the scale factor in x and y axis direction.<br/>
@@ -155,7 +155,7 @@ public interface Buildable<T, S extends Styleable<S>, B extends Buildable<T, S,B
      *            src="doc-files/ShapeBuilder_scale_y.png"/>
      * @return The Buildable itself (method chaining pattern).
      */
-    B setScale(double scaleX, double scaleY);
+    B scale(double scaleX, double scaleY);
 
     /**
      * Sets the scale factor in x axis direction.
@@ -166,7 +166,7 @@ public interface Buildable<T, S extends Styleable<S>, B extends Buildable<T, S,B
      *            src="doc-files/ShapeBuilder_scale_x.png"/>
      * @return The Buildable itself (method chaining pattern).
      */
-    B setScaleX(double scaleX);
+    B scaleX(double scaleX);
 
     /**
      * Sets the scale factor in x axis direction.
@@ -177,7 +177,7 @@ public interface Buildable<T, S extends Styleable<S>, B extends Buildable<T, S,B
      *            src="doc-files/ShapeBuilder_scale_y.png"/>
      * @return The Buildable itself (method chaining pattern).
      */
-    B setScaleY(double scaleY);
+    B scaleY(double scaleY);
 
     /**
      * Sets the primitives alignment in horizontal (= x axis) and vertical(= y
@@ -196,7 +196,7 @@ public interface Buildable<T, S extends Styleable<S>, B extends Buildable<T, S,B
      * @param verticalAlign
      * @return
      */
-    B setVerticalAlign(VerticalAlign verticalAlign);
+    B verticalAlign(VerticalAlign verticalAlign);
 
     /**
      *

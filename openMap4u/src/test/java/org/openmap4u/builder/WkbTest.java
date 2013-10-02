@@ -19,14 +19,14 @@ public class WkbTest extends AbstractSpatialTest {
 	protected void process(DrawOrWrite draw, String outputFileName) throws IOException {
 		for (Country country : MockupData.ITERABLE_COUNTRIES) {
 			/* draw a cross in each center */
-			draw.setDraw(this.getDefaultOpenMap4u().getBuilder().getWkb()
+			draw.draw(this.getDefaultOpenMap4u().getBuilder().getWkb()
 					.setStrokeColor(Color.BLACK).setStrokeSize(.25).setStrokeFill(Color.LIGHT_GRAY)
 					.setWkb(country.getGeomAsWkb()));
 
 		}
 	 	for (Country country : MockupData.ITERABLE_COUNTRIES) {
 			/* draw a cross in each center */
-			draw.setDraw(this.getDefaultOpenMap4u().getBuilder()
+			draw.draw(this.getDefaultOpenMap4u().getBuilder()
 					.getCustomBuilder(Cross.class)
 					.setPoint(country.getX(), country.getY())
 					.setStrokeColor(Color.GREEN).setStrokeSize(1));

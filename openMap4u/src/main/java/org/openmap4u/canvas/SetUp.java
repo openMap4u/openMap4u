@@ -20,7 +20,7 @@ public interface SetUp {
      *            The world units.
      * @return Allows to setup additional parameters.
      */
-    SetUp setWorldUnits(Length worldUnits);
+    SetUp worldUnits(Length worldUnits);
 
     /**
      * Sets the drawing units.
@@ -29,7 +29,7 @@ public interface SetUp {
      *            The drawing units.
      * @return Allows to setup additional parameters.
      */
-    SetUp setDrawingUnits(Length drawingUnits);
+    SetUp drawingUnits(Length drawingUnits);
 
     /**
      * Sets the stroke units.
@@ -38,7 +38,7 @@ public interface SetUp {
      *            The stroke units.
      * @return Allows to setup additional parameters.
      */
-    SetUp setStrokeUnits(Length strokeUnits);
+    SetUp strokeUnits(Length strokeUnits);
 
     /**
      * 
@@ -48,7 +48,7 @@ public interface SetUp {
      *            The class that implements the outputableFormat interface.
      * @return Allows to setup additional parameters.
      */
-    <T extends OutputableFormat> SetUp setOutputFormat(Class<T> outputFormat);
+    <T extends OutputableFormat> SetUp outputFormat(Class<T> outputFormat);
 
     /**
      * Creates the drawing canvas based on the provided unit and output format
@@ -61,5 +61,5 @@ public interface SetUp {
      * @return Allows either to set the area of interest or to directly add
      *         primitives.
      */
-    SetAreaOfInterestOrDrawOrWrite setSize(double width, double height);
+    SetAreaOfInterestOrDrawOrWrite size(double width, double height);
 }

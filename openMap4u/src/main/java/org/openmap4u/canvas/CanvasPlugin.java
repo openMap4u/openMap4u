@@ -30,7 +30,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.stream.Stream;
 
 import org.openmap4u.Globals;
 import org.openmap4u.commons.TransformHelper;
@@ -135,25 +134,25 @@ public class CanvasPlugin  implements Canvas   {
     }
 
     @Override
-    public final SetUp setWorldUnits(Length worldUnits) {
+    public final SetUp worldUnits(Length worldUnits) {
         this.mWorldUnits = worldUnits;
         return this;
     }
 
     @Override
-    public final SetUp setDrawingUnits(Length drawingUnits) {
+    public final SetUp drawingUnits(Length drawingUnits) {
         this.mDrawingUnits = drawingUnits;
         return this;
     }
 
     @Override
-    public final SetUp setStrokeUnits(Length strokeUnits) {
+    public final SetUp strokeUnits(Length strokeUnits) {
         this.mStrokeUnits = strokeUnits;
         return this;
     }
 
     @Override
-    public SetAreaOfInterestOrDrawOrWrite  setSize(double width, double height) {
+    public SetAreaOfInterestOrDrawOrWrite  size(double width, double height) {
         this.mWidth = width;
         this.mHeight = height;
 
@@ -161,8 +160,8 @@ public class CanvasPlugin  implements Canvas   {
     }
 
     @Override
-    public SetAreaOfInterestOrDrawOrWrite  setScale(double scaleFactor) {
-        this.setScale(scaleFactor, scaleFactor);
+    public SetAreaOfInterestOrDrawOrWrite  scale(double scaleFactor) {
+        this.scale(scaleFactor, scaleFactor);
         return this;
     }
 
@@ -174,7 +173,7 @@ public class CanvasPlugin  implements Canvas   {
      * @param scaleYFactor The scaleFactor in y direction.
      * @return Allows to change the area of interest.
      */
-    public SetAreaOfInterestOrDrawOrWrite  setScale(double scaleXFactor,
+    public SetAreaOfInterestOrDrawOrWrite  scale(double scaleXFactor,
             double scaleYFactor) {
         this.mTransformHelper.setScaleX(scaleXFactor);
         this.mTransformHelper.setScaleY(scaleYFactor);
@@ -182,20 +181,20 @@ public class CanvasPlugin  implements Canvas   {
     }
 
     @Override
-    public SetAreaOfInterestOrDrawOrWrite  setCenter(double centerX, double centerY) {
+    public SetAreaOfInterestOrDrawOrWrite  center(double centerX, double centerY) {
         this.mTransformHelper.setX(centerX);
         this.mTransformHelper.setY(centerY);
         return this;
     }
 
     @Override
-    public SetAreaOfInterestOrDrawOrWrite  setRotate(double rotation) {
+    public SetAreaOfInterestOrDrawOrWrite  rotate(double rotation) {
         this.mTransformHelper.setRotate(rotation);
         return this;
     }
 
     @Override
-    public <T extends OutputableFormat> SetUp setOutputFormat(Class<T> outputFormat) {
+    public <T extends OutputableFormat> SetUp outputFormat(Class<T> outputFormat) {
         this.mDrawablePlugin = Util.get().getPlugin(outputFormat);
         return this;
     }
@@ -204,7 +203,7 @@ public class CanvasPlugin  implements Canvas   {
     }
 
     @Override
-    public DrawOrWrite  setDraw(
+    public DrawOrWrite  draw(
             Primitive<?, ? extends Styleable> primitive) {
         /* check wethter the ouptputable format has been initialized */
         if (!this.mDrawablePlugin.isInitialized()) {
