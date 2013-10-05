@@ -4,6 +4,8 @@
  */
 package org.openmap4u.canvas;
 
+import java.awt.Shape;
+
 import org.openmap4u.outputformat.OutputableFormat;
 import org.openmap4u.unit.Length;
 
@@ -62,4 +64,15 @@ public interface SetUp {
      *         primitives.
      */
     SetAreaOfInterestOrDrawOrWrite size(double width, double height);
+    
+    /**
+     * Sets the shape of the canvas in drawing units.
+     * @param shape The shape of the canvas in drawing units.
+     * @return Allows either to set the area of interest or to directly add
+     *         primitives.
+     */
+    //SetAreaOfInterestOrDrawOrWrite size(Shape shape);
+    
+    
+    
 }

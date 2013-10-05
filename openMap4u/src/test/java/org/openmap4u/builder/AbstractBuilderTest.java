@@ -151,6 +151,10 @@ public abstract class AbstractBuilderTest<T extends Buildable> extends
 			builder.setHorizontalAlign((HorizontalAlign) actions
 					.getValues(MockupAction.HORIZONTAL_ALIGN)[index]);
 		}
+                if (actions.contains(MockupAction.VISIBILITY)) {
+			builder.visible((boolean) actions
+					.getValues(MockupAction.VISIBILITY)[index]);
+		}
 
 	}
 
@@ -187,8 +191,8 @@ public abstract class AbstractBuilderTest<T extends Buildable> extends
          	for (int row = 0; row < actions.size() + 1; row++) {
 			/* draw horizontal raster line */
 			draw.draw(this.getDefaultOpenMap4u().getBuilder()
-					.getShape().setStrokeColor(Color.LIGHT_GRAY)
-					.setStrokeSize(0.3).moveTo(0, row * 2)
+					.getShape().strokeColor(Color.LIGHT_GRAY)
+					.strokeSize(0.3).moveTo(0, row * 2)
 					.lineTo(30, row * 2));
 			/* draw the focus of the test */
 			if (row < actions.size()) {
@@ -202,8 +206,8 @@ public abstract class AbstractBuilderTest<T extends Buildable> extends
 			/* draw vertical raster line */
 			if (column < 12) {
 				draw.draw(this.getDefaultOpenMap4u().getBuilder()
-						.getShape().setStrokeColor(Color.LIGHT_GRAY)
-						.setStrokeSize(0.3).moveTo(column * 2, 0)
+						.getShape().strokeColor(Color.LIGHT_GRAY)
+						.strokeSize(0.3).moveTo(column * 2, 0)
 						.lineTo(column * 2, actions.size() * 2));
 			}
 			for (int row = 0; row < 11; row++) {
@@ -211,7 +215,7 @@ public abstract class AbstractBuilderTest<T extends Buildable> extends
 				draw.draw(this.getDefaultOpenMap4u().getBuilder()
 						.getCustomBuilder(Cross.class)
 						.setPoint(row * 2 + 1, column * 2 + 1)
-						.setStrokeSize(0.1).setSize(.3));
+						.strokeSize(0.1).setSize(.3));
 				/* draw a cross in each center */
 
 				draw.draw(this

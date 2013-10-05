@@ -73,7 +73,7 @@ public class StyleBuilder {
      * @param opacity
      * @return
      */
-    public StyleBuilder setOpacity(double opacity) {
+    public StyleBuilder writeOpacity(double opacity) {
         return write("opacity", String.valueOf(opacity));
     }
 

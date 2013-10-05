@@ -20,7 +20,7 @@ public class WkbTest extends AbstractSpatialTest {
 		for (Country country : MockupData.ITERABLE_COUNTRIES) {
 			/* draw a cross in each center */
 			draw.draw(this.getDefaultOpenMap4u().getBuilder().getWkb()
-					.setStrokeColor(Color.BLACK).setStrokeSize(.25).setStrokeFill(Color.LIGHT_GRAY)
+					.strokeColor(Color.BLACK).strokeSize(.25).strokeFill(Color.LIGHT_GRAY)
 					.setWkb(country.getGeomAsWkb()));
 
 		}
@@ -29,7 +29,7 @@ public class WkbTest extends AbstractSpatialTest {
 			draw.draw(this.getDefaultOpenMap4u().getBuilder()
 					.getCustomBuilder(Cross.class)
 					.setPoint(country.getX(), country.getY())
-					.setStrokeColor(Color.GREEN).setStrokeSize(1));
+					.strokeColor(Color.GREEN).strokeSize(1));
 		} 
 		/* write the result into the given */
 		  draw.write(FileSystems.getDefault().getPath(

@@ -104,7 +104,7 @@ public class SvgPlugin extends OutputFormat {
                                     style.getStrokeSize()
                                             * this.mStrokeUnit2DrawingUnitFactor)
                             .writeStroke(style.getStrokeColor())
-                            .writeFill(style.getStrokeFill()).toString());
+                            .writeFill(style.getStrokeFill()).writeOpacity(style.getAlpha()).toString());
             mWriter.writeEndElement();
         } catch (XMLStreamException e) {
             LOGGER.log(Level.WARNING, "", e);
@@ -241,7 +241,7 @@ public class SvgPlugin extends OutputFormat {
         sb.setTextVerticalAlign(style.getVerticalAlign());
         sb.setTextHorizontalAlign(style.getHorizontalAlign());
         sb.setTextColor(style.getFontColor());
-        sb.setOpacity(style.getAlpha());
+        sb.writeOpacity(style.getAlpha());
         sb.setFontStyle(style.getFontStyle());
         sb.setFontFamily(style.getFontFamily());
         return sb.toString();

@@ -52,7 +52,7 @@ import org.openmap4u.unit.Length;
  * @author Michael Hadrbolec
  *
  */
-public class CanvasPlugin  implements Canvas   {
+public class CanvasPlugin implements Canvas {
 
     /**
      *
@@ -152,7 +152,7 @@ public class CanvasPlugin  implements Canvas   {
     }
 
     @Override
-    public SetAreaOfInterestOrDrawOrWrite  size(double width, double height) {
+    public SetAreaOfInterestOrDrawOrWrite size(double width, double height) {
         this.mWidth = width;
         this.mHeight = height;
 
@@ -160,7 +160,7 @@ public class CanvasPlugin  implements Canvas   {
     }
 
     @Override
-    public SetAreaOfInterestOrDrawOrWrite  scale(double scaleFactor) {
+    public SetAreaOfInterestOrDrawOrWrite scale(double scaleFactor) {
         this.scale(scaleFactor, scaleFactor);
         return this;
     }
@@ -173,7 +173,7 @@ public class CanvasPlugin  implements Canvas   {
      * @param scaleYFactor The scaleFactor in y direction.
      * @return Allows to change the area of interest.
      */
-    public SetAreaOfInterestOrDrawOrWrite  scale(double scaleXFactor,
+    public SetAreaOfInterestOrDrawOrWrite scale(double scaleXFactor,
             double scaleYFactor) {
         this.mTransformHelper.setScaleX(scaleXFactor);
         this.mTransformHelper.setScaleY(scaleYFactor);
@@ -181,14 +181,14 @@ public class CanvasPlugin  implements Canvas   {
     }
 
     @Override
-    public SetAreaOfInterestOrDrawOrWrite  center(double centerX, double centerY) {
+    public SetAreaOfInterestOrDrawOrWrite center(double centerX, double centerY) {
         this.mTransformHelper.setX(centerX);
         this.mTransformHelper.setY(centerY);
         return this;
     }
 
     @Override
-    public SetAreaOfInterestOrDrawOrWrite  rotate(double rotation) {
+    public SetAreaOfInterestOrDrawOrWrite rotate(double rotation) {
         this.mTransformHelper.setRotate(rotation);
         return this;
     }
@@ -203,7 +203,7 @@ public class CanvasPlugin  implements Canvas   {
     }
 
     @Override
-    public DrawOrWrite  draw(
+    public DrawOrWrite draw(
             Primitive<?, ? extends Styleable> primitive) {
         /* check wethter the ouptputable format has been initialized */
         if (!this.mDrawablePlugin.isInitialized()) {
@@ -216,23 +216,25 @@ public class CanvasPlugin  implements Canvas   {
                     getWorldUnits(), getDrawingUnits(), getStrokeUnits(),
                     getGlobalTransform());
         }
-        /* perform setup tasks */
-        this.mDrawablePlugin.before();
-        /* process in the case it is a point based primitive */
-        if (primitive.isPoint()) {
-            for (Point2D.Double point : primitive.getPoints()) {
-                /* create the individual transformation */
-                draw(point, primitive);
+        /* only in the case the primitive is visible */
+        System.out.println(primitive.getStyle().isVisible());
+        if (primitive.getStyle().isVisible()) {
+            /* perform setup tasks */
+            this.mDrawablePlugin.before();
+            /* process in the case it is a point based primitive */
+            if (primitive.isPoint()) {
+                for (Point2D.Double point : primitive.getPoints()) {
+                    /* create the individual transformation */
+                    draw(point, primitive);
+                }
+            } else {
+                draw(null, primitive);
             }
-        } else {
-            draw(null, primitive);
+            /* perform the cleanup tasks */
+            this.mDrawablePlugin.after();
         }
-        /* perform the cleanup tasks */
-        this.mDrawablePlugin.after();
         return this;
     }
-
-    
 
     /**
      * Draws the primitive.

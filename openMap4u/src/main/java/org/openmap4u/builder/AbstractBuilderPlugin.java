@@ -29,13 +29,13 @@ import org.openmap4u.unit.Transparence;
 
     @Override
     public B visible(boolean isVisible) {
-        this.mVisible = isVisible;
+        this.getStyle().setVisible(isVisible);
         return (B) this;
     }
 
     @Override
     public final boolean isVisible() {
-        return this.mVisible && getStyle().getAlpha() >= TRANSPARENT;
+        return this.getStyle().isVisible();
     }
 
     @Override

@@ -19,13 +19,13 @@ public abstract class AbstractShapeBuilderTest<T extends ShapeBuilder> extends A
     protected void setBuilder(Actions actions, T builder, int index) {
         super.setBuilder(actions, builder, index);
         if (actions.contains(MockupAction.STROKE_SIZE)) {
-            builder.setStrokeSize((double)actions.getValues(MockupAction.STROKE_SIZE)[index]);
+            builder.strokeSize((double)actions.getValues(MockupAction.STROKE_SIZE)[index]);
         }
         if (actions.contains(MockupAction.STROKE_COLOR)) {
-            builder.setStrokeColor((Paint)actions.getValues(MockupAction.STROKE_COLOR)[index]);
+            builder.strokeColor((Paint)actions.getValues(MockupAction.STROKE_COLOR)[index]);
         }
         if (actions.contains(MockupAction.STROKE_FILL)) {
-            builder.setStrokeFill((Paint)actions.getValues(MockupAction.STROKE_FILL)[index]);
+            builder.strokeFill((Paint)actions.getValues(MockupAction.STROKE_FILL)[index]);
         }
     }
 
