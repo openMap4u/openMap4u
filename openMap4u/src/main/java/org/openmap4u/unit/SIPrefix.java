@@ -12,115 +12,115 @@ package org.openmap4u.unit;
 public enum SIPrefix {
 
     /**
-     *
+     * yotta.
      */
     YOTTA("Y", "yotta", 24),
 
     /**
-     *
+     * zetta
      */
     ZETTA("Z", "zetta", 21),
 
     /**
-     *
+     * exa
      */
-    EXA("E", "exa", 18),
+     EXA("E", "exa", 18),
 
     /**
-     *
+     * peta
      */
     PETA(
             "P", "peta", 15),
 
     /**
-     *
+     * terra
      */
     TERRA("T", "tera", 12),
 
     /**
-     *
+     * giga
      */
     GIGA("G", "giga", 9),
 
     /**
-     *
+     * mega
      */
     MEGA(
             "M", "mega", 6),
 
     /**
-     *
+     * kilo
      */
     KILO("k", "kilo", 3),
 
     /**
-     *
+     * hecto
      */
     HECTO("h", "hecto", 2),
 
     /**
-     *
+     * deca
      */
     DECA(
             "da", "deca", 1),
 
     /**
-     *
+     * deci
      */
-    DECI("d", "deci", -1),
+     DECI("d", "deci", -1),
 
     /**
-     *
+     * centi
      */
     CENTI("c", "centi", -2),
 
     /**
-     *
+     * milli
      */
     MILLI(
             "m", "milli", -3),
 
     /**
-     *
+     * micro
      */
-    MICRO("µ", "micro", -6),
+     MICRO("µ", "micro", -6),
 
     /**
-     *
+     * nao
      */
-    NANO("n", "nano", -9),
+     NANO("n", "nano", -9),
 
     /**
-     *
+     * pico
      */
-    PICO(
+     PICO(
             "p", "pico", -12),
 
     /**
-     *
+     * femto
      */
-    FEMTO("f", "femto", -15),
+     FEMTO("f", "femto", -15),
 
     /**
-     *
+     * atto
      */
     ATTO("a", "atto", -18),
 
     /**
-     *
+     * zepto
      */
-    ZEPTO(
+     ZEPTO(
             "z", "zepto", -21),
 
     /**
-     *
+     * yocto
      */
     YOCTO("y", "yocto", -24),
 
     /**
-     *
+     * none
      */
-    NONE("", "", 1);
+     NONE("", "", 1);
   
     private static final double TEN = 10;
     private double mFactor;

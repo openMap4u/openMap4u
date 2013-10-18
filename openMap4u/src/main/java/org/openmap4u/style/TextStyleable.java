@@ -18,6 +18,7 @@ public interface TextStyleable extends Cloneable, Styleable<TextStyleable> {
     /**
      * @param size
      *            the size to set
+     * @return 
      */
     TextStyleable setFontSize(double size);
 
@@ -39,12 +40,14 @@ public interface TextStyleable extends Cloneable, Styleable<TextStyleable> {
     /**
      * @param fontFamily
      *            the fontFamily to set
+     * @return 
      */
     TextStyleable setFontFamily(String fontFamily);
 
     /**
      * @param fontStyle
      *            the fontStyle to set
+     * @return 
      */
     TextStyleable setFontStyle(FontStyle fontStyle);
 
@@ -53,6 +56,7 @@ public interface TextStyleable extends Cloneable, Styleable<TextStyleable> {
      * 
      * @param fontColor
      *            The font color.
+     * @return 
      */
     TextStyleable setFontColor(Paint fontColor);
 
@@ -68,6 +72,7 @@ public interface TextStyleable extends Cloneable, Styleable<TextStyleable> {
      * 
      * @param fontWeight
      *            The font weight.
+     * @return 
      */
     TextStyleable setFontWeight(FontWeight fontWeight);
 

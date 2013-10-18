@@ -2,14 +2,16 @@ package org.openmap4u;
 
 import java.beans.Transient;
 import java.io.Serializable;
+import org.openmap4u.canvas.Canvas;
 
 import org.openmap4u.canvas.CanvasPlugin;
 import org.openmap4u.canvas.SetUp;
 import org.openmap4u.commons.Util;
+import org.openmap4u.unit.Length;
 
 /**
  * The openMap4u API.
- * 
+ *
  * @author Michael Hadrbolec
  */
 public final class OpenMap4u implements Serializable {
@@ -35,7 +37,7 @@ public final class OpenMap4u implements Serializable {
 
     /**
      * Gets a builder.
-     * 
+     *
      * @return The builder.
      */
     @Transient
@@ -48,7 +50,7 @@ public final class OpenMap4u implements Serializable {
 
     /**
      * Allows to configure and / or to override the default configuration.
-     * 
+     *
      * @return The default configuration values.
      */
     public Defaults getDefaults() {
@@ -57,20 +59,24 @@ public final class OpenMap4u implements Serializable {
 
     /**
      * Allows to set the default values at once.
-     * 
-     * @param defaultValues
-     *            The default configuration values.
+     *
+     * @param defaultValues The default configuration values.
      */
     public void setDefaults(Defaults defaultValues) {
         this.mDefaultConfiguration = defaultValues;
     }
 
     /**
-     * Gets a drawing canvas.
-     * 
-     * @return A drawing canvas.
+     * Gets a new drawing canvas instance. The instance is based on the
+     * preconfigured default values.
+     *
+     * @return A new drawing canvas instance.
      */
     public SetUp getCanvas() {
-        return Util.get().getPlugin(CanvasPlugin.class);
+        Canvas canvas = Util.get().getPlugin(CanvasPlugin.class);
+        canvas.worldUnits(this.mDefaultConfiguration.getWorldUnits()).drawingUnits(this.mDefaultConfiguration.getDrawingUnits()).
+                strokeUnits(this.mDefaultConfiguration.getStrokeUnits());
+        /* set the default values */
+        return canvas;
     }
 }

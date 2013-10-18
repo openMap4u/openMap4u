@@ -51,17 +51,17 @@ public enum Length implements Convertable<Length> {
     MM(0.001),
 
     /**
-     *
+     * Inch
      */
     INCH(0.0254),
 
     /**
-     *
+     * Pixel
      */
     PIXEL(Globals.INCH2M_FACTOR / Globals.DEFAULT_DPI),
 
     /**
-     *
+     * Point
      */
     POINT(Globals.INCH2M_FACTOR / Globals.DEFAULT_DOTS);
 

@@ -15,6 +15,8 @@ import org.openmap4u.style.Styleable;
  * All primitive types can be derived from this base abstract class.
  * 
  * @author Michael Hadrbolec
+ * @param <T> The primitive type.
+ * @param <S> The primitive style.
  */
 public abstract class AbstractPrimitive<T, S extends Styleable<S>> implements
         Primitive<T, S> {

@@ -22,7 +22,7 @@ public abstract class OutputableFormatTest extends AbstractOpenMap4uTest {
     }
 
     Circle getCircle() {
-        return this.getDefaultOpenMap4u().getBuilder().getCustomBuilder(Circle.class).setDiameter(1).setPoint(1, 1);
+        return this.getDefaultOpenMap4u().getBuilder().getCustomBuilder(Circle.class).diameter(1).setPoint(1, 1);
     }
 
   

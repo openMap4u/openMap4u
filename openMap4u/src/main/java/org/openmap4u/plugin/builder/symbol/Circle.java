@@ -1,5 +1,6 @@
 package org.openmap4u.plugin.builder.symbol;
 
+import java.awt.Paint;
 import java.awt.geom.Ellipse2D;
 
 import org.openmap4u.Globals;
@@ -7,7 +8,7 @@ import org.openmap4u.builder.ShapeBuilder;
 
 /**
  * Circle symbol.
- * 
+ *
  * @author Michael Hadrbolec
  */
 public class Circle extends ShapeBuilder<Circle> {
@@ -16,7 +17,7 @@ public class Circle extends ShapeBuilder<Circle> {
             Globals.DEFAULT_SYMBOL_SIZE, Globals.DEFAULT_SYMBOL_SIZE);
 
     /**
-     *
+     * Creates a new circle symbol.
      */
     public Circle() {
         this.setPrimitive(DEFAULT_ELLIPSE_SYMBOL);
@@ -24,29 +25,43 @@ public class Circle extends ShapeBuilder<Circle> {
 
     /**
      * Sets the diameter of the circle.
-     * 
-     * @param diameter
-     *            The diameter of the circle symbol.
+     *
+     * @param diameter The diameter of the circle symbol.
      * @return The Buildable itself (method chaining pattern).
      */
-    public Circle setDiameter(double diameter) {
+    public Circle diameter(double diameter) {
         this.setPrimitive(getEllipse(diameter, diameter));
         return this;
     }
 
     /**
      * Sets the radius of the circle symbol.
-     * 
-     * @param radius
-     *            The radius of the circle symbol.
+     *
+     * @param radius The radius of the circle symbol.
      * @return The Buildable itself (method chaining pattern).
      */
-    public Circle setRadius(double radius) {
-        return this.setDiameter(radius * 2);
+    public Circle radius(double radius) {
+        return this.diameter(radius * 2);
+    }
+
+    @Override
+    public Circle strokeColor(Paint strokeColor) {
+        return super.strokeColor(strokeColor);
+    }
+
+    @Override
+    public Circle strokeFill(Paint strokeFill) {
+        return super.strokeFill(strokeFill);
+    }
+
+    @Override
+    public Circle strokeSize(double strokeSize) {
+        return super.strokeSize(strokeSize);
     }
 
     /**
      * Internal Helper to create a ellipse.
+     *
      * @param width The width.
      * @param height The height.
      * @return The ellipse.

@@ -7,12 +7,12 @@ package org.openmap4u.unit;
 public enum Angle implements Convertable<Angle> {
 
     /**
-     *
+     * Deegree
      */
     DEGREE(Math.toRadians(1)),
 
     /**
-     *
+     * Radiant.
      */
     RADIANT(1);
     

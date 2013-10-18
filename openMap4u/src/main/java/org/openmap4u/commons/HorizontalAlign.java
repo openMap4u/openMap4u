@@ -25,8 +25,8 @@ package org.openmap4u.commons;
  */
 
 /**
- * The alignment in x axis direction (=horizontal).<br/>
- * <img src="doc-files/HorizontalAlign-1.png"/>
+ * The alignment in x axis direction (=horizontal).<br>
+ * <img src="doc-files/HorizontalAlign-1.png" alt="horizontal alignment">
  * 
  * @author Michael Hadrbolec.
  * 
@@ -34,18 +34,18 @@ package org.openmap4u.commons;
 
 public enum HorizontalAlign implements Align {
     /**
-     * x (= horizontal) alignment on the left position.<br/>
-     * <img src="doc-files/HorizontalAlign_left.png"/>
+     * x (= horizontal) alignment on the left position.<br>
+     * <img src="doc-files/HorizontalAlign_left.png" alt="left">
      */
     LEFT,
     /**
-     * x (= horizontal) alignment on the center position.<br/>
-     * <img src="doc-files/HorizontalAlign_center.png"/>
+     * x (= horizontal) alignment on the center position.<br>
+     * <img src="doc-files/HorizontalAlign_center.png" alt="center">
      */
     CENTER,
     /**
-     * x (= horizontal) alignment on the right position. <br/>
-     * <img src="doc-files/HorizontalAlign_right.png"/>.
+     * x (= horizontal) alignment on the right position. <br>
+     * <img src="doc-files/HorizontalAlign_right.png" alt="right">.
      */
     RIGHT,
     /**

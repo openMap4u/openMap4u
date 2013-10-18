@@ -7,9 +7,9 @@ import org.openmap4u.Globals;
 
 /**
  * The ShapeStyleable implementation.
- * 
+ *
  * @author Michael Hadrbolec
- * 
+ *
  */
 public class ShapeStyle extends AbstractStyle<ShapeStyleable> implements
         ShapeStyleable, Cloneable {
@@ -59,7 +59,8 @@ public class ShapeStyle extends AbstractStyle<ShapeStyleable> implements
 
     /**
      * {@inheritDoc}
-     * @return 
+     *
+     * @return
      */
     @Override
     public ShapeStyle setStrokeColor(Paint color) {
@@ -69,7 +70,8 @@ public class ShapeStyle extends AbstractStyle<ShapeStyleable> implements
 
     /**
      * {@inheritDoc}
-     * @return 
+     *
+     * @return
      */
     @Override
     public ShapeStyle setStrokeFill(Paint fill) {
@@ -79,8 +81,9 @@ public class ShapeStyle extends AbstractStyle<ShapeStyleable> implements
 
     /**
      * {@inheritDoc}
+     *
      * @param strokeSize
-     * @return 
+     * @return
      */
     @Override
     public ShapeStyle setStrokeSize(double strokeSize) {
@@ -90,10 +93,17 @@ public class ShapeStyle extends AbstractStyle<ShapeStyleable> implements
 
     /**
      * {@inheritDoc}
+     *
      * @throws java.lang.CloneNotSupportedException
      */
-    public ShapeStyleable clone()  throws CloneNotSupportedException {
+    public ShapeStyleable clone() throws CloneNotSupportedException {
         return (ShapeStyleable) super.clone();
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder(super.toString());
+        sb.append(",strokeColor:").append(getStrokeColor()).append(",fillColor:").append(getStrokeFill()).append(",strokeSize:").append(getStrokeSize());
+        return sb.toString();
     }
 
 }

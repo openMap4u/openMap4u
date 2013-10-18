@@ -1,5 +1,6 @@
 package org.openmap4u.plugin.builder.symbol;
 
+import java.awt.Paint;
 import java.awt.geom.Rectangle2D;
 
 import org.openmap4u.Globals;
@@ -7,7 +8,7 @@ import org.openmap4u.builder.ShapeBuilder;
 
 /**
  * Rectangle symbol
- * 
+ *
  * @author Michael Hadrbolec
  */
 public final class Rectangle extends ShapeBuilder<Rectangle> {
@@ -25,11 +26,9 @@ public final class Rectangle extends ShapeBuilder<Rectangle> {
 
     /**
      * Creates a rectangle with the given width and height.
-     * 
-     * @param width
-     *            The width of the rectangle.
-     * @param height
-     *            The height of the rectangle.
+     *
+     * @param width The width of the rectangle.
+     * @param height The height of the rectangle.
      * @return The rectangle itself (method chaining pattern).
      */
     public Rectangle setSize(double width, double height) {
@@ -39,9 +38,8 @@ public final class Rectangle extends ShapeBuilder<Rectangle> {
 
     /**
      * Creates a quadratic rectangle with the given size.
-     * 
-     * @param size
-     *            The size of the quadratic rectangle.
+     *
+     * @param size The size of the quadratic rectangle.
      * @return The rectangle itself (method chaining pattern).
      */
     public Rectangle setSize(double size) {
@@ -50,14 +48,28 @@ public final class Rectangle extends ShapeBuilder<Rectangle> {
 
     /**
      * Creates a rectangle with the given width and height.
-     * 
-     * @param width
-     *            The width of the rectangle.
-     * @param height
-     *            The height of the rectangle.
+     *
+     * @param width The width of the rectangle.
+     * @param height The height of the rectangle.
      * @return The rectangle.
      */
     static Rectangle2D.Double getRectangle(double width, double height) {
         return new Rectangle2D.Double(-width / 2d, -height / 2d, width, height);
     }
+
+    @Override
+    public Rectangle strokeColor(Paint strokeColor) {
+        return strokeColor(strokeColor);
+    }
+
+    @Override
+    public Rectangle strokeFill(Paint strokeFill) {
+        return strokeFill(strokeFill);
+    }
+
+    @Override
+    public Rectangle strokeSize(double strokeSize) {
+        return strokeSize(strokeSize);
+    }
+
 }

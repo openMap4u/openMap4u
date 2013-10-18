@@ -43,32 +43,32 @@ import org.openmap4u.unit.Length;
 public interface Globals {
 
     /**
-     *
+     * The dfeault drawing plugin name.
      */
     String DEFAULT_DRAWING_PLUGIN_NAME = CanvasPlugin.PLUGIN_NAME;
 
     /**
-     *
+     * The default symbol size.
      */
     double DEFAULT_SYMBOL_SIZE = 1;
 
     /**
-     *
+     * The default output format plugin.
      */
     Class<PngPlugin> DEFAULT_OUTPUTFORMAT_PLUGIN_NAME = PngPlugin.class;
 
     /**
-     *
+     * The default builder plugin name.
      */
     String DEFAULT_BUILDER_PLUGIN_NAME = "";
 
     /**
-     *
+     * The default font type.
      */
     String DEFAULT_FONT_TYPE = "";
 
     /**
-     *
+     * The default font size.
      */
     double DEFAULT_FONT_SIZE = 5;
 
@@ -92,7 +92,7 @@ public interface Globals {
     /**
      * The default world unit is m.
      */
-    Length DEFEAULT_WORLD_UNIT = Length.M;
+    Length DEFEAULT_WORLD_UNIT = Length.CM;
 
     /**
      * The default font style.
@@ -110,7 +110,7 @@ public interface Globals {
     Color DEFAULT_STROKE_COLOR = Color.BLACK;
 
     /**
-     * The default fill (is null --> no fill).
+     * The default fill (is null ... no fill).
      */
     Paint DEFAULT_FILL = null;
 
@@ -152,17 +152,17 @@ public interface Globals {
     boolean DEFAULT_VISIBILITY = true;
 
     /**
-     *
+     * The dfeault dpi resolution for raster images.
      */
     int DEFAULT_DPI = 96;
     
     /**
-     *
+     * The default dot resolution.
      */
     int DEFAULT_DOTS = 72;
     
     /**
-     *
+     * Conversion factor inch to cm.
      */
     double INCH2M_FACTOR = 0.0254;
 

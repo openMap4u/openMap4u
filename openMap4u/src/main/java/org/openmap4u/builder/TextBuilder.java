@@ -16,6 +16,11 @@ public abstract class TextBuilder<B extends TextBuilder<B>> extends
         AbstractBuilderPlugin<String, TextStyleable, B> implements
         TextPrimitive {
 
+    /**
+     * Sets the font color.
+     * @param fontColor The font color.
+     * @return Method chaining pattern.
+     */
     @SuppressWarnings("unchecked")
 	protected B setFontColor(Paint fontColor) {
         this.getStyle().setFontColor(fontColor);

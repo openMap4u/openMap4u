@@ -13,12 +13,12 @@ import org.openmap4u.style.Styleable;
 /**
  * Allow either to draw another primitive on the canvas, or to write the result
  * to the provided output stream.
- * 
+ *
  * @author Michael Hadrbolec
  */
-public interface DrawOrWrite    {
+public interface DrawOrWrite {
 
-      /**
+    /**
      * Draws a single primitive.
      *
      * @param primitive The shape primitive to draw.
@@ -26,30 +26,24 @@ public interface DrawOrWrite    {
      * primitive(s) or to write the resulting map.
      */
     DrawOrWrite draw(Primitive<?, ? extends Styleable> primitive);
-    
-   
-    
-      /**
-     * Writes the drawing result to the given output stream.
-     * 
-     * @param out
-     *            The output stream into which the drawing result will be
-     *            written.
-     * @throws IOException
-     *             Is thrown in the case an error occurs.
+
+    /**
+     * Writes the drawing result to the given output stream. If no primitives
+     * have been drawn the canvas is empty.
+     *
+     * @param out The output stream into which the drawing result will be
+     * written.
+     * @throws IOException Is thrown in the case an error occurs.
      */
     void write(OutputStream out) throws IOException;
 
     /**
-     * Writes the drawing result to the given path.
-     * 
-     * @param out
-     *            The path into which the drawing result will be written.
-     * @throws IOException
-     *             Is thrown in the case an error occurs.
+     * Writes the drawing result to the given path. If no primitives have been
+     * drawn the canvas is empty.
+     *
+     * @param out The path into which the drawing result will be written.
+     * @throws IOException Is thrown in the case an error occurs.
      */
     void write(Path out) throws IOException;
 
-
-    
 }

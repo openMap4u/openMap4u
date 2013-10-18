@@ -1,5 +1,6 @@
 package org.openmap4u.plugin.builder.symbol;
 
+import java.awt.Paint;
 import java.awt.Shape;
 import java.awt.geom.Path2D;
 
@@ -8,7 +9,7 @@ import org.openmap4u.builder.ShapeBuilder;
 
 /**
  * Cross symbol.
- * 
+ *
  * @author Michael Hadrbolec
  */
 public class Cross extends ShapeBuilder<Cross> {
@@ -17,7 +18,7 @@ public class Cross extends ShapeBuilder<Cross> {
             Globals.DEFAULT_SYMBOL_SIZE, Globals.DEFAULT_SYMBOL_SIZE);
 
     /**
-     *
+     * Creates a new cross symbol.
      */
     public Cross() {
         setPrimitive(DEFAULT_CROSS_SYMBOL);
@@ -25,9 +26,8 @@ public class Cross extends ShapeBuilder<Cross> {
 
     /**
      * Creates a quadratic cross with the given size.
-     * 
-     * @param size
-     *            The size of the quadratic cross.
+     *
+     * @param size The size of the quadratic cross.
      * @return The cross itself (method chaining pattern).
      */
     public final Cross setSize(double size) {
@@ -37,11 +37,9 @@ public class Cross extends ShapeBuilder<Cross> {
 
     /**
      * Creates a rectangle with the given width and height size.
-     * 
-     * @param width
-     *            The width of the cross.
-     * @param height
-     *            The height of the cross.
+     *
+     * @param width The width of the cross.
+     * @param height The height of the cross.
      * @return The cross itself (method chaining pattern).
      */
     public final Cross setSize(double width, double height) {
@@ -57,4 +55,15 @@ public class Cross extends ShapeBuilder<Cross> {
         path.lineTo(0, -height / 2);
         return path;
     }
+
+    @Override
+    public Cross strokeColor(Paint strokeColor) {
+        return strokeColor(strokeColor);
+    }
+
+    @Override
+    public Cross strokeSize(double strokeSize) {
+        return strokeSize(strokeSize);
+    }
+
 }

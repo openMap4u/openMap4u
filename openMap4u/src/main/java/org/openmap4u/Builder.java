@@ -37,9 +37,9 @@ public final class Builder {
     /**
      * Gets a custom builder plugin.
      * 
-     * @param <T>
-     * @param <S>
-     * @param <B>
+     * @param <T> The primitive type.
+     * @param <S> The primitive style.
+     * @param <B> The builder type.
      * @param builderClass
      *            The class of the custom builder plugin class.
      * @return The custom builder plugin.

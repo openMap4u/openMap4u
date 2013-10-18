@@ -7,7 +7,6 @@ import java.awt.Paint;
 /**
  * 
  * @author Michael Hadrbolec
- * @param <F>
  */
 public final class Shape  extends ShapeBuilder<Shape >   {
 

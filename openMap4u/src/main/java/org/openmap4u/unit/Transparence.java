@@ -13,7 +13,7 @@ public enum Transparence implements Convertable<Transparence> {
     /* Specifies the opacity. From 0.0 (fully transparent) to 1.0 (fully opaque) */
 
     /**
-     *
+     * opacity
      */
     OPACITY ,
     /*
@@ -22,7 +22,7 @@ public enum Transparence implements Convertable<Transparence> {
      */
 
     /**
-     *
+     *alpha
      */
     ALPHA ,
     /*
@@ -31,7 +31,7 @@ public enum Transparence implements Convertable<Transparence> {
      */
 
     /**
-     *
+     * percent
      */
     PERCENT  {
         @Override

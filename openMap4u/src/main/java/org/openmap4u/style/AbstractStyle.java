@@ -48,6 +48,7 @@ abstract class AbstractStyle<T extends Styleable<T>> implements Cloneable,
     /**
      * {@inheritDoc}
      */
+    @Override
     public final T setAlpha(double alpha) {
         this.alpha = alpha;
         return (T) this;
@@ -64,6 +65,7 @@ abstract class AbstractStyle<T extends Styleable<T>> implements Cloneable,
     /**
      * {@inheritDoc}
      */
+    @Override
     public final T setVisible(boolean visible) {
         this.visible = visible;
         return (T) this;
@@ -72,6 +74,7 @@ abstract class AbstractStyle<T extends Styleable<T>> implements Cloneable,
     /**
      * {@inheritDoc}
      */
+    @Override
     public final T setVerticalAlign(VerticalAlign verticalAlign) {
         this.mVerticalAlign = verticalAlign;
         return (T) this;
@@ -80,6 +83,7 @@ abstract class AbstractStyle<T extends Styleable<T>> implements Cloneable,
     /**
      * {@inheritDoc}
      */
+    @Override
     public final VerticalAlign getVerticalAlign() {
         return this.mVerticalAlign;
     }
@@ -87,6 +91,7 @@ abstract class AbstractStyle<T extends Styleable<T>> implements Cloneable,
     /**
      * {@inheritDoc}
      */
+    @Override
     public final T setHorizontalAlign(HorizontalAlign horizontalAlign) {
         this.mHorizontalAlign = horizontalAlign;
         return (T) this;
@@ -95,6 +100,7 @@ abstract class AbstractStyle<T extends Styleable<T>> implements Cloneable,
     /**
      * {@inheritDoc}
      */
+    @Override
     public final HorizontalAlign getHorizontalAlign() {
         return this.mHorizontalAlign;
     }
@@ -104,6 +110,13 @@ abstract class AbstractStyle<T extends Styleable<T>> implements Cloneable,
      */
     public T clone() throws CloneNotSupportedException {
               return (T) super.clone();
+    }
+    
+    
+    public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("visible:").append(isVisible()).append(",alpha:").append(getAlpha()).append(",horizontalAlign:").append(getHorizontalAlign()).append(",verticalAlign:").append(getVerticalAlign());
+    return sb.toString();
     }
 
  

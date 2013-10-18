@@ -11,32 +11,32 @@ package org.openmap4u.unit;
 public enum Time implements Convertable<Time> {
 
     /**
-     *
+     * second
      */
-    SECOND,
+     SECOND,
 
     /**
-     *
+     * minute
      */
-    MINUTE,
+     MINUTE,
 
     /**
-     *
+     * hour
      */
-    HOUR,
+     HOUR,
 
     /**
-     *
+     * day
      */
     DAY,
 
     /**
-     *
+     * week
      */
-    WEEK,
+     WEEK,
 
     /**
-     *
+     * year
      */
     YEAR;
     private String mName = null;

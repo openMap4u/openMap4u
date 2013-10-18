@@ -20,15 +20,14 @@ import org.openmap4u.canvas.DrawOrWrite;
 import org.openmap4u.commons.FontStyle;
 import org.openmap4u.commons.HorizontalAlign;
 import org.openmap4u.commons.VerticalAlign;
-import org.openmap4u.outputformat.OutputableFormat;
 import org.openmap4u.plugin.builder.symbol.Cross;
-import org.openmap4u.plugin.outputformat.graphics2d.PngPlugin;
 import org.openmap4u.unit.Length;
 
 /**
  * Base class for all builder plugin tests.
  * 
  * @author Michael Hadrbolec
+ * @param <T> The buildable type
  */
 public abstract class AbstractBuilderTest<T extends Buildable> extends
 		AbstractOpenMap4uTest {

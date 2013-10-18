@@ -55,7 +55,7 @@ import org.openmap4u.unit.Length;
 public class CanvasPlugin implements Canvas {
 
     /**
-     *
+     *The name of the plugin.
      */
     public static final String PLUGIN_NAME = "DrawPlugin";
     private Length mWorldUnits = Globals.DEFEAULT_WORLD_UNIT;
@@ -74,8 +74,7 @@ public class CanvasPlugin implements Canvas {
     private double mHeight;
 
     /**
-     * Gets the width of the drawing canvas in drawing units {@link
-     * AbstractCanvas.getDrawingUnits()}.
+     * Gets the width of the drawing canvas in drawing units.
      *
      * @return Gets the width of the drawing canvas in drawing units.
      */
@@ -84,8 +83,7 @@ public class CanvasPlugin implements Canvas {
     }
 
     /**
-     * Gets the height of the drawing canvas in drawing units {@link
-     * AbstractCanvas.getDrawingUnits()}.
+     * Gets the height of the drawing canvas in drawing units.
      *
      * @return Gets the height of the drawing canvas in drawing units.
      */
@@ -217,8 +215,7 @@ public class CanvasPlugin implements Canvas {
                     getGlobalTransform());
         }
         /* only in the case the primitive is visible */
-        System.out.println(primitive.getStyle().isVisible());
-        if (primitive.getStyle().isVisible()) {
+         if (primitive.getStyle().isVisible()) {
             /* perform setup tasks */
             this.mDrawablePlugin.before();
             /* process in the case it is a point based primitive */

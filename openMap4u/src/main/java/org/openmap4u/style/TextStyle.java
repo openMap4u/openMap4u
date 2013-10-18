@@ -139,6 +139,7 @@ public final class TextStyle extends AbstractStyle<TextStyleable> implements
 
     /**
      * {@inheritDoc}
+     * @throws java.lang.CloneNotSupportedException
      */
     public TextStyleable clone() throws CloneNotSupportedException {
         return (TextStyleable) super.clone();

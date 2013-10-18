@@ -48,17 +48,15 @@ public interface Buildable<T, S extends Styleable<S>, B extends Buildable<T, S,B
      * @param tranparence
      *            The transparency of the primitive (in percent).
      *            <ul>
-     *            <li><img src="doc-files/transparency_100_percent.png"/> ...
+     *            <li><img src="doc-files/transparency_100_percent.png"  alt="100 percent visible"> ...
      *            <code>100</code> (=complete) transparent, which means the
      *            primitive is not drawn. But keep in mind although you don't
      *            see the element it has to be drawn anyway.</li>
-     *            <li><img src="doc-files/transparency_66_percent.png"/>...
+     *            <li><img src="doc-files/transparency_66_percent.png"  alt="66 percent visible">...
      *            <code>66</code> transparent.</li>
-     *            <li><img src="doc-files/transparency_33_percent.png"/>...
+     *            <li><img src="doc-files/transparency_33_percent.png" alt="33 percent visible">...
      *            <code>33</code>% transparent.</li>
-     * 
-     *            <li><img
-     *            src="doc-files/transparency_0_percent.png"/>... <code>0</code>% transparent
+     *            <li><img src="doc-files/transparency_0_percent.png" alt="0 percent transparency">... <code>0</code>% transparent
      *            (=solid), which means the primitive is drawn complete solid
      *            (not transparent at all).</li></ul>
      * @return The Buildable itself (method chaining pattern).
@@ -66,66 +64,66 @@ public interface Buildable<T, S extends Styleable<S>, B extends Buildable<T, S,B
     B transparence(double tranparence);
 
     /**
-     * Sets the offset of the primitive drawing units.<br/>
-     * <span>Primitive <img src="doc-files/ShapeBuilder_translate_initial.png"/>
-     * + offsetX <img src="doc-files/ShapeBuilder_translate_x.png"/> +offsetY
-     * <img src="doc-files/ShapeBuilder_translate_y.png"/> = <img
-     * src="doc-files/ShapeBuilder_scale_result.png"/></span>
+     * Sets the offset of the primitive drawing units.<br>
+     * <span>Primitive <img src="doc-files/ShapeBuilder_translate_initial.png"  alt="initial">
+     * + offsetX <img src="doc-files/ShapeBuilder_translate_x.png"  alt="translation in x axis"> +offsetY
+     * <img src="doc-files/ShapeBuilder_translate_y.png"  alt="translation in x axis"> = <img
+     * src="doc-files/ShapeBuilder_scale_result.png" alt="translation result"></span>
      * 
      * @param offsetX
      *            The offset in x axis direction. <img
-     *            src="doc-files/ShapeBuilder_translate_initial.png"/> offsetX
-     *            <img src="doc-files/ShapeBuilder_translate_x.png"/>
+     *            src="doc-files/ShapeBuilder_translate_initial.png" alt="initial"> offsetX
+     *            <img src="doc-files/ShapeBuilder_translate_x.png" alt="offset x">
      * 
      * @param offsetY
      *            The offset in y axis direction. <img
-     *            src="doc-files/ShapeBuilder_translate_initial.png"/> offsetX
-     *            <img src="doc-files/ShapeBuilder_translate_y.png"/>
+     *            src="doc-files/ShapeBuilder_translate_initial.png" alt="initial"> offsetX
+     *            <img src="doc-files/ShapeBuilder_translate_y.png" alt="offset y">
      * 
      * @return The Buildable itself (method chaining pattern).
      */
     B offset(double offsetX, double offsetY);
 
     /**
-     * Sets the  x offset of the primitive drawing units.<br/>
-     * <span>Primitive <img src="doc-files/ShapeBuilder_translate_initial.png"/>
-     * + offsetX  = <img src="doc-files/ShapeBuilder_translate_x.png"/> </span>
+     * Sets the  x offset of the primitive drawing units.<br>
+     * <span>Primitive <img src="doc-files/ShapeBuilder_translate_initial.png" alt="initial">
+     * + offsetX  = <img src="doc-files/ShapeBuilder_translate_x.png" alt="offset x"> </span>
      * 
       * @param offsetX
      *            The offset in x axis direction. <img
-     *            src="doc-files/ShapeBuilder_translate_initial.png"/> offsetX
-     *            <img src="doc-files/ShapeBuilder_translate_x.png"/>
+     *            src="doc-files/ShapeBuilder_translate_initial.png" alt="initial"> offsetX
+     *            <img src="doc-files/ShapeBuilder_translate_x.png" alt="offset x">
      * 
       * @return The Buildable itself (method chaining pattern).
      */
     B offsetX(double offsetX);
 
     /**
-     * Sets the y offset of the primitive drawing units.<br/>
-     * <span>Primitive <img src="doc-files/ShapeBuilder_translate_initial.png"/>
+     * Sets the y offset of the primitive drawing units.<br>
+     * <span>Primitive <img src="doc-files/ShapeBuilder_translate_initial.png" alt="initial">
      *  + offsetY = 
-     * <img src="doc-files/ShapeBuilder_translate_y.png"/> </span>
+     * <img src="doc-files/ShapeBuilder_translate_y.png" alt="offset y"> </span>
      * 
      * @param offsetY
      *            The offset in y axis direction. <img
-     *            src="doc-files/ShapeBuilder_translate_initial.png"/> offsetX
-     *            <img src="doc-files/ShapeBuilder_translate_y.png"/>
+     *            src="doc-files/ShapeBuilder_translate_initial.png" alt="no translation at all"> offsetX
+     *            <img src="doc-files/ShapeBuilder_translate_y.png" alt="translate in y direction">
      * 
      * @return The Buildable itself (method chaining pattern).
      */
     B offsetY(double offsetY);
 
     /**
-     * Sets a constant scale factor for x as well as for y axis direction.<br/>
-     * <span>Primitive <img src="doc-files/ShapeBuilder_scale_initial.png"/> +
-     * scaleX (=scaleY) <img src="doc-files/ShapeBuilder_scale_x.png"/> + scaleY
-     * (=scaleX) <img src="doc-files/ShapeBuilder_scale_y.png"/> = <img
-     * src="doc-files/ShapeBuilder_scale_result.png"/></span>
+     * Sets a constant scale factor for x as well as for y axis direction.<br>
+     * <span>Primitive <img src="doc-files/ShapeBuilder_scale_initial.png" alt="initial"> +
+     * scaleX (=scaleY) <img src="doc-files/ShapeBuilder_scale_x.png" alt="scale x"> + scaleY
+     * (=scaleX) <img src="doc-files/ShapeBuilder_scale_y.png" alt="scale y"> = <img
+     * src="doc-files/ShapeBuilder_scale_result.png" alt="result"></span>
      * 
      * <ul>
      * <li><code>0.5</code>... means half size.</li>
      * <li><code>1</code>... means no scaling at all (is default value).</li>
-     * <li><code>2</code>... means double size.</li> </u>
+     * <li><code>2</code>... means double size.</li> </ul>
      * 
      * @param scaleFactor
      *            The constant scale factor for x as well as for y axis
@@ -135,24 +133,24 @@ public interface Buildable<T, S extends Styleable<S>, B extends Buildable<T, S,B
     B scale(double scaleFactor);
 
     /**
-     * Sets the scale factor in x and y axis direction.<br/>
-     * <span>Primitive <img src="doc-files/ShapeBuilder_scale_initial.png"/> +
-     * scaleX <img src="doc-files/ShapeBuilder_scale_x.png"/> + scaleY <img
-     * src="doc-files/ShapeBuilder_scale_y.png"/> = <img
-     * src="doc-files/ShapeBuilder_scale_result.png"/></span>
+     * Sets the scale factor in x and y axis direction.<br>
+     * <span>Primitive <img src="doc-files/ShapeBuilder_scale_initial.png" alt="initial"> +
+     * scaleX <img src="doc-files/ShapeBuilder_scale_x.png" alt="scale x"> + scaleY <img
+     * src="doc-files/ShapeBuilder_scale_y.png" alt="scale y"> = <img
+     * src="doc-files/ShapeBuilder_scale_result.png" alt="scale result"></span>
      * <ul>
      * <li><code>0.5</code>... means half size.</li>
      * <li><code>1</code>... means no scaling at all (is default value).</li>
-     * <li><code>2</code>... means double size.</li> </u> </u>
+     * <li><code>2</code>... means double size.</li> </ul>
      * 
      * @param scaleX
      *            The scale factor in x axis direction. <img
-     *            src="doc-files/ShapeBuilder_scale_initial.png"/> scaleX <img
-     *            src="doc-files/ShapeBuilder_scale_x.png"/>
+     *            src="doc-files/ShapeBuilder_scale_initial.png" alt="initial"> scaleX <img
+     *            src="doc-files/ShapeBuilder_scale_x.png" alt="scale x">
      * @param scaleY
      *            The scale factor in y axis direction. <img
-     *            src="doc-files/ShapeBuilder_scale_initial.png"/> scaleX <img
-     *            src="doc-files/ShapeBuilder_scale_y.png"/>
+     *            src="doc-files/ShapeBuilder_scale_initial.png" alt="initial"> scaleY <img
+     *            src="doc-files/ShapeBuilder_scale_y.png" alt="scale y">
      * @return The Buildable itself (method chaining pattern).
      */
     B scale(double scaleX, double scaleY);
@@ -162,8 +160,8 @@ public interface Buildable<T, S extends Styleable<S>, B extends Buildable<T, S,B
      * 
      * @param scaleX
      *            The scale factor in x axis direction. <img
-     *            src="doc-files/ShapeBuilder_scale_initial.png"/> scaleX <img
-     *            src="doc-files/ShapeBuilder_scale_x.png"/>
+     *            src="doc-files/ShapeBuilder_scale_initial.png" alt="initial"> scaleX <img
+     *            src="doc-files/ShapeBuilder_scale_x.png" alt="scale x">
      * @return The Buildable itself (method chaining pattern).
      */
     B scaleX(double scaleX);
@@ -173,8 +171,8 @@ public interface Buildable<T, S extends Styleable<S>, B extends Buildable<T, S,B
      * 
      * @param scaleY
      *            The scale factor in y axis direction. <img
-     *            src="doc-files/ShapeBuilder_scale_initial.png"/> scaleY <img
-     *            src="doc-files/ShapeBuilder_scale_y.png"/>
+     *            src="doc-files/ShapeBuilder_scale_initial.png" alt="initial"> scaleY <img
+     *            src="doc-files/ShapeBuilder_scale_y.png" alt="scale y">
      * @return The Buildable itself (method chaining pattern).
      */
     B scaleY(double scaleY);
@@ -192,25 +190,25 @@ public interface Buildable<T, S extends Styleable<S>, B extends Buildable<T, S,B
     B setAlign(HorizontalAlign horizontalAlign, VerticalAlign verticalAlign);
 
     /**
-     *
-     * @param verticalAlign
-     * @return
+     * Sets the vertical alignment.
+     * @param verticalAlign The vertical alignment.
+     * @return The Builder itself (method chaining pattern).
      */
     B verticalAlign(VerticalAlign verticalAlign);
 
     /**
-     *
-     * @param verticalAlign
-     * @return
+     * Sets the horizontal alignment.
+     * @param horizontalAlign The horizontal aignment.
+     * @return  The Builder itself (method chaining pattern).
      */
-    B setHorizontalAlign(HorizontalAlign verticalAlign);
+    B setHorizontalAlign(HorizontalAlign horizontalAlign);
 
     /**
-     * Rotates the primitive anti clockwise in degrees. <br/>
+     * Rotates the primitive anti clockwise in degrees. <br>
      * <span style="vertical-align:middle;height:80px;"><img
-     * src="doc-files/ShapeBuilder_initial.png"/>+ rotate 30 degrees <img
-     * src="doc-files/ShapeBuilder_rotate.png"/> = <img
-     * src="doc-files/ShapeBuilder_rotate_result.png"/></span>
+     * src="doc-files/ShapeBuilder_initial.png" alt="initial">+ rotate 30 degrees <img
+     * src="doc-files/ShapeBuilder_rotate.png" alt="roate"> = <img
+     * src="doc-files/ShapeBuilder_rotate_result.png" alt="roation result"></span>
      * 
      * @param angle
      *            The anti clockwise rotation of the primitive in degrees. Valid

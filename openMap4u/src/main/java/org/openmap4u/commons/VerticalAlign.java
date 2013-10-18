@@ -26,25 +26,25 @@ package org.openmap4u.commons;
 
 /**
  * The alignment in y axis direction (=vertical). <img
- * src="doc-files/VerticalAlign-1.png"/>
+ * src="doc-files/VerticalAlign-1.png" alt="vertical alignment">
  * 
  * @author Michael Hadrbolec.
  * 
  */
 public enum VerticalAlign implements Align {
     /**
-     * y (= vertical) alignment on the top position.<br/>
-     * <img src="doc-files/VerticalAlign_top.png"/>
+     * y (= vertical) alignment on the top position.<br>
+     * <img src="doc-files/VerticalAlign_top.png" alt="top">
      */
     TOP,
     /**
-     * y (= vertical) alignment on the middle position.<br/>
-     * <img src="doc-files/VerticalAlign_middle.png"/>
+     * y (= vertical) alignment on the middle position.<br>
+     * <img src="doc-files/VerticalAlign_middle.png" alt="middle">
      */
     MIDDLE,
     /**
-     * y (= vertical) alignment on the bottom position.<br/>
-     * <img src="doc-files/VerticalAlign_bottom.png"/>
+     * y (= vertical) alignment on the bottom position.<br>
+     * <img src="doc-files/VerticalAlign_bottom.png" alt="bottom">
      */
     BOTTOM,
     /**

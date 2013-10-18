@@ -11,6 +11,7 @@ public final class ImageStyle extends AbstractStyle<ImageStyleable> implements
 
     /**
      * {@inheritDoc}
+     * @throws java.lang.CloneNotSupportedException
      */
     public ImageStyleable clone()  throws CloneNotSupportedException {
         return (ImageStyleable) super.clone();
