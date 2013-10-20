@@ -66,7 +66,7 @@ public abstract class AbstractPrimitive<T, S extends Styleable<S>> implements
      * @return The primitive.
      */
     @Override
-    public final T getPrimitive() {
+    public T getPrimitive() {
         return this.mPrimitive;
     }
 

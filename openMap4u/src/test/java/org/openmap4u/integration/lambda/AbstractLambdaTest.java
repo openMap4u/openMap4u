@@ -11,6 +11,7 @@ import java.nio.file.FileSystems;
 import java.util.stream.Stream;
 import org.junit.Test;
 import org.openmap4u.OpenMap4u;
+import org.openmap4u.builder.Pie;
 import org.openmap4u.builder.Shape;
 import org.openmap4u.canvas.DrawOrWrite;
 import org.openmap4u.commons.VerticalAlign;
@@ -73,7 +74,7 @@ public class AbstractLambdaTest {
         /* persist your result */
         draw.write(FileSystems.getDefault().getPath("/temp", "openMap4uBarChart.png"));
     }
-    
+
     @Test
     public void testPieChart() throws IOException {
         /* 1. get an instance */
@@ -81,11 +82,11 @@ public class AbstractLambdaTest {
         /* 2. get an canvas and specify the size which you want to draw */
         DrawOrWrite draw = oM4u.getCanvas().size(10, 8);
         /* Draw the bars */
-        getData().map(value -> oM4u.getBuilder().getCustomBuilder(Rectangle.class).setPoint(value, 0.5).setSize(.5, Math.random() * 3 + 1).verticalAlign(VerticalAlign.BOTTOM)).forEach(primitive -> draw.draw(primitive));
+        draw.draw(oM4u.getBuilder().getCustomBuilder(Pie.class).setPoint(5, 4).startAngle(10).endAngle(45).radius(2).strokeFill(Color.GREEN));
         /* persist your result */
         draw.write(FileSystems.getDefault().getPath("/temp", "openMap4uPieChart.png"));
     }
-    
+
     @Test
     public void testDonutChart() throws IOException {
         /* 1. get an instance */
@@ -93,7 +94,7 @@ public class AbstractLambdaTest {
         /* 2. get an canvas and specify the size which you want to draw */
         DrawOrWrite draw = oM4u.getCanvas().size(10, 8);
         /* Draw the bars */
-        getData().map(value -> oM4u.getBuilder().getCustomBuilder(Rectangle.class).setPoint(value, 0.5).setSize(.5, Math.random() * 3 + 1).verticalAlign(VerticalAlign.BOTTOM)).forEach(primitive -> draw.draw(primitive));
+        draw.draw(oM4u.getBuilder().getCustomBuilder(Pie.class).setPoint(5, 4).startAngle(10).endAngle(45).innerRadius(2).outerRadius(3).strokeFill(Color.GREEN));
         /* persist your result */
         draw.write(FileSystems.getDefault().getPath("/temp", "openMap4uDonutChart.png"));
     }
