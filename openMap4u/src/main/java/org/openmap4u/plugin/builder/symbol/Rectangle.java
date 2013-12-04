@@ -21,7 +21,7 @@ public final class Rectangle extends ShapeBuilder<Rectangle> {
      * rectangle symbol.
      */
     public Rectangle() {
-        this.setPrimitive(DEFAULT_RECTANGLE_SYMBOL);
+        this.shape(DEFAULT_RECTANGLE_SYMBOL);
     }
 
     /**
@@ -32,7 +32,7 @@ public final class Rectangle extends ShapeBuilder<Rectangle> {
      * @return The rectangle itself (method chaining pattern).
      */
     public Rectangle setSize(double width, double height) {
-        this.setPrimitive(getRectangle(width, height));
+        this.shape(getRectangle(width, height));
         return this;
     }
 
@@ -58,18 +58,18 @@ public final class Rectangle extends ShapeBuilder<Rectangle> {
     }
 
     @Override
-    public Rectangle strokeColor(Paint strokeColor) {
-        return strokeColor(strokeColor);
+    public Rectangle color(Paint strokeColor) {
+        return super.color(strokeColor);
     }
 
     @Override
-    public Rectangle strokeFill(Paint strokeFill) {
-        return strokeFill(strokeFill);
+    public Rectangle fill(Paint strokeFill) {
+        return super.fill(strokeFill);
     }
 
     @Override
-    public Rectangle strokeSize(double strokeSize) {
-        return strokeSize(strokeSize);
+    public Rectangle size(double strokeSize) {
+        return super.size(strokeSize);
     }
 
 }

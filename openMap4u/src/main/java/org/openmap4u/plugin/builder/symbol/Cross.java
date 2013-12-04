@@ -21,7 +21,7 @@ public class Cross extends ShapeBuilder<Cross> {
      * Creates a new cross symbol.
      */
     public Cross() {
-        setPrimitive(DEFAULT_CROSS_SYMBOL);
+        shape(DEFAULT_CROSS_SYMBOL);
     }
 
     /**
@@ -31,7 +31,7 @@ public class Cross extends ShapeBuilder<Cross> {
      * @return The cross itself (method chaining pattern).
      */
     public final Cross setSize(double size) {
-        setPrimitive(getCross(size, size));
+        shape(getCross(size, size));
         return this;
     }
 
@@ -43,7 +43,7 @@ public class Cross extends ShapeBuilder<Cross> {
      * @return The cross itself (method chaining pattern).
      */
     public final Cross setSize(double width, double height) {
-        setPrimitive(getCross(width, height));
+        shape(getCross(width, height));
         return this;
     }
 
@@ -57,13 +57,13 @@ public class Cross extends ShapeBuilder<Cross> {
     }
 
     @Override
-    public Cross strokeColor(Paint strokeColor) {
-        return strokeColor(strokeColor);
+    public Cross color(Paint strokeColor) {
+        return super.color(strokeColor);
     }
 
     @Override
-    public Cross strokeSize(double strokeSize) {
-        return strokeSize(strokeSize);
+    public Cross size(double strokeSize) {
+        return super.size(strokeSize);
     }
 
 }

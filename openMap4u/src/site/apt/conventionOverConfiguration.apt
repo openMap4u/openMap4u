@@ -1,0 +1,5 @@
+Convention over configuration
+
+The aim is to provide default values that make sense wherever possible 
+
+and to allow to overrule them only when necessary in order to provide flexibility wherever needed.

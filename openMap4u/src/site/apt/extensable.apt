@@ -1,0 +1,19 @@
+Extensable
+
+Not every usage can be either forseen nor implemented out of the box.
+
+Therefore the api provides extension mechnism at the following levels.
+
+* OuptputFormat
+
+Allows to write your own specific output format.
+
+* Builder
+
+Allows to write your own specific Builder
+
+    * ShapeBuilder
+
+    * ImageBuilder
+
+    * TextBuilder

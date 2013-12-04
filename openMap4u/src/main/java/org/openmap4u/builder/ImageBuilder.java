@@ -4,41 +4,48 @@ import java.net.URI;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import org.openmap4u.primitive.ImagePrimitive;
-import org.openmap4u.style.ImageStyleable;
+import org.openmap4u.style.ImageStyle;
 
 /**
  * All image builder plugins are derifed from this abstract base class.
- * 
+ *
  * @author Michael Hadrbolec
- * @param <B>
+ * @param <B> The type of the image builder.
  */
 public abstract class ImageBuilder<B extends ImageBuilder<B>> extends
-        AbstractBuilderPlugin<Path, ImageStyleable, B> implements
-        ImagePrimitive {
-	
-	  /**
+        Buildable<ImageStyle, B> {
+
+    private Path mPath = null;
+
+    public ImageBuilder() {
+    }
+
+    public Path getPath() {
+        return this.mPath;
+    }
+
+    
+
+    /**
      * Sets the image.
-     * 
-     * @param imagePath
-     *            The image path.
+     *
+     * @param imagePath The image path.
      * @return The Image itself (method chaining pattern).
      */
     @SuppressWarnings("unchecked")
-	protected B setImage(Path imagePath) {
-        this.setPrimitive(imagePath);
-        return (B)this;
+    protected B path(Path imagePath) {
+        this.mPath =imagePath;
+        return (B) this;
     }
 
     /**
      * Sets the image.
-     * 
-     * @param imageURI
-     *            The image URI.
+     *
+     * @param imageURI The image URI.
      * @return The Image itself (method chaining pattern).
      */
-    protected B setImage(URI imageURI) {
-        return (B)this.setImage(Paths.get(imageURI));
+    protected B uri(URI imageURI) {
+        return this.path(Paths.get(imageURI));
     }
 
 }

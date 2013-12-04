@@ -1,86 +1,38 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package org.openmap4u.style;
 
 import java.awt.Paint;
 
-import org.openmap4u.commons.FontStyle;
-import org.openmap4u.commons.FontWeight;
-
 /**
- * 
- * @author hadrbolec
+ *
+ * @author zwotti
  */
-public interface TextStyleable extends Cloneable, Styleable<TextStyleable> {
+public interface TextStyleable extends Styleable<TextStyleable> {
 
-    /**
-     * @param size
-     *            the size to set
-     * @return 
-     */
-    TextStyleable setFontSize(double size);
-
-    /**
-     * @return the size
-     */
-    double getFontSize();
-
-    /**
-     * @return the fontFamily
-     */
-    String getFontFamily();
-
-    /**
-     * @return the fontStyle
-     */
-    FontStyle getFontStyle();
-
-    /**
-     * @param fontFamily
-     *            the fontFamily to set
-     * @return 
-     */
-    TextStyleable setFontFamily(String fontFamily);
-
-    /**
-     * @param fontStyle
-     *            the fontStyle to set
-     * @return 
-     */
-    TextStyleable setFontStyle(FontStyle fontStyle);
-
-    /**
-     * Sets the font color.
-     * 
-     * @param fontColor
-     *            The font color.
-     * @return 
-     */
-    TextStyleable setFontColor(Paint fontColor);
-
-    /**
-     * Gets the font color.
-     * 
-     * @return The font color.
-     */
     Paint getFontColor();
 
-    /**
-     * Sets the font weight.
-     * 
-     * @param fontWeight
-     *            The font weight.
-     * @return 
-     */
+    String getFontFamily();
+
+    double getFontSize();
+
+    FontStyle getFontStyle();
+
+    FontWeight getFontWeight();
+
+    TextStyleable setFontColor(Paint fontColor);
+
+    TextStyleable setFontFamily(String fontFamily);
+
+    TextStyleable setFontSize(double fontSize);
+
+    TextStyleable setFontStyle(FontStyle fontStyle);
+
     TextStyleable setFontWeight(FontWeight fontWeight);
 
-    /**
-     * Gets the font weight.
-     * 
-     * @return The font weight.
-     */
-    FontWeight getFontWeight();
+    TextStyleable clone() throws CloneNotSupportedException;
 
 }

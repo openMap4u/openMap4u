@@ -4,12 +4,13 @@
  */
 package org.openmap4u.builder;
 
+import org.openmap4u.plugin.builder.core.Text;
 import java.awt.Paint;
 import java.util.List;
 
 import org.junit.Before;
 import org.openmap4u.builder.Action.MockupAction;
-import org.openmap4u.commons.FontStyle;
+import org.openmap4u.style.FontStyle;
 
 /**
  *
@@ -21,7 +22,7 @@ public class TextTest extends AbstractTextBuilderTest<Text> {
 
     @Before
     public void setUp() {
-        this.mText = this.getDefaultOpenMap4u().getBuilder().getText();
+        this.mText = this.getDefaultOpenMap4u().getBuilder(Text.class);
 
     }
 
@@ -44,7 +45,7 @@ public class TextTest extends AbstractTextBuilderTest<Text> {
 
     @Override
     protected Text getBuilder() {
-        return this.getDefaultOpenMap4u().getBuilder().getText().setText("Äg").setFontSize(7);
+        return this.getDefaultOpenMap4u().getBuilder(Text.class).text("Äg").setFontSize(7);
     }
 
     @Override

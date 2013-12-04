@@ -20,7 +20,7 @@ public class Circle extends ShapeBuilder<Circle> {
      * Creates a new circle symbol.
      */
     public Circle() {
-        this.setPrimitive(DEFAULT_ELLIPSE_SYMBOL);
+        this.shape(DEFAULT_ELLIPSE_SYMBOL);
     }
 
     /**
@@ -30,7 +30,7 @@ public class Circle extends ShapeBuilder<Circle> {
      * @return The Buildable itself (method chaining pattern).
      */
     public Circle diameter(double diameter) {
-        this.setPrimitive(getEllipse(diameter, diameter));
+        this.shape(getEllipse(diameter, diameter));
         return this;
     }
 
@@ -45,18 +45,18 @@ public class Circle extends ShapeBuilder<Circle> {
     }
 
     @Override
-    public Circle strokeColor(Paint strokeColor) {
-        return super.strokeColor(strokeColor);
+    public Circle color(Paint strokeColor) {
+        return super.color(strokeColor);
     }
 
     @Override
-    public Circle strokeFill(Paint strokeFill) {
-        return super.strokeFill(strokeFill);
+    public Circle fill(Paint strokeFill) {
+        return super.fill(strokeFill);
     }
 
     @Override
-    public Circle strokeSize(double strokeSize) {
-        return super.strokeSize(strokeSize);
+    public Circle size(double strokeSize) {
+        return super.size(strokeSize);
     }
 
     /**

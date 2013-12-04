@@ -1,6 +1,6 @@
 package org.openmap4u;
 
-import org.openmap4u.outputformat.OutputableFormat;
+import org.openmap4u.format.Outputable;
 
 /**
  * Helper class to generate File names.
@@ -17,14 +17,14 @@ public class OutputFormat {
 	/**
 	 * Stores the output format.
 	 */
-	private Class<? extends OutputableFormat> mOutputableFormat = null;
+	private Class<? extends Outputable> mOutputableFormat = null;
 
 	/**
 	 * Creates a new output format class.
 	 * @param outputFormat The output format.
 	 * @param fileExtension The file extension of the output format.
 	 */
-	public OutputFormat(Class<? extends OutputableFormat> outputFormat,
+	public OutputFormat(Class<? extends Outputable> outputFormat,
 			String fileExtension) {
 		this.mFileExtension = fileExtension;
 		this.mOutputableFormat = outputFormat;
@@ -58,7 +58,7 @@ public class OutputFormat {
 	 * Gets the output format.
 	 * @return The output format.
 	 */
-	public Class<? extends OutputableFormat> getOutputableFormat() {
+	public Class<? extends Outputable> getOutputableFormat() {
 		return this.mOutputableFormat;
 	}
 

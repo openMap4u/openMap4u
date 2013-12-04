@@ -3,11 +3,10 @@ package org.openmap4u;
 import java.awt.Color;
 import java.awt.Paint;
 
-import org.openmap4u.canvas.CanvasPlugin;
-import org.openmap4u.commons.FontStyle;
-import org.openmap4u.commons.HorizontalAlign;
-import org.openmap4u.commons.VerticalAlign;
-import org.openmap4u.plugin.outputformat.graphics2d.PngPlugin;
+import org.openmap4u.canvas.Canvas;
+import org.openmap4u.style.FontStyle;
+import org.openmap4u.plugin.format.graphics2d.Png;
+import org.openmap4u.unit.Angle;
 import org.openmap4u.unit.Length;
 
 /*
@@ -41,11 +40,12 @@ import org.openmap4u.unit.Length;
  * 
  */
 public interface Globals {
+    public static Angle DEFAULT_ANGLE_UNIT = Angle.DEGREE;
 
     /**
      * The dfeault drawing plugin name.
      */
-    String DEFAULT_DRAWING_PLUGIN_NAME = CanvasPlugin.PLUGIN_NAME;
+    String DEFAULT_DRAWING_PLUGIN_NAME = Canvas.PLUGIN_NAME;
 
     /**
      * The default symbol size.
@@ -55,7 +55,7 @@ public interface Globals {
     /**
      * The default output format plugin.
      */
-    Class<PngPlugin> DEFAULT_OUTPUTFORMAT_PLUGIN_NAME = PngPlugin.class;
+    Class<Png> DEFAULT_OUTPUTFORMAT_PLUGIN_NAME = Png.class;
 
     /**
      * The default builder plugin name.
@@ -114,15 +114,6 @@ public interface Globals {
      */
     Paint DEFAULT_FILL = null;
 
-    /**
-     * The default vertical alignment is {@linkplain VerticalAlign#NONE}.
-     */
-    VerticalAlign DEFAULT_VERTICAL_ALIGN = VerticalAlign.NONE;
-
-    /**
-     * THe default horizontal alignment is {@linkplain HorizontalAlign#NONE}.
-     */
-    HorizontalAlign DEFAULT_HORIZONTAL_ALIGN = HorizontalAlign.NONE;
 
     /**
      * The default scale factor in x an y axis direction is <code>1</code>.

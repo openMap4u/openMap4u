@@ -6,7 +6,8 @@ package org.openmap4u.canvas;
 
 import java.awt.Shape;
 
-import org.openmap4u.outputformat.OutputableFormat;
+import org.openmap4u.format.Outputable;
+import org.openmap4u.unit.Angle;
 import org.openmap4u.unit.Length;
 
 /**
@@ -41,16 +42,23 @@ public interface SetUp {
      * @return Allows to setup additional parameters.
      */
     SetUp strokeUnits(Length strokeUnits);
+    
+    /**
+     * Sets the angle units.
+     * @param angleUnits The angle units.
+     * @return Fluent builder pattern.
+     */
+    SetUp angleUnits(Angle angleUnits);
 
     /**
      * 
-     * @param <T>
+     * @param <>>
      *            Every class that implements the outputableFormat interface.
      * @param outputFormat
      *            The class that implements the outputableFormat interface.
      * @return Allows to setup additional parameters.
      */
-    <T extends OutputableFormat> SetUp outputFormat(Class<T> outputFormat);
+    <T extends Outputable> SetUp outputFormat(Class<T> outputFormat);
 
     /**
      * Creates the drawing canvas based on the provided unit and output format

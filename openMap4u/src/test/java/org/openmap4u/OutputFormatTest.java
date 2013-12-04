@@ -6,7 +6,7 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.openmap4u.plugin.outputformat.graphics2d.PngPlugin;
+import org.openmap4u.plugin.format.graphics2d.Png;
 
 public class OutputFormatTest {
 
@@ -14,7 +14,7 @@ public class OutputFormatTest {
 
 	@Before
 	public void setUp() {
-		oF = new OutputFormat(PngPlugin.class, "png");
+		oF = new OutputFormat(Png.class, "png");
 	}
 
 	@Test
@@ -30,7 +30,7 @@ public class OutputFormatTest {
 	@Test
 	public void testGeOutputFormat() {
 		assertThat(oF.getOutputableFormat().getName(),
-				is(PngPlugin.class.getName()));
+				is(Png.class.getName()));
 	}
 
 	@Test

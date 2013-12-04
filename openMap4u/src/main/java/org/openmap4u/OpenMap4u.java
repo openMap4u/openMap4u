@@ -2,12 +2,18 @@ package org.openmap4u;
 
 import java.beans.Transient;
 import java.io.Serializable;
-import org.openmap4u.canvas.Canvas;
+import org.openmap4u.builder.Buildable;
+import org.openmap4u.builder.ImageBuilder;
+import org.openmap4u.builder.ShapeBuilder;
+import org.openmap4u.builder.TextBuilder;
 
-import org.openmap4u.canvas.CanvasPlugin;
+import org.openmap4u.canvas.Canvas;
 import org.openmap4u.canvas.SetUp;
 import org.openmap4u.commons.Util;
-import org.openmap4u.unit.Length;
+import org.openmap4u.style.ImageStyle;
+import org.openmap4u.style.ShapeStyle;
+import org.openmap4u.style.Style;
+import org.openmap4u.style.TextStyle;
 
 /**
  * The openMap4u API.
@@ -21,33 +27,46 @@ public final class OpenMap4u implements Serializable {
      */
     private static final long serialVersionUID = 7003870457791602481L;
 
-    /**
-     * Stores the builder.
-     */
-    private transient Builder mBuilder = null;
-
+  
+  
     private Defaults mDefaultConfiguration = null;
 
     /**
-     * Constructor.
+     * Creates a new OpenMap4u instance.
      */
     public OpenMap4u() {
         this.mDefaultConfiguration = new Defaults();
     }
 
+   
     /**
-     * Gets a builder.
-     *
-     * @return The builder.
+     * Gets the builder and initializes it with the konfigured default values.
+      * @param builderClass The builder class.
+     * @return  The builder.
      */
-    @Transient
-    public Builder getBuilder() {
-        if (this.mBuilder == null) {
-            this.mBuilder = new Builder(mDefaultConfiguration);
+    public <T, S extends Style<S>, B extends Buildable<T, S, B>> B getBuilder(
+            Class<B> builderClass) {
+        B builder = Util.get().getPlugin(builderClass);
+        try {
+            if (builder instanceof ShapeBuilder) {
+                ((ShapeBuilder) builder).
+                        getPrimitive().setStyle(((ShapeStyle) getDefaults()
+                                .getShapeStyle()).clone());
+            } else if (builder instanceof ImageBuilder) {
+                ((ImageBuilder) builder).
+                        getPrimitive().setStyle(((ImageStyle) getDefaults()
+                                .getImageStyle()).clone());
+            } else if (builder instanceof TextBuilder) {
+                ((TextBuilder) builder).
+                        getPrimitive().setStyle(((TextStyle) getDefaults()
+                                .getTextStyle()).clone());
+            }
+        } catch (CloneNotSupportedException e) {
+            throw new java.lang.IllegalArgumentException(e);
         }
-        return this.mBuilder;
+        return builder;
     }
-
+    
     /**
      * Allows to configure and / or to override the default configuration.
      *
@@ -73,10 +92,7 @@ public final class OpenMap4u implements Serializable {
      * @return A new drawing canvas instance.
      */
     public SetUp getCanvas() {
-        Canvas canvas = Util.get().getPlugin(CanvasPlugin.class);
-        canvas.worldUnits(this.mDefaultConfiguration.getWorldUnits()).drawingUnits(this.mDefaultConfiguration.getDrawingUnits()).
+          return Canvas.create().worldUnits(this.mDefaultConfiguration.getWorldUnits()).drawingUnits(this.mDefaultConfiguration.getDrawingUnits()).
                 strokeUnits(this.mDefaultConfiguration.getStrokeUnits());
-        /* set the default values */
-        return canvas;
-    }
+     } 
 }

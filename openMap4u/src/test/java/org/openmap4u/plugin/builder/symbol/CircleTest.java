@@ -10,7 +10,7 @@ public class CircleTest extends AbstractShapeBuilderTest {
 
     @Override
     protected Circle getBuilder() {
-       return this.getDefaultOpenMap4u().getBuilder().getCustomBuilder(Circle.class);
+       return this.getDefaultOpenMap4u().getBuilder(Circle.class);
     }
 
     @Override

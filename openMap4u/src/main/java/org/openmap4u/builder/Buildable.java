@@ -1,284 +1,166 @@
 package org.openmap4u.builder;
 
-import org.openmap4u.commons.HorizontalAlign;
+import java.awt.geom.Point2D;
+import java.util.HashSet;
+import java.util.Set;
+import org.openmap4u.commons.DrawableTransformable;
 import org.openmap4u.commons.Plugable;
-import org.openmap4u.commons.VerticalAlign;
-import org.openmap4u.primitive.Primitive;
+import org.openmap4u.commons.Position;
+import org.openmap4u.commons.TransformUtilBackup;
+import org.openmap4u.primitive.Drawable;
 import org.openmap4u.style.Styleable;
 
+import org.openmap4u.unit.Angle;
+import org.openmap4u.unit.Transparence;
+
 /**
- * All builders are derived from this base interface.
- * 
+ * All builders are derived from this base class.
+ *
  * @author Michael Hadrbolec
- * @param <T> The type of the primitive.
- * @param <S> The type of the primitive style.
- * @param <B> The type of the builder.
+  * @param <S> The style type.
+ * @param <B> The builder type.
  */
-public interface Buildable<T, S extends Styleable<S>, B extends Buildable<T, S,B >>
-        extends Primitive<T, S>,Plugable  {
+public class Buildable<S extends Styleable<S>, B extends Buildable<S, B>> implements Drawable<S>, Plugable {
 
     /**
-     * Sets whether the primitive is visible or not. It is an optional property,
-     * whose default value is <code>true</code>.
-     * 
-     * @param isVisible
-     *            Whether the primitive is visible (<code>true</code>) or not (
-     *            <code>false</code>).
-     * @return The Buildable itself (method chaining pattern).
+     * Stores the angle units.
      */
-    B visible(boolean isVisible);
+    private Angle mAngleUnits = Angle.DEGREE;
+    
+      /**
+     * Stores the transparence units.
+     */
+    private Transparence mTransparence = Transparence.PERCENT;
+    
+    private S mStyle = null;
+
 
     /**
-     * Checks whether the primitive is visible (which means either the
-     * visibility is set to <code>false</code> or the primitive is complete
-     * transparent).
-     * 
-     * @return <ul>
-     *         <li><code>true</code> ... the primitive is visible.</li>
-     *         <li><code>false</code> ... the primitive is not visible.</li>
-     *         </ul>
+     * Stores the points.
      */
-    boolean isVisible();
+    private Set<Object> mPoints = null;
 
     /**
-     * Sets the transparency of the primitive ( <code>0</code> is complete solid
-     * [=not transparent at all], <code>100</code> is complete transparent [=not
-     * visible at all]).
-     * 
-     * @param tranparence
-     *            The transparency of the primitive (in percent).
-     *            <ul>
-     *            <li><img src="doc-files/transparency_100_percent.png"  alt="100 percent visible"> ...
-     *            <code>100</code> (=complete) transparent, which means the
-     *            primitive is not drawn. But keep in mind although you don't
-     *            see the element it has to be drawn anyway.</li>
-     *            <li><img src="doc-files/transparency_66_percent.png"  alt="66 percent visible">...
-     *            <code>66</code> transparent.</li>
-     *            <li><img src="doc-files/transparency_33_percent.png" alt="33 percent visible">...
-     *            <code>33</code>% transparent.</li>
-     *            <li><img src="doc-files/transparency_0_percent.png" alt="0 percent transparency">... <code>0</code>% transparent
-     *            (=solid), which means the primitive is drawn complete solid
-     *            (not transparent at all).</li></ul>
-     * @return The Buildable itself (method chaining pattern).
+     * Gets the points.
+     *
+     * @return The points.
      */
-    B transparence(double tranparence);
+    public Set<Object> getPoints() {
+        return this.mPoints;
+    }
 
     /**
-     * Sets the offset of the primitive drawing units.<br>
-     * <span>Primitive <img src="doc-files/ShapeBuilder_translate_initial.png"  alt="initial">
-     * + offsetX <img src="doc-files/ShapeBuilder_translate_x.png"  alt="translation in x axis"> +offsetY
-     * <img src="doc-files/ShapeBuilder_translate_y.png"  alt="translation in x axis"> = <img
-     * src="doc-files/ShapeBuilder_scale_result.png" alt="translation result"></span>
-     * 
-     * @param offsetX
-     *            The offset in x axis direction. <img
-     *            src="doc-files/ShapeBuilder_translate_initial.png" alt="initial"> offsetX
-     *            <img src="doc-files/ShapeBuilder_translate_x.png" alt="offset x">
-     * 
-     * @param offsetY
-     *            The offset in y axis direction. <img
-     *            src="doc-files/ShapeBuilder_translate_initial.png" alt="initial"> offsetX
-     *            <img src="doc-files/ShapeBuilder_translate_y.png" alt="offset y">
-     * 
-     * @return The Buildable itself (method chaining pattern).
+     * Used to create the individual transformation.
      */
-    B offset(double offsetX, double offsetY);
+    private DrawableTransformable mTransform = new DrawTransform();
+
+    Buildable(){} 
 
     /**
-     * Sets the  x offset of the primitive drawing units.<br>
-     * <span>Primitive <img src="doc-files/ShapeBuilder_translate_initial.png" alt="initial">
-     * + offsetX  = <img src="doc-files/ShapeBuilder_translate_x.png" alt="offset x"> </span>
-     * 
-      * @param offsetX
-     *            The offset in x axis direction. <img
-     *            src="doc-files/ShapeBuilder_translate_initial.png" alt="initial"> offsetX
-     *            <img src="doc-files/ShapeBuilder_translate_x.png" alt="offset x">
-     * 
-      * @return The Buildable itself (method chaining pattern).
+     * Sets whether the primitive is visible.
+     *
+     * @param isVisible The visibility.
+     * @return The builder itself.
      */
-    B offsetX(double offsetX);
+    public B visible(boolean isVisible) {
+        getStyle().setVisible(isVisible);
+        return (B) this;
+    }
 
     /**
-     * Sets the y offset of the primitive drawing units.<br>
-     * <span>Primitive <img src="doc-files/ShapeBuilder_translate_initial.png" alt="initial">
-     *  + offsetY = 
-     * <img src="doc-files/ShapeBuilder_translate_y.png" alt="offset y"> </span>
-     * 
-     * @param offsetY
-     *            The offset in y axis direction. <img
-     *            src="doc-files/ShapeBuilder_translate_initial.png" alt="no translation at all"> offsetX
-     *            <img src="doc-files/ShapeBuilder_translate_y.png" alt="translate in y direction">
-     * 
-     * @return The Buildable itself (method chaining pattern).
+     * Sets the transparence.
+     *
+     * @param tranparence The transparence.
+     * @return
      */
-    B offsetY(double offsetY);
+    public B transparence(double tranparence) {
+        getStyle().setAlpha(mTransparence.convert(tranparence));
+        return (B) this;
+    }
+
+    public B align(Position align) {
+        this.getTransform().setAlign(align);
+        return (B) this;
+    }
 
     /**
-     * Sets a constant scale factor for x as well as for y axis direction.<br>
-     * <span>Primitive <img src="doc-files/ShapeBuilder_scale_initial.png" alt="initial"> +
-     * scaleX (=scaleY) <img src="doc-files/ShapeBuilder_scale_x.png" alt="scale x"> + scaleY
-     * (=scaleX) <img src="doc-files/ShapeBuilder_scale_y.png" alt="scale y"> = <img
-     * src="doc-files/ShapeBuilder_scale_result.png" alt="result"></span>
-     * 
-     * <ul>
-     * <li><code>0.5</code>... means half size.</li>
-     * <li><code>1</code>... means no scaling at all (is default value).</li>
-     * <li><code>2</code>... means double size.</li> </ul>
-     * 
-     * @param scaleFactor
-     *            The constant scale factor for x as well as for y axis
-     *            direction.
-     * @return The Buildable itself (method chaining pattern).
+     * Sets the offset in darwing units.
+     * @param offsetX The x offset in drawing units.
+     * @param offsetY The y offset in drawing units.
+     * @return The builder itself (method chaining pattern).
      */
-    B scale(double scaleFactor);
+    public final B offset(double offsetX, double offsetY) {
+        this.mTransform.setOffset(new Point2D.Double(offsetX,offsetY));
+        return (B) this;
+    }
+
+    public final B offsetX(double offsetX) {
+        return offset(offsetX, this.mTransform.getOffset().getY());
+    }
+
+    public final B offsetY(double offsetY) {
+        return offset(this.mTransform.getOffset().getX(),offsetY);
+    }
+
+    public final B scale(double scaleFactor) {
+        return scale(scaleFactor, scaleFactor);
+    }
+
+    public final B scale(double scaleX, double scaleY) {
+        scaleX(scaleX);
+        scaleY(scaleY);
+        return (B) this;
+    }
+
+    public final B scaleX(double scaleX) {
+        this.mTransform.setScaleX(scaleX);
+        return (B) this;
+    }
+
+    public final B scaleY(double scaleY) {
+        this.mTransform.setScaleY(scaleY);
+        return (B) this;
+    }
+
+    public final B rotate(double angle) {
+        this.mTransform.setRotate(this.mAngleUnits.convert(angle));
+        return (B) this;
+    }
 
     /**
-     * Sets the scale factor in x and y axis direction.<br>
-     * <span>Primitive <img src="doc-files/ShapeBuilder_scale_initial.png" alt="initial"> +
-     * scaleX <img src="doc-files/ShapeBuilder_scale_x.png" alt="scale x"> + scaleY <img
-     * src="doc-files/ShapeBuilder_scale_y.png" alt="scale y"> = <img
-     * src="doc-files/ShapeBuilder_scale_result.png" alt="scale result"></span>
-     * <ul>
-     * <li><code>0.5</code>... means half size.</li>
-     * <li><code>1</code>... means no scaling at all (is default value).</li>
-     * <li><code>2</code>... means double size.</li> </ul>
-     * 
-     * @param scaleX
-     *            The scale factor in x axis direction. <img
-     *            src="doc-files/ShapeBuilder_scale_initial.png" alt="initial"> scaleX <img
-     *            src="doc-files/ShapeBuilder_scale_x.png" alt="scale x">
-     * @param scaleY
-     *            The scale factor in y axis direction. <img
-     *            src="doc-files/ShapeBuilder_scale_initial.png" alt="initial"> scaleY <img
-     *            src="doc-files/ShapeBuilder_scale_y.png" alt="scale y">
-     * @return The Buildable itself (method chaining pattern).
+     * initializes the points.
      */
-    B scale(double scaleX, double scaleY);
+    private B addPoint(Object point2Add) {
+        if (this.mPoints == null) {
+            this.mPoints = new HashSet<>();
+        }
+        this.mPoints.add(point2Add);
+        return (B) this;
+    }
+
+    public final B point(double x, double y) {
+        return addPoint(new Point2D.Double(x, y));
+    }
+
+    public final B point(Position position) {
+        return addPoint(position);
+    }
 
     /**
-     * Sets the scale factor in x axis direction.
-     * 
-     * @param scaleX
-     *            The scale factor in x axis direction. <img
-     *            src="doc-files/ShapeBuilder_scale_initial.png" alt="initial"> scaleX <img
-     *            src="doc-files/ShapeBuilder_scale_x.png" alt="scale x">
-     * @return The Buildable itself (method chaining pattern).
+     * Gets the built primitive.
+     *
+     * @return The build (=resultin) primitive.
      */
-    B scaleX(double scaleX);
+    
 
-    /**
-     * Sets the scale factor in x axis direction.
-     * 
-     * @param scaleY
-     *            The scale factor in y axis direction. <img
-     *            src="doc-files/ShapeBuilder_scale_initial.png" alt="initial"> scaleY <img
-     *            src="doc-files/ShapeBuilder_scale_y.png" alt="scale y">
-     * @return The Buildable itself (method chaining pattern).
-     */
-    B scaleY(double scaleY);
+    @Override
+    public final S getStyle() {
+        return this.mStyle;
+    }
 
-    /**
-     * Sets the primitives alignment in horizontal (= x axis) and vertical(= y
-     * axis) direction.
-     * 
-     * @param horizontalAlign
-     *            The horizontal alignment (= x axis direction).
-     * @param verticalAlign
-     *            The vertical alignment (= y axis direction).
-     * @return The ShapeBuilder itself (method chaining pattern).
-     */
-    B setAlign(HorizontalAlign horizontalAlign, VerticalAlign verticalAlign);
+    @Override
+    public final DrawableTransformable getTransform() {
+        return this.mTransform;
+     }
 
-    /**
-     * Sets the vertical alignment.
-     * @param verticalAlign The vertical alignment.
-     * @return The Builder itself (method chaining pattern).
-     */
-    B verticalAlign(VerticalAlign verticalAlign);
-
-    /**
-     * Sets the horizontal alignment.
-     * @param horizontalAlign The horizontal aignment.
-     * @return  The Builder itself (method chaining pattern).
-     */
-    B setHorizontalAlign(HorizontalAlign horizontalAlign);
-
-    /**
-     * Rotates the primitive anti clockwise in degrees. <br>
-     * <span style="vertical-align:middle;height:80px;"><img
-     * src="doc-files/ShapeBuilder_initial.png" alt="initial">+ rotate 30 degrees <img
-     * src="doc-files/ShapeBuilder_rotate.png" alt="roate"> = <img
-     * src="doc-files/ShapeBuilder_rotate_result.png" alt="roation result"></span>
-     * 
-     * @param angle
-     *            The anti clockwise rotation of the primitive in degrees. Valid
-     *            values are 0 ... 360 degrees.
-     * @return The Buildable itself (method chaining pattern).
-     */
-    B setRotation(double angle);
-
-    /**
-     * Sets the interaction for the onMouseOver event.
-     * 
-     * @param mouseOver
-     *            The interaction for the onMouseOver event.
-     * @return The Buildable itself (method chaining pattern).
-     */
-    B setMouseOver(String mouseOver);
-
-    /**
-     * Sets the interaction for the onMouseOut event.
-     * 
-     * @param mouseOut
-     *            The interaction for the onMouseOut event.
-     * @return The Buildable itself (method chaining pattern).
-     */
-    B setMouseOut(String mouseOut);
-
-    /**
-     * Sets the interaction for the onMouseDown event.
-     * 
-     * @param mouseDown
-     *            The interaction for the onMouseDown event.
-     * @return The Buildable itself (method chaining pattern).
-     */
-    B setMouseDown(String mouseDown);
-
-    /**
-     * Sets the interaction for the onMouseUp event.
-     * 
-     * @param mouseUp
-     *            The interaction for the onMouseUp event.
-     * @return The Buildable itself (method chaining pattern).
-     */
-    B setMouseUp(String mouseUp);
-
-    /**
-     * Sets the interaction for the onClick event.
-     * 
-     * @param click
-     *            The interaction for the onClick event.
-     * @return The Buildable itself (method chaining pattern).
-     */
-    B setClick(String click);
-
-    /**
-     * Sets the interaction for the onDblClick event.
-     * 
-     * @param dblClick
-     *            The interaction for the onDblClick event.
-     * @return The Buildable itself (method chaining pattern).
-     */
-    B setDblClick(String dblClick);
-
-    /**
-     * Sets the point (or in the case of an mutipoint adds another point).
-     * 
-     * @param x
-     *            The x coordinate of the point.
-     * @param y
-     *            The y coordinate of the point.
-     * @return The method chaing pattern.
-     */
-    B setPoint(double x, double y);
 }

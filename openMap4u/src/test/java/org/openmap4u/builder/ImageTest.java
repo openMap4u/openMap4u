@@ -4,6 +4,7 @@
  */
 package org.openmap4u.builder;
 
+import org.openmap4u.plugin.builder.core.Image;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.util.List;
@@ -33,7 +34,7 @@ public class ImageTest extends AbstractImageBuilderTest<Image> {
 
     @Override
     protected Image getBuilder() {
-       return  this.getDefaultOpenMap4u().getBuilder().getImage().setImage(mImage);
+       return  this.getDefaultOpenMap4u().getBuilder(Image.class).path(mImage);
     }
 
     @Override

@@ -6,15 +6,14 @@ package org.openmap4u.style;
  * @author Michael Hadrbolec
  * 
  */
-public final class ImageStyle extends AbstractStyle<ImageStyleable> implements
-        Cloneable, ImageStyleable {
+public final class ImageStyle extends Style<ImageStyleable> implements ImageStyleable  {
 
     /**
      * {@inheritDoc}
      * @throws java.lang.CloneNotSupportedException
      */
-    public ImageStyleable clone()  throws CloneNotSupportedException {
-        return (ImageStyleable) super.clone();
+    public ImageStyle clone()  throws CloneNotSupportedException {
+        return (ImageStyle) super.clone();
     }
 
 }

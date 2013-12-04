@@ -5,12 +5,21 @@
  */
 package org.openmap4u;
 
+import java.util.function.Function;
+
 /**
  *
  * @author zwotti
  */
-public interface Test<T> {
-    
-    T getT();
+public class Test<T> {
+
+    public void functionT(Function<String, Double> function) {
+        functionT(3d);
+    }
+
+    public void functionT(double function) {
+        functionT(  e -> +1d);
+   
+   }
     
 }

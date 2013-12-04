@@ -12,9 +12,13 @@ public enum Angle implements Convertable<Angle> {
     DEGREE(Math.toRadians(1)),
 
     /**
-     * Radiant.
+     * Radiant (0 = 0 degrees, 2PI = 360 degrees).
      */
-    RADIANT(1);
+    RADIANT(1),
+    /**
+     * Percent (0 = 0 degrees, .25 = 90 degrees, 1 = 360 degrees).
+     */
+    PERCENT(2* Math.PI);
     
      
     /* stores the conversion factor */

@@ -6,3 +6,4 @@ doc
 bin
 /nb-configuration.xml
 /nbactions.xml
+/target

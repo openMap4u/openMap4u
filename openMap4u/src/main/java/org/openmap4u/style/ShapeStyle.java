@@ -11,8 +11,7 @@ import org.openmap4u.Globals;
  * @author Michael Hadrbolec
  *
  */
-public class ShapeStyle extends AbstractStyle<ShapeStyleable> implements
-        ShapeStyleable, Cloneable {
+public class ShapeStyle extends Style<ShapeStyleable> implements ShapeStyleable  {
 
     /**
      * The generated serialVersionUID.
@@ -36,24 +35,21 @@ public class ShapeStyle extends AbstractStyle<ShapeStyleable> implements
     /**
      * {@inheritDoc}
      */
-    @Override
-    public Paint getStrokeColor() {
+     public Paint getStrokeColor() {
         return mStrokeColor;
     }
 
     /**
      * {@inheritDoc}
      */
-    @Override
-    public Paint getStrokeFill() {
+     public Paint getStrokeFill() {
         return fill;
     }
 
     /**
      * {@inheritDoc}
      */
-    @Override
-    public double getStrokeSize() {
+     public double getStrokeSize() {
         return strokeSize;
     }
 
@@ -62,8 +58,7 @@ public class ShapeStyle extends AbstractStyle<ShapeStyleable> implements
      *
      * @return
      */
-    @Override
-    public ShapeStyle setStrokeColor(Paint color) {
+     public ShapeStyle setStrokeColor(Paint color) {
         this.mStrokeColor = color;
         return this;
     }
@@ -74,16 +69,16 @@ public class ShapeStyle extends AbstractStyle<ShapeStyleable> implements
      * @return
      */
     @Override
-    public ShapeStyle setStrokeFill(Paint fill) {
+    public ShapeStyleable setStrokeFill(Paint fill) {
         this.fill = fill;
         return this;
     }
 
     /**
-     * {@inheritDoc}
+     * Sets the stroke size in drawing units.
      *
-     * @param strokeSize
-     * @return
+     * @param strokeSize The stroke size in drawing units.
+     * @return The method chaining pattern.
      */
     @Override
     public ShapeStyle setStrokeSize(double strokeSize) {
@@ -96,8 +91,9 @@ public class ShapeStyle extends AbstractStyle<ShapeStyleable> implements
      *
      * @throws java.lang.CloneNotSupportedException
      */
+    @Override
     public ShapeStyleable clone() throws CloneNotSupportedException {
-        return (ShapeStyleable) super.clone();
+          return  super.clone(); 
     }
 
     public String toString() {

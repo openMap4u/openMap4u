@@ -4,11 +4,8 @@ import java.io.Serializable;
 import java.util.Locale;
 
 import org.openmap4u.style.ImageStyle;
-import org.openmap4u.style.ImageStyleable;
 import org.openmap4u.style.ShapeStyle;
-import org.openmap4u.style.ShapeStyleable;
 import org.openmap4u.style.TextStyle;
-import org.openmap4u.style.TextStyleable;
 import org.openmap4u.unit.Length;
 
 /**
@@ -48,15 +45,15 @@ public final class Defaults implements Serializable {
     /**
      * Stores the default image style.
      */
-    private ImageStyleable mDefaultImageStyle = new ImageStyle();
+    private ImageStyle mDefaultImageStyle = new ImageStyle();
     /**
      * Stores the default shape style.
      */
-    private ShapeStyleable mDefaultShapeStyle = null;
+    private ShapeStyle mDefaultShapeStyle = null;
     /**
      * Stores the default text style.
      */
-    private TextStyleable mDefaultTextStyle = new TextStyle().setFontSize(
+    private TextStyle mDefaultTextStyle = new TextStyle().setFontSize(
             Globals.DEFAULT_FONT_SIZE).setFontColor(
                     Globals.DEFAULT_STROKE_COLOR);
 
@@ -71,7 +68,7 @@ public final class Defaults implements Serializable {
      *
      * @return The default image style.
      */
-    public ImageStyleable getImageStyle() {
+    public ImageStyle getImageStyle() {
         return this.mDefaultImageStyle;
     }
 
@@ -80,7 +77,7 @@ public final class Defaults implements Serializable {
      *
      * @return The default shape style.
      */
-    public ShapeStyleable getShapeStyle() {
+    public ShapeStyle getShapeStyle() {
         if (this.mDefaultShapeStyle == null) {
             this.mDefaultShapeStyle = new ShapeStyle().setStrokeSize(
                     Globals.DEFAULT_STROKE_SIZE).setStrokeColor(
@@ -94,7 +91,7 @@ public final class Defaults implements Serializable {
      *
      * @return The default text style.
      */
-    public TextStyleable getTextStyle() {
+    public TextStyle getTextStyle() {
         return this.mDefaultTextStyle;
     }
 
@@ -166,7 +163,7 @@ public final class Defaults implements Serializable {
      *
      * @param defaultImageStyle The default image style.
      */
-    public void setImageStyle(ImageStyleable defaultImageStyle) {
+    public void setImageStyle(ImageStyle defaultImageStyle) {
         this.mDefaultImageStyle = defaultImageStyle;
     }
 
@@ -175,7 +172,7 @@ public final class Defaults implements Serializable {
      *
      * @param defaultShapeStyle The default shape style.
      */
-    public void setShapeStyle(ShapeStyleable defaultShapeStyle) {
+    public void setShapeStyle(ShapeStyle defaultShapeStyle) {
         this.mDefaultShapeStyle = defaultShapeStyle;
     }
 

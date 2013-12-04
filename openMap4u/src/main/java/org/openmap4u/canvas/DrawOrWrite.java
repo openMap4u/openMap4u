@@ -4,11 +4,14 @@
  */
 package org.openmap4u.canvas;
 
+import java.awt.geom.Point2D;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Path;
-import org.openmap4u.primitive.Primitive;
-import org.openmap4u.style.Styleable;
+import org.openmap4u.builder.Buildable;
+import org.openmap4u.builder.ImageBuilder;
+import org.openmap4u.builder.ShapeBuilder;
+import org.openmap4u.builder.TextBuilder;
 
 /**
  * Allow either to draw another primitive on the canvas, or to write the result
@@ -21,12 +24,13 @@ public interface DrawOrWrite {
     /**
      * Draws a single primitive.
      *
-     * @param primitive The shape primitive to draw.
+     * @param primitive The primitive(s) to draw.
      * @return Allow by applying the method chaining pattern either to draw more
      * primitive(s) or to write the resulting map.
      */
-    DrawOrWrite draw(Primitive<?, ? extends Styleable> primitive);
+    DrawOrWrite draw(Buildable shapeBuilder);
 
+    
     /**
      * Writes the drawing result to the given output stream. If no primitives
      * have been drawn the canvas is empty.

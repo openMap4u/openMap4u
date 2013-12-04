@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.awt.Paint;
 
 import org.openmap4u.Globals;
-import org.openmap4u.commons.FontStyle;
-import org.openmap4u.commons.FontWeight;
 
 /**
  * The TextStyleable implementation.
@@ -13,8 +11,7 @@ import org.openmap4u.commons.FontWeight;
  * @author Michael Hadrbolec
  * 
  */
-public final class TextStyle extends AbstractStyle<TextStyleable> implements
-        TextStyleable, Cloneable {
+public final class TextStyle extends Style<TextStyleable> implements TextStyleable  {
 
     /**
      * The genertated serialVersionUID.
@@ -49,7 +46,6 @@ public final class TextStyle extends AbstractStyle<TextStyleable> implements
     /**
      * {@inheritDoc}
      */
-    @Override
     public Paint getFontColor() {
         return this.mFontColor;
     }
@@ -57,7 +53,6 @@ public final class TextStyle extends AbstractStyle<TextStyleable> implements
     /**
      * {@inheritDoc}
      */
-    @Override
     public String getFontFamily() {
         return mFontFamily;
     }
@@ -65,15 +60,13 @@ public final class TextStyle extends AbstractStyle<TextStyleable> implements
     /**
      * {@inheritDoc}
      */
-    @Override
-    public double getFontSize() {
+     public double getFontSize() {
         return mFontSize;
     }
 
     /**
      * {@inheritDoc}
      */
-    @Override
     public FontStyle getFontStyle() {
         return mFontStyle;
     }
@@ -81,7 +74,6 @@ public final class TextStyle extends AbstractStyle<TextStyleable> implements
     /**
      * {@inheritDoc}
      */
-    @Override
     public FontWeight getFontWeight() {
         return this.mFontWeight;
     }
@@ -90,8 +82,7 @@ public final class TextStyle extends AbstractStyle<TextStyleable> implements
      * {@inheritDoc}
      * @return 
      */
-    @Override
-    public TextStyleable setFontColor(Paint fontColor) {
+    public TextStyle setFontColor(Paint fontColor) {
         this.mFontColor = fontColor;
         return this;
     }
@@ -100,8 +91,7 @@ public final class TextStyle extends AbstractStyle<TextStyleable> implements
      * {@inheritDoc}
      * @return 
      */
-    @Override
-    public TextStyleable setFontFamily(String fontFamily) {
+    public TextStyle setFontFamily(String fontFamily) {
         this.mFontFamily = fontFamily;
         return this;
     }
@@ -111,8 +101,7 @@ public final class TextStyle extends AbstractStyle<TextStyleable> implements
      * @param fontSize
      * @return 
      */
-    @Override
-    public TextStyleable setFontSize(double fontSize) {
+    public TextStyle setFontSize(double fontSize) {
         this.mFontSize = fontSize;
         return this;
     }
@@ -121,8 +110,7 @@ public final class TextStyle extends AbstractStyle<TextStyleable> implements
      * {@inheritDoc}
      * @return 
      */
-    @Override
-    public TextStyleable setFontStyle(FontStyle fontStyle) {
+     public TextStyle setFontStyle(FontStyle fontStyle) {
         this.mFontStyle = fontStyle;
         return this;
     }
@@ -131,8 +119,7 @@ public final class TextStyle extends AbstractStyle<TextStyleable> implements
      * {@inheritDoc}
      * @return 
      */
-    @Override
-    public TextStyleable setFontWeight(FontWeight fontWeight) {
+    public TextStyle setFontWeight(FontWeight fontWeight) {
         this.mFontWeight = fontWeight;
         return this;
     }
@@ -141,7 +128,7 @@ public final class TextStyle extends AbstractStyle<TextStyleable> implements
      * {@inheritDoc}
      * @throws java.lang.CloneNotSupportedException
      */
-    public TextStyleable clone() throws CloneNotSupportedException {
-        return (TextStyleable) super.clone();
+    public TextStyle clone() throws CloneNotSupportedException {
+        return (TextStyle) super.clone();
     }
 }

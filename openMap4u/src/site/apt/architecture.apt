@@ -1,0 +1,12 @@
+Architecture
+
+* Design decisions
+
+** Convention over configuration
+
+** Use as less dependencies as possible
+
+** Fluent Model
+
+*** Builder pattern
+ 

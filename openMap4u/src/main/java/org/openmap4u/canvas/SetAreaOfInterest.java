@@ -9,7 +9,7 @@ package org.openmap4u.canvas;
  * 
  * @author Michael Hadrbolec
  */
-public interface SetAreaOfInterest {
+interface SetAreaOfInterest {
 
     /**
      * Sets the center of the drawing canvas.

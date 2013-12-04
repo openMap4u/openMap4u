@@ -1,5 +1,6 @@
 package org.openmap4u.builder;
 
+import org.openmap4u.plugin.builder.spatial.Wkb;
 import java.awt.Color;
 import java.io.IOException;
 import java.nio.file.FileSystems;
@@ -19,17 +20,17 @@ public class WkbTest extends AbstractSpatialTest {
 	protected void process(DrawOrWrite draw, String outputFileName) throws IOException {
 		for (Country country : MockupData.ITERABLE_COUNTRIES) {
 			/* draw a cross in each center */
-			draw.draw(this.getDefaultOpenMap4u().getBuilder().getWkb()
-					.strokeColor(Color.BLACK).strokeSize(.25).strokeFill(Color.LIGHT_GRAY)
-					.setWkb(country.getGeomAsWkb()));
+			draw.draw(this.getDefaultOpenMap4u().getBuilder(Wkb.class) 
+					.color(Color.BLACK).size(.25).fill(Color.LIGHT_GRAY)
+					.wkb(country.getGeomAsWkb()));
 
 		}
 	 	for (Country country : MockupData.ITERABLE_COUNTRIES) {
 			/* draw a cross in each center */
-			draw.draw(this.getDefaultOpenMap4u().getBuilder()
-					.getCustomBuilder(Cross.class)
-					.setPoint(country.getX(), country.getY())
-					.strokeColor(Color.GREEN).strokeSize(1));
+			draw.draw(this.getDefaultOpenMap4u() 
+					.getBuilder(Cross.class)
+					.point(country.getX(), country.getY())
+					.color(Color.GREEN).size(1));
 		} 
 		/* write the result into the given */
 		  draw.write(FileSystems.getDefault().getPath(
