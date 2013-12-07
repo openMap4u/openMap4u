@@ -11,5 +11,12 @@ package org.openmap4u.style;
  * @author hadrbolec
  */
 public interface ImageStyleable extends Styleable<ImageStyleable> {
+
+    /**
+     *
+     * @return
+     * @throws CloneNotSupportedException
+     */
+    ImageStyleable clone() throws CloneNotSupportedException;
     
 }

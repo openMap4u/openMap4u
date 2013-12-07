@@ -8,13 +8,18 @@ package org.openmap4u.builder;
 import java.awt.geom.Point2D;
 import org.openmap4u.commons.DrawableTransformable;
 import org.openmap4u.commons.Position;
-import org.openmap4u.commons.Transform;
-
+ 
 /**
  *
  * @author Michael Hadrbolec
  */
-final class DrawTransform extends Transform implements DrawableTransformable {
+final class DrawTransform  implements DrawableTransformable {
+
+    private double mRotate = 0;
+
+    private double mScaleX = 1;
+
+    private double mScaleY = 1;
 
     /**
      * Stores the offset.
@@ -25,6 +30,33 @@ final class DrawTransform extends Transform implements DrawableTransformable {
      * Stores the alignment.
      */
     private Position mAlign = null;
+
+    @Override
+    public double getRotate() {
+        return this.mRotate;
+    }
+
+    @Override
+    public double getScaleX() {
+        return this.mScaleX;
+    }
+
+    @Override
+    public double getScaleY() {
+        return this.mScaleY;
+    }
+
+    public void setScaleX(double scaleX) {
+        this.mScaleX = scaleX;
+    }
+
+    public void setScaleY(double scaleY) {
+        this.mScaleY = scaleY;
+    }
+
+    public void setRotate(double angle) {
+        this.mRotate = angle;
+    }
 
     @Override
     public Point2D getOffset() {

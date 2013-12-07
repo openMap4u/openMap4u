@@ -13,7 +13,7 @@ import org.openmap4u.style.ShapeStyleable;
  * All shape builder plugins are derifed from this abstract base class.
  *
  * @author Michael Hadrbolec
- * @param <>> The type of the shape builder.
+ * @param <B> The type of the shape builder.
  */
 public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
         Buildable<  ShapeStyleable, B> implements ShapeDrawable {
@@ -24,6 +24,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
     private Path2D.Double mPath = null;
 
     public ShapeBuilder() {
+        setStyle(new ShapeStyle());
         resetPath();
     }
 
@@ -67,7 +68,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      */
     @SuppressWarnings("unchecked")
     protected B fill(Paint strokeFill) {
-        this.getStyle().setStrokeFill(strokeFill);
+         this.getStyle().setStrokeFill(strokeFill);
         return (B) this;
     }
 

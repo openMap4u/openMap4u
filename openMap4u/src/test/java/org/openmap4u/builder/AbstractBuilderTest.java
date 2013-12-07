@@ -73,7 +73,7 @@ public abstract class AbstractBuilderTest<T extends Buildable> extends
             Color.DARK_GRAY, Color.CYAN, Color.BLUE, Color.BLACK);
     public static final Action<Position> ALIGN = new Action(
             MockupAction.ALIGN, Position.LeftTop, Position.CenterTop, Position.RightTop,
-            Position.LeftMiddle, Position.CenterMiddle, Position.RightMiddle, Position.LeftBottom, Position.CenterBottom, Position.RightBottom);
+            Position.LeftMiddle, Position.CenterMiddle, Position.RightMiddle, Position.LeftBottom, Position.CenterBottom, Position.RightBottom,Position.CenterTop, Position.RightTop);
     public static final Action<FontStyle> FONT_STYLE = new Action(
             MockupAction.FONT_STYLE, FontStyle.NORMAL, FontStyle.ITALIC,
             FontStyle.NORMAL, FontStyle.ITALIC, FontStyle.NORMAL, FontStyle.ITALIC, FontStyle.NORMAL, FontStyle.ITALIC,
@@ -181,6 +181,7 @@ public abstract class AbstractBuilderTest<T extends Buildable> extends
                 draw.draw(this.getDefaultOpenMap4u().getBuilder(Text.class)
                         .setFontSize(5)
                         .point(23, row * 2 + 1)
+                        .align(Position.LeftMiddle)
                         .text(actions.get(row).getDescription()));
             }
         }

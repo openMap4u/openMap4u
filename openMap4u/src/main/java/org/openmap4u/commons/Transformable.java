@@ -30,11 +30,7 @@ public interface Transformable {
      */
     double getScaleY();
     
-    void setScaleX(double scaleX);
-  
-      void setScaleY(double scaleY);
- 
-           void setRotate(double angle);
- 
+    
+      
       
 }

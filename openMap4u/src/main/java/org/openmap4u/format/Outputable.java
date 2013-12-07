@@ -16,9 +16,13 @@ import javax.activation.MimeType;
 
 import org.openmap4u.commons.BeforeAfter;
 import org.openmap4u.commons.Plugable;
+import org.openmap4u.primitive.ImageDrawable;
+import org.openmap4u.primitive.ShapeDrawable;
+import org.openmap4u.primitive.TextDrawable;
 import org.openmap4u.style.ImageStyle;
 import org.openmap4u.style.ShapeStyle;
 import org.openmap4u.style.TextStyle;
+import org.openmap4u.unit.Angle;
 import org.openmap4u.unit.Length;
 
 /**
@@ -32,56 +36,44 @@ public interface Outputable extends Plugable, BeforeAfter {
      * Draws a shape (=vector). After drawing the the primitive the after method
      * is called.
      *
-     * @param shape The shape primitive to draw.
      * @param point
-     * @param individualTransform The individual transformation of the shape
-     * primitive.
-     * @param style The style of the shape primitive.
+      * @param shape The shape.
      * @return The bounds of the shape primitive.
      */
-    Shape drawShape(Shape shape, Point2D point,
-            AffineTransform individualTransform, ShapeStyle style);
+    Shape drawShape(Point2D point,
+            ShapeDrawable shape);
 
     /**
      * Draws an image. After drawing the the primitive the after method is
      * called.
      *
-     * @param image The image primitive to draw.
      * @param point
-     * @param individualTransform The individual transformation of the image
-     * primitive.
-     * @param style The style of the image primitive.
+      * @param image The image.
      * @return The bounds of the image primitive.
      */
-    Shape drawImage(Path image, Point2D point,
-            AffineTransform individualTransform, ImageStyle style);
+    Shape drawImage(Point2D point, ImageDrawable image);
 
     /**
      * Draws a text. Before drawing the primitive the before method is calles.
      * After drawing the the primitive the after method is called.
      *
-     * @param text The text primitive to drawn.
-     * @param point
-     * @param individualTransform The individual transformation of the text
-     * primitive.
-     * @param style The style of the text primitive.
+     * @param point The point where to draw the text.
+     * @param text The text primitive.
      * @return The bounds of the text primitive.
      */
-    Shape drawText(String text, Point2D point,
-            AffineTransform individualTransform, TextStyle style);
+    Shape drawText(Point2D point, TextDrawable text);
 
     /**
      * Is only called once, before anything is drawn.
      *
-     * @param width The canvas width in drawing units.
-     * @param heigth The canvas height in drawing units.
+     * @param shape The canvas sshape in drawing units.
      * @param worldUnits The world units.
      * @param drawingUnits The drawing units.
      * @param strokeUnits The stroke units.
      * @param globalTransform The global transformation.
      */
-    void setUp(double width, double heigth, Length worldUnits,
-            Length drawingUnits, Length strokeUnits,
+    void setUp(Shape shape, Length worldUnits,
+            Length drawingUnits, Length strokeUnits, Angle angleUnits,
             AffineTransform globalTransform);
 
     /**
@@ -115,28 +107,7 @@ public interface Outputable extends Plugable, BeforeAfter {
      */
     boolean isInitialized();
 
-    /**
-     * Gets the mime type of the output format.
-     *
-     * @return The mime type of the output format.
-     */
-    MimeType getMimeType();
 
-    /**
-     * Takes the individual coordinate system of the output format
-     * into account and calculates therefore the global transformation.
-     *
-     * @param globalTransform The global transromation.
-     * @return The global transfromation for the output format.
-     */
-    AffineTransform getGlobalTransform(AffineTransform globalTransform);
-
-    /**
-     * Takes the individual coordinate system of the output format
-     * into account and calculates therefore the individual transformation.
-     * @param individualTransform The individual transfromation.
-     * @return The individual transformation for the output format.
-     */
-    AffineTransform getIndividualTransfrom(AffineTransform individualTransform);
-
+  
+  
 }

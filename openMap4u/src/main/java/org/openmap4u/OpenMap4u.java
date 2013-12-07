@@ -1,6 +1,5 @@
 package org.openmap4u;
 
-import java.beans.Transient;
 import java.io.Serializable;
 import org.openmap4u.builder.Buildable;
 import org.openmap4u.builder.ImageBuilder;
@@ -11,9 +10,12 @@ import org.openmap4u.canvas.Canvas;
 import org.openmap4u.canvas.SetUp;
 import org.openmap4u.commons.Util;
 import org.openmap4u.style.ImageStyle;
+import org.openmap4u.style.ImageStyleable;
 import org.openmap4u.style.ShapeStyle;
-import org.openmap4u.style.Style;
+import org.openmap4u.style.ShapeStyleable;
+import org.openmap4u.style.Styleable;
 import org.openmap4u.style.TextStyle;
+import org.openmap4u.style.TextStyleable;
 
 /**
  * The openMap4u API.
@@ -44,21 +46,19 @@ public final class OpenMap4u implements Serializable {
       * @param builderClass The builder class.
      * @return  The builder.
      */
-    public <T, S extends Style<S>, B extends Buildable<T, S, B>> B getBuilder(
+    public  <S extends Styleable<S>, B extends Buildable<S, B>> B getBuilder(
             Class<B> builderClass) {
         B builder = Util.get().getPlugin(builderClass);
         try {
             if (builder instanceof ShapeBuilder) {
-                ((ShapeBuilder) builder).
-                        getPrimitive().setStyle(((ShapeStyle) getDefaults()
+                ((ShapeBuilder) builder).setStyle(((ShapeStyleable) getDefaults()
                                 .getShapeStyle()).clone());
             } else if (builder instanceof ImageBuilder) {
-                ((ImageBuilder) builder).
-                        getPrimitive().setStyle(((ImageStyle) getDefaults()
-                                .getImageStyle()).clone());
+                ((ImageBuilder) builder).setStyle(((ImageStyleable) getDefaults()
+                                .getImageStyle()).clone()); 
             } else if (builder instanceof TextBuilder) {
                 ((TextBuilder) builder).
-                        getPrimitive().setStyle(((TextStyle) getDefaults()
+                       setStyle(((TextStyleable) getDefaults()
                                 .getTextStyle()).clone());
             }
         } catch (CloneNotSupportedException e) {

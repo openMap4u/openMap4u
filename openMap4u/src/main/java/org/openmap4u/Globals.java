@@ -2,6 +2,7 @@ package org.openmap4u;
 
 import java.awt.Color;
 import java.awt.Paint;
+import java.awt.geom.Point2D;
 
 import org.openmap4u.canvas.Canvas;
 import org.openmap4u.style.FontStyle;
@@ -40,7 +41,11 @@ import org.openmap4u.unit.Length;
  * 
  */
 public interface Globals {
+    
+    double ZERO =0;
+    
     public static Angle DEFAULT_ANGLE_UNIT = Angle.DEGREE;
+    public static Point2D DEFAULT_VIEWPORT_CENTER= new Point2D.Double(ZERO,ZERO );
 
     /**
      * The dfeault drawing plugin name.

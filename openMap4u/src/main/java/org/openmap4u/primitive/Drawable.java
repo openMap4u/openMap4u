@@ -30,6 +30,12 @@ public interface Drawable<S extends Styleable<S>>   {
     S getStyle();
     
     /**
+     * Sets the style.
+     * @param style The style.
+     */
+    void setStyle(S style);
+    
+    /**
      * Gets the individual transformation parameters.
      * @return The individual transformation parameters.
      */ 

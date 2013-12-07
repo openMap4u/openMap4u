@@ -6,7 +6,6 @@ import java.util.Set;
 import org.openmap4u.commons.DrawableTransformable;
 import org.openmap4u.commons.Plugable;
 import org.openmap4u.commons.Position;
-import org.openmap4u.commons.TransformUtilBackup;
 import org.openmap4u.primitive.Drawable;
 import org.openmap4u.style.Styleable;
 
@@ -52,7 +51,7 @@ public class Buildable<S extends Styleable<S>, B extends Buildable<S, B>> implem
     /**
      * Used to create the individual transformation.
      */
-    private DrawableTransformable mTransform = new DrawTransform();
+    private DrawTransform mTransform = new DrawTransform();
 
     Buildable(){} 
 
@@ -157,10 +156,23 @@ public class Buildable<S extends Styleable<S>, B extends Buildable<S, B>> implem
     public final S getStyle() {
         return this.mStyle;
     }
+    
+     @Override
+    public final void setStyle(S style) {
+         this.mStyle=style;
+    }
 
     @Override
     public final DrawableTransformable getTransform() {
         return this.mTransform;
      }
+
+    /**
+     * Wheter it is a point (=true) or not (=false).
+     * @return 
+     */
+    public boolean isPoint() {
+       return this.getPoints()!=null && this.getPoints().size()>0;
+    }
 
 }

@@ -31,7 +31,7 @@ abstract class AbstractJts<T extends AbstractJts<T>> extends ShapeBuilder<T> {
             this.mShapeWriter = new ShapeWriter(
                     new IdentityPointTransformation());
         }
-        getPrimitive().setPrimitive(new Path2D.Double(this.mShapeWriter.toShape(jtsGeometry)));
+        shape(new Path2D.Double(this.mShapeWriter.toShape(jtsGeometry)));
         return this;
     }
 

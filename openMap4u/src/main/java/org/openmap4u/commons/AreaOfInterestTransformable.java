@@ -8,6 +8,8 @@ package org.openmap4u.commons;
 
 import java.awt.Shape;
 import java.awt.geom.Point2D;
+import org.openmap4u.unit.Angle;
+import org.openmap4u.unit.Length;
 
 /**
  *
@@ -21,22 +23,20 @@ public interface AreaOfInterestTransformable extends Transformable {
      */
     Point2D getCenter();
     
-    /**
-     * Sets the center.
-     * @param center The center.
-     */
-    void setCenter(Point2D center);
-    
+      
     /**
      * Gets the shape.
      * @return The shape.
      */
     Shape getShape();
     
-    /**
-     * Sets the shape.
-     * @param shape The shape.
-     */
-    void setShape(Shape shape);
+     
+     
+    Length getWorldUnits();
     
+    Length getDrawingUnits();
+    
+    Angle getAngleUnits();
+    
+      
 }

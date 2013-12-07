@@ -80,15 +80,15 @@ public class UtilTest {
         assertThat("Message with args []", mUtility.getMessage("info.script.engine"), is("Engine: {0} Language:{1} Version:{2}"));
     }
 
-    @Test
-    public void testGetTranslate() {
-        assertThat(mUtility.getTranslate(20, 10, 2), is(20d - 10d / 2d / 2d));
-    }
+//    @Test
+//    public void testGetTranslate() {
+//        assertThat(mUtility.getTranslate(20, 10, 2), is(20d - 10d / 2d / 2d));
+//    }
 
-    @Test
-    public void testGetIndividualTransform() {
-        assertThat(mUtility.getIndividualTransform(new TransformHelper()), is(new AffineTransform()));
-    }
+//    @Test
+//    public void testGetIndividualTransform() {
+//        assertThat(mUtility.getIndividualTransform(new TransformHelper()), is(new AffineTransform()));
+//    }
     
     
     @Test

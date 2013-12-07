@@ -25,30 +25,26 @@ package org.openmap4u.canvas;
  */
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
-import java.awt.geom.NoninvertibleTransformException;
 import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.openmap4u.commons.AreaOfInterestTransformable;
 import org.openmap4u.Globals;
 import org.openmap4u.builder.Buildable;
 import org.openmap4u.commons.Plugable;
-import org.openmap4u.commons.TransformHelper;
 import org.openmap4u.commons.TransformUtil;
 import org.openmap4u.commons.Util;
 import org.openmap4u.format.Outputable;
 import org.openmap4u.plugin.format.graphics2d.Png;
-import org.openmap4u.style.ImageStyle;
-import org.openmap4u.style.ShapeStyle;
-import org.openmap4u.style.Style;
-import org.openmap4u.style.TextStyle;
 import org.openmap4u.unit.Angle;
 import org.openmap4u.unit.Length;
+import org.openmap4u.primitive.ShapeDrawable;
+import org.openmap4u.primitive.ImageDrawable;
+import org.openmap4u.primitive.TextDrawable;
 
 /**
  * Default implementation of the Canvas interface.
@@ -57,30 +53,57 @@ import org.openmap4u.unit.Length;
  *
  */
 public class Canvas implements Plugable, SetUp, DrawOrWrite,
-        SetAreaOfInterestOrDrawOrWrite {
+        SetAreaOfInterestOrDrawOrWrite, AreaOfInterestTransformable {
 
     /**
      * The name of the plugin.
      */
     public static final String PLUGIN_NAME = "DrawPlugin";
-    private Length mWorldUnits = Globals.DEFEAULT_WORLD_UNIT;
-    private Length mDrawingUnits = Globals.DEFEAULT_DRAWING_UNIT;
-    private Length mStrokeUnits = Globals.DEFEAULT_STROKE_UNIT;
-    private Angle mAngleUnits = Globals.DEFAULT_ANGLE_UNIT;
-    private Outputable mOutputFormat = new Png(); 
-    
-    /**
-     * Stores the area of interest parameters.
-     */
-    private AreaOfInterestTransformable mAreaOfInterest = new AreaOfInterestTransfrom();
-    
-    /**
-     * Stores the global transformation.
-     */
-    private AffineTransform mGlobalTransform = new AffineTransform();
+    private Outputable mOutputFormat = new Png();
+    private Shape mLastDrawnShape = new Rectangle2D.Double();
 
-   
-    
+    /**
+     * Stores the world units.
+     */
+    private Length mWorldUnits = Globals.DEFEAULT_WORLD_UNIT;
+
+    /**
+     * Stores the drawing units.
+     */
+    private Length mDrawingUnits = Globals.DEFEAULT_DRAWING_UNIT;
+
+    /**
+     * Stores the stroke units.
+     */
+    private Length mStrokeUnits = Globals.DEFEAULT_STROKE_UNIT;
+
+    /**
+     * Stores the angle units.
+     */
+    private Angle mAngleUnits = Globals.DEFAULT_ANGLE_UNIT;
+
+    /**
+     * Stores the viewport.
+     */
+    private Shape mViewportShape = null;
+
+    /**
+     * Stores the default scale x factor.
+     */
+    private double mScaleX = Globals.DEFAULT_SCALE;
+
+    /**
+     * Stores the dfeault scale y factor.
+     */
+    private double mScaleY = Globals.DEFAULT_SCALE;
+
+    /**
+     * Stores the viewport center.
+     */
+    private Point2D mCenter = null;
+
+    private double mRotate = Globals.DEFAULT_ROTATE;
+
     private Canvas() {
     }
 
@@ -93,43 +116,6 @@ public class Canvas implements Plugable, SetUp, DrawOrWrite,
         return new Canvas();
     }
 
-  
-    /**
-     * Gets the world units.
-     *
-     * @return The drawing units.
-     */
-    protected final Length getWorldUnits() {
-        return this.mWorldUnits;
-    }
-
-    /**
-     * Gets the drawing units.
-     *
-     * @return The drawing units.
-     */
-    protected final Length getDrawingUnits() {
-        return this.mDrawingUnits;
-    }
-
-    /**
-     * Gets the stroke units.
-     *
-     * @return The stroke units.
-     */
-    protected final Length getStrokeUnits() {
-        return this.mStrokeUnits;
-    }
-
-    /**
-     * Gets the angle units.
-     *
-     * @return The angle units.
-     */
-    protected final Angle getAngleUnits() {
-        return this.mAngleUnits;
-    }
-
     /**
      * Writes the rendering result into the given output stream.
      *
@@ -139,8 +125,8 @@ public class Canvas implements Plugable, SetUp, DrawOrWrite,
      */
     @Override
     public void write(OutputStream out) throws IOException {
-        this.mDrawablePlugin.tearDown();
-        this.mDrawablePlugin.write(out);
+        this.mOutputFormat.write(out);
+        this.mOutputFormat.tearDown();
     }
 
     @Override
@@ -150,15 +136,29 @@ public class Canvas implements Plugable, SetUp, DrawOrWrite,
     }
 
     @Override
+    public final Length getWorldUnits() {
+        return this.mWorldUnits;
+    }
+
+    @Override
     public final SetUp drawingUnits(Length drawingUnits) {
         this.mDrawingUnits = drawingUnits;
         return this;
     }
 
     @Override
+    public final Length getDrawingUnits() {
+        return this.mDrawingUnits;
+    }
+
+    @Override
     public final SetUp strokeUnits(Length strokeUnits) {
         this.mStrokeUnits = strokeUnits;
         return this;
+    }
+
+    public final Length getStrokeUnits() {
+        return this.mStrokeUnits;
     }
 
     @Override
@@ -168,8 +168,43 @@ public class Canvas implements Plugable, SetUp, DrawOrWrite,
     }
 
     @Override
+    public final Angle getAngleUnits() {
+        return this.mAngleUnits;
+    }
+
+    @Override
+    public final Shape getShape() {
+        return this.mViewportShape;
+    }
+
+    @Override
+    public final Point2D getCenter() {
+        if (this.mCenter == null) {
+            Rectangle2D bounds = getShape().getBounds2D();
+            return new Point2D.Double(bounds.getWidth() / 2d / getScaleX(), bounds.getHeight() / 2d / getScaleY());
+        } else {
+            return this.mCenter;
+        }
+    }
+
+    @Override
+    public final double getScaleX() {
+        return this.mScaleX;
+    }
+
+    @Override
+    public final double getScaleY() {
+        return this.mScaleY;
+    }
+
+    @Override
+    public final double getRotate() {
+        return this.mRotate;
+    }
+
+    @Override
     public SetAreaOfInterestOrDrawOrWrite size(double width, double height) {
-       this.mAreaOfInterest.setShape(new Rectangle2D.Double(width,height ));
+        this.mViewportShape = new Rectangle2D.Double(0, 0, width, height);
         return this;
     }
 
@@ -189,81 +224,58 @@ public class Canvas implements Plugable, SetUp, DrawOrWrite,
      */
     public SetAreaOfInterestOrDrawOrWrite scale(double scaleXFactor,
             double scaleYFactor) {
-        this.mTransformHelper.setScaleX(scaleXFactor);
-        this.mTransformHelper.setScaleY(scaleYFactor);
+        this.mScaleX = scaleXFactor;;
+        this.mScaleY = scaleYFactor;
         return this;
     }
 
     @Override
     public SetAreaOfInterestOrDrawOrWrite center(double centerX, double centerY) {
-        this.mTransformHelper.setX(centerX);
-        this.mTransformHelper.setY(centerY);
+        this.mCenter = new Point2D.Double(centerX, centerY);
         return this;
     }
 
     @Override
     public SetAreaOfInterestOrDrawOrWrite rotate(double rotation) {
-        this.mTransformHelper.setRotate(rotation);
+        this.mRotate = getAngleUnits().convert(rotation);
         return this;
     }
 
     @Override
     public <T extends Outputable> SetUp outputFormat(Class<T> outputFormat) {
-        this.mDrawablePlugin = Util.get().getPlugin(outputFormat);
+        this.mOutputFormat = Util.get().getPlugin(outputFormat);
         return this;
     }
 
-    void initializeOuputFormat() {
-    }
-
- 
-
     @Override
     public DrawOrWrite draw(
-            Buildable<?, ? extends Style, ?> builder) {
+            Buildable builder) {
         /* check wethter the ouptputable format has been initialized */
-        if (!this.mDrawablePlugin.isInitialized()) {
+        if (!this.mOutputFormat.isInitialized()) {
             /* Initialize the global transformation */
-            this.mGlobalTransform = this.mTranformUtil.getGlobalTransform(this.mAreaOfInterest, getWorldUnits(),
-                    getDrawingUnits());
-            /* setup the ouptut format */
-            this.mDrawablePlugin.setUp(getWidth(), getHeight(),
-                    getWorldUnits(), getDrawingUnits(), getStrokeUnits(),
-                    getGlobalTransform());
+            this.mOutputFormat.setUp(this.getShape(),
+                    this.getWorldUnits(), this.getDrawingUnits(), getStrokeUnits(), getAngleUnits(),
+                    new TransformUtil().getGlobalTransform(this));
         }
-        /* Shape */
-        /* iterate over all primitives */
-        /*   if (this.mShape != null) {
-         if (primitive.getAnchorX() != null && primitive.getAnchorY() != null) {
-         try {
-         primitive.getPoints().clear();
-         Point2D.Double point = getAnchorPoint(primitive, this.mShape);
-         primitive.addPoint(mWidth, mWidth);
-         } catch (NoninvertibleTransformException ex) {
-         Logger.getLogger(Canvas.class.getName()).log(Level.SEVERE, null, ex);
-         }
-         }
-         } */
 
         /* only in the case the primitive is visible */
-        if (builder.getPrimitive().getStyle().isVisible()) {
+        if (builder.getStyle().isVisible()) {
             /* perform setup tasks */
-            this.mDrawablePlugin.before();
+            this.mOutputFormat.before();
             /* process in the case it is a point based primitive */
-            if (builder.getPrimitive().isPoint()) {
-
-                for (Object point : builder.getPrimitive().getPoints()) {
+            if (builder.isPoint()) {
+                for (Object point : builder.getPoints()) {
                     if (point instanceof Point2D) {
                         /* create the individual transformation */
-                        this.mShape = draw((Point2D) point, builder.getPrimitive());
+                        this.mLastDrawnShape = draw((Point2D) point, builder);
                     } else {
                     }
                 }
             } else {
-                this.mShape = draw(null, builder.getPrimitive());
+                this.mLastDrawnShape = draw(null, builder);
             }
             /* perform the cleanup tasks */
-            this.mDrawablePlugin.after();
+            this.mOutputFormat.after();
         }
 
         return this;
@@ -276,35 +288,22 @@ public class Canvas implements Plugable, SetUp, DrawOrWrite,
      * @param <>> The style of the primitive to be drawn.
      * @param primitive The primitiveto be drawn.
      */
-    final <T, S extends Style<S>> Shape draw(Point2D point,
+    final Shape draw(Point2D point,
             Buildable builder) {
         /* process the shape primitive */
-        if (builder instanceof ShapeBuilder) {
-            return this.mDrawablePlugin.drawShape((Shape) primitive.getPrimitive(),
-                    point, primitive.getIndividualTransform(),
-                    (ShapeBuilder) primitive.getStyle());
+        if (builder instanceof ShapeDrawable) {
+            return this.mOutputFormat.drawShape(
+                    point, (ShapeDrawable) builder);
             /* process the image primitive */
-        } else if (primitive instanceof ImageBuilder) {
-            return this.mDrawablePlugin.drawImage( point,() primitive.getIndividualTransform(),
-                    (ImageStyle) primitive.getStyle());
+        } else if (builder instanceof ImageDrawable) {
+            return this.mOutputFormat.drawImage(point, (ImageDrawable) builder);
             /* process the text primitive */
-        } else if (primitive instanceof TextBuilder) {
-            return this.mDrawablePlugin.drawText(
-                    point, primitive.getIndividualTransform(),
-                    (TextStyle) primitive.getStyle());
+        } else if (builder instanceof TextDrawable) {
+            return this.mOutputFormat.drawText(point, (TextDrawable) builder);
         } else {
-            throw new java.lang.IllegalArgumentException(primitive.getClass()
+            throw new java.lang.IllegalArgumentException(builder.getClass()
                     .toString());
         }
-    }
-
-    /**
-     * Gets a cloned  global transformation.
-     *
-     * @return The clonded global transformation.
-     */
-    final AffineTransform getGlobalTransform() {
-        return (AffineTransform) this.mGlobalTransform.clone();
     }
 
     @Override
@@ -312,43 +311,4 @@ public class Canvas implements Plugable, SetUp, DrawOrWrite,
         write(Files.newOutputStream(out));
     }
 
-    /*  Point2D.Double getAnchorPoint(Primitive primitive, Shape shape) throws NoninvertibleTransformException {
-     if (primitive.getAnchorX() != null && primitive.getAnchorY() != null) {
-     double x = 0;
-     double y = 0;
-     switch (primitive.getAnchorX()) {
-     case MinX:
-     shape.getBounds2D().getMinX();
-     break;
-     case MaxX:
-     shape.getBounds2D().getMaxX();
-     break;
-     case CenterX:
-     shape.getBounds2D().getCenterX();
-     break;
-     default:
-     x = 0;
-     break;
-     }
-     switch (primitive.getAnchorY()) {
-     case MinY:
-     shape.getBounds2D().getMinY();
-     break;
-     case MaxY:
-     shape.getBounds2D().getMaxY();
-     break;
-     case CenterY:
-     shape.getBounds2D().getCenterY();
-     break;
-     default:
-     x = 0;
-     break;
-     }
-     Point2D.Double point = null;
-     getGlobalTransform().createInverse().transform(new Point2D.Double(x, y), point);
-     return point;
-     } else {
-     return null;
-     }
-     } */
 }
