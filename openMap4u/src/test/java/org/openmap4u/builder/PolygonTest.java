@@ -77,7 +77,7 @@ public class PolygonTest extends AbstractShapeBuilderTest<Polygon> {
     @Override
     protected Polygon getBuilder() {
         Polygon shapeBuilder = this.getDefaultOpenMap4u().getBuilder(Polygon.class);
-        shapeBuilder.moveTo(-.5, -.5).quadTo(1, .25, 0, .5).bezierTo(-.5, 0.5, -1, .25, -.5, -.5).moveTo(-.25, -.25).lineTo(.25, -.25).lineTo(0, .25).lineTo(-.25, -.25);
+        shapeBuilder.moveTo(-.5, -.5).quadTo(-.5, .5, 0,0.5).bezierTo(.5, 0.5, .5, 0, .5, -.5).lineTo(-.5,-.5).moveTo(-.25, -.25).lineTo(.25, -.25).lineTo(0, .25).lineTo(-.25, -.25);
         return shapeBuilder;
     }
 

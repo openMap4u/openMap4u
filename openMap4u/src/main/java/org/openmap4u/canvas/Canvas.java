@@ -308,7 +308,8 @@ public class Canvas implements Plugable, SetUp, DrawOrWrite,
 
     @Override
     public void write(Path out) throws IOException {
-        write(Files.newOutputStream(out));
+        System.out.println(out);
+         write(Files.newOutputStream(out));
     }
 
 }

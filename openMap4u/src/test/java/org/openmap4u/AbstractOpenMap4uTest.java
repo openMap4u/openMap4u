@@ -5,6 +5,8 @@
 package org.openmap4u;
 
 import com.google.common.collect.Lists;
+
+import java.awt.*;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -16,6 +18,7 @@ import java.util.List;
 import org.junit.runner.RunWith;
 import org.openmap4u.canvas.SetAreaOfInterestOrDrawOrWrite;
 import org.openmap4u.format.Outputable;
+import org.openmap4u.plugin.builder.symbol.Rectangle;
 import org.openmap4u.plugin.format.graphics2d.Png;
 import org.openmap4u.plugin.format.svg.Svg;
 import org.openmap4u.unit.Length;
@@ -87,8 +90,10 @@ public abstract class AbstractOpenMap4uTest {
      */
     final static Path getPath(List<String> entries) {
         entries.add(0, OUTPUT);
+          entries.add(0, TARGET);
+      
         String[] entr = entries.toArray(new String[entries.size()]);
-        return FileSystems.getDefault().getPath(TARGET, entr);
+        return FileSystems.getDefault().getPath(".", entr);
     }
 
     protected final static Path getPath(String... entries) {
@@ -98,6 +103,22 @@ public abstract class AbstractOpenMap4uTest {
     protected final Path getPackagePath(String filename) {
         ArrayList<String> entries = Lists.newArrayList(this.getClass().getPackage().getName().split("\\."));
         entries.add(filename);
-        return getPath(entries);
+         return getPath(entries);
     }
+
+
+    /**
+     * Creates a quadratic point marker.
+     * @param x The x coordinate.
+     * @param y The y coordinate.
+     * @param strokeColor The stroke color.
+     * @param fillColor The fill color.
+     * @return The quadratic point marker.
+     */
+    protected Rectangle getPointMarker(double x, double y,Paint strokeColor, Paint fillColor) {
+        return this.getDefaultOpenMap4u().getBuilder(Rectangle.class).color(strokeColor).fill(fillColor).setSize(.25).point(x,y);
+    }
+
+
+
 }

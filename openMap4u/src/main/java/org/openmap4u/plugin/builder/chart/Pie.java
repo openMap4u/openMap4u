@@ -9,8 +9,6 @@ import java.awt.Paint;
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Arc2D;
-import java.awt.geom.Area;
-import java.awt.geom.Ellipse2D;
 import java.awt.geom.Path2D;
 
 import org.openmap4u.builder.ShapeBuilder;
@@ -34,27 +32,22 @@ public class Pie extends ShapeBuilder<Pie> {
     private double mInnerRadius = Double.NaN;
 
     /**
-     * Stores the start angle in degrees.
+     * Stores the start angle in degree.
      */
     private double mStartAngle = 0d;
 
     /**
      * Stores the end angle in degrees.
      */
-    private double mEndAngle = 360d;
-
-    /**
-     * Stores the angle unit.
-     */
-    private Angle mAngularUnit = Angle.PERCENT;
+    private double mExtent = Math.PI * 2;
 
     /**
      * Gets the end angle in radiant.
      *
      * @return The end andgle in radiant.
      */
-    double getEnd() {
-        return this.mEndAngle;
+    double getExtent() {
+        return this.mExtent;
     }
 
     /**
@@ -119,23 +112,12 @@ public class Pie extends ShapeBuilder<Pie> {
     }
 
     public Pie start(double startAngle) {
-        this.mStartAngle = getAngularUnit().convert(startAngle, Angle.DEGREE);
+        this.mStartAngle = this.getTransform().getAngleUnits().convert(startAngle);
         return this;
     }
 
     public Pie end(double endAngle) {
-        this.mEndAngle = getAngularUnit().convert(endAngle, Angle.DEGREE);
-        return this;
-    }
-
-    /**
-     * Sets the unit that will be used.
-     *
-     * @param angularUnit The unit to be used.
-     * @return
-     */
-    public Pie unit(Angle angularUnit) {
-        this.mAngularUnit = angularUnit;
+        this.mExtent = this.getTransform().getAngleUnits().convert(endAngle) - getStart();
         return this;
     }
 
@@ -148,31 +130,20 @@ public class Pie extends ShapeBuilder<Pie> {
      */
     public Pie add(double value) {
         /* add the value */
-        this.mEndAngle = this.getStart() + getAngularUnit().convert(value, Angle.DEGREE);
+        this.mExtent = this.getTransform().getAngleUnits().convert(value);
         return this;
     }
 
-    /**
-     * Gets the units.
-     *
-     * @return The units.
-     */
-    Angle getAngularUnit() {
-        return this.mAngularUnit;
-    }
-
     @Override
-    public Shape  getShape() {
-        /* first reset the path */
-        resetPath();
+    public Shape getShape() {
         /* determine wheter it is a pie or a donut */
         if (Double.isNaN(getInnerRadius())) {
-            super.shape(getArc(getOuterRadius(), getStart(), getEnd(), Arc2D.PIE));
+            super.shape(getArc(getOuterRadius(), getStart(), getExtent(), Arc2D.PIE));
         } else {
-            super.shape(new Area(getArc(getOuterRadius(), getStart(), getEnd(), Arc2D.PIE))).subtract(new Ellipse2D.Double(-getInnerRadius() / 2, -getInnerRadius() / 2, getInnerRadius(), getInnerRadius()));
+            super.shape(getArc(getOuterRadius(), getStart(), getExtent(), Arc2D.PIE)).subtract(getArc(getInnerRadius(), getStart(), getExtent(), Arc2D.PIE));
         }
         /* set the new start angle to the last en angle */
-        this.mStartAngle = getEnd();
+        this.mStartAngle = getStart() + getExtent();
         return super.getShape();
     }
 
@@ -180,15 +151,19 @@ public class Pie extends ShapeBuilder<Pie> {
      * Gets an arc shape.
      *
      * @param radius The radius of the arc.
-     * @param start The start angle in degrees.
-     * @param end The end angle in degrees.
+     * @param start The start angle in radiand.
+     * @param end The end angle in radiand.
      * @param arcType The arc type.
      * @return The arc shape.
      */
-    Shape getArc(double radius, double start, double end, int arcType) {
-        Path2D.Double arc = new Path2D.Double(new Arc2D.Double(-radius, -radius, radius * 2d, radius * 2d, getStart(), end - start, arcType));
+    Shape getArc(double radius, double start, double extent, int arcType) {
+        Path2D.Double arc = new Path2D.Double(new Arc2D.Double(-radius, -radius, radius * 2d, radius * 2d, convert2Deg(start), convert2Deg(extent), arcType));
         arc.transform(new AffineTransform(1, 0, 0, -1, 0, 0));
         return arc;
+    }
+
+    double convert2Deg(double radiant) {
+        return this.getTransform().getAngleUnits().convert(radiant, Angle.DEGREE);
     }
 
     /**

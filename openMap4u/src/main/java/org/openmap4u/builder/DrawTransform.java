@@ -6,14 +6,19 @@
 package org.openmap4u.builder;
 
 import java.awt.geom.Point2D;
+import jdk.nashorn.internal.objects.Global;
+import org.openmap4u.Globals;
 import org.openmap4u.commons.DrawableTransformable;
 import org.openmap4u.commons.Position;
- 
+import org.openmap4u.unit.Angle;
+
 /**
  *
  * @author Michael Hadrbolec
  */
-final class DrawTransform  implements DrawableTransformable {
+final class DrawTransform implements DrawableTransformable {
+
+    private Angle mAngleUnits = Globals.DEFAULT_ANGLE_UNIT;
 
     private double mRotate = 0;
 
@@ -79,6 +84,15 @@ final class DrawTransform  implements DrawableTransformable {
     @Override
     public void setAlign(Position align) {
         this.mAlign = align;
+    }
+
+    @Override
+    public Angle getAngleUnits() {
+        return mAngleUnits;
+    }
+
+    public void setAngleUnits(Angle angleUnits) {
+        this.mAngleUnits = angleUnits;
     }
 
 }

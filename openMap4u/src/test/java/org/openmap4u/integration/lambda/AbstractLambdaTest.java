@@ -18,9 +18,7 @@ import org.openmap4u.commons.Position;
 import org.openmap4u.plugin.builder.chart.Bar;
 import org.openmap4u.plugin.builder.symbol.Circle;
 import org.openmap4u.plugin.builder.symbol.Rectangle;
-import org.openmap4u.plugin.format.svg.Svg;
 import org.openmap4u.unit.Angle;
-import org.openmap4u.unit.Length;
 
 /**
  *
@@ -33,7 +31,7 @@ public class AbstractLambdaTest {
     }
 
     Stream<Double> getPieData() {
-        return Stream.of(.1, .2, 0.3, 0.4);
+        return Stream.of(36d, 2*36d, 3*36d, 4*36d);
     }
 
     @Test
@@ -77,7 +75,7 @@ public class AbstractLambdaTest {
         /* 2. get an canvas and specify the size which you want to draw */
         DrawOrWrite draw = oM4u.getCanvas().size(10, 8);
         /* Draw the bars */
-        getData().map(value -> oM4u.getBuilder(Rectangle.class).fill(getColor()).point(value, 0.5).setSize(.5, Math.random() * 3 + 1).align(Position.CenterBottom)).forEach(primitive -> draw.draw(primitive));
+        getData().map(value -> oM4u.getBuilder(Bar.class).fill(getColor()).point(value, 0.5).setSize(.5, Math.random() * 3 + 1).align(Position.CenterBottom)).forEach(primitive -> draw.draw(primitive));
         /* persist your result */
         draw.write(FileSystems.getDefault().getPath("/temp", "openMap4uBarChart.png"));
     }
@@ -101,7 +99,7 @@ public class AbstractLambdaTest {
         /* 2. get an canvas and specify the size which you want to draw */
         DrawOrWrite draw = oM4u.getCanvas().size(10, 8);
         /* Draw the bars */
-        draw.draw(oM4u.getBuilder(Pie.class).point(5, 4).start(.05).end(.35).radius(2).fill(Color.GREEN));
+        draw.draw(oM4u.getBuilder(Pie.class).point(5, 4).unit(Angle.PERCENT).start(.20).end(0.75).radius(2).fill(Color.GREEN));
         /* persist your result */
         draw.write(FileSystems.getDefault().getPath("/temp", "openMap4uPieChart.png"));
     }
@@ -115,7 +113,7 @@ public class AbstractLambdaTest {
         /* Draw the bars */
         Pie pie = oM4u.getBuilder(Pie.class).point(5, 4).start(0).radius(2);
         /* Draw the pies */
-        getData().map(value -> pie.add(value * .1).transparence(1 / value / 10)).forEach(primitive -> draw.draw(primitive));
+        getPieData().map(value -> pie.add(value )).forEach(primitive -> draw.draw(primitive));
         /* persist your result */
         draw.write(FileSystems.getDefault().getPath("/temp", "openMap4uPieChart1.png"));
     }
@@ -127,9 +125,9 @@ public class AbstractLambdaTest {
         /* 2. get an canvas and specify the size which you want to draw */
         DrawOrWrite draw = oM4u.getCanvas().size(10, 8);
         /* Draw the bars */
-        Pie pie = oM4u.getBuilder(Pie.class).point(5, 4).start(0).radius(2);
+        Pie pie = oM4u.getBuilder(Pie.class).point(5, 4).start(0).radius(2).unit(Angle.DEGREE);
         /* Draw the pies */
-        getPieData().map(value -> pie.add(value).fill(getColor()).transparence(value).radius(value + 1)).forEach(primitive -> draw.draw(primitive));
+        getPieData().map(value -> pie.add(value).fill(getColor()).transparence(Math.random()).radius(2)).forEach(primitive -> draw.draw(primitive));
         /* persist your result */
         draw.write(FileSystems.getDefault().getPath("/temp", "openMap4uPieChart4.png"));
     }
@@ -199,7 +197,7 @@ public class AbstractLambdaTest {
         /* Draw the bars */
         Pie pie = oM4u.getBuilder(Pie.class).point(5, 4).start(0).radius(2);
         /* Draw the pies */
-        getPieData().map(value -> pie.add(value).fill(getColor()).transparence(value).outerRadius(value + 2).innerRadius(value + 1)).forEach(primitive -> draw.draw(primitive));
+        getPieData().map(value -> pie.add(value ).fill(getColor()).transparence(Math.random()).outerRadius(2+ Math.random()).innerRadius(1+ Math.random())).forEach(primitive -> draw.draw(primitive));
         /* persist your result */
         draw.write(FileSystems.getDefault().getPath("/temp", "openMap4uDonutChart2.png"));
     }

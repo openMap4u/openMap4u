@@ -6,6 +6,8 @@
 
 package org.openmap4u.commons;
 
+import org.openmap4u.unit.Angle;
+
 /**
  *
  * @author Michael Hadrbolec
@@ -30,7 +32,11 @@ public interface Transformable {
      */
     double getScaleY();
     
-    
+    /**
+     * Gets the angle units.
+     * @return The unge units.
+     */
+    Angle getAngleUnits();
       
       
 }

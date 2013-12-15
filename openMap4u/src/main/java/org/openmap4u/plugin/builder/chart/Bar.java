@@ -7,9 +7,10 @@ package org.openmap4u.plugin.builder.chart;
 
 import java.awt.Paint;
 import java.awt.Shape;
+import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
 import org.openmap4u.builder.ShapeBuilder;
- 
+
 /**
  *
  * @author zwotti
@@ -68,21 +69,20 @@ public class Bar extends ShapeBuilder<Bar> {
         this.mHeight = height;
         return this;
     }
-    
-  public Bar setSize(double width,double height) {
-      return width(width).height(height);
-     }
-    
-  
+
+    public Bar setSize(double width, double height) {
+        return width(width).height(height);
+    }
 
     @Override
     public Shape getShape() {
-        shape( new RoundRectangle2D.Double(-getWidth() / 2, -getHeight() / 2, getWidth(), getHeight(), getRadius(), getRadius()));
+        if (Double.isNaN(getRadius())) {
+            shape(new Rectangle2D.Double(-getWidth() / 2, -getHeight() / 2, getWidth(), getHeight()));
+        } else {
+            shape(new RoundRectangle2D.Double(-getWidth() / 2, -getHeight() / 2, getWidth(), getHeight(), getRadius(), getRadius()));
+        }
         return super.getShape();
     }
-    
-    
-    
 
     double getWidth() {
         return this.mWidth;

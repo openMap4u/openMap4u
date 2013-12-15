@@ -86,7 +86,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
     @SuppressWarnings("unchecked")
     protected B bezierTo(double cp1X, double cp1Y, double cp2X,
             double cp2Y, double toX, double toY) {
-        this.mPath.curveTo(cp1X, cp1Y, cp2X, cp2Y, toY, toY);
+        this.mPath.curveTo(cp1X, cp1Y, cp2X, cp2Y, toX, toY);
         return (B) this;
     }
 
@@ -138,24 +138,24 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      */
     @SuppressWarnings("unchecked")
     protected B quadTo(double cpX, double cpY, double toX, double toY) {
-        this.mPath.quadTo(cpX, cpY, toY, toY);
+        this.mPath.quadTo(cpX, cpY, toX, toY);
         return (B) this;
     }
 
     /**
      * Sets an awt shape geometry.
      *
-     * @param awtShape The awt shape geometry.
+     * @param shape The awt shape geometry.
      * @return The Shape itself (method chaining pattern).
      */
     @SuppressWarnings("unchecked")
-    protected B shape(java.awt.Shape awtShape) {
-        this.mPath.append(awtShape, true);
+    protected B shape(java.awt.Shape shape) {
+        this.mPath= new Path2D.Double(shape);
         return (B) this;
     }
 
-    Area getArea(java.awt.Shape shape) {
-        return new Area(shape);
+    Area getArea( ) {
+       return new Area(this.mPath);
     }
 
     /**
@@ -165,9 +165,9 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      * @return The builder itself (method chaining pattern).
      */
     protected B add(java.awt.Shape shape) {
-        Area area = getArea(getShape());
-        area.add(getArea(shape));
-        setShape(area);
+        Area area = getArea();
+        area.add(new Area(shape));
+        this.setShape(area);
         return (B) this;
     }
 
@@ -178,9 +178,9 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      * @return The builder itself (method chaining pattern).
      */
     protected B intersect(java.awt.Shape shape) {
-        Area area = getArea(getShape());
-        area.intersect(getArea(shape));
-        this.setShape(area);
+        Area area = getArea();
+        area.intersect(new Area(shape));
+        this.shape(area);
         return (B) this;
     }
 
@@ -191,11 +191,10 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      * @return The builder itself (method chaining pattern).
      */
     protected B subtract(java.awt.Shape shape) {
-        Area area = getArea(this.mPath);
-        area.subtract(getArea(shape));
-        this.mPath.reset();
-        this.mPath.append(area, false);
-        return (B) this;
+        Area area = getArea( );
+        area.subtract(new Area(shape));
+        this.shape(area);
+          return (B) this;
     }
 
     /**
@@ -205,9 +204,9 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      * @return The builder itself (method chaining pattern).
      */
     protected B exclusiveOr(java.awt.Shape shape) {
-        Area area = getArea(getShape());
-        area.exclusiveOr(getArea(shape));
-        setShape(area);
+        Area area = getArea( );
+        area.exclusiveOr(new Area(shape));
+        this.shape(area);
         return (B) this;
     }
 

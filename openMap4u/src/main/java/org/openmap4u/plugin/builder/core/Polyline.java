@@ -56,7 +56,7 @@ public final class Polyline  extends ShapeBuilder<Polyline >   {
      * @return The Polyline itself (method chaining pattern).
      */
     public Polyline quadTo(double cpX, double cpY, double toX, double toY) {
-        return super.quadTo(cpX, cpY, toY, toY);
+        return super.quadTo(cpX, cpY, toX, toY);
     }
 
     /**
@@ -78,7 +78,7 @@ public final class Polyline  extends ShapeBuilder<Polyline >   {
      */
     public Polyline bezierTo(double cp1X, double cp1Y, double cp2X,
             double cp2Y, double toX, double toY) {
-        return super.bezierTo(cp1X, cp1Y, cp2X, cp2Y, toY, toY);
+        return super.bezierTo(cp1X, cp1Y, cp2X, cp2Y, toX, toY);
     }
 
     /**

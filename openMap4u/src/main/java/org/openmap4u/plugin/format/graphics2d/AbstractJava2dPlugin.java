@@ -161,8 +161,8 @@ abstract class AbstractJava2dPlugin implements Outputable {
                     image.getTransform(),
                     new Rectangle2D.Double(0, 0,
                             img.getWidth(), img.getHeight()));
-            transform.scale(
-                    1 / this.mDrawingUnit2PixelFactor, -1 / this.mDrawingUnit2PixelFactor);
+            transform.concatenate(new AffineTransform(
+                    1 / this.mDrawingUnit2PixelFactor,0,0, -1 / this.mDrawingUnit2PixelFactor,0,img.getHeight()/this.mDrawingUnit2PixelFactor));
             this.mG2D.drawImage(img, transform, null);
             imageOutline = transform.createTransformedShape(new Rectangle2D.Double(0, 0, img.getWidth(), img.getHeight()));
         } catch (Exception e) {
@@ -185,7 +185,7 @@ abstract class AbstractJava2dPlugin implements Outputable {
         double scaleFactor = 1 / this.mDrawingUnit2PixelFactor;
         
         path.transform(new AffineTransform(scaleFactor, 0, 0, scaleFactor, 0, 0));
-        Polygon polygon = new Polygon().fill(text.getStyle().getFontColor()).color(null).transparence(text.getStyle().getAlpha()).align(text.getTransform().getAlign()).offset(text.getTransform().getOffset().getX(), text.getTransform().getOffset().getY()).rotate(text.getTransform().getRotate()).scale(text.getTransform().getScaleX(), text.getTransform().getScaleX()).shape(path);
+        Polygon polygon = new Polygon().fill(text.getStyle().getFontColor()).color(null).transparence(text.getStyle().getAlpha()).align(text.getTransform().getAlign()).offset(text.getTransform().getOffset().getX(), text.getTransform().getOffset().getY()).rotate(text.getTransform().getRotate()).scale(text.getTransform().getScaleX(), text.getTransform().getScaleY()).shape(path);
 
         //  Polygon polygon = new Polygon().fill(text.getStyle().getFontColor()).color(null).transparence(text.getStyle().getAlpha()).align(text.getTransform().getAlign()).offset(text.getTransform().getOffset().getX(), text.getTransform().getOffset().getY()).rotate(text.getTransform().getRotate()).scale(text.getTransform().getScaleX(), text.getTransform().getScaleX());
         return drawShape(point, polygon);

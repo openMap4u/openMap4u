@@ -16,23 +16,21 @@ import org.openmap4u.unit.Transparence;
  * All builders are derived from this base class.
  *
  * @author Michael Hadrbolec
-  * @param <S> The style type.
+ * @param <S> The style type.
  * @param <B> The builder type.
  */
 public class Buildable<S extends Styleable<S>, B extends Buildable<S, B>> implements Drawable<S>, Plugable {
 
+   
     /**
-     * Stores the angle units.
-     */
-    private Angle mAngleUnits = Angle.DEGREE;
-    
-      /**
      * Stores the transparence units.
      */
     private Transparence mTransparence = Transparence.PERCENT;
-    
-    private S mStyle = null;
 
+    /**
+     * Stores the style.
+     */
+    private S mStyle = null;
 
     /**
      * Stores the points.
@@ -53,7 +51,8 @@ public class Buildable<S extends Styleable<S>, B extends Buildable<S, B>> implem
      */
     private DrawTransform mTransform = new DrawTransform();
 
-    Buildable(){} 
+    Buildable() {
+    }
 
     /**
      * Sets whether the primitive is visible.
@@ -84,12 +83,13 @@ public class Buildable<S extends Styleable<S>, B extends Buildable<S, B>> implem
 
     /**
      * Sets the offset in darwing units.
+     *
      * @param offsetX The x offset in drawing units.
      * @param offsetY The y offset in drawing units.
      * @return The builder itself (method chaining pattern).
      */
     public final B offset(double offsetX, double offsetY) {
-        this.mTransform.setOffset(new Point2D.Double(offsetX,offsetY));
+        this.mTransform.setOffset(new Point2D.Double(offsetX, offsetY));
         return (B) this;
     }
 
@@ -98,7 +98,7 @@ public class Buildable<S extends Styleable<S>, B extends Buildable<S, B>> implem
     }
 
     public final B offsetY(double offsetY) {
-        return offset(this.mTransform.getOffset().getX(),offsetY);
+        return offset(this.mTransform.getOffset().getX(), offsetY);
     }
 
     public final B scale(double scaleFactor) {
@@ -121,8 +121,19 @@ public class Buildable<S extends Styleable<S>, B extends Buildable<S, B>> implem
         return (B) this;
     }
 
+    public final B unit(Angle angleUnits) {
+        this.mTransform.setAngleUnits( angleUnits);
+        return (B) this;
+    }
+    
+     
+    public final B unit(Transparence transparenceUnits) {
+        this.mTransparence= transparenceUnits;
+        return (B) this;
+    }
+
     public final B rotate(double angle) {
-        this.mTransform.setRotate(this.mAngleUnits.convert(angle));
+        this.mTransform.setRotate(this.mTransform.getAngleUnits().convert(angle));
         return (B) this;
     }
 
@@ -150,29 +161,28 @@ public class Buildable<S extends Styleable<S>, B extends Buildable<S, B>> implem
      *
      * @return The build (=resultin) primitive.
      */
-    
-
     @Override
     public final S getStyle() {
         return this.mStyle;
     }
-    
-     @Override
+
+    @Override
     public final void setStyle(S style) {
-         this.mStyle=style;
+        this.mStyle = style;
     }
 
     @Override
     public final DrawableTransformable getTransform() {
         return this.mTransform;
-     }
+    }
 
     /**
      * Wheter it is a point (=true) or not (=false).
-     * @return 
+     *
+     * @return
      */
     public boolean isPoint() {
-       return this.getPoints()!=null && this.getPoints().size()>0;
+        return this.getPoints() != null && this.getPoints().size() > 0;
     }
 
 }

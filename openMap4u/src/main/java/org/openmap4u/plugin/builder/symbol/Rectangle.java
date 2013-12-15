@@ -71,5 +71,7 @@ public final class Rectangle extends ShapeBuilder<Rectangle> {
     public Rectangle size(double strokeSize) {
         return super.size(strokeSize);
     }
+    
+    
 
 }

@@ -32,10 +32,10 @@ public class PieTest {
      */
     @Test
     public void testEnd() {
-        assertThat(pie.getAngularUnit(), is(Angle.PERCENT));
-        assertThat(pie.getEnd(), is(360d));
-        pie.end(.5);
-        assertThat(pie.getEnd(), is(180d));
+        assertThat(pie.getTransform().getAngleUnits(), is(Angle.DEGREE));
+        assertThat(pie.getExtent(), is(Math.PI*2));
+        pie.end(180);
+        assertThat(pie.getExtent(), is(Math.PI));
     }
 
     /**
@@ -43,10 +43,10 @@ public class PieTest {
      */
     @Test
     public void testStart() {
-        assertThat(pie.getAngularUnit(), is(Angle.PERCENT));
+        assertThat(pie.getTransform().getAngleUnits(), is(Angle.DEGREE));
         assertThat(pie.getStart(), is(0d));
-        pie.start(.25);
-        assertThat(pie.getStart(), is(90d));
+        pie.start(90);
+        assertThat(pie.getStart(), is(Math.PI/2d));
     }
 
     /**
@@ -122,9 +122,9 @@ public class PieTest {
     @Test
     public void testUnit() {
         pie.unit(Angle.DEGREE);
-        assertThat(pie.getAngularUnit(), is(Angle.DEGREE));
+        assertThat(pie.getTransform().getAngleUnits(), is(Angle.DEGREE));
         pie.unit(Angle.RADIANT);
-        assertThat(pie.getAngularUnit(), is(Angle.RADIANT));
+        assertThat(pie.getTransform().getAngleUnits(), is(Angle.RADIANT));
     }
 
     /**
@@ -132,11 +132,11 @@ public class PieTest {
      */
     @Test
     public void testAdd() {
-        pie.start(.25);
-        assertThat(pie.getStart(), is(90d));
-        assertThat(pie.getEnd(), is(360d));
-        pie.add(.5);
-        assertThat(pie.getEnd(), is(270d));
+        pie.start(90);
+        assertThat(pie.getStart(), is(Math.PI/2d));
+        assertThat(pie.getExtent(), is(2*Math.PI));
+        pie.add(45);
+        assertThat(pie.getExtent(), is(Math.PI*1/4));
     }
 
     /**
@@ -144,9 +144,9 @@ public class PieTest {
      */
     @Test
     public void testGetAngularUnit() {
-        assertThat(pie.getAngularUnit(), is(Angle.PERCENT));
-        pie.unit(Angle.DEGREE);
-        assertThat(pie.getAngularUnit(), is(Angle.DEGREE));
+        assertThat(pie.getTransform().getAngleUnits(), is(Angle.DEGREE));
+        pie.unit(Angle.PERCENT);
+        assertThat(pie.getTransform().getAngleUnits(), is(Angle.PERCENT));
     }
 
     /**
