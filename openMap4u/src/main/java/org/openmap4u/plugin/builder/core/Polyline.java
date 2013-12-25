@@ -30,7 +30,7 @@ public final class Polyline  extends ShapeBuilder<Polyline >   {
     }
 
     /**
-     * Draws a straight line from the last path point to the given point.
+     * Draws a straight line from the last path point (red) to the given point (blue). <img src="./doc-files/lineTo.png">
      * 
      * @param toX
      *            The x coordinate where to draw to.
@@ -42,19 +42,12 @@ public final class Polyline  extends ShapeBuilder<Polyline >   {
          return super.lineTo(toX, toY);
     }
 
+
     /**
-     * Sets a quadratic curve to the given point.
-     * 
-     * @param cpX
-     *            The x coordinate of the control point.
-     * @param cpY
-     *            The y coordinate of the control point.
-     * @param toX
-     *            The x coordinate.
-     * @param toY
-     *            The y coordinate.
-     * @return The Polyline itself (method chaining pattern).
+     * {@inheritDoc}
+     * @return 
      */
+    @Override
     public Polyline quadTo(double cpX, double cpY, double toX, double toY) {
         return super.quadTo(cpX, cpY, toX, toY);
     }

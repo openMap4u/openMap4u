@@ -123,10 +123,11 @@ public class Svg implements Outputable {
      * @return The resulting affine transformation.
      */
     AffineTransform getTransform(Point2D point, DrawableTransformable individual, Shape shape) {
-        return this.mTransformUtil.transform(getGlobalTransform(), point, 1,1,individual, shape);
+        return this.mTransformUtil.transform(getGlobalTransform(), point, 1, 1, individual, shape);
     }
 
-    final AffineTransform getGlobalTransform() {
+    @Override
+    public final AffineTransform getGlobalTransform() {
         return (AffineTransform) this.mGlobalTransform.clone();
     }
 
@@ -303,6 +304,8 @@ public class Svg implements Outputable {
                     e);
         }
     }
+
+    
 
     @Override
     public void before() {

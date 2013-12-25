@@ -25,17 +25,21 @@ package org.openmap4u.canvas;
  */
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.NoninvertibleTransformException;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.openmap4u.commons.AreaOfInterestTransformable;
 import org.openmap4u.Globals;
 import org.openmap4u.builder.Buildable;
 import org.openmap4u.commons.Plugable;
+import org.openmap4u.commons.Position;
 import org.openmap4u.commons.TransformUtil;
 import org.openmap4u.commons.Util;
 import org.openmap4u.format.Outputable;
@@ -60,8 +64,8 @@ public class Canvas implements Plugable, SetUp, DrawOrWrite,
      */
     public static final String PLUGIN_NAME = "DrawPlugin";
     private Outputable mOutputFormat = new Png();
-    private Shape mLastDrawnShape = new Rectangle2D.Double();
-
+     private     Shape previousDrawnShape = new Rectangle2D.Double();
+   
     /**
      * Stores the world units.
      */
@@ -263,16 +267,22 @@ public class Canvas implements Plugable, SetUp, DrawOrWrite,
             /* perform setup tasks */
             this.mOutputFormat.before();
             /* process in the case it is a point based primitive */
-            if (builder.isPoint()) {
+              if (builder.isPoint()) {
                 for (Object point : builder.getPoints()) {
-                    if (point instanceof Point2D) {
+                      if (point instanceof Point2D) {
                         /* create the individual transformation */
-                        this.mLastDrawnShape = draw((Point2D) point, builder);
-                    } else {
+                        previousDrawnShape = draw((Point2D) point, builder, previousDrawnShape);
+                    } else if (point instanceof Position) {
+                          try {
+                              System.out.println( previousDrawnShape);
+                              previousDrawnShape = draw(new TransformUtil().transform((Position)point, previousDrawnShape, this.mOutputFormat.getGlobalTransform()),builder,previousDrawnShape);
+                          } catch (NoninvertibleTransformException ex) {
+                              Logger.getLogger(Canvas.class.getName()).log(Level.SEVERE, null, ex);
+                          }
                     }
                 }
             } else {
-                this.mLastDrawnShape = draw(null, builder);
+                previousDrawnShape = draw(null, builder, previousDrawnShape);
             }
             /* perform the cleanup tasks */
             this.mOutputFormat.after();
@@ -284,32 +294,37 @@ public class Canvas implements Plugable, SetUp, DrawOrWrite,
     /**
      * Draws the primitive.
      *
-     * @param <>> The type of the primitive.
-     * @param <>> The style of the primitive to be drawn.
-     * @param primitive The primitiveto be drawn.
+     * @param point The point (optional) if it is a point.
+     * @param builder The builder to draw.
+     * @param previousDrawnShape The previous drawn shape.
      */
     final Shape draw(Point2D point,
-            Buildable builder) {
+            Buildable builder, Shape previousDrawnShape) {
+        Shape drawnShape = null;
+        builder.setUp(this.previousDrawnShape);
         /* process the shape primitive */
         if (builder instanceof ShapeDrawable) {
-            return this.mOutputFormat.drawShape(
+            drawnShape = this.mOutputFormat.drawShape(
                     point, (ShapeDrawable) builder);
             /* process the image primitive */
         } else if (builder instanceof ImageDrawable) {
-            return this.mOutputFormat.drawImage(point, (ImageDrawable) builder);
+            drawnShape = this.mOutputFormat.drawImage(point, (ImageDrawable) builder);
             /* process the text primitive */
         } else if (builder instanceof TextDrawable) {
-            return this.mOutputFormat.drawText(point, (TextDrawable) builder);
+            drawnShape = this.mOutputFormat.drawText(point, (TextDrawable) builder);
         } else {
             throw new java.lang.IllegalArgumentException(builder.getClass()
                     .toString());
         }
+        /* celanup */
+        builder.tearDown();
+        return drawnShape;
     }
 
     @Override
     public void write(Path out) throws IOException {
         System.out.println(out);
-         write(Files.newOutputStream(out));
+        write(Files.newOutputStream(out));
     }
 
 }

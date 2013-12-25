@@ -5,13 +5,7 @@
  */
 package org.openmap4u.primitive;
 
-import java.util.List;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Point2D;
-import java.util.Set;
 import org.openmap4u.commons.DrawableTransformable;
-import org.openmap4u.commons.Position;
-import org.openmap4u.interact.Interactable;
 import org.openmap4u.style.Styleable;
 
 /**
@@ -20,7 +14,8 @@ import org.openmap4u.style.Styleable;
  * @param <S> The style type for the drawable.
  */
 public interface Drawable<S extends Styleable<S>>   {
-
+    
+  
     
     /**
      * Gets the style.
@@ -40,5 +35,7 @@ public interface Drawable<S extends Styleable<S>>   {
      * @return The individual transformation parameters.
      */ 
     DrawableTransformable getTransform();
+    
+ 
 
 }

@@ -109,7 +109,7 @@ abstract class AbstractJava2dPlugin implements Outputable {
      * @return The resulting affine transformation.
      */
     AffineTransform getTransform(Point2D point, DrawableTransformable individual, Shape shape) {
-        AffineTransform global = getGlobalTransformation();
+        AffineTransform global = getGlobalTransform();
         return this.mTransformUtil.transform(global, point, 1 / global.getScaleX()
                 * this.mDrawingUnit2PixelFactor, -1 / global.getScaleY()
                 * this.mDrawingUnit2PixelFactor, individual, shape);
@@ -287,7 +287,8 @@ abstract class AbstractJava2dPlugin implements Outputable {
      *
      * @return The cloned global affine transformation.
      */
-    final AffineTransform getGlobalTransformation() {
+    @Override
+    public final AffineTransform getGlobalTransform() {
         return (AffineTransform) this.mGlobalTransform.clone();
     }
     

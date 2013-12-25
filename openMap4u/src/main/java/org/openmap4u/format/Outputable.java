@@ -7,37 +7,30 @@ package org.openmap4u.format;
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.nio.file.Path;
 
-import javax.activation.MimeType;
-
-import org.openmap4u.commons.BeforeAfter;
 import org.openmap4u.commons.Plugable;
 import org.openmap4u.primitive.ImageDrawable;
 import org.openmap4u.primitive.ShapeDrawable;
 import org.openmap4u.primitive.TextDrawable;
-import org.openmap4u.style.ImageStyle;
-import org.openmap4u.style.ShapeStyle;
-import org.openmap4u.style.TextStyle;
 import org.openmap4u.unit.Angle;
 import org.openmap4u.unit.Length;
 
 /**
- * This interface has to be implemented for every output format.
- *
+ * This interface has to be implemented for every output format.<br/>
+ * <img src="./doc-files/outputable.png"><br/>
+  *
  * @author Michael Hadrbolec
  */
-public interface Outputable extends Plugable, BeforeAfter {
+public interface Outputable extends Plugable {
 
     /**
      * Draws a shape (=vector). After drawing the the primitive the after method
      * is called.
      *
      * @param point
-      * @param shape The shape.
+     * @param shape The shape.
      * @return The bounds of the shape primitive.
      */
     Shape drawShape(Point2D point,
@@ -48,7 +41,7 @@ public interface Outputable extends Plugable, BeforeAfter {
      * called.
      *
      * @param point
-      * @param image The image.
+     * @param image The image.
      * @return The bounds of the image primitive.
      */
     Shape drawImage(Point2D point, ImageDrawable image);
@@ -70,6 +63,7 @@ public interface Outputable extends Plugable, BeforeAfter {
      * @param worldUnits The world units.
      * @param drawingUnits The drawing units.
      * @param strokeUnits The stroke units.
+     * @param angleUnits The angle units.
      * @param globalTransform The global transformation.
      */
     void setUp(Shape shape, Length worldUnits,
@@ -77,17 +71,26 @@ public interface Outputable extends Plugable, BeforeAfter {
             AffineTransform globalTransform);
 
     /**
-     * Is called before each primitive is drawn.
+     * Gets the global transformation from world units into ouputformat units.
+     *
+     * @return The global transformation from world units into ouputformat
+     * units.
+     */
+    AffineTransform getGlobalTransform();
+
+    /**
+     * Is called before drawing each primitive (eg. a shape, or a text or an image).
      */
     void before();
 
     /**
-     * Is called after each primitive is drawn.
+     * Is called after drawing each primitive (eg. a shape, or a text or an image).
      */
     void after();
 
     /**
-     * Is calles only once after everithing is drawn, and before the result
+     * Is calles only once after everything is drawn, and the result is written
+     * into the given output stream. It is used for cleanup.
      */
     void tearDown();
 
@@ -107,7 +110,4 @@ public interface Outputable extends Plugable, BeforeAfter {
      */
     boolean isInitialized();
 
-
-  
-  
 }

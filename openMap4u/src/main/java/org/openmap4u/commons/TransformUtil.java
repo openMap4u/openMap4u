@@ -101,7 +101,7 @@ public class TransformUtil {
         return center - extent / 2d / scaleFactor;
     }
 
-    public final AffineTransform transform(AffineTransform globalTransform, Point2D point,double scaleX, double scaleY, DrawableTransformable individualTransform, Shape shape) {
+    public final AffineTransform transform(AffineTransform globalTransform, Point2D point, double scaleX, double scaleY, DrawableTransformable individualTransform, Shape shape) {
         if (point != null) {
             /* translate to the given point in world units */
             globalTransform.translate(point.getX(), point.getY());
@@ -117,7 +117,7 @@ public class TransformUtil {
      * Gets the global transformation.
      *
      * @param areaOfInterest The area of interest.
-      * @return The global transform.
+     * @return The global transform.
      */
     public AffineTransform getGlobalTransform(AreaOfInterestTransformable areaOfInterest) {
         AffineTransform global = new AffineTransform();
@@ -127,25 +127,39 @@ public class TransformUtil {
         /* perform the translation */
         Rectangle2D bounds = areaOfInterest.getShape().getBounds2D();
         /* set the center in the case it is null */
-        
-        
-        if (areaOfInterest.getCenter()!=null) {
-        global.translate(
-                -getGlobalTransformTranslate(areaOfInterest.getCenter().getX(),
-                        areaOfInterest.getDrawingUnits().convert(bounds.getWidth(),areaOfInterest.getWorldUnits()),
-                        areaOfInterest.getScaleX()),
-                -getGlobalTransformTranslate(areaOfInterest.getCenter().getY(),
-                        areaOfInterest.getDrawingUnits().convert(bounds.getHeight(), areaOfInterest.getWorldUnits()),
-                        areaOfInterest.getScaleY()));
+
+        if (areaOfInterest.getCenter() != null) {
+            global.translate(
+                    -getGlobalTransformTranslate(areaOfInterest.getCenter().getX(),
+                            areaOfInterest.getDrawingUnits().convert(bounds.getWidth(), areaOfInterest.getWorldUnits()),
+                            areaOfInterest.getScaleX()),
+                    -getGlobalTransformTranslate(areaOfInterest.getCenter().getY(),
+                            areaOfInterest.getDrawingUnits().convert(bounds.getHeight(), areaOfInterest.getWorldUnits()),
+                            areaOfInterest.getScaleY()));
         }
         /* perform the rotation */
         if (isRotate(areaOfInterest.getRotate())) {
             global.rotate(Math.toRadians(areaOfInterest.getRotate()),
                     areaOfInterest.getWorldUnits().convert(areaOfInterest.getCenter().getX(), areaOfInterest.getDrawingUnits()),
-                   areaOfInterest.getWorldUnits().convert(areaOfInterest.getCenter().getY(), areaOfInterest.getDrawingUnits()));
+                    areaOfInterest.getWorldUnits().convert(areaOfInterest.getCenter().getY(), areaOfInterest.getDrawingUnits()));
 
         }
         return global;
+    }
+
+    /**
+     * Transforms the position of the given shape back into a point in world
+     * units.
+     *
+     * @param position The position.
+     * @param shape The shape whose position should be retrieved.
+     * @param globalTransform The global transformation.
+     * @return The position in world units.
+     * @throws NoninvertibleTransformException Is thrown in the case the global
+     * transformation cannot be inverted.
+     */
+    public Point2D transform(Position position, Shape shape, AffineTransform globalTransform) throws NoninvertibleTransformException {
+        return inverseTransform(getPoint(position, shape), globalTransform);
     }
 
 }

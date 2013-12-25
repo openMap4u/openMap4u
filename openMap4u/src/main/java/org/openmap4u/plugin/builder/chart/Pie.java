@@ -9,6 +9,7 @@ import java.awt.Paint;
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Arc2D;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.Path2D;
 
 import org.openmap4u.builder.ShapeBuilder;
@@ -39,7 +40,7 @@ public class Pie extends ShapeBuilder<Pie> {
     /**
      * Stores the end angle in degrees.
      */
-    private double mExtent = Math.PI * 2;
+    private double mExtent = 0d;
 
     /**
      * Gets the end angle in radiant.
@@ -140,10 +141,8 @@ public class Pie extends ShapeBuilder<Pie> {
         if (Double.isNaN(getInnerRadius())) {
             super.shape(getArc(getOuterRadius(), getStart(), getExtent(), Arc2D.PIE));
         } else {
-            super.shape(getArc(getOuterRadius(), getStart(), getExtent(), Arc2D.PIE)).subtract(getArc(getInnerRadius(), getStart(), getExtent(), Arc2D.PIE));
+            super.shape(getArc(getOuterRadius(), getStart(), getExtent(), Arc2D.PIE)).subtract(new Ellipse2D.Double(-getInnerRadius(),-getInnerRadius(), getInnerRadius()*2, getInnerRadius()*2));
         }
-        /* set the new start angle to the last en angle */
-        this.mStartAngle = getStart() + getExtent();
         return super.getShape();
     }
 
@@ -163,7 +162,7 @@ public class Pie extends ShapeBuilder<Pie> {
     }
 
     double convert2Deg(double radiant) {
-        return this.getTransform().getAngleUnits().convert(radiant, Angle.DEGREE);
+        return Angle.DEGREE.convertFromSI(radiant);
     }
 
     /**
@@ -182,6 +181,12 @@ public class Pie extends ShapeBuilder<Pie> {
      */
     double getOuterRadius() {
         return this.mOuterRadius;
+    }
+
+    @Override
+    public void tearDown() {
+        super.tearDown();
+        this.mStartAngle = getStart() + getExtent();
     }
 
 }
