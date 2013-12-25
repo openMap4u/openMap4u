@@ -66,7 +66,7 @@
 
         <github.global.server>github</github.global.server>
         <custom.fluidoSkin.googleSearch.sitesearch>http://openMap4u.github.com/openMap4u</custom.fluidoSkin.googleSearch.sitesearch>
-        <org.springframework.version>3.2.2.RELEASE</org.springframework.version>
+        <org.springframework.version>4.0.0.RELEASE</org.springframework.version>
         <cobertura.version>2.6</cobertura.version>
         <github.global.server>github</github.global.server>
         <repository.domain>github.com</repository.domain>
@@ -127,12 +127,6 @@
             <version>${jts.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-            <scope>test</scope>
-        </dependency>
 
 
         <dependency>
@@ -166,6 +160,7 @@
             <version>${org.springframework.version}</version>
             <scope>test</scope>
         </dependency>
+        
 
         <!-- start EL3.0 test dependencies -->
         <dependency>

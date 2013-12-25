@@ -52,35 +52,32 @@ public class PolygonTest extends AbstractOpenMap4uTest {
 
     @Test
     public void testAdd() throws IOException {
-        write(this.getPolygon().add(getCircle()), "AddPolygon.png");
+        write(this.getPolygon().add(getCircle()), "c_add.png");
     }
 
     @Test
-    public void testStart() throws IOException {
-        write(this.getDefaultOpenMap4u().getBuilder(Polygon.class).color(Color.BLACK).size(.25).fill(Color.GRAY).shape(getCircle()), "Circle.png");
-
-        write(this.getPolygon(), "Polygon.png");
+    public void testWritePolygon() throws IOException {
+        write(this.getDefaultOpenMap4u().getBuilder(Polygon.class).color(Color.BLACK).size(.35).fill(Color.LIGHT_GRAY).shape(getCircle()), "c_circle.png");
+        write(this.getPolygon(), "c_rectangle.png");
     }
 
     @Test
     public void testSubtract() throws IOException {
-        write(this.getPolygon().subtract(getCircle()), "SubtractPolygon.png");
+        write(this.getPolygon().subtract(getCircle()), "c_subtract.png");
     }
 
     @Test
     public void testIntersect() throws IOException {
-        write(this.getPolygon().intersect(getCircle()), "IntersectPolygon.png");
+        write(this.getPolygon().intersect(getCircle()), "c_intersect.png");
     }
 
     @Test
     public void testExclusiveOr() throws IOException {
-        write(this.getPolygon().exclusiveOr(getCircle()), "ExclusiveOrPolygon.png");
+        write(this.getPolygon().exclusiveOr(getCircle()), "c_exclusiveOr.png");
     }
 
     public void write(Polygon polygonBuilder, String fileName) throws IOException {
-
-        getCanvas().draw(polygonBuilder).write(FileSystems.getDefault().getPath(
-                ".\\target\\test-classes", fileName));
+       getCanvas().draw(polygonBuilder).write(this.getPackagePath( fileName));
     }
 
     SetAreaOfInterestOrDrawOrWrite getCanvas() {
@@ -88,7 +85,7 @@ public class PolygonTest extends AbstractOpenMap4uTest {
     }
 
     Polygon getPolygon() {
-        return this.getDefaultOpenMap4u().getBuilder(Polygon.class).color(Color.BLACK).size(.25).fill(Color.GRAY).shape(getRectangle());
+        return this.getDefaultOpenMap4u().getBuilder(Polygon.class).color(Color.BLACK).size(.35).fill(Color.LIGHT_GRAY).shape(getRectangle());
     }
 
     Shape getRectangle() {

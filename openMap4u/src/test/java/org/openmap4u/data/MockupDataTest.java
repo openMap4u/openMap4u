@@ -23,86 +23,71 @@ package org.openmap4u.data;
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  * #L%
  */
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.hamcrest.CoreMatchers.notNullValue;
+ 
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.CoreMatchers.*;
-
+ 
 import java.io.IOException;
 import java.util.zip.ZipFile;
 
 import org.junit.Test;
-import org.openmap4u.data.Country;
 
-import com.google.common.collect.Iterables;
 import com.vividsolutions.jts.geom.Geometry;
+import java.util.List;
+import static org.junit.Assert.assertTrue;
+import org.junit.BeforeClass;
 
 public class MockupDataTest {
+
+    private static MockupData mD = null;
+
+    @BeforeClass
+    public static void beforeClass() {
+        mD = new MockupData();
+    }
 
     @Test
     public void testITERABLE_COUNTRIES() {
         assertThat("Countries", MockupData.ITERABLE_COUNTRIES.iterator().next(), instanceOf(Country.class));
-        assertThat("Number of Countries", Iterables.size(MockupData.ITERABLE_COUNTRIES), is(246));
+        assertThat("Number of Countries", MockupData.ITERABLE_COUNTRIES.size(), is(246));
     }
 
-    @Test
-    public void testITERABLE_COUNTRY_JTS_GEOMETRY() {
-        assertThat("Countries", MockupData.ITERABLE_COUNTRY_JTS_GEOMETRY.iterator().next(), instanceOf(Geometry.class));
-        assertThat("Number of Countries", Iterables.size(MockupData.ITERABLE_COUNTRIES), is(246));
-    }
+  
 
-    @Test
-    public void testWKT() {
-        assertThat(MockupData.WKT_LINESTRING, notNullValue());
-        assertThat(MockupData.WKT_MULTILINESTRING, notNullValue());
-        assertThat(MockupData.WKT_POINT, notNullValue());
-        assertThat(MockupData.WKT_MULTIPOINT, notNullValue());
-        assertThat(MockupData.WKT_POLYGON, notNullValue());
-        assertThat(MockupData.WKT_POLYGON_ISLAND, notNullValue());
-        assertThat(MockupData.WKT_MULTIPOLYGON, notNullValue());
-        assertThat(MockupData.WKT_MULTIPOLYGON_ISLAND, notNullValue());
+  
 
-    }
-
-    @Test
-    public void testWKB() {
-
-        assertThat(MockupData.WKB_LINESTRING, notNullValue());
-        assertThat(MockupData.WKB_MULTILINESTRING, notNullValue());
-        assertThat(MockupData.WKB_POINT, notNullValue());
-        assertThat(MockupData.WKB_MULTIPOINT, notNullValue());
-        assertThat(MockupData.WKB_POLYGON, notNullValue());
-        assertThat(MockupData.WKB_POLYGON_ISLAND, notNullValue());
-        assertThat(MockupData.WKB_MULTIPOLYGON, notNullValue());
-        assertThat(MockupData.WKB_MULTIPOLYGON_ISLAND, notNullValue());
-
-    }
-
-    @Test
-    public void testJTS() {
-        assertThat(MockupData.JTS_LINESTRING, notNullValue());
-        assertThat(MockupData.JTS_MULTILINESTRING, notNullValue());
-        assertThat(MockupData.JTS_POINT, notNullValue());
-        assertThat(MockupData.JTS_MULTIPOINT, notNullValue());
-        assertThat(MockupData.JTS_POLYGON, notNullValue());
-        assertThat(MockupData.JTS_POLYGON_ISLAND, notNullValue());
-        assertThat(MockupData.JTS_MULTIPOLYGON, notNullValue());
-        assertThat(MockupData.JTS_MULTIPOLYGON_ISLAND, notNullValue());
-
-    }
 
     @Test(expected = NullPointerException.class)
     public void testInvalidGetZipFile() throws IOException {
         assertThat(MockupData.getZipFile("test"), instanceOf(ZipFile.class));
     }
 
- /*   @Test
-    public void testValidGetZipFile() throws IOException {
-        assertThat(MockupData.getZipFile("world_development_indicators/WDI_csv.zip"), instanceOf(ZipFile.class));
+    /*   @Test
+     public void testValidGetZipFile() throws IOException {
+     assertThat(MockupData.getZipFile("world_development_indicators/WDI_csv.zip"), instanceOf(ZipFile.class));
+     }
+
+     @Test
+     public void testValidGetZipEntry() throws IOException {
+     MockupData.readProps();
+     } */
+    @Test
+    public void testGetValuesDouble() {
+        List<Double> values = this.mD.getValues(2, 4, 10);
+        assertThat(values.size(), is(10));
+        assertThat(values.get(0), is(2d));
+        assertThat(values.get(9), is(4d));
     }
 
     @Test
-    public void testValidGetZipEntry() throws IOException {
-        MockupData.readProps();
-    } */
+    public void testGetRandomDouble() {
+        List<Double> values = this.mD.getRandom(2, 4, 10);
+        assertThat(values.size(), is(10));
+        assertThat(values.size(), is(10));
+        for (double value : values) {
+            assertTrue(value>=2d);
+            assertTrue(value<=4d);
+        }
+
+    }
 }

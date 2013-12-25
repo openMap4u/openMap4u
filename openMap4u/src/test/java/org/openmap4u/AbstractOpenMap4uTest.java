@@ -4,15 +4,14 @@
  */
 package org.openmap4u;
 
-import com.google.common.collect.Lists;
-
 import java.awt.*;
+import java.io.IOException;
 import java.nio.file.FileSystems;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 import org.junit.runner.RunWith;
@@ -23,10 +22,8 @@ import org.openmap4u.plugin.format.graphics2d.Png;
 import org.openmap4u.plugin.format.svg.Svg;
 import org.openmap4u.unit.Length;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 /**
  *
@@ -55,6 +52,8 @@ public abstract class AbstractOpenMap4uTest {
     public OpenMap4u getDefaultOpenMap4u() {
         return this.defaultOpenMap4u;
     }
+    
+   
 
     public SetAreaOfInterestOrDrawOrWrite getCanvas(Length worldUnits,
             Length drawingUnits, Length strokeUnits,
@@ -89,36 +88,56 @@ public abstract class AbstractOpenMap4uTest {
      * @return The path.
      */
     final static Path getPath(List<String> entries) {
-        entries.add(0, OUTPUT);
-          entries.add(0, TARGET);
-      
+        entries.add(0, "test-classes");
+
         String[] entr = entries.toArray(new String[entries.size()]);
-        return FileSystems.getDefault().getPath(".", entr);
+        return FileSystems.getDefault().getPath(TARGET, entr);
     }
 
-    protected final static Path getPath(String... entries) {
-        return getPath(Lists.newArrayList(entries));
+    protected final static Path getPath(String... entries) throws IOException {
+         List<String> pathEntries = new ArrayList();
+         for (String entry : entries) {
+            pathEntries.add(entry);
+        }
+        Path path = getPath(pathEntries);
+        /* in the case the directory does not exist create it */
+        if (!Files.exists(path.getParent())) {
+            Files.createDirectories(path.getParent());
+        }
+        return path;
     }
 
     protected final Path getPackagePath(String filename) {
-        ArrayList<String> entries = Lists.newArrayList(this.getClass().getPackage().getName().split("\\."));
-        entries.add(filename);
-         return getPath(entries);
-    }
 
+        List<String> pathEntries = new ArrayList();
+        String[] packageEntries = this.getClass().getPackage().getName().split("\\.");
+        for (String entry : packageEntries) {
+            pathEntries.add(entry);
+        }
+        pathEntries.add(filename);
+        return getPath(pathEntries);
+    }
 
     /**
      * Creates a quadratic point marker.
+     *
      * @param x The x coordinate.
      * @param y The y coordinate.
      * @param strokeColor The stroke color.
      * @param fillColor The fill color.
      * @return The quadratic point marker.
      */
-    protected Rectangle getPointMarker(double x, double y,Paint strokeColor, Paint fillColor) {
-        return this.getDefaultOpenMap4u().getBuilder(Rectangle.class).color(strokeColor).fill(fillColor).setSize(.25).point(x,y);
+    protected Rectangle getPointMarker(double x, double y, Paint strokeColor, Paint fillColor) {
+        return this.getDefaultOpenMap4u().getBuilder(Rectangle.class).color(strokeColor).fill(fillColor).size(.25).width(.125).point(x, y);
     }
 
-
+    /**
+     * Gets a random color.
+     *
+     * @return A random color (based on random RGB values).
+     */
+    protected final Color getColor() {
+        return new Color((int) (Math.random() * 255), (int) (Math.random() * 255), (int) (Math.random() * 255));
+    }
 
 }

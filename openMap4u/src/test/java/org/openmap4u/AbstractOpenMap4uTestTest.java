@@ -27,8 +27,9 @@ public class AbstractOpenMap4uTestTest {
     @Test
     public void testGetPath() {
         String path = aOM4uTest.getPackagePath("hello.txt").toUri().toString();
+        System.out.println(path);
         assertTrue(path.contains("target"));
-        assertTrue(path.contains("output"));
+        assertTrue(path.contains("test-classes"));
         assertTrue(path.contains("hello.txt"));
     }
 
@@ -36,7 +37,7 @@ public class AbstractOpenMap4uTestTest {
     public void testGetPackagePath() {
         String path = aOM4uTest.getPackagePath("hello.txt").toUri().toString();
         assertTrue(path.contains("target"));
-        assertTrue(path.contains("output"));
+        assertTrue(path.contains("test-classes"));
         assertTrue(path.contains("org"));
         assertTrue(path.contains("openmap4u"));
         assertTrue(path.contains("hello.txt"));
