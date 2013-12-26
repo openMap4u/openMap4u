@@ -13,7 +13,7 @@ import org.openmap4u.style.ImageStyleable;
  * @param <B> The type of the image builder.
  */
 public abstract class ImageBuilder<B extends ImageBuilder<B>> extends
-        Buildable<ImageStyleable, B> implements ImageDrawable {
+        Builder<ImageStyleable, B> implements ImageDrawable {
 
     private Path mPath = null;
 

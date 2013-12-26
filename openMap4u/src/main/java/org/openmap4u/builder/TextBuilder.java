@@ -14,7 +14,7 @@ import org.openmap4u.style.TextStyleable;
  * @param <B> The type of the text builder.
  */
 public abstract class TextBuilder<B extends TextBuilder<B>> extends
-        Buildable<  TextStyleable, B> implements TextDrawable {
+        Builder<  TextStyleable, B> implements TextDrawable {
 
     
     private String mText = null;

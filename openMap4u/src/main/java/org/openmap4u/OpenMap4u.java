@@ -9,12 +9,9 @@ import org.openmap4u.builder.TextBuilder;
 import org.openmap4u.canvas.Canvas;
 import org.openmap4u.canvas.SetUp;
 import org.openmap4u.commons.Util;
-import org.openmap4u.style.ImageStyle;
 import org.openmap4u.style.ImageStyleable;
-import org.openmap4u.style.ShapeStyle;
 import org.openmap4u.style.ShapeStyleable;
 import org.openmap4u.style.Styleable;
-import org.openmap4u.style.TextStyle;
 import org.openmap4u.style.TextStyleable;
 
 /**
@@ -43,6 +40,8 @@ public final class OpenMap4u implements Serializable {
    
     /**
      * Gets the builder and initializes it with the konfigured default values.
+     * @param <S> The stylable type.
+     * @param <B> The buildable type.
       * @param builderClass The builder class.
      * @return  The builder.
      */

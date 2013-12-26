@@ -39,17 +39,17 @@ public final class Rectangle extends ShapeBuilder<Rectangle> {
     /**
      * Creates a quadratic rectangle with the given size.
      *
-     * @param size The size of the quadratic rectangle.
+     * @param width The size of the quadratic rectangle.
      * @return The rectangle itself (method chaining pattern).
      */
-    public Rectangle width(double size) {
-        return setSize(size, size);
+    public Rectangle width(double width) {
+        return setSize(width, width);
     }
     
       /**
      * Creates a quadratic rectangle with the given size.
      *
-     * @param size The size of the quadratic rectangle.
+     * @param height The height of the rectangle.
      * @return The rectangle itself (method chaining pattern).
      */
     public Rectangle height(double height) {

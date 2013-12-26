@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.runner.RunWith;
+import org.openmap4u.builder.Buildable;
 import org.openmap4u.canvas.SetAreaOfInterestOrDrawOrWrite;
 import org.openmap4u.format.Outputable;
 import org.openmap4u.plugin.builder.symbol.Rectangle;
@@ -52,8 +53,6 @@ public abstract class AbstractOpenMap4uTest {
     public OpenMap4u getDefaultOpenMap4u() {
         return this.defaultOpenMap4u;
     }
-    
-   
 
     public SetAreaOfInterestOrDrawOrWrite getCanvas(Length worldUnits,
             Length drawingUnits, Length strokeUnits,
@@ -95,8 +94,8 @@ public abstract class AbstractOpenMap4uTest {
     }
 
     protected final static Path getPath(String... entries) throws IOException {
-         List<String> pathEntries = new ArrayList();
-         for (String entry : entries) {
+        List<String> pathEntries = new ArrayList();
+        for (String entry : entries) {
             pathEntries.add(entry);
         }
         Path path = getPath(pathEntries);
@@ -138,6 +137,32 @@ public abstract class AbstractOpenMap4uTest {
      */
     protected final Color getColor() {
         return new Color((int) (Math.random() * 255), (int) (Math.random() * 255), (int) (Math.random() * 255));
+    }
+
+    /**
+     * Gets the canvas with the given width and height.
+     *
+     * @param width The width of the canvas.
+     * @param height The height of the canvas.
+     * @return The canvas.
+     */
+    protected final SetAreaOfInterestOrDrawOrWrite getCanvas(double width, double height) {
+        return this.getDefaultOpenMap4u().getCanvas().size(width, height);
+    }
+
+    /**
+     * Gets the canvas with the given width and height.
+     *
+     * @param width The width of the canvas.
+     * @param height The height of the canvas.
+     * @return The canvas.
+     */
+    protected final void drawOnCanvas(double width, double height, String fileName, Buildable... primitives2Draw) throws IOException {
+        SetAreaOfInterestOrDrawOrWrite canvas = getCanvas(width, height);
+        for (Buildable primitive2Draw : primitives2Draw) {
+            canvas.draw(primitive2Draw);
+        }
+        canvas.write(getPackagePath(fileName));
     }
 
 }

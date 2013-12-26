@@ -18,8 +18,8 @@ import org.openmap4u.unit.Angle;
 import org.openmap4u.unit.Length;
 
 /**
- * This interface has to be implemented for every output format.<br/>
- * <img src="./doc-files/outputable.png"><br/>
+ * This interface has to be implemented for every output format.<br> 
+ * <img alt="" src="./doc-files/outputable.png">
   *
  * @author Michael Hadrbolec
  */
@@ -29,7 +29,7 @@ public interface Outputable extends Plugable {
      * Draws a shape (=vector). After drawing the the primitive the after method
      * is called.
      *
-     * @param point
+     * @param point The point (optional or null).
      * @param shape The shape.
      * @return The bounds of the shape primitive.
      */
@@ -40,7 +40,7 @@ public interface Outputable extends Plugable {
      * Draws an image. After drawing the the primitive the after method is
      * called.
      *
-     * @param point
+     * @param point The point (optional or null).
      * @param image The image.
      * @return The bounds of the image primitive.
      */

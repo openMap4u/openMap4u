@@ -4,14 +4,10 @@
  */
 package org.openmap4u.canvas;
 
-import java.awt.geom.Point2D;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Path;
 import org.openmap4u.builder.Buildable;
-import org.openmap4u.builder.ImageBuilder;
-import org.openmap4u.builder.ShapeBuilder;
-import org.openmap4u.builder.TextBuilder;
 
 /**
  * Allow either to draw another primitive on the canvas, or to write the result
@@ -24,11 +20,11 @@ public interface DrawOrWrite {
     /**
      * Draws a single primitive.
      *
-     * @param primitive The primitive(s) to draw.
+     * @param buildable The primitive(s) to draw.
      * @return Allow by applying the method chaining pattern either to draw more
      * primitive(s) or to write the resulting map.
      */
-    DrawOrWrite draw(Buildable shapeBuilder);
+    DrawOrWrite draw(Buildable buildable);
 
     
     /**

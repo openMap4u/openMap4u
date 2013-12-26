@@ -30,7 +30,7 @@ public final class Polyline  extends ShapeBuilder<Polyline >   {
     }
 
     /**
-     * Draws a straight line from the last path point (red) to the given point (blue). <img src="./doc-files/lineTo.png">
+     * Draws a straight line from the last path point (red) to the given point (blue). <img alt="" src="./doc-files/lineTo.png">
      * 
      * @param toX
      *            The x coordinate where to draw to.

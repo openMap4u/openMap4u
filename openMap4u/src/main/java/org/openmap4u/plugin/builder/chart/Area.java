@@ -8,7 +8,6 @@ package org.openmap4u.plugin.builder.chart;
 import java.awt.Paint;
 import java.awt.geom.Path2D;
 import org.openmap4u.builder.ShapeBuilder;
-import org.openmap4u.builder.Stackable;
 
 /**
  * Represents a area chart

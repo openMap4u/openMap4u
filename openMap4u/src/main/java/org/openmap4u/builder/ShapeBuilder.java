@@ -16,7 +16,7 @@ import org.openmap4u.style.ShapeStyleable;
  * @param <B> The type of the shape builder.
  */
 public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
-        Buildable<  ShapeStyleable, B> implements ShapeDrawable {
+        Builder<  ShapeStyleable, B> implements ShapeDrawable {
 
     /**
      * Stores a reference to the path.
@@ -37,7 +37,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
     }
 
     /**
-     * Sets the stroke size in stroke units.<img src="./doc-files/stroke_size.png">
+     * Sets the stroke size in stroke units.<img alt="" src="./doc-files/stroke_size.png">
      *
      * @param strokeSize The stroke size in stroke units.
      * @return The builder itself (method chaining pattern).
@@ -49,7 +49,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
     }
 
     /**
-     * Sets the stroke color. <img src="./doc-files/stroke_color.png">
+     * Sets the stroke color. <img alt="" src="./doc-files/stroke_color.png">
      *
      * @param strokeColor The stroke color.
      * @return The builder itself (method chaining pattern).
@@ -74,7 +74,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
 
     /**
      * Sets a bezier curve to the given point based on two control points. 
-     * <img src="./doc-files/bezier1.png"><img src="./doc-files/bezier2.png"><img src="./doc-files/bezier3.png">
+     * <img alt="" src="./doc-files/bezier1.png"><img alt="" src="./doc-files/bezier2.png"><img alt="" src="./doc-files/bezier3.png">
      *
      * @param cp1X The x coordinate of the first control point.
      * @param cp1Y The y coordinate of the first control point.
@@ -92,7 +92,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
     }
 
     /**
-     * Draws a straight line from the last path point (red) to the given point (blue). <img src="./doc-files/lineTo.png">
+     * Draws a straight line from the last path point (red) to the given point (blue). <img alt="" src="./doc-files/lineTo.png">
      *
      * @param toX The x coordinate where to draw to.
      * @param toY The y coordinate where to draw to.
@@ -129,7 +129,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
     }
 
     /**
-     * Draws a quadratic curve from the last drawn (red) -,  with the help of a control (gray) -, to the end point (blue). <img src="./doc-files/quadTo.png">
+     * Draws a quadratic curve from the last drawn (red) -,  with the help of a control (gray) -, to the end point (blue). <img alt="" src="./doc-files/quadTo.png">
      *
      * @param cpX The x coordinate of the control point (gray).
      * @param cpY The y coordinate of the control point (gray).
@@ -146,7 +146,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
     /**
      * Sets the shape (and overrides every allready existing shapes).
      *
-     * @param shape The awt shape geometry. E.g.: <code>... .shape(<img src="./doc-files/c_rectangle.png">) = <img src="./doc-files/c_rectangle.png"></code>
+     * @param shape The awt shape geometry. E.g.: <code>... myBuilder.shape(<img alt="" src="./doc-files/c_rectangle.png">) = <img alt="" src="./doc-files/c_rectangle.png"></code>
      * @return The Shape itself (method chaining pattern).
      */
     @SuppressWarnings("unchecked")
@@ -162,7 +162,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
     /**
      * Adds the provided shape to the primitive.
      *
-     * @param shape The shape to add. E.g.: <code>... .shape(<img src="./doc-files/c_rectangle.png">).add(<img src="./doc-files/c_circle.png">) = <img src="./doc-files/c_add.png"></code>
+     * @param shape The shape to add. E.g.: <code>... myBuilder.shape(<img alt="" src="./doc-files/c_rectangle.png">).add(<img alt="" src="./doc-files/c_circle.png">) = <img alt="" src="./doc-files/c_add.png"></code>
      * @return The builder itself (method chaining pattern).
      */
     protected B add(java.awt.Shape shape) {
@@ -175,7 +175,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
     /**
      * Intersects the primitive with the provided shape.
      *
-     * @param shape The shape to intersetct. E.g.: <code>... .shape(<img src="./doc-files/c_rectangle.png">).intersect(<img src="./doc-files/c_circle.png">) = <img src="./doc-files/c_intersect.png"></code>
+     * @param shape The shape to intersetct. E.g.: <code>... myBuilder.shape(<img alt="" src="./doc-files/c_rectangle.png">).intersect(<img alt="" src="./doc-files/c_circle.png">) = <img alt="" src="./doc-files/c_intersect.png"></code>
      * @return The builder itself (method chaining pattern).
      */
     protected B intersect(java.awt.Shape shape) {
@@ -188,7 +188,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
     /**
      * Subtract the primitive with the provided shape.
      *
-     * @param shape The shape to subtract. E.g.: <code>... .shape(<img src="./doc-files/c_rectangle.png">).subtract(<img src="./doc-files/c_circle.png">) = <img src="./doc-files/c_subtract.png"></code>
+     * @param shape The shape to subtract. E.g.: <code>... myBuilder.shape(<img alt="" src="./doc-files/c_rectangle.png">).subtract(<img alt="" src="./doc-files/c_circle.png">) = <img alt="" src="./doc-files/c_subtract.png"></code>
      * @return The builder itself (method chaining pattern).
      */
     protected B subtract(java.awt.Shape shape) {
@@ -201,7 +201,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
     /**
      * Exclusive or the primiive with thegiven shape.
      *
-     * @param shape The shape to exclusive or. E.g.: <code>... .shape(<img src="./doc-files/c_rectangle.png">).eclusiveOr.(<img src="./doc-files/c_circle.png">) = <img src="./doc-files/c_exclusiveOr.png"></code>
+     * @param shape The shape to exclusive or. E.g.: <code>... myBuilder.shape(<img alt="" src="./doc-files/c_rectangle.png">).eclusiveOr.(<img alt="" src="./doc-files/c_circle.png">) = <img alt="" src="./doc-files/c_exclusiveOr.png"></code>
      * @return The builder itself (method chaining pattern).
      */
     protected B exclusiveOr(java.awt.Shape shape) {

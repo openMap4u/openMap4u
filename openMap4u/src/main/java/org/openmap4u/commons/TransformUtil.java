@@ -10,7 +10,6 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.NoninvertibleTransformException;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
-import org.openmap4u.unit.Length;
 
 /**
  *
@@ -47,14 +46,21 @@ public class TransformUtil {
     /**
      * Transform the given point with the provided global transformation.
      *
-     * @param point2Transform
-     * @param globalTransform
-     * @return
+     * @param point2Transform The point to be tranformed.
+     * @param globalTransform The global transformation to be apllied to the point.
+     * @return The resulting transfromed point.
      */
     public final Point2D transform(Point2D point2Transform, AffineTransform globalTransform) {
         return globalTransform.transform(point2Transform, new Point2D.Double());
     }
 
+    /**
+     * Transforms the given point from the provided global transformation back into the world units.
+     * @param point2Transform The point to be transfromed back into world units.
+     * @param globalTransform The global transformation.
+     * @return The resulting transformed point.
+     * @throws NoninvertibleTransformException Is thrown in the case the global trnasformation is not invertable.
+     */
     public final Point2D inverseTransform(Point2D point2Transform, AffineTransform globalTransform) throws NoninvertibleTransformException {
         return globalTransform.inverseTransform(point2Transform, new Point2D.Double());
     }

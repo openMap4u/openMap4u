@@ -52,7 +52,7 @@ public interface SetUp {
 
     /**
      * 
-     * @param <>>
+     * @param <T>
      *            Every class that implements the outputableFormat interface.
      * @param outputFormat
      *            The class that implements the outputableFormat interface.
