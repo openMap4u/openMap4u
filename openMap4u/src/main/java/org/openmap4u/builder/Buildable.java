@@ -52,11 +52,11 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
      * Sets the transparence.
      *
      * @param tranparence The transparence.<br>
-     * <code>myBuilder.transparence(0)=<img alt="" src="./doc-files/b_transparence0.png"></code><br>
-     * <code>myBuilder.transparence(25)=<img alt="" src="./doc-files/b_transparence25.png"></code><br>
-     * <code>myBuilder.transparence(50)=<img alt="" src="./doc-files/b_transparence50.png"></code><br>
-     * <code>myBuilder.transparence(75)=<img alt="" src="./doc-files/b_transparence75.png"></code><br>
-     * <code>myBuilder.transparence(100)=<img alt="" src="./doc-files/b_transparence100.png"></code><br>
+     * <code>myBuilder.transparence(0)=<img alt="" src="./doc-files/b_transparence0.png"></code>, 
+     * <code>myBuilder.transparence(25)=<img alt="" src="./doc-files/b_transparence25.png"></code>, 
+     * <code>myBuilder.transparence(50)=<img alt="" src="./doc-files/b_transparence50.png"></code>, 
+     * <code>myBuilder.transparence(75)=<img alt="" src="./doc-files/b_transparence75.png"></code>, 
+     * <code>myBuilder.transparence(100)=<img alt="" src="./doc-files/b_transparence100.png"></code>.
      * @return The builder itself (method chaining pattern).
      */
     public B transparence(double tranparence);
@@ -65,15 +65,15 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
      * Aligns the primitive (shape, text or image).
      *
      * @param align How to align the primitive <br>
-     * <code>myBuilder.align(Position.LeftTop) = <img alt="" src="./doc-files/b_alignLeftTop.png"></code><br>
-     * <code>myBuilder.align(Position.CenterTop) = <img alt="" src="./doc-files/b_alignCenterTop.png"></code><br>
-     * <code>myBuilder.align(Position.RightTop) = <img alt="" src="./doc-files/b_alignRightTop.png"></code><br>
-     * <code>myBuilder.align(Position.LeftMiddle) = <img alt="" src="./doc-files/b_alignLeftMiddle.png"></code><br>
-     * <code>myBuilder.align(Position.CenterMiddle) = <img alt="" src="./doc-files/b_alignCenterMiddle.png"></code><br>
-     * <code>myBuilder.align(Position.RightMiddle) = <img alt="" src="./doc-files/b_alignRightMiddle.png"></code><br>
-     * <code>myBuilder.align(Position.LeftBottom) = <img alt="" src="./doc-files/b_alignLeftBottom.png"></code><br>
-     * <code>myBuilder.align(Position.CenterBottom) = <img alt="" src="./doc-files/b_alignCenterBottom.png"></code><br>
-     * <code>myBuilder.align(Position.RightBottom) = <img alt="" src="./doc-files/b_alignRightBottom.png"></code><br>
+     * <code>myBuilder.align(Position.LeftTop) = <img alt="" src="./doc-files/b_alignLeftTop.png"></code>, 
+     * <code>myBuilder.align(Position.CenterTop) = <img alt="" src="./doc-files/b_alignCenterTop.png"></code>, 
+     * <code>myBuilder.align(Position.RightTop) = <img alt="" src="./doc-files/b_alignRightTop.png"></code><br>, 
+     * <code>myBuilder.align(Position.LeftMiddle) = <img alt="" src="./doc-files/b_alignLeftMiddle.png"></code>, 
+     * <code>myBuilder.align(Position.CenterMiddle) = <img alt="" src="./doc-files/b_alignCenterMiddle.png"></code>, 
+     * <code>myBuilder.align(Position.RightMiddle) = <img alt="" src="./doc-files/b_alignRightMiddle.png"></code>, 
+     * <code>myBuilder.align(Position.LeftBottom) = <img alt="" src="./doc-files/b_alignLeftBottom.png"></code>, 
+     * <code>myBuilder.align(Position.CenterBottom) = <img alt="" src="./doc-files/b_alignCenterBottom.png"></code>, 
+     * <code>myBuilder.align(Position.RightBottom) = <img alt="" src="./doc-files/b_alignRightBottom.png"></code>.
      * @return The builder itself (method chaining pattern).
      */
     B align(Position align);
