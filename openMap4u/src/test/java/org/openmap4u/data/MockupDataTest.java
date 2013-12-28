@@ -37,26 +37,35 @@ import java.util.List;
 import static org.junit.Assert.assertTrue;
 import org.junit.BeforeClass;
 
+/**
+ *
+ * @author zwotti
+ */
 public class MockupDataTest {
 
     private static MockupData mD = null;
 
+    /**
+     * 
+     */
     @BeforeClass
     public static void beforeClass() {
         mD = new MockupData();
     }
 
+    /**
+     *
+     */
     @Test
     public void testITERABLE_COUNTRIES() {
         assertThat("Countries", MockupData.ITERABLE_COUNTRIES.iterator().next(), instanceOf(Country.class));
         assertThat("Number of Countries", MockupData.ITERABLE_COUNTRIES.size(), is(246));
     }
 
-  
-
-  
-
-
+    /**
+     *
+     * @throws IOException
+     */
     @Test(expected = NullPointerException.class)
     public void testInvalidGetZipFile() throws IOException {
         assertThat(MockupData.getZipFile("test"), instanceOf(ZipFile.class));
@@ -71,6 +80,11 @@ public class MockupDataTest {
      public void testValidGetZipEntry() throws IOException {
      MockupData.readProps();
      } */
+
+    /**
+     *
+     */
+    
     @Test
     public void testGetValuesDouble() {
         List<Double> values = this.mD.getValues(2, 4, 10);
@@ -79,6 +93,9 @@ public class MockupDataTest {
         assertThat(values.get(9), is(4d));
     }
 
+    /**
+     *
+     */
     @Test
     public void testGetRandomDouble() {
         List<Double> values = this.mD.getRandom(2, 4, 10);

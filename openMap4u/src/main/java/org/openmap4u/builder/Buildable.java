@@ -40,8 +40,8 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
     public void setUp(Shape previousDrawnShape);
 
     /**
-     * Sets whether the primitive is drawn (is visible = true) or not (is
-     * not visible = false).
+     * Sets whether the primitive is drawn (is visible = true) or not (is not
+     * visible = false).
      *
      * @param isVisible The visibility.
      * @return The builder itself.
@@ -79,13 +79,11 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
     B align(Position align);
 
     /**
-     * Sets the offset in darwing units <img alt=""
-     * src="./doc-files/ShapeBuilder_offset.png">.
+     * Sets the offset in darwing units in x and y direction.<br>
+     * <code><img alt="" src="./doc-files/b_initial.png"> myBuilder.offset(.25, .5) = <img alt="" src="./doc-files/b_offsetXY.png"></code>
      *
-     * @param offsetX The x offset in drawing units <img alt=""
-     * src="./doc-files/ShapeBuilder_translate_x.png">.
-     * @param offsetY The y offset in drawing units <img alt=""
-     * src="./doc-files/ShapeBuilder_translate_y.png">.
+     * @param offsetX The x offset in drawing units.
+     * @param offsetY The y offset in drawing units.
      * @return The builder itself (method chaining pattern).
      */
     B offset(double offsetX, double offsetY);
@@ -93,8 +91,8 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
     /**
      * Sets the x offset in drawing units.
      *
-     * @param offsetX The x offset in drawing units <img alt="" 
-     * src="./doc-files/ShapeBuilder_translate_x.png">.
+     * @param offsetX The x offset in drawing units.<br>
+     * <code><img alt="" src="./doc-files/b_initial.png"> myBuilder.offsetX(0.25) = <img alt="" src="./doc-files/b_offsetX.png"></code>
      * @return The builder itself (method chaining pattern).
      */
     B offsetX(double offsetX);
@@ -102,24 +100,26 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
     /**
      * Sets the y offset in drawing units.
      *
-     * @param offsetY The y offset in drawing units <img alt=""
-     * src="./doc-files/ShapeBuilder_translate_y.png">.
+     * @param offsetY The y offset in drawing units.<br>
+     * <code><img alt="" src="./doc-files/b_initial.png"> myBuilder.offsetY(.25) = <img alt="" src="./doc-files/b_offsetY.png"></code>
      * @return The builder itself (method chaining pattern).
      */
     B offsetY(double offsetY);
 
     /**
-     * Sets the sacle factor. This means the same scala factor is set for x and
-     * y direction.
+     * Sets the sacle factor. This means the same scale factor in x and y
+     * direction.
      *
-     * @param scaleFactor The scale factor.
+     * @param scaleFactor The scale factor. <br>
+     * <code><img alt="" src="./doc-files/b_initial.png"> myBuilder.scale(1.7) = <img alt="" src="./doc-files/b_scale.png"></code>
      * @return The builder itself (method chaining pattern).
      */
     B scale(double scaleFactor);
 
     /**
-     * Scales the primitive in x and y direction <img alt=""
-     * src="./doc-files/ShapeBuilder_scale.png">
+     * Allows to scale the primitive with a different factor in x and y
+     * direction.<br>
+     * <code><img alt="" src="./doc-files/b_initial.png"> myBuilder.scaleX(1.7,2.8) = <img alt="" src="./doc-files/b_scaleXY.png"></code>
      *
      * @param scaleX The scale factor in x direction.
      * @param scaleY The scale factor in y direction.
@@ -130,7 +130,8 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
     /**
      * Sets the scale factor in x direction.
      *
-     * @param scaleX The scale factor in x direction.
+     * @param scaleX The scale factor in x direction.<br>
+     * <code><img alt="" src="./doc-files/b_initial.png"> myBuilder.scaleX(1.7) = <img alt="" src="./doc-files/b_scaleX.png"></code>
      * @return The builder itself (method chaining pattern).
      */
     B scaleX(double scaleX);
@@ -138,9 +139,8 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
     /**
      * Sets the scale factor in y direction.
      *
-     * @param scaleY The scale factor in y direction <img alt=""
-     * src="./doc-files/ShapeBuilder_initial.png"><img alt=""
-     * src="./doc-files/ShapeBuilder_scale_y.png">.
+     * @param scaleY The scale factor in y direction <br>
+     * <code><img alt="" src="./doc-files/b_initial.png"> myBuilder.scaleX(1.7) = <img alt="" src="./doc-files/b_scaleY.png"></code>
      * @return The builder itself (method chaining pattern).
      */
     B scaleY(double scaleY);
@@ -166,24 +166,29 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
     /**
      * Sets the rotation in angle units.
      *
-     * @param rotation The rotation in angle units. e.g. 30 degrees <img alt=""
-     * src="./doc-files/ShapeBuilder_rotate">.
+     * @param rotation The rotation in angle units.<br>
+     * <code><img alt="" src="./doc-files/b_initial.png"> myBuilder.rotate(30) = <img alt="" src="./doc-files/b_rotate30Degrees.png"></code><br>
+     * <code><img alt="" src="./doc-files/b_initial.png"> myBuilder.roate(70) = <img alt="" src="./doc-files/b_rotate70Degrees.png"></code>
      * @return The builder itself (method chaining pattern).
      */
     B rotate(double rotation);
 
     /**
-     * Sets the x and y coordinate of the point. If this method is called mutliple times the primitive represents a multipoint.
+     * Sets the x and y coordinate of the point. If this method is called
+     * mutliple times the primitive represents a multipoint.
+     *
      * @param x The x coordinate of the point.
      * @param y The y coordinate of the point.
-    * @return The builder itself (method chaining pattern).
+     * @return The builder itself (method chaining pattern).
      */
     B point(double x, double y);
 
-   /**
-     * Sets the x and y coordinate of the point relative to the previous drawn shape.
+    /**
+     * Sets the x and y coordinate of the point relative to the previous drawn
+     * shape.
+     *
      * @param position The relative position to the previous drawn shape.
-    * @return The builder itself (method chaining pattern).
+     * @return The builder itself (method chaining pattern).
      */
     B point(Position position);
 

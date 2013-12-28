@@ -5,8 +5,6 @@
  */
 package org.openmap4u.style;
 
-import org.openmap4u.commons.Position;
-
 /**
  *
  * @author Michael Hadrbolec.
@@ -15,22 +13,28 @@ import org.openmap4u.commons.Position;
 public interface Styleable<T extends Styleable<T>> extends Cloneable {
 
     /**
-     * {@inheritDoc}
+     * Gets the alpha value.
+     * @return The alpha value.
      */
     double getAlpha();
 
     /**
-     * {@inheritDoc}
+     * Sets the alpha value.
+     * @param alpha The alpha value.
+     * @return Method chaining pattern.
      */
     T setAlpha(double alpha);
 
     /**
-     * {@inheritDoc}
+     * Gets the visibility.
+     * @return The visibility (true ... visible, false ... not visible).
      */
     boolean isVisible();
 
     /**
-     * {@inheritDoc}
+     * Sets the visibility.
+     * @param visible The visibility (true ... visible, false ... not visible).
+     * @return Method chaining pattern.
      */
     T setVisible(boolean visible);
 

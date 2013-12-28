@@ -18,6 +18,12 @@ import org.openmap4u.unit.Length;
  */
 public abstract class OutputableFormatTest extends AbstractOpenMap4uTest {
 
+    /**
+     *
+     * @param outputableFormat
+     * @return
+     * @throws IOException
+     */
     protected final SetAreaOfInterestOrDrawOrWrite getDraw(Class<? extends Outputable> outputableFormat) throws IOException {
         return this.getDefaultOpenMap4u().getCanvas().outputFormat(outputableFormat).drawingUnits(Length.CM).worldUnits(Length.CM).size(2, 2);
     }
@@ -33,7 +39,7 @@ public abstract class OutputableFormatTest extends AbstractOpenMap4uTest {
     /**
      * Gets the class of the output format plugin.
      *
-     * @param <>> The type of the output format plugin.
+     * @param <T>
      * @return The output format plugin class.
      */
     protected abstract <T extends Outputable> Class<T> getOutputFormat();

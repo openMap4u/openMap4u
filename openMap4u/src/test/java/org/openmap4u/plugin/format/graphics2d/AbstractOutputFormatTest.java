@@ -19,13 +19,20 @@ import org.openmap4u.format.OutputableFormatTest;
  */
 public abstract class AbstractOutputFormatTest extends OutputableFormatTest {
 
-  
+    /**
+     *
+     * @param imageFile
+     * @return
+     * @throws IOException
+     */
     protected final BufferedImage read(File imageFile) throws IOException {
         BufferedImage image = ImageIO.read(imageFile);
         return image;
     }
-    
-  
+
+    /**
+     *
+     */
     @Test
     public void testDrawSimpleSymbols() {
     }

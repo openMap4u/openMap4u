@@ -64,8 +64,8 @@ public class Canvas implements Plugable, SetUp, DrawOrWrite,
      */
     public static final String PLUGIN_NAME = "DrawPlugin";
     private Outputable mOutputFormat = new Png();
-     private     Shape previousDrawnShape = new Rectangle2D.Double();
-   
+    private Shape previousDrawnShape = new Rectangle2D.Double();
+
     /**
      * Stores the world units.
      */
@@ -139,11 +139,17 @@ public class Canvas implements Plugable, SetUp, DrawOrWrite,
         return this;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public final Length getWorldUnits() {
         return this.mWorldUnits;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public final SetUp drawingUnits(Length drawingUnits) {
         this.mDrawingUnits = drawingUnits;
@@ -161,6 +167,10 @@ public class Canvas implements Plugable, SetUp, DrawOrWrite,
         return this;
     }
 
+    /**
+     *
+     * @return
+     */
     public final Length getStrokeUnits() {
         return this.mStrokeUnits;
     }
@@ -267,18 +277,18 @@ public class Canvas implements Plugable, SetUp, DrawOrWrite,
             /* perform setup tasks */
             this.mOutputFormat.before();
             /* process in the case it is a point based primitive */
-              if (builder.isPoint()) {
+            if (builder.isPoint()) {
                 for (Object point : builder.getPoints()) {
-                      if (point instanceof Point2D) {
+                    if (point instanceof Point2D) {
                         /* create the individual transformation */
                         previousDrawnShape = draw((Point2D) point, builder, previousDrawnShape);
                     } else if (point instanceof Position) {
-                          try {
-                              System.out.println( previousDrawnShape);
-                              previousDrawnShape = draw(new TransformUtil().transform((Position)point, previousDrawnShape, this.mOutputFormat.getGlobalTransform()),builder,previousDrawnShape);
-                          } catch (NoninvertibleTransformException ex) {
-                              Logger.getLogger(Canvas.class.getName()).log(Level.SEVERE, null, ex);
-                          }
+                        try {
+                            System.out.println(previousDrawnShape);
+                            previousDrawnShape = draw(new TransformUtil().transform((Position) point, previousDrawnShape, this.mOutputFormat.getGlobalTransform()), builder, previousDrawnShape);
+                        } catch (NoninvertibleTransformException ex) {
+                            Logger.getLogger(Canvas.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                     }
                 }
             } else {

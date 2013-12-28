@@ -80,7 +80,6 @@ public final class TextStyle extends Style<TextStyleable> implements TextStyleab
 
     /**
      * {@inheritDoc}
-     * @return 
      */
     public TextStyle setFontColor(Paint fontColor) {
         this.mFontColor = fontColor;
@@ -89,7 +88,6 @@ public final class TextStyle extends Style<TextStyleable> implements TextStyleab
 
     /**
      * {@inheritDoc}
-     * @return 
      */
     public TextStyle setFontFamily(String fontFamily) {
         this.mFontFamily = fontFamily;
@@ -98,9 +96,7 @@ public final class TextStyle extends Style<TextStyleable> implements TextStyleab
 
     /**
      * {@inheritDoc}
-     * @param fontSize
-     * @return 
-     */
+      */
     public TextStyle setFontSize(double fontSize) {
         this.mFontSize = fontSize;
         return this;
@@ -108,7 +104,6 @@ public final class TextStyle extends Style<TextStyleable> implements TextStyleab
 
     /**
      * {@inheritDoc}
-     * @return 
      */
      public TextStyle setFontStyle(FontStyle fontStyle) {
         this.mFontStyle = fontStyle;
@@ -117,7 +112,6 @@ public final class TextStyle extends Style<TextStyleable> implements TextStyleab
 
     /**
      * {@inheritDoc}
-     * @return 
      */
     public TextStyle setFontWeight(FontWeight fontWeight) {
         this.mFontWeight = fontWeight;
@@ -126,7 +120,6 @@ public final class TextStyle extends Style<TextStyleable> implements TextStyleab
 
     /**
      * {@inheritDoc}
-     * @throws java.lang.CloneNotSupportedException
      */
     public TextStyle clone() throws CloneNotSupportedException {
         return (TextStyle) super.clone();

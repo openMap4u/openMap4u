@@ -31,8 +31,10 @@ public class AbstractLambdaTest extends AbstractOpenMap4uTest {
         return Stream.of(1d, 2d, 3d, 4d, 5d, 6d, 7d, 8d, 9d);
     }
 
-  
-
+    /**
+     *
+     * @throws IOException
+     */
     @Test
     public void testSimpleLambda() throws IOException {
         /* 1. get an instance */
@@ -52,6 +54,10 @@ public class AbstractLambdaTest extends AbstractOpenMap4uTest {
         draw.write(FileSystems.getDefault().getPath("/temp", "myTemp.png"));
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     @Test
     public void testLineChart() throws IOException {
         /* 1. get an instance */
@@ -67,6 +73,10 @@ public class AbstractLambdaTest extends AbstractOpenMap4uTest {
         draw.write(FileSystems.getDefault().getPath("/temp", "openMap4uLineChart.png"));
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     @Test
     public void testBarChart() throws IOException {
         /* 1. get an instance */
@@ -79,6 +89,10 @@ public class AbstractLambdaTest extends AbstractOpenMap4uTest {
         draw.write(FileSystems.getDefault().getPath("/temp", "openMap4uBarChart.png"));
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     @Test
     public void testRoundedBarChart() throws IOException {
         /* 1. get an instance */

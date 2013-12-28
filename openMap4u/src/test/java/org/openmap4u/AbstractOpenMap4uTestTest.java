@@ -21,9 +21,15 @@ public class AbstractOpenMap4uTestTest {
     AbstractOpenMap4uTest aOM4uTest = new AbstractOpenMap4uTest() {
     };
 
+    /**
+     *
+     */
     public AbstractOpenMap4uTestTest() {
     }
 
+    /**
+     *
+     */
     @Test
     public void testGetPath() {
         String path = aOM4uTest.getPackagePath("hello.txt").toUri().toString();
@@ -33,6 +39,9 @@ public class AbstractOpenMap4uTestTest {
         assertTrue(path.contains("hello.txt"));
     }
 
+    /**
+     *
+     */
     @Test
     public void testGetPackagePath() {
         String path = aOM4uTest.getPackagePath("hello.txt").toUri().toString();

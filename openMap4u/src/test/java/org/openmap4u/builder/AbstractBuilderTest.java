@@ -34,50 +34,108 @@ import org.openmap4u.unit.Length;
 public abstract class AbstractBuilderTest<T extends Buildable> extends
         AbstractOpenMap4uTest {
 
+    /**
+     *
+     */
     public final static Action<Paint> VISIBILITY = new Action(
             MockupAction.VISIBILITY, true, false, true, false, true, false, true, false, true, false, true);
 
+    /**
+     *
+     */
     public final static Action<Paint> FONT_COLOR = new Action(
             MockupAction.FONT_COLOR, Color.BLACK, Color.BLUE, Color.CYAN,
             Color.DARK_GRAY, Color.GRAY, Color.GREEN, Color.LIGHT_GRAY,
             Color.MAGENTA, Color.ORANGE, Color.PINK, Color.RED);
+
+    /**
+     *
+     */
     public final static Action<Double> FONT_SIZE = new Action(
             MockupAction.FONT_SIZE, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
+
+    /**
+     *
+     */
     public final static Action<Double> OFFSET_X = new Action(
             MockupAction.OFFSET_X, -.5, -.4, -.3, -.2, -.1, 0d, .1, .2, .3, .4,
             .5);
+
+    /**
+     *
+     */
     public final static Action<Double> OFFSET_Y = new Action(
             MockupAction.OFFSET_Y, -.5, -.4, -.3, -.2, -.1, 0d, .1, .2, .3, .4,
             .5);
+
+    /**
+     *
+     */
     public final static Action<Double> SCALE_X = new Action(
             MockupAction.SCALE_X, .5, .6, .7, .8, .9, 1d, 1.1, 1.2, 1.3, 1.4,
             1.5);
+
+    /**
+     *
+     */
     public final static Action<Double> SCALE_Y = new Action(
             MockupAction.SCALE_Y, .5, .6, .7, .8, .9, 1d, 1.1, 1.2, 1.3, 1.4,
             1.5);
+
+    /**
+     *
+     */
     public final static Action<Double> ROTATE = new Action(MockupAction.ROTATE,
             0d, 36d, 72d, 108d, 144d, 180d, 216d, 252d, 288d, 324d, 360d);
+
+    /**
+     *
+     */
     public final static Action<Double> TRANSPARENCE = new Action(
             MockupAction.OPACITY, 0d, 10d, 20d, 30d, 40d, 50d, 60d, 70d, 80d,
             90d, 100d);
+
+    /**
+     *
+     */
     public final static Action<Double> STROKE_SIZE = new Action(
             MockupAction.STROKE_SIZE, .1, .2, .3, .4, .5, .6, .7, 0.8, .9,
             1.00000001, 1.1);
+
+    /**
+     *
+     */
     public final static Action<Paint> STROKE_COLOR = new Action(
             MockupAction.STROKE_COLOR, Color.BLACK, Color.BLUE, Color.CYAN,
             Color.DARK_GRAY, Color.GRAY, Color.GREEN, Color.LIGHT_GRAY,
             Color.MAGENTA, Color.ORANGE, Color.PINK, Color.RED);
+
+    /**
+     *
+     */
     public static final Action<Paint> STROKE_FILL = new Action(
             MockupAction.STROKE_FILL, Color.RED, Color.PINK, Color.ORANGE,
             Color.MAGENTA, Color.LIGHT_GRAY, Color.GREEN, Color.GRAY,
             Color.DARK_GRAY, Color.CYAN, Color.BLUE, Color.BLACK);
+
+    /**
+     *
+     */
     public static final Action<Position> ALIGN = new Action(
             MockupAction.ALIGN, Position.LeftTop, Position.CenterTop, Position.RightTop,
             Position.LeftMiddle, Position.CenterMiddle, Position.RightMiddle, Position.LeftBottom, Position.CenterBottom, Position.RightBottom,Position.CenterTop, Position.RightTop);
+
+    /**
+     *
+     */
     public static final Action<FontStyle> FONT_STYLE = new Action(
             MockupAction.FONT_STYLE, FontStyle.NORMAL, FontStyle.ITALIC,
             FontStyle.NORMAL, FontStyle.ITALIC, FontStyle.NORMAL, FontStyle.ITALIC, FontStyle.NORMAL, FontStyle.ITALIC,
             FontStyle.NORMAL, FontStyle.ITALIC, FontStyle.NORMAL);
+
+    /**
+     *
+     */
     public static final Action<String> FONT_FAMILY = new Action(
             MockupAction.FONT_FAMILY, Font.SANS_SERIF, Font.SERIF, Font.DIALOG,
             MockupAction.FONT_FAMILY, Font.SANS_SERIF, Font.SERIF, Font.DIALOG,
@@ -104,10 +162,20 @@ public abstract class AbstractBuilderTest<T extends Buildable> extends
         mActions.add(new Actions("align", ALIGN));
       }
 
+    /**
+     *
+     * @return
+     */
     protected List<Actions> getActions() {
         return mActions;
     }
 
+    /**
+     *
+     * @param actions
+     * @param builder
+     * @param index
+     */
     protected void setBuilder(Actions actions, T builder, int index) {
         if (actions.contains(MockupAction.OFFSET_X)) {
             builder.offsetX((double) actions

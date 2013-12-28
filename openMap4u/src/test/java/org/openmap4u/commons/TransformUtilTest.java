@@ -27,12 +27,18 @@ public class TransformUtilTest {
     TransformUtil tu = null;
     AffineTransform transform = null;
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
         tu = new TransformUtil();
         transform = new AffineTransform(2, 0, 0, 3, 0, 0);
     }
 
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
@@ -54,6 +60,9 @@ public class TransformUtilTest {
         assertThat(tu.getPoint(Position.RightBottom, shape), is(new Point2D.Double(420, 30)));
     }
 
+    /**
+     *
+     */
     @Test
     public void testIsRotate() {
         assertThat(tu.isRotate(0), is(false));
@@ -72,6 +81,7 @@ public class TransformUtilTest {
 
     /**
      * Test of transform method, of class TransformUtil.
+     * @throws java.awt.geom.NoninvertibleTransformException
      */
     @Test
     public void testInversTransform() throws NoninvertibleTransformException {

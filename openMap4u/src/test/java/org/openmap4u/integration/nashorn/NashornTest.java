@@ -15,6 +15,9 @@ import static org.junit.Assert.*;
  */
 public class NashornTest extends AbstractNashornTest {
 
+    /**
+     *
+     */
     @Test
     public void testScriptEngine() {
         assertThat(getEngine(), notNullValue());

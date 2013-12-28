@@ -42,9 +42,19 @@ import org.openmap4u.unit.Length;
  */
 public interface Globals {
     
+    /**
+     * Constant for zero.
+     */
     double ZERO =0;
     
+    /**
+     * The default angle unit.
+     */
     public static Angle DEFAULT_ANGLE_UNIT = Angle.DEGREE;
+    
+    /**
+     * The default viewport center.
+     */
     public static Point2D DEFAULT_VIEWPORT_CENTER= new Point2D.Double(ZERO,ZERO );
 
     /**

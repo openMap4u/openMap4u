@@ -23,15 +23,27 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      */
     private Path2D.Double mPath = null;
 
+    /**
+     * Creates a new ShapeBuilder instance.
+     */
     public ShapeBuilder() {
         setStyle(new ShapeStyle());
         resetPath();
     }
 
+    /**
+     * {@inheritDoc}
+     * @return The builder itself (method chaining pattern).
+      */
+    @Override
     public Shape getShape() {
         return this.mPath;
     }
 
+    /**
+     * Sets the shape.
+     * @param shape The shape.
+     */
     protected void setShape(Shape shape) {
         this.mPath = new Path2D.Double(shape);
     }

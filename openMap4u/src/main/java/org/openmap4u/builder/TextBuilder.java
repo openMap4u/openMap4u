@@ -19,9 +19,17 @@ public abstract class TextBuilder<B extends TextBuilder<B>> extends
     
     private String mText = null;
     
+    /**
+     * Creates a new TextBuilder instance.
+     */
     public TextBuilder() {
      }
     
+    /**
+     * {@inheritDoc}
+    * @return Method chaining pattern.
+       */
+    @Override
     public final String getText() {
     return this.mText;
     }

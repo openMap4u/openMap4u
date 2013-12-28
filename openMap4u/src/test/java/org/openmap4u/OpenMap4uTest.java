@@ -16,6 +16,9 @@ import org.openmap4u.plugin.builder.core.Polygon;
  */
 public class OpenMap4uTest extends AbstractOpenMap4uTest {
 
+    /**
+     *
+     */
     @Test
     public void testDefaultOpenMap4uNotNull() {
         assertThat("default OpenMap4u mockup not null", getDefaultOpenMap4u(), notNullValue());
@@ -23,6 +26,9 @@ public class OpenMap4uTest extends AbstractOpenMap4uTest {
         assertThat("default OpenMap4u mockup not null", getDefaultOpenMap4u().getCanvas(), notNullValue());
     }
 
+    /**
+     *
+     */
     @Test
     public void testOverridenOpenMap4uNotNull() {
         assertThat("overridden OpenMap4u mockup not null", getOverriddenOpenMap4u(), notNullValue());

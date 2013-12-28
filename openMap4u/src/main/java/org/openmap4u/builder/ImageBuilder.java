@@ -17,9 +17,11 @@ public abstract class ImageBuilder<B extends ImageBuilder<B>> extends
 
     private Path mPath = null;
 
-    public ImageBuilder() {
-    }
-
+    
+/**
+ * {@inheritDoc}
+   * @return The Image itself (method chaining pattern).
+  */
     @Override
     public Path getPath() {
         return this.mPath;

@@ -16,22 +16,9 @@ import org.openmap4u.builder.ShapeBuilder;
  */
 public class Area extends ShapeBuilder<Area>  {
 
-    private boolean mStackX = false;
-
-    private boolean mStackY = false;
+     
     
-    /* stores the prevoius path */
-    private Path2D.Double mPreviousPath= null;
-
-     public Area stackX() {
-        this.mStackX = true;
-        return this;
-    }
-
-     public Area stackY() {
-        this.mStackY = true;
-        return this;
-    }
+   
     
     /**
      * Moves the path to the given point without drawing anything. It is used to

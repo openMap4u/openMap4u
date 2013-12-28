@@ -47,6 +47,9 @@ public class UtilTest {
 
     private static Util mUtility = null;
 
+    /**
+     *
+     */
     @BeforeClass
     public static void setUpClass() {
         try {
@@ -89,8 +92,10 @@ public class UtilTest {
 //    public void testGetIndividualTransform() {
 //        assertThat(mUtility.getIndividualTransform(new TransformHelper()), is(new AffineTransform()));
 //    }
-    
-    
+
+    /**
+     *
+     */
     @Test
     public void testGetMimeType() {
     	MimeType mimeType = mUtility.getMimeType("image","png");

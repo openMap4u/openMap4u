@@ -8,7 +8,7 @@ package org.openmap4u.unit;
  * All unit enumerations are derived from this base interface.
  * 
  * @author Michael Hadrbolec
- * @param <T>
+ * @param <T> The convertable type.
  */
 public interface Convertable<T extends Convertable> {
 

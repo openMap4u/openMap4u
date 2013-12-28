@@ -20,6 +20,9 @@ public class ImageTest extends AbstractImageBuilderTest<Image> {
 
     private Path mImage = null;
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
         this.mImage = FileSystems.getDefault().getPath("target\\test-classes\\image\\image.png");
@@ -37,6 +40,10 @@ public class ImageTest extends AbstractImageBuilderTest<Image> {
        return  this.getDefaultOpenMap4u().getBuilder(Image.class).path(mImage);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     protected List<Actions> getActions() {
         return super.getActions();

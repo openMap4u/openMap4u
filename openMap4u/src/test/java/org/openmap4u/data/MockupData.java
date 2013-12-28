@@ -53,9 +53,20 @@ import com.vividsolutions.jts.io.WKTReader;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
+/**
+ *
+ * @author zwotti
+ */
 public class MockupData {
 
-     public static String IMAGE_URL = null;
+    /**
+     * The image url.
+     */
+    public static String IMAGE_URL = null;
+
+    /**
+     * The iterable countries.
+     */
     public static List<Country> ITERABLE_COUNTRIES;
     /**
      * The bounding box of all countries.
@@ -220,8 +231,8 @@ public class MockupData {
     /**
      * Creates the values .
      *
-     * @param startValue The start value.
-     * @param endValue The end value.
+     * @param start
+     * @param stop
      * @param steps The number of steps.
      * @return The values.
      */

@@ -55,21 +55,46 @@ public class Bar extends ShapeBuilder<Bar> {
         return super.size(strokeSize);
     }
 
+    /**
+     * The radius.
+     *
+     * @param radius The radius.
+     * @return The builder itself (method chaining pattern).
+     */
     public Bar radius(double radius) {
         this.mRadius = radius;
         return this;
     }
 
+    /**
+     * The bar width in drawing units.
+     *
+     * @param width The bar width in drawing units.
+     * @return The builder itself (method chaining pattern).
+     */
     public Bar width(double width) {
         this.mWidth = width;
         return this;
     }
 
+    /**
+     * The bar height in drawing units.
+     *
+     * @param height THe bar height in drawing units.
+     * @return The builder itself (method chaining pattern).
+     */
     public Bar height(double height) {
         this.mHeight = height;
         return this;
     }
 
+    /**
+     * Sets the bar size.
+     *
+     * @param width The bar width in drawing units.
+     * @param height The bar height in drawing units.
+     * @return The builder itself (method chaining pattern).
+     */
     public Bar setSize(double width, double height) {
         return width(width).height(height);
     }

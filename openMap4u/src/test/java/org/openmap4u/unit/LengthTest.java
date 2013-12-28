@@ -25,7 +25,10 @@ public class LengthTest {
 	private Length mPixel = null;
 	private Length mPoint = null;
 
-	@Before
+    /**
+     *
+     */
+    @Before
 	public void setUp() {
 		mKM = Length.KM;
 		mM = Length.M;
@@ -70,19 +73,28 @@ public class LengthTest {
 		assertThat(mM.convert(1, Length.MM), is(1000d));
 	}
 
-	@Test
+    /**
+     *
+     */
+    @Test
 	public void testConvertInch() {
 		assertThat(mInch.convert(1, Length.CM), is(2.54));
 
 	}
 
-	@Test
+    /**
+     *
+     */
+    @Test
 	public void testConvertCm() {
 		assertEquals(mCM.convert(1, Length.INCH), 1 / 2.54, 0.000001);
 
 	}
 
-	@Test
+    /**
+     *
+     */
+    @Test
 	public void testConvertCssUnits() {
 		assertEquals(mPixel.convert(1, Length.MM), .264583333333, 0.000001);
 		assertEquals(mPoint.convert(1, Length.PIXEL), 96.0 / 72.0, 0.0000001);

@@ -25,6 +25,7 @@ public final class Polyline  extends ShapeBuilder<Polyline >   {
      *            draw.
      * @return The Polyline itself (method chaining pattern).
      */
+    @Override
     public Polyline moveTo(double toX, double toY) {
         return super.moveTo(toX, toY);
     }
@@ -38,6 +39,7 @@ public final class Polyline  extends ShapeBuilder<Polyline >   {
      *            The y coordinate where to draw to.
      * @return The Polyline itself (method chaining pattern).
      */
+    @Override
     public Polyline lineTo(double toX, double toY) {
          return super.lineTo(toX, toY);
     }
@@ -45,8 +47,8 @@ public final class Polyline  extends ShapeBuilder<Polyline >   {
 
     /**
      * {@inheritDoc}
-     * @return 
-     */
+      * @return The Polyline itself (method chaining pattern).
+    */
     @Override
     public Polyline quadTo(double cpX, double cpY, double toX, double toY) {
         return super.quadTo(cpX, cpY, toX, toY);

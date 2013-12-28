@@ -7,12 +7,89 @@ package org.openmap4u.builder;
 /**
  *
  * @author Michael Hadrbolec
+ * @param <T>
  */
 public class Action<T> {
 
+    /**
+     *
+     */
     public enum MockupAction {
 
-        OFFSET_X, OFFSET_Y, SCALE_X, SCALE_Y, ROTATE, OPACITY, ALIGN,  STROKE_COLOR, STROKE_SIZE, STROKE_FILL, FONT_SIZE, FONT_STYLE, FONT_FAMILY, FONT_COLOR, VISIBILITY
+        /**
+         *
+         */
+        OFFSET_X,
+
+        /**
+         *
+         */
+        OFFSET_Y,
+
+        /**
+         *
+         */
+        SCALE_X,
+
+        /**
+         *
+         */
+        SCALE_Y,
+
+        /**
+         *
+         */
+        ROTATE,
+
+        /**
+         *
+         */
+        OPACITY,
+
+        /**
+         *
+         */
+        ALIGN,
+
+        /**
+         *
+         */
+        STROKE_COLOR,
+
+        /**
+         *
+         */
+        STROKE_SIZE,
+
+        /**
+         *
+         */
+        STROKE_FILL,
+
+        /**
+         *
+         */
+        FONT_SIZE,
+
+        /**
+         *
+         */
+        FONT_STYLE,
+
+        /**
+         *
+         */
+        FONT_FAMILY,
+
+        /**
+         *
+         */
+        FONT_COLOR,
+
+        /**
+         *
+         */
+        VISIBILITY
     };
     /**
      * Stores the values.
@@ -29,10 +106,18 @@ public class Action<T> {
         this.mValues = values;
     }
 
+    /**
+     *
+     * @return
+     */
     public MockupAction getDescription() {
         return this.mDescription;
     }
 
+    /**
+     *
+     * @return
+     */
     public T[] getValues() {
         return this.mValues;
     }

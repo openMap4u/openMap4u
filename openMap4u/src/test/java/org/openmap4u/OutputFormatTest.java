@@ -8,37 +8,59 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openmap4u.plugin.format.graphics2d.Png;
 
+/**
+ *
+ * @author zwotti
+ */
 public class OutputFormatTest {
 
 	private OutputFormat oF = null;
 
-	@Before
+    /**
+     *
+     */
+    @Before
 	public void setUp() {
 		oF = new OutputFormat(Png.class, "png");
 	}
 
-	@Test
+    /**
+     *
+     */
+    @Test
 	public void test() {
 		assertThat(oF, notNullValue());
 	}
 
-	@Test
+    /**
+     *
+     */
+    @Test
 	public void testGetFileExtension() {
 		assertThat(oF.getFileExtension(), is("png"));
 	}
 
-	@Test
+    /**
+     *
+     */
+    @Test
 	public void testGeOutputFormat() {
 		assertThat(oF.getOutputableFormat().getName(),
 				is(Png.class.getName()));
 	}
 
-	@Test
+    /**
+     *
+     */
+    @Test
 	public void testGetSimpleFileName() {
 		assertThat(oF.getFileneame("test"), is("test.png"));
 	}
 
-	@Test
+    /**
+     *
+     */
+    @Test
 	public void testGetComplexFileName() {
 		assertThat(oF.getFileneame("1", "2", "3"), is("1_2_3.png"));
 	}

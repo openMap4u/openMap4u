@@ -10,12 +10,15 @@ import java.awt.Shape;
 import org.openmap4u.style.ShapeStyleable;
 
 /**
- *
- * @author zwotti
+ * A shape primitive.
+ * @author Michael Hadrbolec.
  */
 public interface ShapeDrawable extends Drawable<ShapeStyleable> {
     
-    
+    /**
+     * Gets the shape.
+     * @return THe shape.
+     */
     Shape getShape();
     
     

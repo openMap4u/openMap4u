@@ -31,6 +31,9 @@ public class PieTest extends AbstractOpenMap4uTest {
 
     private Pie pie = null;
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
         pie = new OpenMap4u().getBuilder(Pie.class);
@@ -175,6 +178,10 @@ public class PieTest extends AbstractOpenMap4uTest {
 
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     @Test
     public void testPieChart() throws IOException {
         /* 1. get an instance */
@@ -187,6 +194,10 @@ public class PieTest extends AbstractOpenMap4uTest {
         draw.write(FileSystems.getDefault().getPath("/temp", "openMap4uPieChart.png"));
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     @Test
     public void testPieChart1() throws IOException {
         /* 1. get an instance */
@@ -201,6 +212,10 @@ public class PieTest extends AbstractOpenMap4uTest {
         draw.write(FileSystems.getDefault().getPath("/temp", "openMap4uPieChart1.png"));
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     @Test
     public void testPieChart4() throws IOException {
         /* 1. get an instance */
@@ -215,6 +230,10 @@ public class PieTest extends AbstractOpenMap4uTest {
         draw.write(FileSystems.getDefault().getPath("/temp", "openMap4uPieChart4.png"));
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     @Test
     public void testPieChart3() throws IOException {
         /* 1. get an instance */
@@ -230,6 +249,10 @@ public class PieTest extends AbstractOpenMap4uTest {
         draw.write(FileSystems.getDefault().getPath("/temp", "openMap4uPieChart3.png"));
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     @Test
     public void testPieChart2() throws IOException {
         /* 1. get an instance */
@@ -245,6 +268,10 @@ public class PieTest extends AbstractOpenMap4uTest {
         draw.write(FileSystems.getDefault().getPath("/temp", "openMap4uPieChart2.png"));
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     @Test
     public void testDonutChart() throws IOException {
         /* 1. get an instance */
@@ -257,6 +284,10 @@ public class PieTest extends AbstractOpenMap4uTest {
         draw.write(FileSystems.getDefault().getPath("/temp", "openMap4uDonutChart.png"));
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     @Test
     public void testDonutChart1() throws IOException {
         /* 1. get an instance */
@@ -270,6 +301,10 @@ public class PieTest extends AbstractOpenMap4uTest {
         draw.write(FileSystems.getDefault().getPath("/temp", "openMap4uDonutChart1.png"));
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     @Test
     public void testDonutChart2() throws IOException {
         /* 1. get an instance */

@@ -15,19 +15,22 @@ public interface ShapeStyleable extends Styleable<ShapeStyleable> {
 
     /**
      * Gets the stroke color.
+     *
      * @return The stroke color.
      */
     Paint getStrokeColor();
 
     /**
      * Gets the fill color.
+     *
      * @return The fill color.
      */
     Paint getStrokeFill();
 
     /**
-     * Gets the stroke size
-     * {@inheritDoc}
+     * Gets the stroke size in stroke units.
+     *
+     * @return The stroke size in stroke units.
      */
     double getStrokeSize();
 

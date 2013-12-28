@@ -23,18 +23,25 @@ public class ShapeStyleTest {
     private ShapeStyleable mS = null;
     private ShapeStyleable mSD = null;
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
         mS = new ShapeStyle();
         mSD = new ShapeStyle().setStrokeColor(Color.GREEN).setStrokeFill(Color.YELLOW).setStrokeSize(3).setAlpha(.5).setVisible(false);
     }
 
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
 
     /**
      * Test of clone method, of class ShapeStyle.
+     * @throws java.lang.Exception
      */
     @Test
     public void testClone() throws Exception {

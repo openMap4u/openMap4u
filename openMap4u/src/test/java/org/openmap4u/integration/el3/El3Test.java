@@ -15,11 +15,17 @@ import static org.junit.Assert.*;
  */
 public class El3Test extends AbstractEl3Test {
 
+    /**
+     *
+     */
     @Test
     public void testProcessor() {
         assertThat(getELProcessor(), notNullValue());
     }
 
+    /**
+     *
+     */
     @Test
     public void testSinglePrimitive() {
         getELProcessor().eval("n=4+3");

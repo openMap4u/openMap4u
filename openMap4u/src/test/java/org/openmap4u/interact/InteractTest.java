@@ -20,6 +20,9 @@ public class InteractTest {
     private Interactable mI = null;
     private static final String INTERACTION = "do it";
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
         this.mI = new Interact();

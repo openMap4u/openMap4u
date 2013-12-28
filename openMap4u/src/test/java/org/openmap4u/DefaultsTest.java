@@ -9,22 +9,35 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openmap4u.unit.Length;
 
+/**
+ *
+ * @author zwotti
+ */
 public class DefaultsTest {
 
 	private Defaults mDefaults = null;
 
-	@Before
+    /**
+     *
+     */
+    @Before
 	public void setUp() {
 		this.mDefaults = new Defaults();
 	}
 
-	@Test
+    /**
+     *
+     */
+    @Test
 	public void testGetDrawingUnits() {
 		assertThat(this.mDefaults.getDrawingUnits(), notNullValue());
 
 	}
 
-	@Test
+    /**
+     *
+     */
+    @Test
 	public void testSetDrawingUnits() {
 		this.mDefaults.setDrawingUnits(Length.INCH);
 		assertThat(this.mDefaults.getDrawingUnits(), is(Length.INCH));
@@ -32,13 +45,19 @@ public class DefaultsTest {
 		assertThat(this.mDefaults.getDrawingUnits(), is(Length.MM));
 	}
 
-	@Test
+    /**
+     *
+     */
+    @Test
 	public void testGetStrokeUnits() {
 		assertThat(this.mDefaults.getStrokeUnits(), notNullValue());
 
 	}
 
-	@Test
+    /**
+     *
+     */
+    @Test
 	public void testSetStrokeUnits() {
 		this.mDefaults.setStrokeUnits(Length.INCH);
 		assertThat(this.mDefaults.getStrokeUnits(), is(Length.INCH));
@@ -47,13 +66,19 @@ public class DefaultsTest {
 
 	}
 
-	@Test
+    /**
+     *
+     */
+    @Test
 	public void testGetWorldUnits() {
 		assertThat(this.mDefaults.getWorldUnits(), notNullValue());
 
 	}
 
-	@Test
+    /**
+     *
+     */
+    @Test
 	public void testSetWorldUnits() {
 		this.mDefaults.setWorldUnits(Length.INCH);
 		assertThat(this.mDefaults.getWorldUnits(), is(Length.INCH));
@@ -62,12 +87,18 @@ public class DefaultsTest {
 
 	}
 
-	@Test
+    /**
+     *
+     */
+    @Test
 	public void testGetLocale() {
 		assertThat(mDefaults.getLocale(), is(Locale.getDefault()));
 	}
 
-	@Test
+    /**
+     *
+     */
+    @Test
 	public void testSetLocale() {
 		this.mDefaults.setLocale(Locale.JAPANESE);
 		assertThat(mDefaults.getLocale(), is(Locale.JAPANESE));

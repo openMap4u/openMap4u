@@ -4,6 +4,10 @@ import java.util.List;
 
 import org.openmap4u.builder.AbstractShapeBuilderTest;
  
+/**
+ *
+ * @author zwotti
+ */
 public class CrossTest extends AbstractShapeBuilderTest {
 
      @Override
@@ -11,6 +15,10 @@ public class CrossTest extends AbstractShapeBuilderTest {
        return this.getDefaultOpenMap4u().getBuilder(Cross.class).setSize(1, .5);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     protected List getActions() {
        return super.getActions();

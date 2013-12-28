@@ -27,6 +27,10 @@ import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.io.WKBWriter;
 import com.vividsolutions.jts.io.WKTWriter;
 
+/**
+ *
+ * @author zwotti
+ */
 public class Country {
 
     private static WKBWriter writerWkb = new WKBWriter();
@@ -102,50 +106,98 @@ public class Country {
         return mGeom;
     }
 
+    /**
+     *
+     * @return
+     */
     public byte[] getGeomAsWkb() {
         return writerWkb.write(getGeomAsJTS());
     }
 
+    /**
+     *
+     * @return
+     */
     public String getGeomAsWkt() {
         return writerWkt.write(getGeomAsJTS());
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return NAME;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getUn() {
         return this.UN;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getRegion() {
         return this.REGION;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getSubregion() {
         return this.SUBREGION;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getISO2() {
         return this.ISO2;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getISO3() {
         return this.ISO3;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getFIPS() {
         return this.FIPS;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getArea() {
         return this.AREA;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getX() {
         return this.mGeom.getCentroid().getX();
     }
 
+    /**
+     *
+     * @return
+     */
     public double getY() {
         return this.mGeom.getCentroid().getY();
     }

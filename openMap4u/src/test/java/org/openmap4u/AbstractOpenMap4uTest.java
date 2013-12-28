@@ -43,6 +43,10 @@ public abstract class AbstractOpenMap4uTest {
     @Autowired
     private OpenMap4u overriddenOpenMap4u = new OpenMap4u();
 
+    /**
+     *
+     * @return
+     */
     public List<OutputFormat> getOutputFormats() {
         List<OutputFormat> outputFormats = new ArrayList<>();
         outputFormats.add(new OutputFormat(Png.class, "png"));
@@ -50,10 +54,24 @@ public abstract class AbstractOpenMap4uTest {
         return outputFormats;
     }
 
+    /**
+     *
+     * @return
+     */
     public OpenMap4u getDefaultOpenMap4u() {
         return this.defaultOpenMap4u;
     }
 
+    /**
+     *
+     * @param worldUnits
+     * @param drawingUnits
+     * @param strokeUnits
+     * @param outputFromat
+     * @param width
+     * @param height
+     * @return
+     */
     public SetAreaOfInterestOrDrawOrWrite getCanvas(Length worldUnits,
             Length drawingUnits, Length strokeUnits,
             Class<? extends Outputable> outputFromat, double width,
@@ -63,10 +81,20 @@ public abstract class AbstractOpenMap4uTest {
                 .outputFormat(outputFromat).size(width, height);
     }
 
+    /**
+     *
+     * @return
+     */
     public OpenMap4u getOverriddenOpenMap4u() {
         return this.overriddenOpenMap4u;
     }
 
+    /**
+     *
+     * @param filename
+     * @param ouputFormat
+     * @return
+     */
     protected final Path getPath(String filename, OutputFormat ouputFormat) {
         List<String> path = new ArrayList<>();
         path.add("target");
@@ -93,6 +121,12 @@ public abstract class AbstractOpenMap4uTest {
         return FileSystems.getDefault().getPath(TARGET, entr);
     }
 
+    /**
+     *
+     * @param entries
+     * @return
+     * @throws IOException
+     */
     protected final static Path getPath(String... entries) throws IOException {
         List<String> pathEntries = new ArrayList();
         for (String entry : entries) {
@@ -106,6 +140,11 @@ public abstract class AbstractOpenMap4uTest {
         return path;
     }
 
+    /**
+     *
+     * @param filename
+     * @return
+     */
     protected final Path getPackagePath(String filename) {
 
         List<String> pathEntries = new ArrayList();
@@ -155,7 +194,9 @@ public abstract class AbstractOpenMap4uTest {
      *
      * @param width The width of the canvas.
      * @param height The height of the canvas.
-     * @return The canvas.
+     * @param fileName
+     * @param primitives2Draw
+     * @throws java.io.IOException
      */
     protected final void drawOnCanvas(double width, double height, String fileName, Buildable... primitives2Draw) throws IOException {
         SetAreaOfInterestOrDrawOrWrite canvas = getCanvas(width, height);

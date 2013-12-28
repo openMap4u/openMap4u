@@ -17,6 +17,13 @@ import java.awt.geom.Rectangle2D;
  */
 public class TransformUtil {
 
+    /**
+     * Gets the point position on a given shape.
+     *
+     * @param position The position, whose point should be retrieved.
+     * @param shape The shape.
+     * @return The resulting point.
+     */
     public final Point2D getPoint(Position position, Shape shape) {
         Rectangle2D bounds = shape.getBounds2D();
         switch (position) {
@@ -47,7 +54,8 @@ public class TransformUtil {
      * Transform the given point with the provided global transformation.
      *
      * @param point2Transform The point to be tranformed.
-     * @param globalTransform The global transformation to be apllied to the point.
+     * @param globalTransform The global transformation to be apllied to the
+     * point.
      * @return The resulting transfromed point.
      */
     public final Point2D transform(Point2D point2Transform, AffineTransform globalTransform) {
@@ -55,30 +63,48 @@ public class TransformUtil {
     }
 
     /**
-     * Transforms the given point from the provided global transformation back into the world units.
+     * Transforms the given point from the provided global transformation back
+     * into the world units.
+     *
      * @param point2Transform The point to be transfromed back into world units.
      * @param globalTransform The global transformation.
      * @return The resulting transformed point.
-     * @throws NoninvertibleTransformException Is thrown in the case the global trnasformation is not invertable.
+     * @throws NoninvertibleTransformException Is thrown in the case the global
+     * trnasformation is not invertable.
      */
     public final Point2D inverseTransform(Point2D point2Transform, AffineTransform globalTransform) throws NoninvertibleTransformException {
         return globalTransform.inverseTransform(point2Transform, new Point2D.Double());
     }
 
+    /**
+     * Creates the individual transformation. It is composed of the following
+     * transformations in the following fixed order: translation (=offset),
+     * rotation, scaling and finally alignment. <br/>
+     * e.g.: start <img alt="" src="./doc-files/b_initial.png"> offset <img
+     * alt="" src="./doc-files/b_transform2gether1.png"> rotate <img alt=""
+     * src="./doc-files/b_transform2gether2.png"> scale <img alt=""
+     * src="./doc-files/b_transform2gether3.png"> align <img alt=""
+     * src="./doc-files/b_transform2gether4.png">
+     *
+     * @param individualTransform The individual transformation.
+     * @param shape The shape.
+     * @return The individual transformation.
+     */
     final AffineTransform getIndividualTransform(DrawableTransformable individualTransform, Shape shape) {
         AffineTransform individual = new AffineTransform();
-        if (individualTransform.getAlign() != null) {
-            Point2D align = getPoint(individualTransform.getAlign(), shape);
-            individual.translate(-align.getX(), -align.getY());
-        }
         if (individualTransform.getOffset() != null) {
             individual.translate(individualTransform.getOffset().getX(), individualTransform.getOffset().getY());
         }
         if (isRotate(individualTransform.getRotate())) {
             individual.rotate(individualTransform.getRotate());
         }
+
         if (individualTransform.getScaleX() != 1 || individualTransform.getScaleY() != 1) {
             individual.scale(individualTransform.getScaleX(), individualTransform.getScaleY());
+        }
+        if (individualTransform.getAlign() != null) {
+            Point2D align = getPoint(individualTransform.getAlign(), shape);
+            individual.translate(-align.getX(), -align.getY());
         }
         return individual;
     }
@@ -107,6 +133,23 @@ public class TransformUtil {
         return center - extent / 2d / scaleFactor;
     }
 
+    /**
+     * Gets overall transformation based on the given global trnasformation the point (in the case it is a point) the scale x and scale y factor to adjust to output format units.transformation 
+     * @param globalTransform The global transformation.
+     * @param point The point (in the case it is a point= or null if not.
+     * @param scaleX The scaleX factor to adjust to the output format.
+     * @param scaleY The scaleY factor to adjust to the output format.
+     * @param individualTransform The individual transformation. <br> Remark: It is composed of the following
+     * transformations in the following fixed order: translation (=offset),
+     * rotation, scaling and finally alignment. <br>
+     * e.g.: start <img alt="" src="./doc-files/b_initial.png"> offset <img
+     * alt="" src="./doc-files/b_transform2gether1.png"> rotate <img alt=""
+     * src="./doc-files/b_transform2gether2.png"> scale <img alt=""
+     * src="./doc-files/b_transform2gether3.png"> align <img alt=""
+     * src="./doc-files/b_transform2gether4.png">
+     * @param shape The shape to draw.
+     * @return The resulting transformation.
+     */
     public final AffineTransform transform(AffineTransform globalTransform, Point2D point, double scaleX, double scaleY, DrawableTransformable individualTransform, Shape shape) {
         if (point != null) {
             /* translate to the given point in world units */
@@ -120,10 +163,10 @@ public class TransformUtil {
     }
 
     /**
-     * Gets the global transformation.
+     * Gets the global transformation based on the given area of interest.
      *
      * @param areaOfInterest The area of interest.
-     * @return The global transform.
+     * @return The resulting global transform.
      */
     public AffineTransform getGlobalTransform(AreaOfInterestTransformable areaOfInterest) {
         AffineTransform global = new AffineTransform();

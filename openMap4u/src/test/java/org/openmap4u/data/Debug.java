@@ -1,5 +1,9 @@
 package org.openmap4u.data;
 
+/**
+ *
+ * @author zwotti
+ */
 public class Debug {
 
     double Terrestrial_protected_areas_percent_of_total_land_area = Double.NaN;

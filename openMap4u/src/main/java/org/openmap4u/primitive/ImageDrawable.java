@@ -10,11 +10,15 @@ import java.nio.file.Path;
 import org.openmap4u.style.ImageStyleable;
 
 /**
- *
- * @author zwotti
+ * A raster image primitive.
+ * @author Michael Hadrbolec.
  */
 public interface ImageDrawable extends Drawable<ImageStyleable> {
     
+    /**
+     * Gets the path to the image.
+     * @return The path to the image.
+     */
     Path getPath();
     
 }

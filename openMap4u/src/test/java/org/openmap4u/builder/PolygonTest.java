@@ -20,11 +20,17 @@ public class PolygonTest extends AbstractShapeBuilderTest<Polygon> {
 
     private Polygon mShape = null;
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
         this.mShape = this.getDefaultOpenMap4u().getBuilder(Polygon.class);
     }
 
+    /**
+     *
+     */
     @Test
     public void testIsVisible() {
         /* Test the default value */

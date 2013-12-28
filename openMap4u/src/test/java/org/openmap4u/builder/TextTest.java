@@ -20,12 +20,21 @@ public class TextTest extends AbstractTextBuilderTest<Text> {
 
     private Text mText = null;
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
         this.mText = this.getDefaultOpenMap4u().getBuilder(Text.class);
 
     }
 
+    /**
+     *
+     * @param actions
+     * @param builder
+     * @param index
+     */
     @Override
     protected void setBuilder(Actions actions, Text builder, int index) {
         super.setBuilder(actions, builder, index);
@@ -48,6 +57,10 @@ public class TextTest extends AbstractTextBuilderTest<Text> {
         return this.getDefaultOpenMap4u().getBuilder(Text.class).text("Äg").setFontSize(7);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     protected List<Actions> getActions() {
         super.getActions().add(new Actions("font color", FONT_COLOR));

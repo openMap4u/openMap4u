@@ -13,9 +13,17 @@ import org.openmap4u.data.MockupData;
 import org.openmap4u.plugin.builder.symbol.Cross;
 import org.openmap4u.unit.Length;
 
+/**
+ *
+ * @author zwotti
+ */
 public abstract class AbstractSpatialTest extends AbstractOpenMap4uTest {
 
-	@Test
+    /**
+     *
+     * @throws IOException
+     */
+    @Test
 	public void testDefault() throws IOException {
 		for (OutputFormat outputFormat : getOutputFormats()) {
 			process(this.getCanvas(Length.CM, Length.CM, Length.MM, outputFormat.getOutputableFormat(), 36,
@@ -23,7 +31,11 @@ public abstract class AbstractSpatialTest extends AbstractOpenMap4uTest {
 		}
 	}
 
-	@Test
+    /**
+     *
+     * @throws IOException
+     */
+    @Test
 	public void testCenter() throws IOException {
 		for (OutputFormat outputFormat : getOutputFormats()) {
 			process(this.getCanvas(Length.CM, Length.CM, Length.MM, outputFormat.getOutputableFormat(), 36,
@@ -31,7 +43,11 @@ public abstract class AbstractSpatialTest extends AbstractOpenMap4uTest {
 		}
 	}
 
-	@Test
+    /**
+     *
+     * @throws IOException
+     */
+    @Test
 	public void testCenterScale() throws IOException {
 		for (OutputFormat outputFormat : getOutputFormats()) {
 			process(this
@@ -42,7 +58,11 @@ public abstract class AbstractSpatialTest extends AbstractOpenMap4uTest {
 		}
 	}
 
-	@Test
+    /**
+     *
+     * @throws IOException
+     */
+    @Test
 	public void testCenterScaleRotate() throws IOException {
 		for (OutputFormat outputFormat : getOutputFormats()) {
 			process(this
@@ -59,5 +79,11 @@ public abstract class AbstractSpatialTest extends AbstractOpenMap4uTest {
 		return outputFormat.getFileneame("spatial",prefix,getName());
 	}
 
-	protected abstract void process(DrawOrWrite draw, String outputFileName) throws IOException ;
+    /**
+     *
+     * @param draw
+     * @param outputFileName
+     * @throws IOException
+     */
+    protected abstract void process(DrawOrWrite draw, String outputFileName) throws IOException ;
 }

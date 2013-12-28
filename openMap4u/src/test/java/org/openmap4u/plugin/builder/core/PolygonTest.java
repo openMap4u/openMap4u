@@ -30,52 +30,93 @@ import org.openmap4u.canvas.SetAreaOfInterestOrDrawOrWrite;
  */
 public class PolygonTest extends AbstractOpenMap4uTest {
 
+    /**
+     *
+     */
     public PolygonTest() {
     }
 
+    /**
+     *
+     */
     @BeforeClass
     public static void setUpClass() {
     }
 
+    /**
+     *
+     */
     @AfterClass
     public static void tearDownClass() {
     }
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
     }
 
+    /**
+     *
+     */
     @After
     public void tearDown() {
 
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     @Test
     public void testAdd() throws IOException {
         write(this.getPolygon().add(getCircle()), "c_add.png");
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     @Test
     public void testWritePolygon() throws IOException {
         write(this.getDefaultOpenMap4u().getBuilder(Polygon.class).color(Color.BLACK).size(.35).fill(Color.LIGHT_GRAY).shape(getCircle()), "c_circle.png");
         write(this.getPolygon(), "c_rectangle.png");
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     @Test
     public void testSubtract() throws IOException {
         write(this.getPolygon().subtract(getCircle()), "c_subtract.png");
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     @Test
     public void testIntersect() throws IOException {
         write(this.getPolygon().intersect(getCircle()), "c_intersect.png");
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     @Test
     public void testExclusiveOr() throws IOException {
         write(this.getPolygon().exclusiveOr(getCircle()), "c_exclusiveOr.png");
     }
 
+    /**
+     *
+     * @param polygonBuilder
+     * @param fileName
+     * @throws IOException
+     */
     public void write(Polygon polygonBuilder, String fileName) throws IOException {
        getCanvas().draw(polygonBuilder).write(this.getPackagePath( fileName));
     }

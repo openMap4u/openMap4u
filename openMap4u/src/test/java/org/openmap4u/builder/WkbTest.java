@@ -10,14 +10,24 @@ import org.openmap4u.data.Country;
 import org.openmap4u.data.MockupData;
 import org.openmap4u.plugin.builder.symbol.Cross;
 
+/**
+ *
+ * @author zwotti
+ */
 public class WkbTest extends AbstractSpatialTest {
 	
 	@Override
 	String getName() {
 		return "wkb";
 	}
-	
-	protected void process(DrawOrWrite draw, String outputFileName) throws IOException {
+
+    /**
+     *
+     * @param draw
+     * @param outputFileName
+     * @throws IOException
+     */
+    protected void process(DrawOrWrite draw, String outputFileName) throws IOException {
 		for (Country country : MockupData.ITERABLE_COUNTRIES) {
 			/* draw a cross in each center */
 			draw.draw(this.getDefaultOpenMap4u().getBuilder(Wkb.class) 

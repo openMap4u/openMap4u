@@ -24,16 +24,24 @@ import org.openmap4u.plugin.builder.symbol.Circle;
  */
 public class LineTest extends AbstractPrimitiveBuilderTest {
 
-   
-
+    /**
+     *
+     */
     @Before
     public void setUp() {
     }
 
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     @Test
     public void testSimpleLine() throws IOException {
         /* 1. get an instance */
@@ -48,6 +56,10 @@ public class LineTest extends AbstractPrimitiveBuilderTest {
         draw.write(FileSystems.getDefault().getPath("/temp", "line.png"));
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     @Test
     public void testSimpleLineRaster() throws IOException {
         /* 1. get an instance */
@@ -62,8 +74,12 @@ public class LineTest extends AbstractPrimitiveBuilderTest {
        /* persist your result */
         draw.write(FileSystems.getDefault().getPath("/temp", "simpleLineRaster.png"));
     }
-    
-      @Test
+
+    /**
+     *
+     * @throws IOException
+     */
+    @Test
     public void testSimpleLineRasterWithLabel() throws IOException {
         /* 1. get an instance */
         OpenMap4u oM4u = new OpenMap4u();
@@ -75,8 +91,12 @@ public class LineTest extends AbstractPrimitiveBuilderTest {
          /* persist your result */
         draw.write(FileSystems.getDefault().getPath("/temp", "simpleLineRasterWithLabel.png"));
     }
-    
-     @Test
+
+    /**
+     *
+     * @throws IOException
+     */
+    @Test
     public void testLineRasterWithHighightedRowsAndColumns() throws IOException {
         /* 1. get an instance */
         OpenMap4u oM4u = new OpenMap4u();
@@ -91,8 +111,12 @@ public class LineTest extends AbstractPrimitiveBuilderTest {
        /* persist your result */
         draw.write(FileSystems.getDefault().getPath("/temp", "LineRasterWithHighightedRowsAndColumns.png"));
     }
-    
-       @Test
+
+    /**
+     *
+     * @throws IOException
+     */
+    @Test
     public void testSimpleCircleRaster() throws IOException {
         /* 1. get an instance */
         OpenMap4u oM4u = new OpenMap4u();
@@ -107,8 +131,12 @@ public class LineTest extends AbstractPrimitiveBuilderTest {
        /* persist your result */
         draw.write(FileSystems.getDefault().getPath("/temp", "SimpleCircleRaster.png"));
     }
-    
-          @Test
+
+    /**
+     *
+     * @throws IOException
+     */
+    @Test
     public void testCircleRasterWithHighightedRowsAndColumns() throws IOException {
         /* 1. get an instance */
         OpenMap4u oM4u = new OpenMap4u();
@@ -121,9 +149,12 @@ public class LineTest extends AbstractPrimitiveBuilderTest {
        /* persist your result */
         draw.write(FileSystems.getDefault().getPath("/temp", "CircleRasterWithHighightedRowsAndColumns.png"));
     }
-    
-    
-             @Test
+
+    /**
+     *
+     * @throws IOException
+     */
+    @Test
     public void test() throws IOException {
         /* 1. get an instance */
         OpenMap4u oM4u = new OpenMap4u();

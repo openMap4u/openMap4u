@@ -31,11 +31,22 @@ public interface AreaOfInterestTransformable extends Transformable {
     Shape getShape();
     
      
-     
+    /**
+     * Gets the world units.
+     * @return The world units.
+     */ 
     Length getWorldUnits();
     
+    /**
+     * Gets the drawing units.
+     * @return  The darwing units.
+     */
     Length getDrawingUnits();
     
+    /**
+     * Gets the angle units.
+     * @return The angle units.
+     */
     Angle getAngleUnits();
     
       

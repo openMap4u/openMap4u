@@ -93,30 +93,60 @@ public class Pie extends ShapeBuilder<Pie> {
         return super.size(strokeSize);
     }
 
+    /**
+     *
+     * @param radius
+     * @return
+     */
     public Pie radius(double radius) {
         this.mOuterRadius = radius;
         return this;
     }
 
+    /**
+     *
+     * @param radius
+     * @return
+     */
     public Pie innerRadius(double radius) {
         this.mInnerRadius = radius;
         return this;
     }
 
+    /**
+     *
+     * @param radius
+     * @return
+     */
     public Pie outerRadius(double radius) {
         this.mOuterRadius = radius;
         return this;
     }
 
+    /**
+     *
+     * @param diameter
+     * @return
+     */
     public Pie diameter(double diameter) {
         return radius(diameter / 2d);
     }
 
+    /**
+     *
+     * @param startAngle
+     * @return
+     */
     public Pie start(double startAngle) {
         this.mStartAngle = this.getTransform().getAngleUnits().convert(startAngle);
         return this;
     }
 
+    /**
+     *
+     * @param endAngle
+     * @return
+     */
     public Pie end(double endAngle) {
         this.mExtent = this.getTransform().getAngleUnits().convert(endAngle) - getStart();
         return this;

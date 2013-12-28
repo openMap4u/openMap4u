@@ -242,10 +242,10 @@ public class Svg implements Outputable {
     }
 
     /**
-     *
-     * @param unit
-     * @param drawingUnits
-     * @return
+     * Gets the multiplication factor.
+     * @param unit The lenght unit.
+     * @param drawingUnits The drawin units.
+     * @return The multiplication factor.
      */
     protected static double getMultiplicationFactor(Length unit,
             Length drawingUnits) {

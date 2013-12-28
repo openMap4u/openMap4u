@@ -5,17 +5,28 @@ import javax.script.ScriptEngineManager;
 
 import org.junit.BeforeClass;
 
+/**
+ *
+ * @author zwotti
+ */
 public abstract class AbstractNashornTest {
 	
 	private static ScriptEngine mScriptEngine;
-	
-	@BeforeClass
+
+    /**
+     *
+     */
+    @BeforeClass
 	public static void beforeClass() {
 		ScriptEngineManager manager = new ScriptEngineManager();
 		mScriptEngine = manager.getEngineByName("nashorn");
 	}
-	
-	protected ScriptEngine getEngine() {
+
+    /**
+     *
+     * @return
+     */
+    protected ScriptEngine getEngine() {
 		return mScriptEngine;
 	}
         

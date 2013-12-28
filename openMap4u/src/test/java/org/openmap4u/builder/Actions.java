@@ -26,10 +26,19 @@ public class Actions {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Action<?>> getActions() {
         return this.mActions;
     }
 
+    /**
+     *
+     * @param action
+     * @return
+     */
     public boolean contains(MockupAction action) {
         for (Action act : mActions) {
             if (act.getDescription() == action) {
@@ -39,6 +48,11 @@ public class Actions {
         return false;
     }
 
+    /**
+     *
+     * @param action
+     * @return
+     */
     public Object[] getValues(MockupAction action) {
         for (Action act : mActions) {
             if (act.getDescription() == action) {
@@ -48,6 +62,10 @@ public class Actions {
         return null;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDescription() {
         return this.mDescription;
     }

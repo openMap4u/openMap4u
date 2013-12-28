@@ -12,9 +12,16 @@ import org.openmap4u.builder.Action.MockupAction;
 /**
  *
  * @author hadrbolec
+ * @param <T>
  */
 public abstract class AbstractShapeBuilderTest<T extends ShapeBuilder> extends AbstractBuilderTest<T> {
 
+    /**
+     *
+     * @param actions
+     * @param builder
+     * @param index
+     */
     @Override
     protected void setBuilder(Actions actions, T builder, int index) {
         super.setBuilder(actions, builder, index);
@@ -29,6 +36,10 @@ public abstract class AbstractShapeBuilderTest<T extends ShapeBuilder> extends A
         }
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     protected List<Actions> getActions() {
         super.getActions().add(new Actions("stroke size", STROKE_SIZE));
