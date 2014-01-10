@@ -4,11 +4,12 @@
  */
 package org.openmap4u.plugin.format.svg;
 
-import java.awt.Shape;
+import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.PathIterator;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -52,11 +53,30 @@ public class Svg implements Outputable {
 
     private boolean mIsInitialized = false;
 
+    /**
+     * Stores the global transformation.
+     */
     private AffineTransform mGlobalTransform = null;
 
+    /**
+     * Where the temp file will bes stored.
+     */
     private File mTmpFile;
+
+    /**
+     * Stores the xml stream writer.
+     */
     private XMLStreamWriter mWriter = null;
+
+    /**
+     * The factor to convert pixel into drawing units.
+     */
     private double mPixel2DrawingUnitsFactor;
+
+    /**
+     * Stores the factor to convert stroke units into drawing units.
+     */
+    private double mStrokeUnit2DrawingUnitFactor;
 
     private static final int ZERO = 0;
     private static final int ONE = 1;
@@ -79,26 +99,38 @@ public class Svg implements Outputable {
 
     }
 
-    private double mStrokeUnit2DrawingUnitFactor;
-
     /**
      * The DTD.
      */
     public Svg() {
     }
+    
+    
+       /**
+     * Gets the affine transformation.
+     *
+     * @param point The point (optional).
+     * @param individual The individual transformation.
+     * @param shape The shape.
+     * @return The resulting affine transformation.
+     */
+    final AffineTransform getTransform(Point2D point, DrawableTransformable individual, Shape shape) {
+        AffineTransform global = getGlobalTransform();
+        return this.mTransformUtil.transform(global, point, 1 / global.getScaleX()
+               , -1 / global.getScaleY()
+               , individual, shape);
+    }
 
     @Override
     public Rectangle2D drawShape(Point2D point,
             ShapeDrawable shape) {
-
         /* first get the global transformation */
-        AffineTransform transform = getTransform(point, shape.getTransform(), shape.getShape());
+        AffineTransform transform = getTransform(  point,   shape.getTransform(), shape.getShape());
         /* create the transformed shape that will be drawn */
-        Shape tshape = transform.createTransformedShape(shape.getShape());
-
+        Shape tShape = transform.createTransformedShape(shape.getShape());
         try {
             mWriter.writeStartElement(Constants.PATH);
-            mWriter.writeAttribute("d", getSvgPathAttributeValue(tshape));
+            mWriter.writeAttribute("d", getSvgPathAttributeValue(tShape));
             mWriter.writeAttribute(
                     "style",
                     new StyleBuilder()
@@ -111,19 +143,7 @@ public class Svg implements Outputable {
         } catch (XMLStreamException e) {
             LOGGER.log(Level.WARNING, "", e);
         }
-        return tshape.getBounds2D();
-    }
-
-    /**
-     * Gets the affine transformation.
-     *
-     * @param point The point (optional).
-     * @param individual The individual transformation.
-     * @param shape The shape.
-     * @return The resulting affine transformation.
-     */
-    AffineTransform getTransform(Point2D point, DrawableTransformable individual, Shape shape) {
-        return this.mTransformUtil.transform(getGlobalTransform(), point, 1, 1, individual, shape);
+        return tShape.getBounds2D();
     }
 
     @Override
@@ -131,7 +151,13 @@ public class Svg implements Outputable {
         return (AffineTransform) this.mGlobalTransform.clone();
     }
 
-    String getSvgPathAttributeValue(Shape shape) {
+    /**
+     * Internal helper to write the path.
+     *
+     * @param shape The shape to write.
+     * @return The String representing the path.
+     */
+    final String getSvgPathAttributeValue(Shape shape) {
         StringBuilder sb = new StringBuilder();
         PathIterator pi = shape.getPathIterator(null);
         double[] coords = new double[SIX];
@@ -161,73 +187,80 @@ public class Svg implements Outputable {
         return sb.toString();
     }
 
-    String getCoordinatePair(double x, double y) {
+    final String getCoordinatePair(double x, double y) {
         return new StringBuilder().append(x).append(",").append(y).append(" ")
                 .toString();
     }
 
     @Override
-    public Rectangle2D drawImage(Point2D point,
+    public Shape drawImage(Point2D point,
             ImageDrawable image) {
-//        try {
-//            mWriter.writeStartElement("image");
-//            mWriter.writeAttribute("x", "0");
-//            mWriter.writeAttribute("y", "0");
-//            mWriter.writeAttribute("http://www.w3.org/1999/xlink", "href",
-//                    path2image.toUri().toString());
-//            Rectangle2D.Double imageSize = Util.get().getImageSize(path2image);
-//            mWriter.writeAttribute(
-//                    "width",
-//                    String.valueOf(imageSize.getWidth()
-//                            / mPixel2DrawingUnitsFactor));
-//            mWriter.writeAttribute(
-//                    "height",
-//                    String.valueOf(imageSize.getHeight()
-//                            / mPixel2DrawingUnitsFactor));
-//            individualTransform.preConcatenate(new AffineTransform(1, 0, 0, -1,
-//                    0, imageSize.getHeight() / mPixel2DrawingUnitsFactor));
-//            mWriter.writeAttribute(
-//                    Constants.TRANSFORM,
-//                    new SvgUtil().getTransform(Util.get().getTransform(
-//                                    mGlobalTransform, point, individualTransform,
-//                                    style.getHorizontalAlign(),
-//                                    style.getVerticalAlign(),
-//                                    Util.get().getImageSize(path2image))));
-//            mWriter.writeEndElement();
-//        } catch (XMLStreamException e) {
-//            LOGGER.log(Level.WARNING, "", e);
-//
-//        } catch (IOException e) {
-//            LOGGER.log(Level.WARNING, "", e);
-//
-//        }
-        // TODOD
-        return null;
+
+        Shape imageOutline = null;
+        try {
+            imageOutline = Util.get().getImageSize(image.getPath());
+            double width = imageOutline.getBounds2D().getWidth();
+            double height = imageOutline.getBounds2D().getHeight();
+          /*
+             * take the multiplication factor into acount, as well as the
+             * coordinate system
+             */
+            AffineTransform transform = getTransform(point, image.getTransform(), imageOutline);
+     transform.concatenate(new AffineTransform(
+                     1/this.mPixel2DrawingUnitsFactor ,0,0, -1/this.mPixel2DrawingUnitsFactor  ,0,height/this.mPixel2DrawingUnitsFactor ));  
+ 
+            mWriter.writeStartElement("image");
+            mWriter.writeAttribute("x", "0");
+            mWriter.writeAttribute("y", "0");
+            mWriter.writeAttribute("http://www.w3.org/1999/xlink", "href",
+                    image.getPath().toUri().toString());
+              mWriter.writeAttribute(
+                    "width",
+                    String.valueOf(width
+                            / this.mPixel2DrawingUnitsFactor));
+            mWriter.writeAttribute(
+                    "height",
+                    String.valueOf(height
+                            / this.mPixel2DrawingUnitsFactor));
+              mWriter.writeAttribute(
+                    Constants.TRANSFORM,
+                    new SvgUtil().getTransform(transform));
+            mWriter.writeEndElement();
+            /* create the transformed shape */
+            imageOutline = transform.createTransformedShape(imageOutline);
+
+        } catch (XMLStreamException e) {
+            LOGGER.log(Level.WARNING, "", e);
+
+        } catch (IOException e) {
+            LOGGER.log(Level.WARNING, "", e);
+
+        }
+        return imageOutline;
     }
 
     @Override
     public Rectangle2D drawText(Point2D point,
-            TextDrawable text) {
-//        try {
-//            mWriter.writeStartElement("text");
-//            mWriter.writeAttribute("x", "0");
-//            mWriter.writeAttribute("y", "0");
-//
-//            individualTransform.preConcatenate(new AffineTransform(1, 0, 0, -1,
-//                    0, 0));
-//            mWriter.writeAttribute(
-//                    Constants.TRANSFORM,
-//                    new SvgUtil().getTransform(Util.get().getTransform(
-//                                    mGlobalTransform, point, individualTransform)));
-//            mWriter.writeAttribute("style", getFontStyle(text.getTransform().getAlign(), text.getStyle()));
-//            mWriter.writeCharacters(text.getText());
-//            mWriter.writeEndElement();
-//        } catch (XMLStreamException e) {
-//            LOGGER.log(Level.WARNING, "", e);
-//
-//        }
-// TODO
-        return null;
+             TextDrawable text) {
+        Rectangle2D.Double outline=  new Rectangle2D.Double(0,0,0,text.getStyle().getFontSize());
+
+        try {
+            mWriter.writeStartElement("text");
+            mWriter.writeAttribute("x", "0");
+            mWriter.writeAttribute("y", "0");
+            AffineTransform transform=  this.mTransformUtil.transform(getGlobalTransform(), point, 1,-1,text.getTransform(), null);
+            mWriter.writeAttribute(
+                    Constants.TRANSFORM,
+                    new SvgUtil().getTransform( 
+                                     transform));
+            mWriter.writeAttribute("style", getFontStyle(text.getTransform().getAlign(), text.getStyle()));
+            mWriter.writeCharacters(text.getText());
+            mWriter.writeEndElement();
+                    transform.createTransformedShape(outline);
+        } catch (XMLStreamException e) {
+            LOGGER.log(Level.WARNING, "", e);
+       }
+         return outline;
     }
 
     String getFontStyle(Position align, TextStyleable style) {
@@ -243,6 +276,7 @@ public class Svg implements Outputable {
 
     /**
      * Gets the multiplication factor.
+     *
      * @param unit The lenght unit.
      * @param drawingUnits The drawin units.
      * @return The multiplication factor.
@@ -266,6 +300,7 @@ public class Svg implements Outputable {
                 strokeUnits, drawingUnits);
 
         this.mPixel2DrawingUnitsFactor = drawingUnits.convert(1, Length.PIXEL);
+        /* create the global transformation */
         globalTransform.preConcatenate(new AffineTransform(
                 mWorldUnit2DrawingUnitFactor, 0, 0,
                 -mWorldUnit2DrawingUnitFactor, 0, shape.getBounds2D().getHeight()));
@@ -278,7 +313,6 @@ public class Svg implements Outputable {
                     .toString());
             mWriter = XMLOutputFactory.newInstance().createXMLStreamWriter(
                     new FileOutputStream(this.mTmpFile), "UTF-8");
-
             mWriter.writeStartDocument("UTF-8", "1.0");
             mWriter.writeDTD(Constants.DTD);
             mWriter.writeStartElement(Constants.SVG);
@@ -289,7 +323,6 @@ public class Svg implements Outputable {
             mWriter.writeAttribute("width", drawingUnits.convert(bounds.getWidth(), Length.CM) + "cm");
             mWriter.writeAttribute("height", drawingUnits.convert(bounds.getHeight(), Length.CM) + "cm");
             mWriter.writeAttribute("viewBox", "0 0 " + drawingUnits.convert(bounds.getWidth(), Length.CM) + " " + drawingUnits.convert(bounds.getHeight(), Length.CM));
-
             /* write the defaults */
             mWriter.writeStartElement("defs");
             mWriter.writeStartElement("style");
@@ -297,15 +330,12 @@ public class Svg implements Outputable {
             mWriter.writeCData("path {fill:none;fill-rule:evenodd;font-size:0.5cm;}");
             mWriter.writeEndElement();
             mWriter.writeEndElement();
-
             this.mIsInitialized = true;
         } catch (FileNotFoundException | XMLStreamException | FactoryConfigurationError e) {
             Logger.getLogger(Svg.class.getName()).log(Level.SEVERE, null,
                     e);
         }
     }
-
-    
 
     @Override
     public void before() {

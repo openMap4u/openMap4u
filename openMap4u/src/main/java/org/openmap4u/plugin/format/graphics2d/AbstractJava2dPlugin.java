@@ -108,7 +108,7 @@ abstract class AbstractJava2dPlugin implements Outputable {
      * @param shape The shape.
      * @return The resulting affine transformation.
      */
-    AffineTransform getTransform(Point2D point, DrawableTransformable individual, Shape shape) {
+    final AffineTransform getTransform(Point2D point, DrawableTransformable individual, Shape shape) {
         AffineTransform global = getGlobalTransform();
         return this.mTransformUtil.transform(global, point, 1 / global.getScaleX()
                 * this.mDrawingUnit2PixelFactor, -1 / global.getScaleY()
@@ -161,14 +161,13 @@ abstract class AbstractJava2dPlugin implements Outputable {
                     image.getTransform(),
                     new Rectangle2D.Double(0, 0,
                             img.getWidth(), img.getHeight()));
-            transform.concatenate(new AffineTransform(
+         transform.concatenate(new AffineTransform(
                     1 / this.mDrawingUnit2PixelFactor,0,0, -1 / this.mDrawingUnit2PixelFactor,0,img.getHeight()/this.mDrawingUnit2PixelFactor));
-            this.mG2D.drawImage(img, transform, null);
+            this.mG2D.drawImage(img, transform, null);  
             imageOutline = transform.createTransformedShape(new Rectangle2D.Double(0, 0, img.getWidth(), img.getHeight()));
         } catch (Exception e) {
             LOGGER.log(Level.WARNING, "", e);
         }
-        // TODOD 
         return imageOutline;
     }
     

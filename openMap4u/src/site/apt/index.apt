@@ -1,29 +1,20 @@
 "openMap4u" is an
 
-     * easy to use 
-       (you don't have to be a rocket scientist)
-     * Embedable 
-       (works together with mainstream JEE technologies like JSF, EL, ...)
-     * Lightweigth 
-       (less than 100 classes)  
-     []
+ * easy to use (you don't have to be a rocket scientist)
 
-* and
+ * embedable (works together with mainstream JEE technologies like JSF, EL, ...)
 
+ * lightweight (less than 100 classes)  
+ 
+and
 
-     * Extensable API 
-     []
+ * extensable Java based API 
+ 
+for
 
+ * visualizing datasets
+  
+under 
 
-* for
-
-
-     * Visualizing datasets
-     []
-
-
-* under 
-
-
-     * a  open source (GPL3 ) licence.
-     []
+ * open source GPL3 licence.
+  

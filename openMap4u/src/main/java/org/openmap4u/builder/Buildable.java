@@ -57,7 +57,7 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
      * <code>myBuilder.transparence(50)=<img alt="" src="./doc-files/b_transparence50.png"></code>, 
      * <code>myBuilder.transparence(75)=<img alt="" src="./doc-files/b_transparence75.png"></code>, 
      * <code>myBuilder.transparence(100)=<img alt="" src="./doc-files/b_transparence100.png"></code>.
-     * @return The builder itself (method chaining pattern).
+     * @return The builder itself (fluent interface pattern).
      */
     public B transparence(double tranparence);
 
@@ -74,7 +74,7 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
      * <code>myBuilder.align(Position.LeftBottom) = <img alt="" src="./doc-files/b_alignLeftBottom.png"></code>, 
      * <code>myBuilder.align(Position.CenterBottom) = <img alt="" src="./doc-files/b_alignCenterBottom.png"></code>, 
      * <code>myBuilder.align(Position.RightBottom) = <img alt="" src="./doc-files/b_alignRightBottom.png"></code>.
-     * @return The builder itself (method chaining pattern).
+     * @return The builder itself (fluent interface pattern).
      */
     B align(Position align);
 
@@ -84,7 +84,7 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
      *
      * @param offsetX The x offset in drawing units.
      * @param offsetY The y offset in drawing units.
-     * @return The builder itself (method chaining pattern).
+     * @return The builder itself (fluent interface pattern).
      */
     B offset(double offsetX, double offsetY);
 
@@ -93,7 +93,7 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
      *
      * @param offsetX The x offset in drawing units.<br>
      * <code><img alt="" src="./doc-files/b_initial.png"> myBuilder.offsetX(0.25) = <img alt="" src="./doc-files/b_offsetX.png"></code>
-     * @return The builder itself (method chaining pattern).
+     * @return The builder itself (fluent interface pattern).
      */
     B offsetX(double offsetX);
 
@@ -102,7 +102,7 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
      *
      * @param offsetY The y offset in drawing units.<br>
      * <code><img alt="" src="./doc-files/b_initial.png"> myBuilder.offsetY(.25) = <img alt="" src="./doc-files/b_offsetY.png"></code>
-     * @return The builder itself (method chaining pattern).
+     * @return The builder itself (fluent interface pattern).
      */
     B offsetY(double offsetY);
 
@@ -112,7 +112,7 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
      *
      * @param scaleFactor The scale factor. <br>
      * <code><img alt="" src="./doc-files/b_initial.png"> myBuilder.scale(1.7) = <img alt="" src="./doc-files/b_scale.png"></code>
-     * @return The builder itself (method chaining pattern).
+     * @return The builder itself (fluent interface pattern).
      */
     B scale(double scaleFactor);
 
@@ -123,7 +123,7 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
      *
      * @param scaleX The scale factor in x direction.
      * @param scaleY The scale factor in y direction.
-     * @return The builder itself (method chaining pattern).
+     * @return The builder itself (fluent interface pattern).
      */
     B scale(double scaleX, double scaleY);
 
@@ -141,7 +141,7 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
      *
      * @param scaleY The scale factor in y direction <br>
      * <code><img alt="" src="./doc-files/b_initial.png"> myBuilder.scaleX(1.7) = <img alt="" src="./doc-files/b_scaleY.png"></code>
-     * @return The builder itself (method chaining pattern).
+     * @return The builder itself (fluent interface pattern).
      */
     B scaleY(double scaleY);
 
@@ -150,7 +150,7 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
      * units.
      *
      * @param angleUnits The angle units.
-     * @return The builder itself (method chaining pattern).
+     * @return The builder itself (fluent interface pattern).
      */
     B unit(Angle angleUnits);
 
@@ -159,7 +159,7 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
      * transparence units.
      *
      * @param transparenceUnits The transparence units.
-     * @return The builder itself (method chaining pattern).
+     * @return The builder itself (fluent interface pattern).
      */
     B unit(Transparence transparenceUnits);
 
@@ -169,7 +169,7 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
      * @param rotation The rotation in angle units.<br>
      * <code><img alt="" src="./doc-files/b_initial.png"> myBuilder.rotate(30) = <img alt="" src="./doc-files/b_rotate30Degrees.png"></code><br>
      * <code><img alt="" src="./doc-files/b_initial.png"> myBuilder.roate(70) = <img alt="" src="./doc-files/b_rotate70Degrees.png"></code>
-     * @return The builder itself (method chaining pattern).
+     * @return The builder itself (fluent interface pattern).
      */
     B rotate(double rotation);
 
@@ -179,7 +179,7 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
      *
      * @param x The x coordinate of the point.
      * @param y The y coordinate of the point.
-     * @return The builder itself (method chaining pattern).
+     * @return The builder itself (fluent interface pattern).
      */
     B point(double x, double y);
 
@@ -188,7 +188,7 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
      * shape.
      *
      * @param position The relative position to the previous drawn shape.
-     * @return The builder itself (method chaining pattern).
+     * @return The builder itself (fluent interface pattern).
      */
     B point(Position position);
 

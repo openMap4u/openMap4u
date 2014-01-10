@@ -102,7 +102,7 @@ public class TransformUtil {
         if (individualTransform.getScaleX() != 1 || individualTransform.getScaleY() != 1) {
             individual.scale(individualTransform.getScaleX(), individualTransform.getScaleY());
         }
-        if (individualTransform.getAlign() != null) {
+        if (shape != null && individualTransform.getAlign() != null) {
             Point2D align = getPoint(individualTransform.getAlign(), shape);
             individual.translate(-align.getX(), -align.getY());
         }
@@ -134,14 +134,18 @@ public class TransformUtil {
     }
 
     /**
-     * Gets overall transformation based on the given global trnasformation the point (in the case it is a point) the scale x and scale y factor to adjust to output format units.transformation 
+     * Gets overall transformation based on the given global trnasformation the
+     * point (in the case it is a point) the scale x and scale y factor to
+     * adjust to output format units.transformation
+     *
      * @param globalTransform The global transformation.
      * @param point The point (in the case it is a point= or null if not.
      * @param scaleX The scaleX factor to adjust to the output format.
      * @param scaleY The scaleY factor to adjust to the output format.
-     * @param individualTransform The individual transformation. <br> Remark: It is composed of the following
-     * transformations in the following fixed order: translation (=offset),
-     * rotation, scaling and finally alignment. <br>
+     * @param individualTransform The individual transformation. <br> Remark: It
+     * is composed of the following transformations in the following fixed
+     * order: translation (=offset), rotation, scaling and finally alignment.
+     * <br>
      * e.g.: start <img alt="" src="./doc-files/b_initial.png"> offset <img
      * alt="" src="./doc-files/b_transform2gether1.png"> rotate <img alt=""
      * src="./doc-files/b_transform2gether2.png"> scale <img alt=""
@@ -159,6 +163,11 @@ public class TransformUtil {
         }
         /* if align is provided */
         globalTransform.concatenate(getIndividualTransform(individualTransform, shape));
+        return globalTransform;
+    }
+
+    public final AffineTransform transform(AffineTransform globalTransform, AffineTransform individualTransform) {
+        globalTransform.concatenate(individualTransform);
         return globalTransform;
     }
 
