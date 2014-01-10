@@ -19,8 +19,8 @@ public class StyleBuilder {
         String START = "start";
         String MIDDLE = "middle";
         String END = "end";
-        String ALIGNMENT_BASELINE = "alignment-baseline";
-        String TOP = "top";
+        String ALIGNMENT_BASELINE = "baseline-shift";
+        String TOP = "-100%";
         String BOTTOM = "bottom";
         String FONT_SIZE = "font-size";
         String TEXT_COLOR = "fill";
@@ -85,31 +85,67 @@ public class StyleBuilder {
         return write("opacity", String.valueOf(opacity));
     }
 
-    /**
-     * Gets the paint.
-     * @param paint The paint.
-     * @return The color as hex code.
-     */
+    public double getDy(Position position) {
+        double dy = 0;
+        if (position != null) {
+            switch (position) {
+                case LeftTop:
+                    dy = 1;
+                    break;
+                case CenterTop:
+                    dy = 1;
+                    break;
+                case RightTop:
+                    dy = 1;
+                    break;
+                case LeftMiddle:
+                    dy = 0.5;
+                    break;
+                case CenterMiddle:
+                    dy = 0.5;
+                    write(CONSTANTS.TEXT_ANCHOR, CONSTANTS.MIDDLE);
+                    break;
+                case RightMiddle:
+                    dy = 0.5;
+                    break;
+                case LeftBottom:
+                    dy = 0;
+                    break;
+                case CenterBottom:
+                    dy = 0;
+                    break;
+                case RightBottom:
+                    dy = 0;
+                    break;
+            }}
+            return dy;
+        }
+
+        /**
+         * Gets the paint.
+         *
+         * @param paint The paint.
+         * @return The color as hex code.
+         */
     String getPaint(Paint paint) {
         if (paint != null) {
-            if (paint instanceof Color) {
-                Color color = (Color) paint;
-                return String.format("#%02x%02x%02x", color.getRed(),
-                        color.getGreen(), color.getBlue());
+                if (paint instanceof Color) {
+                    Color color = (Color) paint;
+                    return String.format("#%02x%02x%02x", color.getRed(),
+                            color.getGreen(), color.getBlue());
+                } else {
+                    return "#eaeaea";
+                }
             } else {
-                return "#eaeaea";
+                return null;
             }
-        } else {
-            return null;
         }
-    }
-
-    /**
-     * Sets the text align.
-     *
-     * @param align The align.
-     * @return The style builder.
-     */
+        /**
+         * Sets the text align.
+         *
+         * @param align The align.
+         * @return The style builder.
+         */
     public StyleBuilder setTextAlign(Position align) {
         if (align != null) {
             switch (align) {
@@ -161,8 +197,9 @@ public class StyleBuilder {
 
     /**
      * Writes the font size.
+     *
      * @param fontSize The font size.
-     * @return The style builder. 
+     * @return The style builder.
      */
     public StyleBuilder setFontSize(double fontSize) {
         write(CONSTANTS.FONT_SIZE,
@@ -172,6 +209,7 @@ public class StyleBuilder {
 
     /**
      * Writes the font color.
+     *
      * @param fontColor The font color.
      * @return The style builder.
      */
@@ -182,6 +220,7 @@ public class StyleBuilder {
 
     /**
      * Writes the font style.
+     *
      * @param fontStyle The font style.
      * @return The style builder.
      */
@@ -192,6 +231,7 @@ public class StyleBuilder {
 
     /**
      * Writes the font weight.
+     *
      * @param fontWeight The font weight.
      * @return The style builder.
      */
@@ -202,6 +242,7 @@ public class StyleBuilder {
 
     /**
      * Writes the font family.
+     *
      * @param fontFamily The font family.
      * @return The style builder.
      */

@@ -292,8 +292,7 @@ public abstract class AbstractBuilderTest<T extends Buildable> extends
             }
         }
         /* write the result into the given */
-        draw.write(FileSystems.getDefault().getPath(
-                ".\\target\\test-classes", outputFileName));
+        draw.write(getPackagePath( outputFileName));
 
     }
 

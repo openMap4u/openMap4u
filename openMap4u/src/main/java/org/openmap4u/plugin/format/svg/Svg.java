@@ -104,9 +104,8 @@ public class Svg implements Outputable {
      */
     public Svg() {
     }
-    
-    
-       /**
+
+    /**
      * Gets the affine transformation.
      *
      * @param point The point (optional).
@@ -116,16 +115,14 @@ public class Svg implements Outputable {
      */
     final AffineTransform getTransform(Point2D point, DrawableTransformable individual, Shape shape) {
         AffineTransform global = getGlobalTransform();
-        return this.mTransformUtil.transform(global, point, 1 / global.getScaleX()
-               , -1 / global.getScaleY()
-               , individual, shape);
+        return this.mTransformUtil.transform(global, point, 1 / global.getScaleX(), -1 / global.getScaleY(), individual, shape);
     }
 
     @Override
     public Rectangle2D drawShape(Point2D point,
             ShapeDrawable shape) {
         /* first get the global transformation */
-        AffineTransform transform = getTransform(  point,   shape.getTransform(), shape.getShape());
+        AffineTransform transform = getTransform(point, shape.getTransform(), shape.getShape());
         /* create the transformed shape that will be drawn */
         Shape tShape = transform.createTransformedShape(shape.getShape());
         try {
@@ -201,20 +198,20 @@ public class Svg implements Outputable {
             imageOutline = Util.get().getImageSize(image.getPath());
             double width = imageOutline.getBounds2D().getWidth();
             double height = imageOutline.getBounds2D().getHeight();
-          /*
+            /*
              * take the multiplication factor into acount, as well as the
              * coordinate system
              */
             AffineTransform transform = getTransform(point, image.getTransform(), imageOutline);
-     transform.concatenate(new AffineTransform(
-                     1/this.mPixel2DrawingUnitsFactor ,0,0, -1/this.mPixel2DrawingUnitsFactor  ,0,height/this.mPixel2DrawingUnitsFactor ));  
- 
+            transform.concatenate(new AffineTransform(
+                    1 / this.mPixel2DrawingUnitsFactor, 0, 0, -1 / this.mPixel2DrawingUnitsFactor, 0, height / this.mPixel2DrawingUnitsFactor));
+
             mWriter.writeStartElement("image");
             mWriter.writeAttribute("x", "0");
             mWriter.writeAttribute("y", "0");
             mWriter.writeAttribute("http://www.w3.org/1999/xlink", "href",
                     image.getPath().toUri().toString());
-              mWriter.writeAttribute(
+            mWriter.writeAttribute(
                     "width",
                     String.valueOf(width
                             / this.mPixel2DrawingUnitsFactor));
@@ -222,7 +219,7 @@ public class Svg implements Outputable {
                     "height",
                     String.valueOf(height
                             / this.mPixel2DrawingUnitsFactor));
-              mWriter.writeAttribute(
+            mWriter.writeAttribute(
                     Constants.TRANSFORM,
                     new SvgUtil().getTransform(transform));
             mWriter.writeEndElement();
@@ -240,27 +237,36 @@ public class Svg implements Outputable {
     }
 
     @Override
-    public Rectangle2D drawText(Point2D point,
-             TextDrawable text) {
-        Rectangle2D.Double outline=  new Rectangle2D.Double(0,0,0,text.getStyle().getFontSize());
+    public Shape drawText(Point2D point,
+            TextDrawable text) {
+        Shape outline = new Rectangle2D.Double(0, 0, 0.00000000000000000001, text.getStyle().getFontSize());
 
         try {
             mWriter.writeStartElement("text");
+
             mWriter.writeAttribute("x", "0");
             mWriter.writeAttribute("y", "0");
-            AffineTransform transform=  this.mTransformUtil.transform(getGlobalTransform(), point, 1,-1,text.getTransform(), null);
+            AffineTransform transform = this.mTransformUtil.transform(getGlobalTransform(), point, 1, -1, text.getTransform(), null);
             mWriter.writeAttribute(
                     Constants.TRANSFORM,
-                    new SvgUtil().getTransform( 
-                                     transform));
+                    new SvgUtil().getTransform(
+                            transform));
             mWriter.writeAttribute("style", getFontStyle(text.getTransform().getAlign(), text.getStyle()));
+            mWriter.writeStartElement("tspan");
+            if (text.getTransform().getAlign() != null) {
+                mWriter.writeAttribute("dy", String.valueOf(new StyleBuilder().getDy(text.getTransform().getAlign()) * this.mStrokeUnit2DrawingUnitFactor * text.getStyle().getFontSize()));
+            }
+
             mWriter.writeCharacters(text.getText());
             mWriter.writeEndElement();
-                    transform.createTransformedShape(outline);
+            mWriter.writeEndElement();
+            outline = transform.createTransformedShape(outline);
         } catch (XMLStreamException e) {
             LOGGER.log(Level.WARNING, "", e);
-       }
-         return outline;
+        }
+        System.out.println("---------------" + outline.getBounds2D().getHeight());
+
+        return outline;
     }
 
     String getFontStyle(Position align, TextStyleable style) {
