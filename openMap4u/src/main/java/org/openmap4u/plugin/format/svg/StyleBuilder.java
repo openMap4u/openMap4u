@@ -103,8 +103,7 @@ public class StyleBuilder {
                     break;
                 case CenterMiddle:
                     dy = 0.5;
-                    write(CONSTANTS.TEXT_ANCHOR, CONSTANTS.MIDDLE);
-                    break;
+                     break;
                 case RightMiddle:
                     dy = 0.5;
                     break;

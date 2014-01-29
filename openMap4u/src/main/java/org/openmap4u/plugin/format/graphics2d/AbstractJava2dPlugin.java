@@ -9,6 +9,7 @@ import java.awt.RenderingHints;
 import java.awt.Shape;
 import java.awt.font.FontRenderContext;
 import java.awt.font.GlyphVector;
+import java.awt.font.LineMetrics;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
@@ -48,23 +49,27 @@ abstract class AbstractJava2dPlugin implements Outputable {
     private static final Logger LOGGER = Logger.getLogger(
             AbstractJava2dPlugin.class.getName(),
             Globals.DEFAULT_RESSOURCE_BUNDLE);
+    
+    private AffineTransform mFontSCaleBack = new AffineTransform(.01, 0, 0, .01, 0, 0);
 
     /**
      * Stores wheter initialized or not.
      */
     private boolean mIsInitialized = false;
-
+    
     private static final int DPI = 96;
-
+    
     private static final double DOT = 72;
-
+    
     private static final double ZERO_POINT_5 = 0.5;
+    
+    private double mStrokeUnits2DrawingUnits = 0;
 
     /**
      * Each output fromat relies heavily on affine transformations, and has
      * therefore an own instance of the Transform Util class.
      */
-    private TransformUtil mTransformUtil = new TransformUtil();
+    private final TransformUtil mTransformUtil = new TransformUtil();
 
     /**
      * Stores the raster quality in dots per inch.
@@ -96,7 +101,7 @@ abstract class AbstractJava2dPlugin implements Outputable {
     private double mDrawingUnit2PixelFactor = Double.NaN;
     private double mStrokeUnit2PixelFactor = Double.NaN;
     private MimeType mMimeType = null;
-
+    
     protected AbstractJava2dPlugin(MimeType mimeType) {
         this.mMimeType = mimeType;
     }
@@ -115,10 +120,9 @@ abstract class AbstractJava2dPlugin implements Outputable {
                 * this.mDrawingUnit2PixelFactor, -1 / global.getScaleY()
                 * this.mDrawingUnit2PixelFactor, individual, shape);
     }
-
-    @Override
-    public Shape drawShape(Point2D point,
-            ShapeDrawable shape) {
+    
+    public Shape draw(Point2D point,
+            ShapeDrawable shape, Shape shapeBounds) {
         /* set the alphaValue */
         this.mG2D.setComposite(AlphaComposite.getInstance(
                 AlphaComposite.SRC_OVER, (float) shape.getStyle().getAlpha()));
@@ -127,7 +131,7 @@ abstract class AbstractJava2dPlugin implements Outputable {
                 .setStroke(new BasicStroke(
                                 (float) (shape.getStyle().getStrokeSize() * this.mStrokeUnit2PixelFactor), BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
         /* first get teh global transformation */
-        AffineTransform transform = getTransform(point, shape.getTransform(), shape.getShape());
+        AffineTransform transform = getTransform(point, shape.getTransform(), shapeBounds);
         /* create the trasnformed shape that will be drawn */
         Shape tshape = transform.createTransformedShape(shape.getShape());
         /* fill the shape if a fill value was provided */
@@ -137,13 +141,18 @@ abstract class AbstractJava2dPlugin implements Outputable {
         }
         /* draw the outline of the shape if a value was provided */
         if (shape.getStyle().getStrokeColor() != null) {
-            this.mG2D.setPaint(Color.RED);
             this.mG2D.setPaint(shape.getStyle().getStrokeColor());
             this.mG2D.draw(tshape);
         }
         return tshape;
     }
-
+    
+    @Override
+    public Shape drawShape(Point2D point,
+            ShapeDrawable shape) {
+        return draw(point, shape, shape.getShape());
+    }
+    
     @Override
     public Shape drawImage(Point2D point,
             ImageDrawable image) {
@@ -171,7 +180,7 @@ abstract class AbstractJava2dPlugin implements Outputable {
         }
         return imageOutline;
     }
-
+    
     @Override
     public Shape drawText(Point2D point, TextDrawable text) {
         /*
@@ -179,21 +188,17 @@ abstract class AbstractJava2dPlugin implements Outputable {
          * be applied
          */
         Font font = getFont(text.getStyle());
-
         GlyphVector glyphVector = font.createGlyphVector(
                 this.mFontRenderContext, text.getText());
-        Path2D.Double path = new Path2D.Double(glyphVector.getOutline());
-
-        double scaleFactor = 1 / this.mDrawingUnit2PixelFactor;
-
-        path.transform(new AffineTransform(scaleFactor, 0, 0, scaleFactor, 0, 0));
-        double offsetY = 0;
-        if (text.getTransform().getAlign()!=null) {
-           }
-        Polygon polygon = new Polygon().fill(text.getStyle().getFontColor()).color(null).transparence(text.getStyle().getAlpha()).align(text.getTransform().getAlign()).offset(text.getTransform().getOffset().getX(), text.getTransform().getOffset().getY()).rotate(text.getTransform().getRotate()).scale(text.getTransform().getScaleX(), text.getTransform().getScaleY()).shape(path);
-
-        //  Polygon polygon = new Polygon().fill(text.getStyle().getFontColor()).color(null).transparence(text.getStyle().getAlpha()).align(text.getTransform().getAlign()).offset(text.getTransform().getOffset().getX(), text.getTransform().getOffset().getY()).rotate(text.getTransform().getRotate()).scale(text.getTransform().getScaleX(), text.getTransform().getScaleX());
-         return drawShape(point, polygon);
+        Shape fontPath = this.mFontSCaleBack.createTransformedShape(glyphVector.getOutline());
+        Polygon shape2Draw = new Polygon().fill(text.getStyle().getFontColor()).color(null)
+                .align(text.getTransform().getAlign()).transparence(text.getStyle().getAlpha())
+                .shape(fontPath);
+        shape2Draw.setTransform(text.getTransform());
+        Shape outline = new Rectangle2D.Double(0, 0, fontPath.getBounds2D().getWidth(), text.getStyle().getFontSize() * mStrokeUnits2DrawingUnits);
+        draw(point, shape2Draw, outline);
+        return outline;
+        
     }
 
     /**
@@ -218,11 +223,11 @@ abstract class AbstractJava2dPlugin implements Outputable {
                     break;
             }
         }
-        return new Font(fontFamily, fontStyle, (int) (style.getFontSize()
-                * mStrokeUnit2PixelFactor * DPI / DOT + ZERO_POINT_5))
+        return new Font(fontFamily, fontStyle, (int) (style.getFontSize() * this.mStrokeUnits2DrawingUnits * 100
+                * DPI / DOT + ZERO_POINT_5))
                 .deriveFont(mFontTransformation);
     }
-
+    
     @Override
     public final void setUp(Shape shape,
             final Length worldUnits, final Length drawingUnits,
@@ -234,6 +239,7 @@ abstract class AbstractJava2dPlugin implements Outputable {
         double mWorldUnit2PixelFactor = worldUnits.convert(1, Length.PIXEL);
         this.mDrawingUnit2PixelFactor = drawingUnits.convert(1, Length.PIXEL);
         this.mStrokeUnit2PixelFactor = strokeUnits.convert(1, Length.PIXEL);
+        this.mStrokeUnits2DrawingUnits = strokeUnits.convert(1, drawingUnits);
         /* create the buffered image */
         this.mBufferedImage = new BufferedImage((int) drawingUnits.convert(
                 shape.getBounds().getWidth(), Length.PIXEL), (int) drawingUnits.convert(shape.getBounds().getHeight(),
@@ -251,7 +257,7 @@ abstract class AbstractJava2dPlugin implements Outputable {
         this.mFontRenderContext = new FontRenderContext(this.mGlobalTransform,
                 true, true);
     }
-
+    
     @Override
     public void before() {
         /* Gets a refernece to the graphics instance */
@@ -260,19 +266,19 @@ abstract class AbstractJava2dPlugin implements Outputable {
         this.mG2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
     }
-
+    
     @Override
     public void after() {
         /* free resources */
         this.mG2D.dispose();
     }
-
+    
     @Override
     public void tearDown() {
         this.mIsInitialized = false;
-
+        
     }
-
+    
     @Override
     public void write(OutputStream out) throws IOException {
         ImageIO.write(this.mBufferedImage, this.mMimeType.getSubType(), out);
@@ -296,7 +302,7 @@ abstract class AbstractJava2dPlugin implements Outputable {
     public final AffineTransform getGlobalTransform() {
         return (AffineTransform) this.mGlobalTransform.clone();
     }
-
+    
     @Override
     public boolean isInitialized() {
         return this.mIsInitialized;

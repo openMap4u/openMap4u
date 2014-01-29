@@ -240,7 +240,7 @@ public abstract class AbstractBuilderLambdaTest<T extends Buildable> extends
             /* draw the focus of the test */
             if (row < actions.size()) {
                 draw.draw(this.getDefaultOpenMap4u().getBuilder(Text.class)
-                        .setFontSize(5)
+                        .size(5)
                         .point(23, row * 2 + 1)
                         .text(actions.get(row).getDescription()));
             }
@@ -265,7 +265,7 @@ public abstract class AbstractBuilderLambdaTest<T extends Buildable> extends
                         .getDefaultOpenMap4u()
                         .getBuilder(Text.class)
                         .setFontColor(Color.GRAY)
-                        .setFontSize(2.5)
+                        .size(2.5)
                         .point(row * 2 + 1, column * 2 + 1)
                         .align(Position.CenterMiddle)
                         .offset(-.9, .9)

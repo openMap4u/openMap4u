@@ -264,8 +264,6 @@ public class Svg implements Outputable {
         } catch (XMLStreamException e) {
             LOGGER.log(Level.WARNING, "", e);
         }
-        System.out.println("---------------" + outline.getBounds2D().getHeight());
-
         return outline;
     }
 

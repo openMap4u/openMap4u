@@ -48,7 +48,7 @@ class Builder<S extends Styleable<S>, B extends Builder<S, B>> implements Builda
         return this.mPoints;
     }
 
-    private DrawTransform mTransform = new DrawTransform();
+    private DrawableTransformable mTransform = new DrawTransform();
 
     Builder() {
     }
@@ -168,6 +168,10 @@ class Builder<S extends Styleable<S>, B extends Builder<S, B>> implements Builda
     @Override
     public final DrawableTransformable getTransform() {
         return this.mTransform;
+    }
+    
+    public void setTransform(DrawableTransformable transform) {
+    this.mTransform = transform;
     }
 
     @Override

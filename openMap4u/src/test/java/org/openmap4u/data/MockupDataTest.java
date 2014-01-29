@@ -50,7 +50,7 @@ public class MockupDataTest {
      */
     @BeforeClass
     public static void beforeClass() {
-        mD = new MockupData();
+        mD =  MockupData.get();
     }
 
     /**

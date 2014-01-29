@@ -6,7 +6,6 @@
 package org.openmap4u.builder;
 
 import java.awt.geom.Point2D;
-import jdk.nashorn.internal.objects.Global;
 import org.openmap4u.Globals;
 import org.openmap4u.commons.DrawableTransformable;
 import org.openmap4u.commons.Position;

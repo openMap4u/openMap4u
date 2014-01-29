@@ -54,7 +54,7 @@ public abstract class TextBuilder<B extends TextBuilder<B>> extends
      * @return The Text itself (method chaining pattern).
      */
     @SuppressWarnings("unchecked")
-    protected B setFontFamily(String fontFamily) {
+    protected B family(String fontFamily) {
         this.getStyle().setFontFamily(fontFamily);
         return (B) this;
     }
@@ -66,7 +66,7 @@ public abstract class TextBuilder<B extends TextBuilder<B>> extends
      * @return The Text itself (method chaining pattern).
      */
     @SuppressWarnings("unchecked")
-    protected B setFontSize(double fontSize) {
+    protected B size(double fontSize) {
         this.getStyle().setFontSize(fontSize);
         return (B) this;
     }
@@ -78,7 +78,7 @@ public abstract class TextBuilder<B extends TextBuilder<B>> extends
      * @return The Text itself (method chaining pattern).
      */
     @SuppressWarnings("unchecked")
-    protected B setFontStyle(FontStyle fontStyle) {
+    protected B style(FontStyle fontStyle) {
         this.getStyle().setFontStyle(fontStyle);
         return (B) this;
     }

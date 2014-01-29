@@ -29,7 +29,7 @@ public final class Image extends ImageBuilder<Image> {
      */
     @Override
     public Image uri(URI imageURI) {
-        return uri(imageURI);
+        return super.uri(imageURI);
     }
 
 }

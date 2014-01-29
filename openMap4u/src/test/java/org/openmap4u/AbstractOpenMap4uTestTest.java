@@ -33,7 +33,6 @@ public class AbstractOpenMap4uTestTest {
     @Test
     public void testGetPath() {
         String path = aOM4uTest.getPackagePath("hello.txt").toUri().toString();
-        System.out.println(path);
         assertTrue(path.contains("target"));
         assertTrue(path.contains("test-classes"));
         assertTrue(path.contains("hello.txt"));

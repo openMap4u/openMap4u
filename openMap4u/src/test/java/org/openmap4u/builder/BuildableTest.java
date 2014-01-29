@@ -2,6 +2,10 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
+ *//*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package org.openmap4u.builder;
 
@@ -17,8 +21,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.openmap4u.commons.Position;
-import org.openmap4u.plugin.builder.chart.Line;
-import org.openmap4u.plugin.builder.chart.Pie;
+import org.openmap4u.plugin.builder.chart.LineChart;
+import org.openmap4u.plugin.builder.chart.PieChart;
 
 /**
  *
@@ -331,8 +335,7 @@ public class BuildableTest extends AbstractOpenMap4uTest {
     public void write(String fileName, Buildable... primitives) throws IOException {
         ArrayList<Buildable> builders = new ArrayList<>();
         builders.addAll(Arrays.<Buildable>asList(primitives));
-        System.out.println(builders.size());
-        builders.add(0, getBackground());
+       builders.add(0, getBackground());
         super.drawOnCanvas(2.2, 2, fileName, builders.toArray(new Buildable[builders.size()]));
     }
 
@@ -344,12 +347,12 @@ public class BuildableTest extends AbstractOpenMap4uTest {
         return getDefaultOpenMap4u().getBuilder(Rectangle.class).color(Color.BLUE).fill(Color.WHITE).size(.35).width(0.1).height(.1).point(x, y);
     }
 
-    Line getLine(double fromX, double fromY, double toX, double toY) {
-        return getDefaultOpenMap4u().getBuilder(Line.class).color(Color.RED).size(.35).from(fromX, fromY).to(toX, toY);
+    LineChart getLine(double fromX, double fromY, double toX, double toY) {
+        return getDefaultOpenMap4u().getBuilder(LineChart.class).color(Color.RED).size(.35).from(fromX, fromY).to(toX, toY);
     }
 
-    Pie getAnglePie(double angle) {
-        return getDefaultOpenMap4u().getBuilder(Pie.class).color(Color.GRAY).fill(Color.RED).radius(.85).size(.35).transparence(50).add(angle).point(1.1, 1);
+    PieChart getAnglePie(double angle) {
+        return getDefaultOpenMap4u().getBuilder(PieChart.class).color(Color.GRAY).fill(Color.RED).radius(.85).size(.35).transparence(50).add(angle).point(1.1, 1);
     }
 
 }

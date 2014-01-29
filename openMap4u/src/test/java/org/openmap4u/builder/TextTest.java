@@ -42,19 +42,19 @@ public class TextTest extends AbstractTextBuilderTest<Text> {
             builder.setFontColor((Paint) actions.getValues(MockupAction.FONT_COLOR)[index]);
         }
         if (actions.contains(MockupAction.FONT_SIZE)) {
-            builder.setFontSize(Double.valueOf(actions.getValues(MockupAction.FONT_SIZE)[index].toString()));
+            builder.size(Double.valueOf(actions.getValues(MockupAction.FONT_SIZE)[index].toString()));
         }
         if (actions.contains(MockupAction.FONT_STYLE)) {
-            builder.setFontStyle((FontStyle) actions.getValues(MockupAction.FONT_STYLE)[index]);
+            builder.style((FontStyle) actions.getValues(MockupAction.FONT_STYLE)[index]);
         }
       if (actions.contains(MockupAction.FONT_FAMILY)) {
-            builder.setFontFamily(  actions.getValues(MockupAction.FONT_FAMILY)[index].toString());
+            builder.family(  actions.getValues(MockupAction.FONT_FAMILY)[index].toString());
         }
      }
 
     @Override
     protected Text getBuilder() {
-        return this.getDefaultOpenMap4u().getBuilder(Text.class).text("Äg").setFontSize(7);
+        return this.getDefaultOpenMap4u().getBuilder(Text.class).text("Äg").size(7);
     }
 
     /**

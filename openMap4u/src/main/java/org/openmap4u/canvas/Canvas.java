@@ -284,8 +284,7 @@ public class Canvas implements Plugable, SetUp, DrawOrWrite,
                         previousDrawnShape = draw((Point2D) point, builder, previousDrawnShape);
                     } else if (point instanceof Position) {
                         try {
-                            System.out.println(previousDrawnShape);
-                            previousDrawnShape = draw(new TransformUtil().transform((Position) point, previousDrawnShape, this.mOutputFormat.getGlobalTransform()), builder, previousDrawnShape);
+                             previousDrawnShape = draw(new TransformUtil().transform((Position) point, previousDrawnShape, this.mOutputFormat.getGlobalTransform()), builder, previousDrawnShape);
                         } catch (NoninvertibleTransformException ex) {
                             Logger.getLogger(Canvas.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -333,8 +332,7 @@ public class Canvas implements Plugable, SetUp, DrawOrWrite,
 
     @Override
     public void write(Path out) throws IOException {
-        System.out.println(out);
-        write(Files.newOutputStream(out));
+         write(Files.newOutputStream(out));
     }
 
 }

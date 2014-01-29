@@ -36,6 +36,7 @@ public interface Drawable<S extends Styleable<S>>   {
      */ 
     DrawableTransformable getTransform();
     
+    void setTransform(DrawableTransformable transform);
  
 
 }

@@ -7,6 +7,7 @@
 package org.openmap4u.commons;
 
 import java.awt.geom.Point2D;
+import org.openmap4u.unit.Angle;
 
 /**
  *
@@ -37,5 +38,13 @@ public interface DrawableTransformable extends Transformable {
      * @param align The alignment.
      */
     void setAlign(Position align);
+
+    public void setScaleX(double scaleX);
+
+    public void setScaleY(double scaleY);
+
+    public void setAngleUnits(Angle angleUnits);
+
+    public void setRotate(double convert);
     
 }

@@ -29,7 +29,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -47,10 +46,8 @@ import org.opengis.feature.Feature;
 
 import com.vividsolutions.jts.geom.Envelope;
 import com.vividsolutions.jts.geom.Geometry;
-import com.vividsolutions.jts.io.ParseException;
 import com.vividsolutions.jts.io.WKBWriter;
 import com.vividsolutions.jts.io.WKTReader;
-import java.util.function.Function;
 import java.util.stream.Stream;
 
 /**
@@ -58,6 +55,8 @@ import java.util.stream.Stream;
  * @author zwotti
  */
 public class MockupData {
+
+    private static MockupData mD = new MockupData();
 
     /**
      * The image url.
@@ -72,7 +71,7 @@ public class MockupData {
      * The bounding box of all countries.
      */
     public static Envelope BOUNDINGBOX_COUNTRIES;
-  
+
     static {
 
         WKTReader reader = new WKTReader();
@@ -95,8 +94,6 @@ public class MockupData {
         /* set the bounding box */
         BOUNDINGBOX_COUNTRIES = getBBox(ITERABLE_COUNTRIES.stream().map(value -> value.getGeomAsJTS()));
 
-   
-
         try {
             IMAGE_URL = Thread.currentThread().getContextClassLoader()
                     .getResource("image/image.png").toURI().toString();
@@ -107,7 +104,20 @@ public class MockupData {
         ;
     }
 
-   
+    /**
+     * Singleton pattern.
+     */
+    private MockupData() {
+    }
+
+    /**
+     * Singleton pattern.
+     *
+     * @return The single MockupData instance.
+     */
+    public static MockupData get() {
+        return mD;
+    }
 
     /**
      * Renders the x and y coordinate.
@@ -263,7 +273,29 @@ public class MockupData {
     }
 
     /**
+     * Creates random double values.
+     *
+     * @param lowerBound The lower bound for random double values.
+     * @param upperBound The upper bound for random values.
+     * @param steps The number of steps.
+     * @return The values.
+     */
+    public final List<Data<Double,Double[]>> getRandom(double lowerBound, double upperBound, int xTimes, int steps) {
+        List<Data<Double,Double[]>> values = new ArrayList<>();
+        double delta = upperBound - lowerBound;
+        for (int i = 0; i < steps; i++) {
+            Double[] vals = new Double[xTimes];
+            for (int j = 0; j < xTimes; j++) {
+                vals[j] = lowerBound + delta * Math.random();
+            }
+            values.add(new Data<Double,Double[]> (Double.valueOf(i),vals));
+        }
+        return values;
+    }
+
+    /**
      * Gets the countries.
+     *
      * @return The countries.
      */
     public final List<Country> getCountries() {
