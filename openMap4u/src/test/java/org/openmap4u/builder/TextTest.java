@@ -10,7 +10,7 @@ import java.util.List;
 
 import org.junit.Before;
 import org.openmap4u.builder.Action.MockupAction;
-import org.openmap4u.style.FontStyle;
+import org.openmap4u.commons.FontStyle;
 
 /**
  *

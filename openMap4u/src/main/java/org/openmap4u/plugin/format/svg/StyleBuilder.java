@@ -3,15 +3,15 @@ package org.openmap4u.plugin.format.svg;
 import java.awt.Color;
 import java.awt.Paint;
 
-import org.openmap4u.style.FontStyle;
+import org.openmap4u.commons.FontStyle;
 import org.openmap4u.commons.Position;
-import org.openmap4u.style.FontWeight;
+import org.openmap4u.commons.FontWeight;
 
 /**
  *
  * @author Michael Hadrbolec
  */
-public class StyleBuilder {
+class StyleBuilder {
 
     interface CONSTANTS {
 

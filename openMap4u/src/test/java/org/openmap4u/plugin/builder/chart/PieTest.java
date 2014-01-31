@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
 import org.openmap4u.AbstractOpenMap4uTest;
 import org.openmap4u.OpenMap4u;
 import org.openmap4u.canvas.DrawOrWrite;
-import org.openmap4u.unit.Angle;
+import org.openmap4u.commons.Angle;
 
 /**
  *

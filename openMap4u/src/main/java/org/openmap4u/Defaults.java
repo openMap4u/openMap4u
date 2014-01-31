@@ -3,10 +3,10 @@ package org.openmap4u;
 import java.io.Serializable;
 import java.util.Locale;
 
-import org.openmap4u.style.ImageStyle;
-import org.openmap4u.style.ShapeStyle;
-import org.openmap4u.style.TextStyle;
-import org.openmap4u.unit.Length;
+import org.openmap4u.commons.ImageStyle;
+import org.openmap4u.commons.ShapeStyle;
+import org.openmap4u.commons.TextStyle;
+import org.openmap4u.commons.Length;
 
 /**
  * Contains the default values. It also allows to override the defaults with

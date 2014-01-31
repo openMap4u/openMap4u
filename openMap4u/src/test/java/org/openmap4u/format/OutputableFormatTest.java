@@ -10,7 +10,7 @@ import java.io.IOException;
 import org.openmap4u.AbstractOpenMap4uTest;
 import org.openmap4u.canvas.SetAreaOfInterestOrDrawOrWrite;
 import org.openmap4u.plugin.builder.symbol.Circle;
-import org.openmap4u.unit.Length;
+import org.openmap4u.commons.Length;
 
 /**
  *

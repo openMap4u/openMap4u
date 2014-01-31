@@ -20,10 +20,10 @@ import org.openmap4u.OutputFormat;
 import org.openmap4u.builder.Action.MockupAction;
 import static org.openmap4u.builder.Action.MockupAction.ALIGN;
 import org.openmap4u.canvas.DrawOrWrite;
-import org.openmap4u.style.FontStyle;
+import org.openmap4u.commons.FontStyle;
 import org.openmap4u.commons.Position;
 import org.openmap4u.plugin.builder.symbol.Cross;
-import org.openmap4u.unit.Length;
+import org.openmap4u.commons.Length;
 
 /**
  * Base class for all builder plugin tests.

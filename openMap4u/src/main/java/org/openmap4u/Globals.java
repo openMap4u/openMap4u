@@ -5,10 +5,10 @@ import java.awt.Paint;
 import java.awt.geom.Point2D;
 
 import org.openmap4u.canvas.Canvas;
-import org.openmap4u.style.FontStyle;
+import org.openmap4u.commons.FontStyle;
 import org.openmap4u.plugin.format.graphics2d.Png;
-import org.openmap4u.unit.Angle;
-import org.openmap4u.unit.Length;
+import org.openmap4u.commons.Angle;
+import org.openmap4u.commons.Length;
 
 /*
  * #%L

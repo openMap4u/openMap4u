@@ -22,7 +22,7 @@ import org.openmap4u.canvas.SetAreaOfInterestOrDrawOrWrite;
 import org.openmap4u.commons.Position;
 import org.openmap4u.plugin.builder.chart.LineChart;
 import org.openmap4u.plugin.builder.symbol.Rectangle;
-import org.openmap4u.unit.Length;
+import org.openmap4u.commons.Length;
 
 /**
  *

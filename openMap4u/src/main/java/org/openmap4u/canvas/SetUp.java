@@ -7,8 +7,8 @@ package org.openmap4u.canvas;
 import java.awt.Shape;
 
 import org.openmap4u.format.Outputable;
-import org.openmap4u.unit.Angle;
-import org.openmap4u.unit.Length;
+import org.openmap4u.commons.Angle;
+import org.openmap4u.commons.Length;
 
 /**
  * 

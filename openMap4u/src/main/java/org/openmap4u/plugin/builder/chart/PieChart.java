@@ -13,7 +13,7 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Path2D;
 
 import org.openmap4u.builder.ShapeBuilder;
-import org.openmap4u.unit.Angle;
+import org.openmap4u.commons.Angle;
 
 /**
  * Represents a pie ord a donut.

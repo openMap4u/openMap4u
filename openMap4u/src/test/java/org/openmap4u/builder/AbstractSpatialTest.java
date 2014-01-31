@@ -11,7 +11,7 @@ import org.openmap4u.canvas.DrawOrWrite;
 import org.openmap4u.data.Country;
 import org.openmap4u.data.MockupData;
 import org.openmap4u.plugin.builder.symbol.Cross;
-import org.openmap4u.unit.Length;
+import org.openmap4u.commons.Length;
 
 /**
  *

@@ -2,10 +2,10 @@ package org.openmap4u.builder;
 
 import java.awt.Paint;
 
-import org.openmap4u.style.FontStyle;
-import org.openmap4u.style.TextStyle;
-import org.openmap4u.primitive.TextDrawable;
-import org.openmap4u.style.TextStyleable;
+import org.openmap4u.commons.FontStyle;
+import org.openmap4u.commons.TextStyle;
+import org.openmap4u.commons.TextDrawable;
+import org.openmap4u.commons.TextStyleable;
 
 /**
  * All text builder plugins are derifed from this abstract base class.

@@ -19,7 +19,7 @@ import org.openmap4u.commons.Position;
 import org.openmap4u.plugin.builder.chart.BarChart;
 import org.openmap4u.plugin.builder.symbol.Circle;
 import org.openmap4u.plugin.builder.symbol.Rectangle;
-import org.openmap4u.unit.Angle;
+import org.openmap4u.commons.Angle;
 
 /**
  *

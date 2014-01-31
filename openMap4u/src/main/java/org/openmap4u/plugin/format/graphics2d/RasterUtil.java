@@ -4,13 +4,13 @@
  */
 package org.openmap4u.plugin.format.graphics2d;
 
-import org.openmap4u.unit.Length;
+import org.openmap4u.commons.Length;
 
 /**
  * 
  * @author hadrbolec
  */
-public class RasterUtil {
+class RasterUtil {
 
     double getMultuplicationFactor(int dpi, Length drawingUnits) {
         return drawingUnits.convert(1, Length.INCH) * dpi;

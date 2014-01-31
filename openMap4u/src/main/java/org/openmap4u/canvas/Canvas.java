@@ -44,11 +44,11 @@ import org.openmap4u.commons.TransformUtil;
 import org.openmap4u.commons.Util;
 import org.openmap4u.format.Outputable;
 import org.openmap4u.plugin.format.graphics2d.Png;
-import org.openmap4u.unit.Angle;
-import org.openmap4u.unit.Length;
-import org.openmap4u.primitive.ShapeDrawable;
-import org.openmap4u.primitive.ImageDrawable;
-import org.openmap4u.primitive.TextDrawable;
+import org.openmap4u.commons.Angle;
+import org.openmap4u.commons.Length;
+import org.openmap4u.commons.ShapeDrawable;
+import org.openmap4u.commons.ImageDrawable;
+import org.openmap4u.commons.TextDrawable;
 
 /**
  * Default implementation of the Canvas interface.

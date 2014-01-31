@@ -6,8 +6,6 @@
 
 package org.openmap4u.commons;
 
-import org.openmap4u.unit.Angle;
-
 /**
  *
  * @author Michael Hadrbolec

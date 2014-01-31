@@ -33,7 +33,7 @@ import org.openmap4u.plugin.builder.core.Polygon;
 import org.openmap4u.plugin.builder.core.Text;
 import org.openmap4u.plugin.builder.symbol.Circle;
 import org.openmap4u.plugin.builder.symbol.Rectangle;
-import org.openmap4u.unit.Angle;
+import org.openmap4u.commons.Angle;
 
 /**
  *

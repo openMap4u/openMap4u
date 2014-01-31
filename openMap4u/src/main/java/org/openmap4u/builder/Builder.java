@@ -8,11 +8,11 @@ import java.util.Set;
 import org.openmap4u.commons.DrawableTransformable;
 import org.openmap4u.commons.Plugable;
 import org.openmap4u.commons.Position;
-import org.openmap4u.primitive.Drawable;
-import org.openmap4u.style.Styleable;
+import org.openmap4u.commons.Drawable;
+import org.openmap4u.commons.Styleable;
 
-import org.openmap4u.unit.Angle;
-import org.openmap4u.unit.Transparence;
+import org.openmap4u.commons.Angle;
+import org.openmap4u.commons.Transparence;
 
 /**
  * All builders are derived from this base class.

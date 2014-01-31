@@ -9,10 +9,10 @@ import org.openmap4u.builder.TextBuilder;
 import org.openmap4u.canvas.Canvas;
 import org.openmap4u.canvas.SetUp;
 import org.openmap4u.commons.Util;
-import org.openmap4u.style.ImageStyleable;
-import org.openmap4u.style.ShapeStyleable;
-import org.openmap4u.style.Styleable;
-import org.openmap4u.style.TextStyleable;
+import org.openmap4u.commons.ImageStyleable;
+import org.openmap4u.commons.ShapeStyleable;
+import org.openmap4u.commons.Styleable;
+import org.openmap4u.commons.TextStyleable;
 
 /**
  * The openMap4u API.

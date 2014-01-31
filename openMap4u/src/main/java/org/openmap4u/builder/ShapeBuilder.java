@@ -4,10 +4,10 @@ import java.awt.Paint;
 import java.awt.Shape;
 import java.awt.geom.Area;
 import java.awt.geom.Path2D;
-import org.openmap4u.primitive.ShapeDrawable;
+import org.openmap4u.commons.ShapeDrawable;
 
-import org.openmap4u.style.ShapeStyle;
-import org.openmap4u.style.ShapeStyleable;
+import org.openmap4u.commons.ShapeStyle;
+import org.openmap4u.commons.ShapeStyleable;
 
 /**
  * All shape builder plugins are derifed from this abstract base class.

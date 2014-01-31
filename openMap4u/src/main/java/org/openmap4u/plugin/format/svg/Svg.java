@@ -31,13 +31,13 @@ import org.openmap4u.commons.Position;
 import org.openmap4u.commons.TransformUtil;
 import org.openmap4u.commons.Util;
 import org.openmap4u.format.Outputable;
-import org.openmap4u.primitive.ImageDrawable;
-import org.openmap4u.primitive.ShapeDrawable;
-import org.openmap4u.primitive.TextDrawable;
-import org.openmap4u.style.TextStyle;
-import org.openmap4u.style.TextStyleable;
-import org.openmap4u.unit.Angle;
-import org.openmap4u.unit.Length;
+import org.openmap4u.commons.ImageDrawable;
+import org.openmap4u.commons.ShapeDrawable;
+import org.openmap4u.commons.TextDrawable;
+import org.openmap4u.commons.TextStyle;
+import org.openmap4u.commons.TextStyleable;
+import org.openmap4u.commons.Angle;
+import org.openmap4u.commons.Length;
 
 /**
  *

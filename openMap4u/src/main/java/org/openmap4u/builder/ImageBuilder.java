@@ -3,8 +3,8 @@ package org.openmap4u.builder;
 import java.net.URI;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import org.openmap4u.primitive.ImageDrawable;
-import org.openmap4u.style.ImageStyleable;
+import org.openmap4u.commons.ImageDrawable;
+import org.openmap4u.commons.ImageStyleable;
 
 /**
  * All image builder plugins are derifed from this abstract base class.

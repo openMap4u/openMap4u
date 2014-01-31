@@ -11,11 +11,11 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import org.openmap4u.commons.Plugable;
-import org.openmap4u.primitive.ImageDrawable;
-import org.openmap4u.primitive.ShapeDrawable;
-import org.openmap4u.primitive.TextDrawable;
-import org.openmap4u.unit.Angle;
-import org.openmap4u.unit.Length;
+import org.openmap4u.commons.ImageDrawable;
+import org.openmap4u.commons.ShapeDrawable;
+import org.openmap4u.commons.TextDrawable;
+import org.openmap4u.commons.Angle;
+import org.openmap4u.commons.Length;
 
 /**
  * This interface has to be implemented for every output format.<br> 
