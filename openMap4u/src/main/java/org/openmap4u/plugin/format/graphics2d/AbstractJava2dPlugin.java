@@ -170,7 +170,7 @@ abstract class AbstractJava2dPlugin implements Outputable {
             AffineTransform transform = getTransform(point,
                     image.getTransform(),
                     new Rectangle2D.Double(0, 0,
-                            img.getWidth(), img.getHeight()));
+                            img.getWidth()/this.mDrawingUnit2PixelFactor, img.getHeight()/this.mDrawingUnit2PixelFactor));
             transform.concatenate(new AffineTransform(
                     1 / this.mDrawingUnit2PixelFactor, 0, 0, -1 / this.mDrawingUnit2PixelFactor, 0, img.getHeight() / this.mDrawingUnit2PixelFactor));
             this.mG2D.drawImage(img, transform, null);

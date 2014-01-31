@@ -48,6 +48,7 @@ import com.vividsolutions.jts.geom.Envelope;
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.io.WKBWriter;
 import com.vividsolutions.jts.io.WKTReader;
+import java.util.Map.Entry;
 import java.util.stream.Stream;
 
 /**
@@ -271,6 +272,12 @@ public class MockupData {
         }
         return values;
     }
+    
+    public final   List<Entry<Double,Double>> getProperties(double lowerBoundX, double upperBoundX , int stepsX, double lowerBoundY, double upperBoundY) {
+    List<Entry<Double,Double>> entries = new ArrayList<>();
+    List<Double> values = getRange(lowerBoundX,upperBoundX,stepsX);
+          return entries;
+    }
 
     /**
      * Creates random double values.
@@ -301,5 +308,61 @@ public class MockupData {
     public final List<Country> getCountries() {
         return ITERABLE_COUNTRIES;
     }
+    
+    
+    
+    /**
+	 * Creates a range beginning with the default value 0, the given stop value
+	 * and the default step width of 1. <br/>
+	 * Example: <code>10</code> would result in a list containing
+	 * <code>0,1,2,3,4,5,6,7,8,9</code>
+	 * 
+	 * @param stop
+	 *            The stop value of the range.
+	 * @return The resulting range.
+	 */
+	public final Iterable<Double> getRange(double stop) {
+		return getRange(stop, 1);
+	}
+
+	/**
+	 * Creates a range beginning with the default value 0.<br/>
+	 * Example: <code>100,10</code> would result in a list containing
+	 * <code>0,10,20,30,40,50,60,70,80,90</code>
+	 * 
+	 * @param stop
+	 *            The stop value of the range.
+	 * @param step
+	 *            The step width of the range.
+	 * @return The resulting range.
+	 */
+	public final Iterable<Double> getRange(double stop, double step) {
+      	return getRange(0, stop, step);
+	}
+
+	/**
+	 * Creates a range.
+	 * 
+	 * @param start
+	 *            The start value of the range.
+	 * @param stop
+	 *            The stop value of the range which is not included.
+	 * @param step
+	 *            The step width. Example: <code>10,100,10</code> would result
+	 *            in a list containing <code>10,20,30,40,50,60,70,80,90</code>
+	 * @return The resulting range.
+	 */
+	public final List<Double> getRange(double start, double stop,
+			double step) {
+		List<Double> list = new ArrayList<Double>();
+		if (step > 0) {
+			for (double x = start; x < stop; x += step)
+				list.add(x);
+		} else {
+			for (double x = start; x > stop; x += step)
+				list.add(x);
+		}
+		return list;
+	}
 
 }
