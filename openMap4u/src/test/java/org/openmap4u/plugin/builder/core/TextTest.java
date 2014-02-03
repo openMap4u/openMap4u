@@ -5,10 +5,6 @@
  */
 package org.openmap4u.plugin.builder.core;
 
-import java.awt.Color;
-import java.awt.Shape;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Rectangle2D;
 import java.io.IOException;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -17,9 +13,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openmap4u.AbstractOpenMap4uTest;
 import org.openmap4u.OpenMap4u;
-import org.openmap4u.canvas.DrawOrWrite;
-import org.openmap4u.canvas.SetAreaOfInterestOrDrawOrWrite;
-import org.openmap4u.commons.Position;
+import org.openmap4u.DrawOrWrite;
 
 /**
  *

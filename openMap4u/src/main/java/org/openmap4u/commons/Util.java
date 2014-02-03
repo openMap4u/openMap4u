@@ -44,7 +44,6 @@ import javax.activation.MimeType;
 import javax.activation.MimeTypeParseException;
 import javax.imageio.ImageIO;
 
-import org.openmap4u.Globals;
 
 /**
  * Commonly used helper methods which is needed multiple across the api.

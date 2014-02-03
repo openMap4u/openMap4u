@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.openmap4u.canvas;
+package org.openmap4u;
 
 import java.io.IOException;
 import java.io.OutputStream;

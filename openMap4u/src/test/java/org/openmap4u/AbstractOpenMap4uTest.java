@@ -15,7 +15,6 @@ import java.util.List;
 
 import org.junit.runner.RunWith;
 import org.openmap4u.builder.Buildable;
-import org.openmap4u.canvas.SetAreaOfInterestOrDrawOrWrite;
 import org.openmap4u.format.Outputable;
 import org.openmap4u.plugin.builder.symbol.Rectangle;
 import org.openmap4u.plugin.format.graphics2d.Png;

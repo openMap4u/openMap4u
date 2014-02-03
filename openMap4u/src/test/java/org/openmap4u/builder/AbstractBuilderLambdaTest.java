@@ -18,7 +18,7 @@ import org.junit.Test;
 import org.openmap4u.AbstractOpenMap4uTest;
 import org.openmap4u.OutputFormat;
 import org.openmap4u.builder.Action.MockupAction;
-import org.openmap4u.canvas.DrawOrWrite;
+import org.openmap4u.DrawOrWrite;
 import org.openmap4u.commons.FontStyle;
 import org.openmap4u.commons.Position;
 import org.openmap4u.plugin.builder.symbol.Cross;

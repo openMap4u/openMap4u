@@ -11,29 +11,21 @@ package org.openmap4u.plugin.builder.chart;
 
 import java.awt.Color;
 import java.io.IOException;
-import java.nio.file.FileSystems;
 import java.util.List;
-import java.util.stream.Stream;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openmap4u.AbstractOpenMap4uTest;
 import org.openmap4u.OpenMap4u;
-import org.openmap4u.canvas.DrawOrWrite;
-import org.openmap4u.commons.Position;
-import static org.openmap4u.commons.Position.CenterMiddle;
+import org.openmap4u.DrawOrWrite;
 import static org.openmap4u.commons.Position.CenterTop;
 import static org.openmap4u.commons.Position.LeftBottom;
-import static org.openmap4u.commons.Position.LeftMiddle;
 import static org.openmap4u.commons.Position.RightMiddle;
 import org.openmap4u.data.Data;
 import org.openmap4u.data.MockupData;
 import org.openmap4u.plugin.builder.core.Line;
-import org.openmap4u.plugin.builder.core.Polygon;
 import org.openmap4u.plugin.builder.core.Text;
-import org.openmap4u.plugin.builder.symbol.Circle;
 import org.openmap4u.plugin.builder.symbol.Rectangle;
-import org.openmap4u.commons.Angle;
 
 /**
  *

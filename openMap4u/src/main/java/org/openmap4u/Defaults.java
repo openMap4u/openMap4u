@@ -1,5 +1,6 @@
 package org.openmap4u;
 
+import org.openmap4u.commons.Globals;
 import java.io.Serializable;
 import java.util.Locale;
 
@@ -9,8 +10,9 @@ import org.openmap4u.commons.TextStyle;
 import org.openmap4u.commons.Length;
 
 /**
- * Contains the default values. It also allows to override the defaults with
- * user defined custom values (if necessary).
+ * Is a bean that contains all default values like units, styles, ... . It allows to override the defaults with
+ * user defined custom values (if necessary).<br><br>
+ * <code>OpenMap4u om4u = new OpenMap4u();<br>om4u.getDefaults().setWorldUnits(Length.M);<br>om4u.getDefaults().setDrawingUnits(Length.CM);<br>...</code><br>
  *
  * @author Michael Hadrbolec
  *
@@ -73,9 +75,9 @@ public final class Defaults implements Serializable {
     }
 
     /**
-     * Gets the default shape style.
+     * Gets the default style for shape primitives.
      *
-     * @return The default shape style.
+     * @return The default style for shape primitives.
      */
     public ShapeStyle getShapeStyle() {
         if (this.mDefaultShapeStyle == null) {
@@ -87,9 +89,9 @@ public final class Defaults implements Serializable {
     }
 
     /**
-     * Gets the default text style.
+     * Gets the default style for text primitives.
      *
-     * @return The default text style.
+     * @return The default style for text primitives.
      */
     public TextStyle getTextStyle() {
         return this.mDefaultTextStyle;
@@ -150,7 +152,7 @@ public final class Defaults implements Serializable {
     }
 
     /**
-     * Sets the default value for world units (see {@link Length}). .
+     * Sets the default value for world units (see {@link Length}). 
      *
      * @param worldUnits The default value for world units.
      */
@@ -159,18 +161,18 @@ public final class Defaults implements Serializable {
     }
 
     /**
-     * Sets the default image style.
+     * Sets the default style for image primitives.
      *
-     * @param defaultImageStyle The default image style.
+     * @param defaultImageStyle The default style for image primitives.
      */
     public void setImageStyle(ImageStyle defaultImageStyle) {
         this.mDefaultImageStyle = defaultImageStyle;
     }
 
     /**
-     * Sets the default shape style.
+     * Sets the default style for shape primitives.
      *
-     * @param defaultShapeStyle The default shape style.
+     * @param defaultShapeStyle The default style for shape primitives.
      */
     public void setShapeStyle(ShapeStyle defaultShapeStyle) {
         this.mDefaultShapeStyle = defaultShapeStyle;

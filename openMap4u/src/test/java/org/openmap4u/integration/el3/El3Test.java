@@ -30,6 +30,6 @@ public class El3Test extends AbstractEl3Test {
     public void testSinglePrimitive() {
         getELProcessor().eval("n=4+3");
         getELProcessor().eval("oM4u.getCanvas().size(10,8)");
-    //    getELProcessor().eval("oM4u.getCanvas().size(10,8).draw(oM4u.getBuilder().getShape().moveTo(1,3).lineTo(7,3)).write(new java.nio.file.FileSystems.FileSystems.getDefault().getPath(\"temp\", \"myTemp.png\"))");
+        getELProcessor().eval("oM4u.getCanvas().size(10,8).draw(oM4u.getBuilder().getShape().moveTo(1,3).lineTo(7,3)).write(new java.nio.file.FileSystems.FileSystems.getDefault().getPath(\"temp\", \"myTemp.png\"))");
     }
 }

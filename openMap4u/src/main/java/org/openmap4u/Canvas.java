@@ -1,4 +1,4 @@
-package org.openmap4u.canvas;
+package org.openmap4u;
 
 /*
  * #%L
@@ -23,8 +23,8 @@ package org.openmap4u.canvas;
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  * #L%
  */
+import org.openmap4u.commons.Globals;
 import java.awt.Shape;
-import java.awt.geom.AffineTransform;
 import java.awt.geom.NoninvertibleTransformException;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
@@ -36,7 +36,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.openmap4u.commons.AreaOfInterestTransformable;
-import org.openmap4u.Globals;
 import org.openmap4u.builder.Buildable;
 import org.openmap4u.commons.Plugable;
 import org.openmap4u.commons.Position;
@@ -56,7 +55,7 @@ import org.openmap4u.commons.TextDrawable;
  * @author Michael Hadrbolec
  *
  */
-public class Canvas implements Plugable, SetUp, DrawOrWrite,
+class Canvas implements Plugable, SetUp, DrawOrWrite,
         SetAreaOfInterestOrDrawOrWrite, AreaOfInterestTransformable {
 
     /**
@@ -65,6 +64,11 @@ public class Canvas implements Plugable, SetUp, DrawOrWrite,
     public static final String PLUGIN_NAME = "DrawPlugin";
     private Outputable mOutputFormat = new Png();
     private Shape previousDrawnShape = new Rectangle2D.Double();
+    
+    /**
+     * Whether the output format has been initialized.
+     */
+    private boolean isInitialized = false;
 
     /**
      * Stores the world units.
@@ -265,11 +269,13 @@ public class Canvas implements Plugable, SetUp, DrawOrWrite,
     public DrawOrWrite draw(
             Buildable builder) {
         /* check wethter the ouptputable format has been initialized */
-        if (!this.mOutputFormat.isInitialized()) {
+        if (!this.isInitialized) {
             /* Initialize the global transformation */
             this.mOutputFormat.setUp(this.getShape(),
                     this.getWorldUnits(), this.getDrawingUnits(), getStrokeUnits(), getAngleUnits(),
                     new TransformUtil().getGlobalTransform(this));
+            /* set initialzed true */
+            this.isInitialized=true;
         }
 
         /* only in the case the primitive is visible */

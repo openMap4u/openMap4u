@@ -6,8 +6,6 @@ import org.openmap4u.builder.ImageBuilder;
 import org.openmap4u.builder.ShapeBuilder;
 import org.openmap4u.builder.TextBuilder;
 
-import org.openmap4u.canvas.Canvas;
-import org.openmap4u.canvas.SetUp;
 import org.openmap4u.commons.Util;
 import org.openmap4u.commons.ImageStyleable;
 import org.openmap4u.commons.ShapeStyleable;
@@ -26,8 +24,6 @@ public final class OpenMap4u implements Serializable {
      */
     private static final long serialVersionUID = 7003870457791602481L;
 
-  
-  
     private Defaults mDefaultConfiguration = null;
 
     /**
@@ -37,13 +33,18 @@ public final class OpenMap4u implements Serializable {
         this.mDefaultConfiguration = new Defaults();
     }
 
-   
     /**
-     * Gets the builder and initializes it with the konfigured default values.
-     * @param <S> The stylable type.
-     * @param <B> The buildable type.
-      * @param builderClass The builder class.
-     * @return  The builder.
+     * Creates a new builder of the given class and initializes it with the
+     * in ({@link org.openmap4u.OpenMap4u#getDefaults()}) provided values.
+     *
+     * @param <S> The style type.
+     * @param <B> The primitive type.
+     * @param builderClass The builder class e.g.:
+     * {@link org.openmap4u.plugin.builder.core.Line},{@link org.openmap4u.plugin.builder.core.Polyline}, {@link org.openmap4u.plugin.builder.core.Polygon}, {@link org.openmap4u.plugin.builder.core.Image}, {@link org.openmap4u.plugin.builder.core.Text}, {@link org.openmap4u.plugin.builder.core.Line},
+     * ...).
+     * @return The with default styles and units (the in the
+     * {@link org.openmap4u.OpenMap4u#getDefaults()} initialized builder
+     * instance.
      */
     public  <S extends Styleable<S>, B extends Buildable<S, B>> B getBuilder(
             Class<B> builderClass) {
@@ -51,13 +52,13 @@ public final class OpenMap4u implements Serializable {
         try {
             if (builder instanceof ShapeBuilder) {
                 ((ShapeBuilder) builder).setStyle(((ShapeStyleable) getDefaults()
-                                .getShapeStyle()).clone());
+                        .getShapeStyle()).clone());
             } else if (builder instanceof ImageBuilder) {
                 ((ImageBuilder) builder).setStyle(((ImageStyleable) getDefaults()
-                                .getImageStyle()).clone()); 
+                        .getImageStyle()).clone());
             } else if (builder instanceof TextBuilder) {
                 ((TextBuilder) builder).
-                       setStyle(((TextStyleable) getDefaults()
+                        setStyle(((TextStyleable) getDefaults()
                                 .getTextStyle()).clone());
             }
         } catch (CloneNotSupportedException e) {
@@ -65,9 +66,9 @@ public final class OpenMap4u implements Serializable {
         }
         return builder;
     }
-    
+
     /**
-     * Allows to configure and / or to override the default configuration.
+     * Allows to get and / or change the default configuration values.
      *
      * @return The default configuration values.
      */
@@ -85,13 +86,17 @@ public final class OpenMap4u implements Serializable {
     }
 
     /**
-     * Gets a new drawing canvas instance. The instance is based on the
-     * preconfigured default values.
+     * Creates a new drawing canvas instance. The instance is based on the
+     * preconfigured {@link org.openmap4u.OpenMap4u#getDefaults()} values.
      *
-     * @return A new drawing canvas instance.
+     * @return A new drawing canvas instance based on the preconfigured values.
      */
     public SetUp getCanvas() {
-          return Canvas.create().worldUnits(this.mDefaultConfiguration.getWorldUnits()).drawingUnits(this.mDefaultConfiguration.getDrawingUnits()).
+        return Canvas.create().worldUnits(this.mDefaultConfiguration.getWorldUnits()).drawingUnits(this.mDefaultConfiguration.getDrawingUnits()).
                 strokeUnits(this.mDefaultConfiguration.getStrokeUnits());
-     } 
+    }
+    
+    public SetAreaOfInterestOrDrawOrWrite getCanvas(double width,double height) {
+    return null;
+    }
 }

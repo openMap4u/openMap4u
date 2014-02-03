@@ -108,6 +108,6 @@ public interface Outputable extends Plugable {
      * @return <code>true</code> if allready initialzed, <code>false</code> if
      * not iniatialized.
      */
-    boolean isInitialized();
+  //  boolean isInitialized();
 
 }

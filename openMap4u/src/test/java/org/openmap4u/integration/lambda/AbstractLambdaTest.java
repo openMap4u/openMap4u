@@ -14,7 +14,7 @@ import org.openmap4u.AbstractOpenMap4uTest;
 import org.openmap4u.OpenMap4u;
 import org.openmap4u.plugin.builder.chart.PieChart;
 import org.openmap4u.plugin.builder.core.Polygon;
-import org.openmap4u.canvas.DrawOrWrite;
+import org.openmap4u.DrawOrWrite;
 import org.openmap4u.commons.Position;
 import org.openmap4u.plugin.builder.chart.BarChart;
 import org.openmap4u.plugin.builder.symbol.Circle;

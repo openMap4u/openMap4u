@@ -5,12 +5,14 @@
  */
 package org.openmap4u.commons;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Michael Hadrbolec.
  * @param <T> The style type (used for the method chaining pattern).
  */
-public interface Styleable<T extends Styleable<T>> extends Cloneable {
+public interface Styleable<T extends Styleable<T>> extends Cloneable, Serializable {
 
     /**
      * Gets the alpha value.

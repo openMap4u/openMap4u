@@ -3,7 +3,6 @@ package org.openmap4u.commons;
 import java.awt.Color;
 import java.awt.Paint;
 
-import org.openmap4u.Globals;
 
 /**
  * The TextStyleable implementation.

@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.nio.file.FileSystems;
 import org.junit.*;
 import org.openmap4u.AbstractOpenMap4uTest;
-import org.openmap4u.canvas.SetAreaOfInterestOrDrawOrWrite;
+import org.openmap4u.SetAreaOfInterestOrDrawOrWrite;
 import org.openmap4u.plugin.builder.chart.LineChart;
 import org.openmap4u.plugin.builder.symbol.Rectangle;
 import org.openmap4u.commons.Length;

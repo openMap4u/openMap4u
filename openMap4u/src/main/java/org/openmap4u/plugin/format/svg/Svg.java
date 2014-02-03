@@ -25,7 +25,7 @@ import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 
-import org.openmap4u.Globals;
+import org.openmap4u.commons.Globals;
 import org.openmap4u.commons.DrawableTransformable;
 import org.openmap4u.commons.Position;
 import org.openmap4u.commons.TransformUtil;
@@ -51,8 +51,7 @@ public class Svg implements Outputable {
     private static final Logger LOGGER = Logger.getLogger(
             Svg.class.getName(), Globals.DEFAULT_RESSOURCE_BUNDLE);
 
-    private boolean mIsInitialized = false;
-
+  
     /**
      * Stores the global transformation.
      */
@@ -340,7 +339,6 @@ public class Svg implements Outputable {
             mWriter.writeCData("path {fill:none;fill-rule:evenodd;font-size:0.5cm;}");
             mWriter.writeEndElement();
             mWriter.writeEndElement();
-            this.mIsInitialized = true;
         } catch (FileNotFoundException | XMLStreamException | FactoryConfigurationError e) {
             Logger.getLogger(Svg.class.getName()).log(Level.SEVERE, null,
                     e);
@@ -380,9 +378,6 @@ public class Svg implements Outputable {
         }
     }
 
-    @Override
-    public boolean isInitialized() {
-        return this.mIsInitialized;
-    }
+    
 
 }

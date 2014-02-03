@@ -10,6 +10,8 @@ import org.openmap4u.commons.FontStyle;
  * @author Michel Hadrbolec
  */
 public final class Text extends TextBuilder<Text> {
+    
+    
 
     /**
      * Sets the text.

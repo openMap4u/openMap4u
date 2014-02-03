@@ -1,10 +1,9 @@
-package org.openmap4u;
+package org.openmap4u.commons;
 
 import java.awt.Color;
 import java.awt.Paint;
 import java.awt.geom.Point2D;
-
-import org.openmap4u.canvas.Canvas;
+ 
 import org.openmap4u.commons.FontStyle;
 import org.openmap4u.plugin.format.graphics2d.Png;
 import org.openmap4u.commons.Angle;
@@ -57,11 +56,7 @@ public interface Globals {
      */
     public static Point2D DEFAULT_VIEWPORT_CENTER= new Point2D.Double(ZERO,ZERO );
 
-    /**
-     * The dfeault drawing plugin name.
-     */
-    String DEFAULT_DRAWING_PLUGIN_NAME = Canvas.PLUGIN_NAME;
-
+  
     /**
      * The default symbol size.
      */

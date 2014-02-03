@@ -10,19 +10,13 @@
 package org.openmap4u.plugin.builder.core;
 
 import java.awt.Color;
-import java.awt.geom.Point2D;
 import java.io.IOException;
-import java.nio.file.FileSystems;
 import java.util.stream.Stream;
 import org.junit.*;
 import org.openmap4u.AbstractOpenMap4uTest;
 import org.openmap4u.OpenMap4u;
-import org.openmap4u.canvas.DrawOrWrite;
-import org.openmap4u.canvas.SetAreaOfInterestOrDrawOrWrite;
+import org.openmap4u.DrawOrWrite;
 import org.openmap4u.commons.Position;
-import org.openmap4u.plugin.builder.chart.LineChart;
-import org.openmap4u.plugin.builder.symbol.Rectangle;
-import org.openmap4u.commons.Length;
 
 /**
  *

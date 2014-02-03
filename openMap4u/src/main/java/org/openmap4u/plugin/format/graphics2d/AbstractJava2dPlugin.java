@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 import javax.activation.MimeType;
 import javax.imageio.ImageIO;
 
-import org.openmap4u.Globals;
+import org.openmap4u.commons.Globals;
 import org.openmap4u.commons.DrawableTransformable;
 import org.openmap4u.commons.TransformUtil;
 import org.openmap4u.commons.Util;
@@ -52,11 +52,7 @@ abstract class AbstractJava2dPlugin implements Outputable {
     
     private AffineTransform mFontSCaleBack = new AffineTransform(.01, 0, 0, .01, 0, 0);
 
-    /**
-     * Stores wheter initialized or not.
-     */
-    private boolean mIsInitialized = false;
-    
+     
     private static final int DPI = 96;
     
     private static final double DOT = 72;
@@ -244,14 +240,12 @@ abstract class AbstractJava2dPlugin implements Outputable {
         this.mBufferedImage = new BufferedImage((int) drawingUnits.convert(
                 shape.getBounds().getWidth(), Length.PIXEL), (int) drawingUnits.convert(shape.getBounds().getHeight(),
                         Length.PIXEL), BufferedImage.TYPE_4BYTE_ABGR);
-        this.mIsInitialized = true;
-        /* generate the global transformation */
+         /* generate the global transformation */
         /* first change the orientation of the coordinate system */
         globalTransform.preConcatenate(new AffineTransform(
                 mWorldUnit2PixelFactor, 0, 0,
                 -mWorldUnit2PixelFactor, 0, mBufferedImage.getHeight()));
         this.mGlobalTransform = globalTransform;
-        this.mIsInitialized = true;
         /* set the font render context */
         this.mFontTransformation = new AffineTransform(1d, 0, 0, -1d, 0, 0);
         this.mFontRenderContext = new FontRenderContext(this.mGlobalTransform,
@@ -275,8 +269,7 @@ abstract class AbstractJava2dPlugin implements Outputable {
     
     @Override
     public void tearDown() {
-        this.mIsInitialized = false;
-        
+           
     }
     
     @Override
@@ -303,8 +296,5 @@ abstract class AbstractJava2dPlugin implements Outputable {
         return (AffineTransform) this.mGlobalTransform.clone();
     }
     
-    @Override
-    public boolean isInitialized() {
-        return this.mIsInitialized;
-    }
+  
 }

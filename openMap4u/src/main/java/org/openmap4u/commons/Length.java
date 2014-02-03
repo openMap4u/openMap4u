@@ -1,7 +1,6 @@
 package org.openmap4u.commons;
 
 import org.openmap4u.commons.Convertable;
-import org.openmap4u.Globals;
 
 /*
  * #%L
