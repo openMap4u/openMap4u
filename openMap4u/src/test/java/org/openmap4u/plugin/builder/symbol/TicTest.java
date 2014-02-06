@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openmap4u.AbstractOpenMap4uTest;
 import org.openmap4u.OpenMap4u;
-import org.openmap4u.DrawOrWrite;
+import org.openmap4u.DrawOrWriteable;
 import org.openmap4u.commons.Position;
 import org.openmap4u.data.MockupData;
 import org.openmap4u.plugin.builder.core.Polygon;
@@ -41,10 +41,10 @@ public class TicTest extends AbstractOpenMap4uTest {
         /* optional override default styling (for the created instance) */
         oM4u.getDefaults().getShapeStyle().setAlpha(.5).setStrokeColor(Color.GRAY);
         /* 2. get an canvas and specify the size which you want to draw */
-        DrawOrWrite draw = oM4u.getCanvas().size(2, 8);
+        DrawOrWriteable draw = oM4u.getCanvas(2, 8);
         /* 3. draw your primitive(s). */
         /* 3. draw your primitive(s). */
-        Tic.Horizontal tic = oM4u.getBuilder(Tic.Horizontal.class).length(0.5).color(Color.BLACK);
+        Tic.Horizontal tic = oM4u.create(Tic.Horizontal.class).length(0.5).color(Color.BLACK);
         MockupData.get().getValues(0, 8, 16).forEach(value -> tic.point(1, value));
         draw.draw(tic);
         /* persist your result */
@@ -60,16 +60,16 @@ public class TicTest extends AbstractOpenMap4uTest {
         /* optional override default styling (for the created instance) */
         oM4u.getDefaults().getShapeStyle().setAlpha(.5).setStrokeColor(Color.GRAY);
         /* 2. get an canvas and specify the size which you want to draw */
-        DrawOrWrite draw = oM4u.getCanvas().size(4, 8);
+        DrawOrWriteable draw = oM4u.getCanvas(4, 8);
         /* 3. draw your primitive(s). */
         /* 3. draw your primitive(s). */
-        Tic.Horizontal tic = oM4u.getBuilder(Tic.Horizontal.class).length(0.5).color(Color.BLACK);
+        Tic.Horizontal tic = oM4u.create(Tic.Horizontal.class).length(0.5).color(Color.BLACK);
        
         values.stream().forEach(value -> tic.point(3, value));
               draw.draw(tic);
    
         /* draw labels */
-        values.stream().map(value -> oM4u.getBuilder(Text.class).point(2, value).align(Position.RightMiddle).text("%1$2.1f", value)).forEach(label -> draw.draw(label));
+        values.stream().map(value -> oM4u.create(Text.class).point(2, value).align(Position.RightMiddle).text("%1$2.1f", value)).forEach(label -> draw.draw(label));
         /* persist your result */
         draw.write(getPackagePath("simpleHorizontalTic.png"));
 
@@ -82,9 +82,9 @@ public class TicTest extends AbstractOpenMap4uTest {
         /* optional override default styling (for the created instance) */
         oM4u.getDefaults().getShapeStyle().setAlpha(.5).setStrokeColor(Color.BLACK);
         /* 2. get an canvas and specify the size which you want to draw */
-        DrawOrWrite draw = oM4u.getCanvas().size(10, 2);
+        DrawOrWriteable draw = oM4u.getCanvas(10, 2);
         /* 3. draw your primitive(s). */
-        Tic.Vertical tic = oM4u.getBuilder(Tic.Vertical.class).length(0.5).color(Color.BLACK);
+        Tic.Vertical tic = oM4u.create(Tic.Vertical.class).length(0.5).color(Color.BLACK);
         MockupData.get().getValues(0, 10, 20).forEach(value -> tic.point(value, 1));
         draw.draw(tic);
         /* persist your result */

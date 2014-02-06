@@ -16,7 +16,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openmap4u.AbstractOpenMap4uTest;
-import org.openmap4u.SetAreaOfInterestOrDrawOrWrite;
+import org.openmap4u.OverrideDrawOrWriteable;
 
 /**
  *
@@ -74,7 +74,7 @@ public class PolygonTest extends AbstractOpenMap4uTest {
      */
     @Test
     public void testWritePolygon() throws IOException {
-        write(this.getDefaultOpenMap4u().getBuilder(Polygon.class).color(Color.BLACK).size(.35).fill(Color.LIGHT_GRAY).shape(getCircle()), "c_circle.png");
+        write(this.getDefaultOpenMap4u().create(Polygon.class).color(Color.BLACK).size(.35).fill(Color.LIGHT_GRAY).shape(getCircle()), "c_circle.png");
         write(this.getPolygon(), "c_rectangle.png");
     }
 
@@ -115,12 +115,12 @@ public class PolygonTest extends AbstractOpenMap4uTest {
        getCanvas().draw(polygonBuilder).write(this.getPackagePath( fileName));
     }
 
-    SetAreaOfInterestOrDrawOrWrite getCanvas() {
-        return this.getDefaultOpenMap4u().getCanvas().size(1, 1);
+    OverrideDrawOrWriteable getCanvas() {
+        return this.getDefaultOpenMap4u().getCanvas(1, 1);
     }
 
     Polygon getPolygon() {
-        return this.getDefaultOpenMap4u().getBuilder(Polygon.class).color(Color.BLACK).size(.35).fill(Color.LIGHT_GRAY).shape(getRectangle());
+        return this.getDefaultOpenMap4u().create(Polygon.class).color(Color.BLACK).size(.35).fill(Color.LIGHT_GRAY).shape(getRectangle());
     }
 
     Shape getRectangle() {

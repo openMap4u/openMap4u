@@ -32,8 +32,10 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.function.Function;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Stream;
 
 import org.openmap4u.commons.AreaOfInterestTransformable;
 import org.openmap4u.builder.Buildable;
@@ -55,8 +57,8 @@ import org.openmap4u.commons.TextDrawable;
  * @author Michael Hadrbolec
  *
  */
-class Canvas implements Plugable, SetUp, DrawOrWrite,
-        SetAreaOfInterestOrDrawOrWrite, AreaOfInterestTransformable {
+public class Canvas implements Plugable,   DrawOrWriteable,
+        OverrideDrawOrWriteable, AreaOfInterestTransformable  {
 
     /**
      * The name of the plugin.
@@ -112,18 +114,14 @@ class Canvas implements Plugable, SetUp, DrawOrWrite,
 
     private double mRotate = Globals.DEFAULT_ROTATE;
 
-    private Canvas() {
+    Canvas(Length worldUnits,Length drawingUnits, Length strokeUnits, Angle angleUnits) {
+        this.mWorldUnits=worldUnits;
+        this.mDrawingUnits= drawingUnits;
+        this.mStrokeUnits= strokeUnits;
+        this.mAngleUnits = angleUnits;
     }
 
-    /**
-     * Creates a new Canvas instance.
-     *
-     * @return The new creates Canvas instance.
-     */
-    public static SetUp create() {
-        return new Canvas();
-    }
-
+  
     /**
      * Writes the rendering result into the given output stream.
      *
@@ -137,8 +135,7 @@ class Canvas implements Plugable, SetUp, DrawOrWrite,
         this.mOutputFormat.tearDown();
     }
 
-    @Override
-    public final SetUp worldUnits(Length worldUnits) {
+      public final Overrideable worldUnits(Length worldUnits) {
         this.mWorldUnits = worldUnits;
         return this;
     }
@@ -151,25 +148,12 @@ class Canvas implements Plugable, SetUp, DrawOrWrite,
         return this.mWorldUnits;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public final SetUp drawingUnits(Length drawingUnits) {
-        this.mDrawingUnits = drawingUnits;
-        return this;
-    }
-
     @Override
     public final Length getDrawingUnits() {
         return this.mDrawingUnits;
     }
 
-    @Override
-    public final SetUp strokeUnits(Length strokeUnits) {
-        this.mStrokeUnits = strokeUnits;
-        return this;
-    }
+    
 
     /**
      *
@@ -177,12 +161,6 @@ class Canvas implements Plugable, SetUp, DrawOrWrite,
      */
     public final Length getStrokeUnits() {
         return this.mStrokeUnits;
-    }
-
-    @Override
-    public final SetUp angleUnits(Angle angleUnits) {
-        this.mAngleUnits = angleUnits;
-        return this;
     }
 
     @Override
@@ -220,14 +198,13 @@ class Canvas implements Plugable, SetUp, DrawOrWrite,
         return this.mRotate;
     }
 
-    @Override
-    public SetAreaOfInterestOrDrawOrWrite size(double width, double height) {
+     public OverrideDrawOrWriteable size(double width, double height) {
         this.mViewportShape = new Rectangle2D.Double(0, 0, width, height);
         return this;
     }
 
     @Override
-    public SetAreaOfInterestOrDrawOrWrite scale(double scaleFactor) {
+    public OverrideDrawOrWriteable scale(double scaleFactor) {
         this.scale(scaleFactor, scaleFactor);
         return this;
     }
@@ -240,7 +217,7 @@ class Canvas implements Plugable, SetUp, DrawOrWrite,
      * @param scaleYFactor The scaleFactor in y direction.
      * @return Allows to change the area of interest.
      */
-    public SetAreaOfInterestOrDrawOrWrite scale(double scaleXFactor,
+    public OverrideDrawOrWriteable scale(double scaleXFactor,
             double scaleYFactor) {
         this.mScaleX = scaleXFactor;;
         this.mScaleY = scaleYFactor;
@@ -248,25 +225,24 @@ class Canvas implements Plugable, SetUp, DrawOrWrite,
     }
 
     @Override
-    public SetAreaOfInterestOrDrawOrWrite center(double centerX, double centerY) {
+    public OverrideDrawOrWriteable center(double centerX, double centerY) {
         this.mCenter = new Point2D.Double(centerX, centerY);
         return this;
     }
 
     @Override
-    public SetAreaOfInterestOrDrawOrWrite rotate(double rotation) {
+    public OverrideDrawOrWriteable rotate(double rotation) {
         this.mRotate = getAngleUnits().convert(rotation);
         return this;
     }
 
-    @Override
-    public <T extends Outputable> SetUp outputFormat(Class<T> outputFormat) {
+     public <T extends Outputable> Canvas outputFormat(Class<T> outputFormat) {
         this.mOutputFormat = Util.get().getPlugin(outputFormat);
         return this;
     }
 
     @Override
-    public DrawOrWrite draw(
+    public DrawOrWriteable draw(
             Buildable builder) {
         /* check wethter the ouptputable format has been initialized */
         if (!this.isInitialized) {
@@ -339,6 +315,23 @@ class Canvas implements Plugable, SetUp, DrawOrWrite,
     @Override
     public void write(Path out) throws IOException {
          write(Files.newOutputStream(out));
+    }
+
+    @Override
+    public void accept(Buildable builder) {
+        draw(builder);
+    }
+
+    @Override
+    public DrawOrWriteable draw(Stream<Buildable> builders) {
+        builders.forEach(this);
+        return this;
+    }
+
+    @Override
+    public <T> DrawOrWriteable draw(Stream<T> stream, Function<T, Buildable> map) {
+        return draw(stream.map(map));
+        
     }
 
 }

@@ -17,7 +17,10 @@ public class AbstractEl3Test {
      */
     @BeforeClass
 	public static void beforeClass() {
+            
 		mElProcessor = new ELProcessor();
+                 mElProcessor.getELManager().importPackage("org.m4u");
+	         mElProcessor.getELManager().importPackage("org.openmap4u.plugin.builder.core");
 		/* add a bean named "oM4u" */
 		mElProcessor.defineBean("oM4u", new OpenMap4u());
 	}

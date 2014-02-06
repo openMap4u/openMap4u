@@ -7,7 +7,7 @@ import java.nio.file.FileSystems;
 import org.junit.Test;
 import org.openmap4u.AbstractOpenMap4uTest;
 import org.openmap4u.OutputFormat;
-import org.openmap4u.DrawOrWrite;
+import org.openmap4u.DrawOrWriteable;
 import org.openmap4u.data.Country;
 import org.openmap4u.data.MockupData;
 import org.openmap4u.plugin.builder.symbol.Cross;
@@ -85,5 +85,5 @@ public abstract class AbstractSpatialTest extends AbstractOpenMap4uTest {
      * @param outputFileName
      * @throws IOException
      */
-    protected abstract void process(DrawOrWrite draw, String outputFileName) throws IOException ;
+    protected abstract void process(DrawOrWriteable draw, String outputFileName) throws IOException ;
 }

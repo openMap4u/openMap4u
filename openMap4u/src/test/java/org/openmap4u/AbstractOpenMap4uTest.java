@@ -70,13 +70,14 @@ public abstract class AbstractOpenMap4uTest {
      * @param height
      * @return
      */
-    public SetAreaOfInterestOrDrawOrWrite getCanvas(Length worldUnits,
+    public OverrideDrawOrWriteable getCanvas(Length worldUnits,
             Length drawingUnits, Length strokeUnits,
             Class<? extends Outputable> outputFromat, double width,
             double height) {
-        return defaultOpenMap4u.getCanvas().worldUnits(worldUnits)
-                .drawingUnits(drawingUnits).strokeUnits(strokeUnits)
-                .outputFormat(outputFromat).size(width, height);
+        defaultOpenMap4u.getDefaults().setWorldUnits(worldUnits);
+        defaultOpenMap4u.getDefaults().setDrawingUnits(drawingUnits);
+        defaultOpenMap4u.getDefaults().setStrokeUnits(strokeUnits);
+        return defaultOpenMap4u.getCanvas(width, height).outputFormat(outputFromat);
     }
 
     /**
@@ -164,7 +165,7 @@ public abstract class AbstractOpenMap4uTest {
      * @return The quadratic point marker.
      */
     protected Rectangle getPointMarker(double x, double y, Paint strokeColor, Paint fillColor) {
-        return this.getDefaultOpenMap4u().getBuilder(Rectangle.class).color(strokeColor).fill(fillColor).size(.25).width(.125).point(x, y);
+        return this.getDefaultOpenMap4u().create(Rectangle.class).color(strokeColor).fill(fillColor).size(.25).width(.125).point(x, y);
     }
 
     /**
@@ -183,8 +184,8 @@ public abstract class AbstractOpenMap4uTest {
      * @param height The height of the canvas.
      * @return The canvas.
      */
-    protected final SetAreaOfInterestOrDrawOrWrite getCanvas(double width, double height) {
-        return this.getDefaultOpenMap4u().getCanvas().size(width, height);
+    protected final OverrideDrawOrWriteable getCanvas(double width, double height) {
+        return this.getDefaultOpenMap4u().getCanvas(width, height);
     }
 
     /**
@@ -197,7 +198,7 @@ public abstract class AbstractOpenMap4uTest {
      * @throws java.io.IOException
      */
     protected final void drawOnCanvas(double width, double height, String fileName, Buildable... primitives2Draw) throws IOException {
-        SetAreaOfInterestOrDrawOrWrite canvas = getCanvas(width, height);
+        OverrideDrawOrWriteable canvas = getCanvas(width, height);
         for (Buildable primitive2Draw : primitives2Draw) {
             canvas.draw(primitive2Draw);
         }

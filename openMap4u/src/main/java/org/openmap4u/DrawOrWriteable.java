@@ -7,6 +7,9 @@ package org.openmap4u;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Path;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 import org.openmap4u.builder.Buildable;
 
 /**
@@ -15,7 +18,7 @@ import org.openmap4u.builder.Buildable;
  *
  * @author Michael Hadrbolec
  */
-public interface DrawOrWrite {
+public interface DrawOrWriteable extends Consumer<Buildable> {
 
     /**
      * Draws a single primitive.
@@ -24,8 +27,16 @@ public interface DrawOrWrite {
      * @return Allow by applying the method chaining pattern either to draw more
      * primitive(s) or to write the resulting map.
      */
-    DrawOrWrite draw(Buildable buildable);
+    DrawOrWriteable draw(Buildable buildable);
 
+    /**
+     * Draws a stream of buildables.
+     * @param buildables The buildables to draw.
+     * @return  
+     */
+    DrawOrWriteable draw(Stream<Buildable> stream);
+    
+    <T> DrawOrWriteable draw(Stream<T> stream, Function<T,Buildable> map);
     
     /**
      * Writes the drawing result to the given output stream. If no primitives
@@ -45,5 +56,8 @@ public interface DrawOrWrite {
      * @throws IOException Is thrown in the case an error occurs.
      */
     void write(Path out) throws IOException;
+    
+    
+    
 
 }

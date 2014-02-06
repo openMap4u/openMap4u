@@ -12,7 +12,7 @@ public class CrossTest extends AbstractShapeBuilderTest {
 
      @Override
     protected Cross getBuilder() {
-       return this.getDefaultOpenMap4u().getBuilder(Cross.class).setSize(1, .5);
+       return this.getDefaultOpenMap4u().create(Cross.class).setSize(1, .5);
     }
 
     /**

@@ -46,7 +46,7 @@ public final class OpenMap4u implements Serializable {
      * {@link org.openmap4u.OpenMap4u#getDefaults()} initialized builder
      * instance.
      */
-    public  <S extends Styleable<S>, B extends Buildable<S, B>> B getBuilder(
+    public  <S extends Styleable<S>, B extends Buildable<S, B>> B create(
             Class<B> builderClass) {
         B builder = Util.get().getPlugin(builderClass);
         try {
@@ -89,14 +89,11 @@ public final class OpenMap4u implements Serializable {
      * Creates a new drawing canvas instance. The instance is based on the
      * preconfigured {@link org.openmap4u.OpenMap4u#getDefaults()} values.
      *
+     * @param width
+     * @param height
      * @return A new drawing canvas instance based on the preconfigured values.
      */
-    public SetUp getCanvas() {
-        return Canvas.create().worldUnits(this.mDefaultConfiguration.getWorldUnits()).drawingUnits(this.mDefaultConfiguration.getDrawingUnits()).
-                strokeUnits(this.mDefaultConfiguration.getStrokeUnits());
-    }
-    
-    public SetAreaOfInterestOrDrawOrWrite getCanvas(double width,double height) {
-    return null;
+     public OverrideDrawOrWriteable getCanvas(double width,double height) {
+       return new Canvas(this.mDefaultConfiguration.getWorldUnits(),this.mDefaultConfiguration.getDrawingUnits(),this.mDefaultConfiguration.getStrokeUnits(),this.mDefaultConfiguration.getAngleUnits()).size(width,height);
     }
 }

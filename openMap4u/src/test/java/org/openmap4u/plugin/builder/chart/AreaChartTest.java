@@ -17,7 +17,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openmap4u.AbstractOpenMap4uTest;
 import org.openmap4u.OpenMap4u;
-import org.openmap4u.DrawOrWrite;
+import org.openmap4u.DrawOrWriteable;
 import static org.openmap4u.commons.Position.CenterTop;
 import static org.openmap4u.commons.Position.LeftBottom;
 import static org.openmap4u.commons.Position.RightMiddle;
@@ -59,9 +59,9 @@ public class AreaChartTest extends AbstractOpenMap4uTest {
         /* optional override default styling (for the created instance) */
         oM4u.getDefaults().getShapeStyle().setAlpha(.5).setStrokeColor(Color.BLACK).setStrokeFill(Color.GRAY);
         /* 2. get an canvas and specify the size which you want to draw */
-        DrawOrWrite draw = oM4u.getCanvas().size(10, 8).center(5, 3);
+        DrawOrWriteable draw = oM4u.getCanvas(10, 8).center(5, 3);
         /* 3. draw your primitive(s). */
-        AreaChart verticalAreaChart = oM4u.getBuilder(AreaChart.Vertical.class).fill(Color.lightGray).color(Color.darkGray).size(1);
+        AreaChart verticalAreaChart = oM4u.create(AreaChart.Vertical.class).fill(Color.lightGray).color(Color.darkGray).size(1);
         data.stream().forEach(value -> verticalAreaChart.lineTo(value, Math.random() * 3 + 1));
         /* 4. draw the line primitve */
         draw.draw(verticalAreaChart);
@@ -81,9 +81,9 @@ public class AreaChartTest extends AbstractOpenMap4uTest {
         /* optional override default styling (for the created instance) */
         oM4u.getDefaults().getShapeStyle().setAlpha(.5).setStrokeColor(Color.BLACK).setStrokeFill(Color.GRAY);
         /* 2. get an canvas and specify the size which you want to draw */
-        DrawOrWrite draw = oM4u.getCanvas().size(10, 8).center(4, 4);
+        DrawOrWriteable draw = oM4u.getCanvas(10, 8).center(4, 4);
         /* 3. draw your primitive(s). */
-        AreaChart.Horizontal horizontalAreaChart = oM4u.getBuilder(AreaChart.Horizontal.class).fill(Color.lightGray).color(Color.darkGray).size(1);
+        AreaChart.Horizontal horizontalAreaChart = oM4u.create(AreaChart.Horizontal.class).fill(Color.lightGray).color(Color.darkGray).size(1);
         data.stream().forEach(value -> horizontalAreaChart.lineTo(Math.random() * 3 + 1, value));
         /* 4. draw the line primitve */
         draw.draw(horizontalAreaChart);
@@ -103,25 +103,25 @@ public class AreaChartTest extends AbstractOpenMap4uTest {
         /* optional override default styling (for the created instance) */
         oM4u.getDefaults().getShapeStyle().setStrokeColor(Color.BLACK).setStrokeFill(Color.GRAY);
         /* 2. get an canvas and specify the size which you want to draw */
-        DrawOrWrite canvas = oM4u.getCanvas().size(10, 8).center(4, 3);
+        DrawOrWriteable canvas = oM4u.getCanvas(10, 8).center(4, 3);
         /* 3. draw your primitive(s). */
-        AreaChart.Vertical horizontalAreaChart = oM4u.getBuilder(AreaChart.Vertical.class).fill(Color.lightGray).color(Color.darkGray).size(1);
+        AreaChart.Vertical horizontalAreaChart = oM4u.create(AreaChart.Vertical.class).fill(Color.lightGray).color(Color.darkGray).size(1);
         data.stream().forEach(value -> horizontalAreaChart.lineTo(value.getKey(), value.getValue()[0]));
         /* 4. draw the line primitve */
         canvas.draw(horizontalAreaChart);
          /* draw horizontal lines */
-        data.stream().forEach(value -> canvas.draw(oM4u.getBuilder(Line.class).color(Color.WHITE).line(0, value.getKey(), 8, value.getKey())));
+        data.stream().forEach(value -> canvas.draw(oM4u.create(Line.class).color(Color.WHITE).line(0, value.getKey(), 8, value.getKey())));
        /* draw vertical lines */
-        data.stream().forEach(value -> canvas.draw(oM4u.getBuilder(Line.class).line(value.getKey(), 0, value.getKey(), value.getValue()[0])));
+        data.stream().forEach(value -> canvas.draw(oM4u.create(Line.class).line(value.getKey(), 0, value.getKey(), value.getValue()[0])));
         /* label x axis */
-        data.stream().forEach(value -> canvas.draw(oM4u.getBuilder(Text.class).color(Color.BLACK).point(value.getKey(), 0).align(CenterTop).offset(0, -.25).size(2.5).text(value.getKey())));
+        data.stream().forEach(value -> canvas.draw(oM4u.create(Text.class).color(Color.BLACK).point(value.getKey(), 0).align(CenterTop).offset(0, -.25).size(2.5).text(value.getKey())));
         /* label y axis */
-        MockupData.get().getValues(1, 4, 4).stream().forEach(value -> canvas.draw(oM4u.getBuilder(Text.class).color(Color.DARK_GRAY).point(0, value).align(RightMiddle).offset(-.5, 0).size(2.5).text("%2.0f",value)));
+        MockupData.get().getValues(1, 4, 4).stream().forEach(value -> canvas.draw(oM4u.create(Text.class).color(Color.DARK_GRAY).point(0, value).align(RightMiddle).offset(-.5, 0).size(2.5).text("%2.0f",value)));
 
         /* add symbols */
-        data.stream().forEach(value -> canvas.draw(oM4u.getBuilder(Rectangle.class).color(Color.RED).fill(Color.WHITE).point(value.getKey(), value.getValue()[0]).width(0.25)));
+        data.stream().forEach(value -> canvas.draw(oM4u.create(Rectangle.class).color(Color.RED).fill(Color.WHITE).point(value.getKey(), value.getValue()[0]).width(0.25)));
         /* label values with two digits after the deciaml seperator */
-        data.stream().forEach(value -> canvas.draw(oM4u.getBuilder(Text.class).color(Color.BLACK).point(value.getKey(), value.getValue()[0]).offset(0, 0.35).rotate(75).size(2.5).align(LeftBottom).text("%2.2f", value.getValue()[0])));
+        data.stream().forEach(value -> canvas.draw(oM4u.create(Text.class).color(Color.BLACK).point(value.getKey(), value.getValue()[0]).offset(0, 0.35).rotate(75).size(2.5).align(LeftBottom).text("%2.2f", value.getValue()[0])));
 
         /* persist your result */
         canvas.write(getPackagePath("horizontalAreaChart.png"));

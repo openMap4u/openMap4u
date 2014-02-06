@@ -25,7 +25,7 @@ public class TextTest extends AbstractTextBuilderTest<Text> {
      */
     @Before
     public void setUp() {
-        this.mText = this.getDefaultOpenMap4u().getBuilder(Text.class);
+        this.mText = this.getDefaultOpenMap4u().create(Text.class);
 
     }
 
@@ -54,7 +54,7 @@ public class TextTest extends AbstractTextBuilderTest<Text> {
 
     @Override
     protected Text getBuilder() {
-        return this.getDefaultOpenMap4u().getBuilder(Text.class).text("Äg").size(7);
+        return this.getDefaultOpenMap4u().create(Text.class).text("Äg").size(7);
     }
 
     /**

@@ -13,7 +13,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openmap4u.AbstractOpenMap4uTest;
 import org.openmap4u.OpenMap4u;
-import org.openmap4u.DrawOrWrite;
+import org.openmap4u.DrawOrWriteable;
 
 /**
  *
@@ -61,12 +61,12 @@ public class TextTest extends AbstractOpenMap4uTest {
         /* 1. get an instance */
         OpenMap4u oM4u = new OpenMap4u();
         /* 2. get an canvas and specify the size which you want to draw */
-        DrawOrWrite canvas = oM4u.getCanvas().size(10, 2);
-        canvas.draw(oM4u.getBuilder(Text.class).text("Hello World").size(3).point(.5, .5));
-        canvas.draw(oM4u.getBuilder(Text.class).text(true).size(3).point(4, .5));
-        canvas.draw(oM4u.getBuilder(Text.class).text(1f).size(3).point(7, .5));
-        canvas.draw(oM4u.getBuilder(Text.class).text(1d).size(3).point(8, .5));
-        canvas.draw(oM4u.getBuilder(Text.class).text(1).size(3).point(9, .5));
+        DrawOrWriteable canvas = oM4u.getCanvas(10, 2);
+        canvas.draw(oM4u.create(Text.class).text("Hello World").size(3).point(.5, .5));
+        canvas.draw(oM4u.create(Text.class).text(true).size(3).point(4, .5));
+        canvas.draw(oM4u.create(Text.class).text(1f).size(3).point(7, .5));
+        canvas.draw(oM4u.create(Text.class).text(1d).size(3).point(8, .5));
+        canvas.draw(oM4u.create(Text.class).text(1).size(3).point(9, .5));
         /* write the result */
         canvas.write(getPackagePath("simpleText.png"));
 

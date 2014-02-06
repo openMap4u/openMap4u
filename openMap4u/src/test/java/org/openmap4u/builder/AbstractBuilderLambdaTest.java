@@ -18,7 +18,7 @@ import org.junit.Test;
 import org.openmap4u.AbstractOpenMap4uTest;
 import org.openmap4u.OutputFormat;
 import org.openmap4u.builder.Action.MockupAction;
-import org.openmap4u.DrawOrWrite;
+import org.openmap4u.DrawOrWriteable;
 import org.openmap4u.commons.FontStyle;
 import org.openmap4u.commons.Position;
 import org.openmap4u.plugin.builder.symbol.Cross;
@@ -229,17 +229,17 @@ public abstract class AbstractBuilderLambdaTest<T extends Buildable> extends
         process(getActions(), getFileName());
     }
 
-    final void process(List<Actions> actions, DrawOrWrite draw, String outputFileName)
+    final void process(List<Actions> actions, DrawOrWriteable draw, String outputFileName)
             throws IOException {
         for (int row = 0; row < actions.size() + 1; row++) {
             /* draw horizontal raster line */
-            draw.draw(this.getDefaultOpenMap4u().getBuilder(Polygon.class)
+            draw.draw(this.getDefaultOpenMap4u().create(Polygon.class)
                     .color(Color.LIGHT_GRAY)
                     .size(0.3).moveTo(0, row * 2)
                     .lineTo(30, row * 2));
             /* draw the focus of the test */
             if (row < actions.size()) {
-                draw.draw(this.getDefaultOpenMap4u().getBuilder(Text.class)
+                draw.draw(this.getDefaultOpenMap4u().create(Text.class)
                         .size(5)
                         .point(23, row * 2 + 1)
                         .text(actions.get(row).getDescription()));
@@ -248,7 +248,7 @@ public abstract class AbstractBuilderLambdaTest<T extends Buildable> extends
         for (int column = 0; column < actions.size(); column++) {
             /* draw vertical raster line */
             if (column < 12) {
-                draw.draw(this.getDefaultOpenMap4u().getBuilder(Polygon.class)
+                draw.draw(this.getDefaultOpenMap4u().create(Polygon.class)
                         .color(Color.LIGHT_GRAY)
                         .size(0.3).moveTo(column * 2, 0)
                         .lineTo(column * 2, actions.size() * 2));
@@ -256,14 +256,14 @@ public abstract class AbstractBuilderLambdaTest<T extends Buildable> extends
             for (int row = 0; row < 11; row++) {
                 /* draw a cross in each center */
                 draw.draw(this.getDefaultOpenMap4u()
-                        .getBuilder(Cross.class)
+                        .create(Cross.class)
                         .point(row * 2 + 1, column * 2 + 1)
                         .size(0.1).setSize(.3));
                 /* draw a cross in each center */
 
                 draw.draw(this
                         .getDefaultOpenMap4u()
-                        .getBuilder(Text.class)
+                        .create(Text.class)
                         .setFontColor(Color.GRAY)
                         .size(2.5)
                         .point(row * 2 + 1, column * 2 + 1)

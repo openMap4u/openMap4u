@@ -10,6 +10,6 @@ package org.openmap4u;
  *
  * @author Michael Hadrbolec
  */
-public interface SetAreaOfInterestOrDrawOrWrite extends SetAreaOfInterest, DrawOrWrite {
+public interface OverrideDrawOrWriteable extends Overrideable, DrawOrWriteable {
 
 }

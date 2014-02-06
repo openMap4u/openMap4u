@@ -5,7 +5,7 @@ import java.awt.Color;
 import java.io.IOException;
 import java.nio.file.FileSystems;
 
-import org.openmap4u.DrawOrWrite;
+import org.openmap4u.DrawOrWriteable;
 import org.openmap4u.data.Country;
 import org.openmap4u.data.MockupData;
 import org.openmap4u.plugin.builder.symbol.Cross;
@@ -27,10 +27,10 @@ public class WkbTest extends AbstractSpatialTest {
      * @param outputFileName
      * @throws IOException
      */
-    protected void process(DrawOrWrite draw, String outputFileName) throws IOException {
+    protected void process(DrawOrWriteable draw, String outputFileName) throws IOException {
 		for (Country country : MockupData.ITERABLE_COUNTRIES) {
 			/* draw a cross in each center */
-			draw.draw(this.getDefaultOpenMap4u().getBuilder(Wkb.class) 
+			draw.draw(this.getDefaultOpenMap4u().create(Wkb.class) 
 					.color(Color.BLACK).size(.25).fill(Color.LIGHT_GRAY)
 					.wkb(country.getGeomAsWkb()));
 
@@ -38,7 +38,7 @@ public class WkbTest extends AbstractSpatialTest {
 	 	for (Country country : MockupData.ITERABLE_COUNTRIES) {
 			/* draw a cross in each center */
 			draw.draw(this.getDefaultOpenMap4u() 
-					.getBuilder(Cross.class)
+					.create(Cross.class)
 					.point(country.getX(), country.getY())
 					.color(Color.GREEN).size(1));
 		} 

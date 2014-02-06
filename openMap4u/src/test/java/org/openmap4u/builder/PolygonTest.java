@@ -25,7 +25,7 @@ public class PolygonTest extends AbstractShapeBuilderTest<Polygon> {
      */
     @Before
     public void setUp() {
-        this.mShape = this.getDefaultOpenMap4u().getBuilder(Polygon.class);
+        this.mShape = this.getDefaultOpenMap4u().create(Polygon.class);
     }
 
     /**
@@ -82,7 +82,7 @@ public class PolygonTest extends AbstractShapeBuilderTest<Polygon> {
 
     @Override
     protected Polygon getBuilder() {
-        Polygon shapeBuilder = this.getDefaultOpenMap4u().getBuilder(Polygon.class);
+        Polygon shapeBuilder = this.getDefaultOpenMap4u().create(Polygon.class);
         shapeBuilder.moveTo(-.5, -.5).quadTo(-.5, .5, 0,0.5).bezierTo(.5, 0.5, .5, 0, .5, -.5).lineTo(-.5,-.5).moveTo(-.25, -.25).lineTo(.25, -.25).lineTo(0, .25).lineTo(-.25, -.25);
         return shapeBuilder;
     }

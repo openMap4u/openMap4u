@@ -4,39 +4,43 @@
  */
 package org.openmap4u;
 
+import org.openmap4u.commons.Angle;
+import org.openmap4u.commons.Length;
+import org.openmap4u.format.Outputable;
+
 /**
  * Sets the area of interest on the drawing canvas.
- * 
+ *
  * @author Michael Hadrbolec
  */
-interface SetAreaOfInterest {
+interface Overrideable {
 
     /**
      * Sets the center of the drawing canvas.
-     * 
-     * @param x
-     *            The x coordinate of the center.
-     * @param y
-     *            The y coordinate of the center.
+     *
+     * @param x The x coordinate of the center.
+     * @param y The y coordinate of the center.
      * @return Allows to setup the area of interest of the drawing canvas.
      */
-    SetAreaOfInterestOrDrawOrWrite center(double x, double y);
+    OverrideDrawOrWriteable center(double x, double y);
 
     /**
      * Sets the scale of the area of interest of the drawing canvas.
-     * 
-     * @param scaleFactor
-     *            The scale factor of the area of interest.
+     *
+     * @param scaleFactor The scale factor of the area of interest.
      * @return Allows to setup the area of interest of the drawing canvas.
      */
-    SetAreaOfInterestOrDrawOrWrite scale(double scaleFactor);
+    OverrideDrawOrWriteable scale(double scaleFactor);
 
     /**
      * Sets the roation of the area of interest of the drawing canvas.
-     * 
-     * @param rotation
-     *            The rotation angle.
+     *
+     * @param rotation The rotation angle.
      * @return Allows to setup the area of interest of the drawing canvas.
      */
-    SetAreaOfInterestOrDrawOrWrite rotate(double rotation);
+    OverrideDrawOrWriteable rotate(double rotation);
+
+    <T extends Outputable> OverrideDrawOrWriteable outputFormat(Class<T> outputFormat);
+
+  
 }

@@ -14,7 +14,7 @@ import org.openmap4u.AbstractOpenMap4uTest;
 import org.openmap4u.OpenMap4u;
 import org.openmap4u.plugin.builder.chart.PieChart;
 import org.openmap4u.plugin.builder.core.Polygon;
-import org.openmap4u.DrawOrWrite;
+import org.openmap4u.DrawOrWriteable;
 import org.openmap4u.commons.Position;
 import org.openmap4u.plugin.builder.chart.BarChart;
 import org.openmap4u.plugin.builder.symbol.Circle;
@@ -42,13 +42,13 @@ public class AbstractLambdaTest extends AbstractOpenMap4uTest {
         /* optional override default styling (for the created instance) */
         oM4u.getDefaults().getShapeStyle().setAlpha(.5).setStrokeFill(Color.RED);
         /* 2. get an canvas and specify the size which you want to draw */
-        DrawOrWrite draw = oM4u.getCanvas().size(10, 8);
+        DrawOrWriteable draw = oM4u.getCanvas(10, 8);
         /* 3. draw your primitive(s). */
-        getData().map(value -> oM4u.getBuilder(Polygon.class).moveTo(0, 0).lineTo(10, value)).forEach(primitive -> draw.draw(primitive));
+        getData().map(value -> oM4u.create(Polygon.class).moveTo(0, 0).lineTo(10, value)).forEach(primitive -> draw.draw(primitive));
         /* Yes your can repeat this multiple times. Like here with a circle */
-        draw.draw(oM4u.getBuilder(Circle.class).diameter(2).point(5, 4));
+        draw.draw(oM4u.create(Circle.class).diameter(2).point(5, 4));
         /* An Yes another time , .... */
-        getData().map(value -> oM4u.getBuilder(Rectangle.class).point(value, 0.5).setSize(.5, Math.random() * 8.0).align(Position.CenterBottom)).forEach(primitive -> draw.draw(primitive));
+        getData().map(value -> oM4u.create(Rectangle.class).point(value, 0.5).setSize(.5, Math.random() * 8.0).align(Position.CenterBottom)).forEach(primitive -> draw.draw(primitive));
 
         /* persist your result */
         draw.write(this.getPackagePath( "myTemp.png"));
@@ -65,9 +65,9 @@ public class AbstractLambdaTest extends AbstractOpenMap4uTest {
         /* 1. get an instance */
         OpenMap4u oM4u = new OpenMap4u();
         /* 2. get an canvas and specify the size which you want to draw */
-        DrawOrWrite draw = oM4u.getCanvas().size(10, 8);
+        DrawOrWriteable draw = oM4u.getCanvas(10, 8);
         /* Draw the bars */
-        getData().map(value -> oM4u.getBuilder(BarChart.class).fill(getColor()).point(value, 0.5).setSize(.5, Math.random() * 3 + 1).align(Position.CenterBottom)).forEach(primitive -> draw.draw(primitive));
+        getData().map(value -> oM4u.create(BarChart.class).fill(getColor()).point(value, 0.5).setSize(.5, Math.random() * 3 + 1).align(Position.CenterBottom)).forEach(primitive -> draw.draw(primitive));
         /* persist your result */
         draw.write(FileSystems.getDefault().getPath("/temp", "openMap4uBarChart.png"));
     }
@@ -81,9 +81,9 @@ public class AbstractLambdaTest extends AbstractOpenMap4uTest {
         /* 1. get an instance */
         OpenMap4u oM4u = new OpenMap4u();
         /* 2. get an canvas and specify the size which you want to draw */
-        DrawOrWrite draw = oM4u.getCanvas().size(10, 8);
+        DrawOrWriteable draw = oM4u.getCanvas(10, 8);
         /* Draw the bars */
-        getData().map(value -> oM4u.getBuilder(BarChart.class).point(value, 0.5).setSize(.5, Math.random() * 3 + 1).align(Position.CenterBottom).radius(.2)).forEach(primitive -> draw.draw(primitive));
+        getData().map(value -> oM4u.create(BarChart.class).point(value, 0.5).setSize(.5, Math.random() * 3 + 1).align(Position.CenterBottom).radius(.2)).forEach(primitive -> draw.draw(primitive));
         /* persist your result */
         draw.write(FileSystems.getDefault().getPath("/temp", "openMap4uRoundedBarChart.png"));
     }

@@ -26,10 +26,30 @@ public class El3Test extends AbstractEl3Test {
     /**
      *
      */
+       @Test
+    public void testSimpleExpression() {
+        getELProcessor().eval("n=4+3");
+     }
+    
     @Test
     public void testSinglePrimitive() {
         getELProcessor().eval("n=4+3");
-        getELProcessor().eval("oM4u.getCanvas().size(10,8)");
-        getELProcessor().eval("oM4u.getCanvas().size(10,8).draw(oM4u.getBuilder().getShape().moveTo(1,3).lineTo(7,3)).write(new java.nio.file.FileSystems.FileSystems.getDefault().getPath(\"temp\", \"myTemp.png\"))");
+        getELProcessor().eval("oM4u.getCanvas(10,8)");
+        getELProcessor().eval("oM4u.getCanvas(10,8).draw(oM4u.create(Line.class).line(1,3,7,3)).write(new java.nio.file.FileSystems.FileSystems.getDefault().getPath('temp', 'myTemp.png'))");
+    }
+
+    @Test
+    public void testGetCanvas() {
+        getELProcessor().eval("oM4u.getCanvas(10,8)");
+    }
+
+    @Test
+    public void testGetBuilder() {
+        getELProcessor().eval("oM4u.create(Line.class)");
+    }
+    
+     @Test
+    public void testGetDrawLine() {
+        getELProcessor().eval("oM4u.getCanvas(10,8).draw(oM4u.create(Line.class).line(1,3,7,3))");
     }
 }

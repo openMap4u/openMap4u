@@ -3,15 +3,19 @@ package org.openmap4u;
 import org.openmap4u.commons.Globals;
 import java.io.Serializable;
 import java.util.Locale;
+import org.openmap4u.commons.Angle;
 
 import org.openmap4u.commons.ImageStyle;
 import org.openmap4u.commons.ShapeStyle;
 import org.openmap4u.commons.TextStyle;
 import org.openmap4u.commons.Length;
+import org.openmap4u.format.Outputable;
+import org.openmap4u.plugin.format.graphics2d.Png;
 
 /**
- * Is a bean that contains all default values like units, styles, ... . It allows to override the defaults with
- * user defined custom values (if necessary).<br><br>
+ * Is a bean that contains all default values like units, styles, ... . It
+ * allows to override the defaults with user defined custom values (if
+ * necessary).<br><br>
  * <code>OpenMap4u om4u = new OpenMap4u();<br>om4u.getDefaults().setWorldUnits(Length.M);<br>om4u.getDefaults().setDrawingUnits(Length.CM);<br>...</code><br>
  *
  * @author Michael Hadrbolec
@@ -43,6 +47,11 @@ public final class Defaults implements Serializable {
      * Stores the default stroke units.
      */
     private Length mDefaultStrokeUnits = null;
+
+    /**
+     * Stores the doufault output format.
+     */
+    private Class<? extends Outputable> mOutputableFormat = Png.class;
 
     /**
      * Stores the default image style.
@@ -152,12 +161,22 @@ public final class Defaults implements Serializable {
     }
 
     /**
-     * Sets the default value for world units (see {@link Length}). 
+     * Sets the default value for world units (see {@link Length}).
      *
      * @param worldUnits The default value for world units.
      */
     public void setWorldUnits(Length worldUnits) {
         this.mDefaultWorldUnits = worldUnits;
+    }
+
+    private Angle mAngleUnits = Angle.DEGREE;
+
+    public void setAngleUnits(Angle angleUnits) {
+        this.mAngleUnits = angleUnits;
+    }
+
+    public Angle getAngleUnits() {
+        return this.mAngleUnits;
     }
 
     /**

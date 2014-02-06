@@ -12,7 +12,7 @@ public class RectangleTest extends AbstractShapeBuilderTest {
 
     @Override
     protected Rectangle getBuilder() {
-        return this.getDefaultOpenMap4u().getBuilder(Rectangle.class).setSize(1, .5);
+        return this.getDefaultOpenMap4u().create(Rectangle.class).setSize(1, .5);
     }
 
     /**

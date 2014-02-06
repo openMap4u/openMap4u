@@ -5,6 +5,10 @@
  */
 package org.openmap4u.integration.nashorn;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.nio.file.FileSystems;
+import javax.script.ScriptException;
 import org.junit.Test;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
@@ -21,6 +25,18 @@ public class NashornTest extends AbstractNashornTest {
     @Test
     public void testScriptEngine() {
         assertThat(getEngine(), notNullValue());
+    }
+    
+    @Test
+    public void testEval() throws ScriptException, FileNotFoundException {
+    super.eval(new FileReader(FileSystems.getDefault().getPath(".","target","test-classes","nashorn","simple.js").toFile()));
+    assertTrue(true);
+    }
+    
+      @Test
+    public void testSimpleOpenMap4u() throws ScriptException, FileNotFoundException {
+    super.eval(new FileReader(FileSystems.getDefault().getPath(".","target","test-classes","nashorn","simpleOpenMap4u.js").toFile()));
+    assertTrue(true);
     }
 
 }

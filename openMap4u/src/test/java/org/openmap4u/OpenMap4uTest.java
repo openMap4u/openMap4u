@@ -22,8 +22,8 @@ public class OpenMap4uTest extends AbstractOpenMap4uTest {
     @Test
     public void testDefaultOpenMap4uNotNull() {
         assertThat("default OpenMap4u mockup not null", getDefaultOpenMap4u(), notNullValue());
-        assertThat("default OpenMap4u mockup not null", getDefaultOpenMap4u().getBuilder(Polygon.class), notNullValue());
-        assertThat("default OpenMap4u mockup not null", getDefaultOpenMap4u().getCanvas(), notNullValue());
+        assertThat("default OpenMap4u mockup not null", getDefaultOpenMap4u().create(Polygon.class), notNullValue());
+        assertThat("default OpenMap4u mockup not null", getDefaultOpenMap4u().getCanvas(2,3), notNullValue());
     }
 
     /**

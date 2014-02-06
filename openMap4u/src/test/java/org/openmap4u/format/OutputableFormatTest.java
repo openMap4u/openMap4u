@@ -8,7 +8,7 @@ import org.openmap4u.format.Outputable;
 import java.io.IOException;
 
 import org.openmap4u.AbstractOpenMap4uTest;
-import org.openmap4u.SetAreaOfInterestOrDrawOrWrite;
+import org.openmap4u.OverrideDrawOrWriteable;
 import org.openmap4u.plugin.builder.symbol.Circle;
 import org.openmap4u.commons.Length;
 
@@ -24,12 +24,15 @@ public abstract class OutputableFormatTest extends AbstractOpenMap4uTest {
      * @return
      * @throws IOException
      */
-    protected final SetAreaOfInterestOrDrawOrWrite getDraw(Class<? extends Outputable> outputableFormat) throws IOException {
-        return this.getDefaultOpenMap4u().getCanvas().outputFormat(outputableFormat).drawingUnits(Length.CM).worldUnits(Length.CM).size(2, 2);
+    protected final OverrideDrawOrWriteable getDraw(Class<? extends Outputable> outputableFormat) throws IOException {
+        this.getDefaultOpenMap4u().getDefaults().setWorldUnits(Length.CM);
+        this.getDefaultOpenMap4u().getDefaults().setDrawingUnits(Length.CM);
+        
+        return this.getDefaultOpenMap4u().getCanvas(3,4).outputFormat(outputableFormat);
     }
 
     Circle getCircle() {
-        return this.getDefaultOpenMap4u().getBuilder(Circle.class).diameter(1).point(1, 1);
+        return this.getDefaultOpenMap4u().create(Circle.class).diameter(1).point(1, 1);
     }
 
   
