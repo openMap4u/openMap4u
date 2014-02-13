@@ -4,7 +4,7 @@ package org.openmap4u.commons;
  * Implementation of the different styles in one class.
  *
  * @author Michael Hadrbolec
- * @param <T>
+ * @param <T> The style type.
  */
 abstract class Style<T extends Styleable<T>>  implements Styleable<T>, Cloneable {
 
@@ -67,9 +67,10 @@ abstract class Style<T extends Styleable<T>>  implements Styleable<T>, Cloneable
     }
 
     /**
-     * 
-     * @return 
+     * For internal use only.
+     * @return A string representation of the style.
      */
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("visible:").append(isVisible()).append(",alpha:").append(getAlpha()) ;

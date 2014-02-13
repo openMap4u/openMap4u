@@ -8,14 +8,14 @@ package org.openmap4u.commons;
 
 /**
  *
- * @author hadrbolec
+ * @author Michale Hadrbolec
  */
 public interface ImageStyleable extends Styleable<ImageStyleable> {
 
     /**
-     *
-     * @return
-     * @throws CloneNotSupportedException
+     * Clones the image styleable.
+     * @return The cloned image styleable.
+     * @throws CloneNotSupportedException Is thrown in the case cloning is not supported.
      */
     ImageStyleable clone() throws CloneNotSupportedException;
     

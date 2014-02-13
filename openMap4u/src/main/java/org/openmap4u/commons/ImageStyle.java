@@ -10,7 +10,7 @@ public final class ImageStyle extends Style<ImageStyleable> implements ImageStyl
 
     /**
      * {@inheritDoc}
-     * @throws java.lang.CloneNotSupportedException
+     * @throws java.lang.CloneNotSupportedException Is thrown in the case cloning is not supported.
      */
     public ImageStyle clone()  throws CloneNotSupportedException {
         return (ImageStyle) super.clone();

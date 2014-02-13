@@ -62,7 +62,7 @@ public interface ShapeStyleable extends Styleable<ShapeStyleable> {
      * Clones the shape style.
      *
      * @return The cloned ShapeStyleable.
-     * @throws java.lang.CloneNotSupportedException
+     * @throws java.lang.CloneNotSupportedException Is thrown in the case cloning is not supported.
      */
     ShapeStyleable clone() throws CloneNotSupportedException;
 

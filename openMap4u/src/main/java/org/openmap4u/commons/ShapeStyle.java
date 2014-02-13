@@ -34,6 +34,7 @@ public class ShapeStyle extends Style<ShapeStyleable> implements ShapeStyleable 
     /**
      * {@inheritDoc}
      */
+    @Override
      public Paint getStrokeColor() {
         return mStrokeColor;
     }
@@ -41,6 +42,7 @@ public class ShapeStyle extends Style<ShapeStyleable> implements ShapeStyleable 
     /**
      * {@inheritDoc}
      */
+    @Override
      public Paint getStrokeFill() {
         return fill;
     }
@@ -48,6 +50,7 @@ public class ShapeStyle extends Style<ShapeStyleable> implements ShapeStyleable 
     /**
      * {@inheritDoc}
      */
+    @Override
      public double getStrokeSize() {
         return strokeSize;
     }
@@ -55,9 +58,9 @@ public class ShapeStyle extends Style<ShapeStyleable> implements ShapeStyleable 
     /**
      * {@inheritDoc}
      *
-     * @return
-     */
-     public ShapeStyle setStrokeColor(Paint color) {
+      */
+    @Override
+     public ShapeStyleable setStrokeColor(Paint color) {
         this.mStrokeColor = color;
         return this;
     }
@@ -65,8 +68,7 @@ public class ShapeStyle extends Style<ShapeStyleable> implements ShapeStyleable 
     /**
      * {@inheritDoc}
      *
-     * @return
-     */
+      */
     @Override
     public ShapeStyleable setStrokeFill(Paint fill) {
         this.fill = fill;
@@ -87,14 +89,14 @@ public class ShapeStyle extends Style<ShapeStyleable> implements ShapeStyleable 
 
     /**
      * {@inheritDoc}
-     *
-     * @throws java.lang.CloneNotSupportedException
-     */
+     *@throws CloneNotSupportedException Is thrown in the case cloning is not supported.
+      */
     @Override
     public ShapeStyleable clone() throws CloneNotSupportedException {
           return  super.clone(); 
     }
 
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder(super.toString());
         sb.append(",strokeColor:").append(getStrokeColor()).append(",fillColor:").append(getStrokeFill()).append(",strokeSize:").append(getStrokeSize());

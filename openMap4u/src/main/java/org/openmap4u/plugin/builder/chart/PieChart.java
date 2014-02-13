@@ -86,7 +86,7 @@ public class PieChart extends ShapeBuilder<PieChart> {
      * Sets the stroke size in stroke units.
      *
      * @param strokeSize The stroke size in stroke units.
-     * @return The builder itself (method chaining pattern).
+    * @return The piechart itself (fluent interface pattern).
      */
     @Override
     public PieChart size(double strokeSize) {
@@ -94,59 +94,59 @@ public class PieChart extends ShapeBuilder<PieChart> {
     }
 
     /**
-     *
-     * @param radius
-     * @return
-     */
+     * Sets the radius (=outer radius of an donut).
+     * @param radius The radius in darwing units.
+    * @return The piechart itself (fluent interface pattern).
+       */
     public PieChart radius(double radius) {
         this.mOuterRadius = radius;
         return this;
     }
 
     /**
-     *
-     * @param radius
-     * @return
+     * Sets the inner radius (in the case it is a donut).
+     * @param innerRadius The inner radius (in the case it is a donut).
+     * @return The piechart itself (fluent interface pattern).
      */
-    public PieChart innerRadius(double radius) {
-        this.mInnerRadius = radius;
+    public PieChart innerRadius(double innerRadius) {
+        this.mInnerRadius = innerRadius;
         return this;
     }
 
     /**
-     *
-     * @param radius
-     * @return
-     */
+     * Sets the outer radius (in the case it is a donut).
+     * @param radius The outer radius in darawing units..
+    * @return The piechart itself (fluent interface pattern).
+      */
     public PieChart outerRadius(double radius) {
         this.mOuterRadius = radius;
         return this;
     }
 
     /**
-     *
-     * @param diameter
-     * @return
-     */
+     * Sets the diameter (or in the case of an donut the outer diameter).
+     * @param diameter The diameter.
+    * @return The piechart itself (fluent interface pattern).
+      */
     public PieChart diameter(double diameter) {
         return radius(diameter / 2d);
     }
 
     /**
-     *
-     * @param startAngle
-     * @return
-     */
+     * Sets the start angle.
+     * @param startAngle The start angle.
+   * @return The piechart itself (fluent interface pattern).
+       */
     public PieChart start(double startAngle) {
         this.mStartAngle = this.getTransform().getAngleUnits().convert(startAngle);
         return this;
     }
 
     /**
-     *
-     * @param endAngle
-     * @return
-     */
+     * Sets the end angle.
+     * @param endAngle The end angle.
+    * @return The piechart itself (fluent interface pattern).
+      */
     public PieChart end(double endAngle) {
         this.mExtent = this.getTransform().getAngleUnits().convert(endAngle) - getStart();
         return this;
@@ -157,8 +157,8 @@ public class PieChart extends ShapeBuilder<PieChart> {
      *
      * @param value The value in percent of the whole circle. e.g.: 0.1 (=10%)
      * is represented as 36 degrees., 0.25 (=25%) is represented as 90 degrees.
-     * @return The builder itself (method chaining pattern).
-     */
+    * @return The piechart itself (fluent interface pattern).
+      */
     public PieChart add(double value) {
         /* add the value */
         this.mExtent = this.getTransform().getAngleUnits().convert(value);

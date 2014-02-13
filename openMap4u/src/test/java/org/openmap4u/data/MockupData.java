@@ -272,11 +272,12 @@ public class MockupData {
         }
         return values;
     }
-    
-    public final   List<Entry<Double,Double>> getProperties(double lowerBoundX, double upperBoundX , int stepsX, double lowerBoundY, double upperBoundY) {
-    List<Entry<Double,Double>> entries = new ArrayList<>();
-    List<Double> values = getRange(lowerBoundX,upperBoundX,stepsX);
-          return entries;
+
+    public final List<Entry<Double, Double>> getProperties(double lowerBoundX, double upperBoundX, int stepsX, double lowerBoundY, double upperBoundY) {
+        List<Entry<Double, Double>> entries = new ArrayList<>();
+        HashMap hm = null;
+        getRange(lowerBoundX, upperBoundX, stepsX).forEach(e -> entries.add(new EntryImpl<Double, Double>(e, RangeSupplier.random(lowerBoundY, upperBoundY))));
+        return entries;
     }
 
     /**
@@ -287,15 +288,15 @@ public class MockupData {
      * @param steps The number of steps.
      * @return The values.
      */
-    public final List<Data<Double,Double[]>> getRandom(double lowerBound, double upperBound, int xTimes, int steps) {
-        List<Data<Double,Double[]>> values = new ArrayList<>();
+    public final List<Data<Double, Double[]>> getRandom(double lowerBound, double upperBound, int xTimes, int steps) {
+        List<Data<Double, Double[]>> values = new ArrayList<>();
         double delta = upperBound - lowerBound;
         for (int i = 0; i < steps; i++) {
             Double[] vals = new Double[xTimes];
             for (int j = 0; j < xTimes; j++) {
                 vals[j] = lowerBound + delta * Math.random();
             }
-            values.add(new Data<Double,Double[]> (Double.valueOf(i),vals));
+            values.add(new Data<Double, Double[]>(Double.valueOf(i), vals));
         }
         return values;
     }
@@ -308,61 +309,55 @@ public class MockupData {
     public final List<Country> getCountries() {
         return ITERABLE_COUNTRIES;
     }
-    
-    
-    
+
     /**
-	 * Creates a range beginning with the default value 0, the given stop value
-	 * and the default step width of 1. <br/>
-	 * Example: <code>10</code> would result in a list containing
-	 * <code>0,1,2,3,4,5,6,7,8,9</code>
-	 * 
-	 * @param stop
-	 *            The stop value of the range.
-	 * @return The resulting range.
-	 */
-	public final Iterable<Double> getRange(double stop) {
-		return getRange(stop, 1);
-	}
+     * Creates a range beginning with the default value 0, the given stop value
+     * and the default step width of 1. <br/>
+     * Example: <code>10</code> would result in a list containing
+     * <code>0,1,2,3,4,5,6,7,8,9</code>
+     *
+     * @param stop The stop value of the range.
+     * @return The resulting range.
+     */
+    public final Stream<Double> getRange(double stop) {
+        return getRange(stop, 1);
+    }
 
-	/**
-	 * Creates a range beginning with the default value 0.<br/>
-	 * Example: <code>100,10</code> would result in a list containing
-	 * <code>0,10,20,30,40,50,60,70,80,90</code>
-	 * 
-	 * @param stop
-	 *            The stop value of the range.
-	 * @param step
-	 *            The step width of the range.
-	 * @return The resulting range.
-	 */
-	public final Iterable<Double> getRange(double stop, double step) {
-      	return getRange(0, stop, step);
-	}
+    /**
+     * Creates a range beginning with the default value 0.<br/>
+     * Example: <code>100,10</code> would result in a list containing
+     * <code>0,10,20,30,40,50,60,70,80,90</code>
+     *
+     * @param stop The stop value of the range.
+     * @param step The step width of the range.
+     * @return The resulting range.
+     */
+    public final Stream<Double> getRange(double stop, double step) {
+        return getRange(0, stop, step);
+    }
 
-	/**
-	 * Creates a range.
-	 * 
-	 * @param start
-	 *            The start value of the range.
-	 * @param stop
-	 *            The stop value of the range which is not included.
-	 * @param step
-	 *            The step width. Example: <code>10,100,10</code> would result
-	 *            in a list containing <code>10,20,30,40,50,60,70,80,90</code>
-	 * @return The resulting range.
-	 */
-	public final List<Double> getRange(double start, double stop,
-			double step) {
-		List<Double> list = new ArrayList<Double>();
-		if (step > 0) {
-			for (double x = start; x < stop; x += step)
-				list.add(x);
-		} else {
-			for (double x = start; x > stop; x += step)
-				list.add(x);
-		}
-		return list;
-	}
+    /**
+     * Creates a range.
+     *
+     * @param start The start value of the range.
+     * @param stop The stop value of the range which is not included.
+     * @param step The step width. Example: <code>10,100,10</code> would result
+     * in a list containing <code>10,20,30,40,50,60,70,80,90</code>
+     * @return The resulting range.
+     */
+    public final Stream<Double> getRange(double start, double stop,
+            double step) {
+        List<Double> list = new ArrayList<Double>();
+        if (step > 0) {
+            for (double x = start; x < stop; x += step) {
+                list.add(x);
+            }
+        } else {
+            for (double x = start; x > stop; x += step) {
+                list.add(x);
+            }
+        }
+        return list.stream();
+    }
 
 }

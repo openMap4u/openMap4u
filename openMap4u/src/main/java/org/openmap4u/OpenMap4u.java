@@ -89,8 +89,8 @@ public final class OpenMap4u implements Serializable {
      * Creates a new drawing canvas instance. The instance is based on the
      * preconfigured {@link org.openmap4u.OpenMap4u#getDefaults()} values.
      *
-     * @param width
-     * @param height
+     * @param width The canvas width in drawing units.
+     * @param height The canvas height in drawing units.
      * @return A new drawing canvas instance based on the preconfigured values.
      */
      public OverrideDrawOrWriteable getCanvas(double width,double height) {

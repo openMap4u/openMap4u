@@ -31,13 +31,24 @@ public interface DrawOrWriteable extends Consumer<Buildable> {
 
     /**
      * Draws a stream of buildables.
-     * @param buildables The buildables to draw.
-     * @return  
+     *
+     * @param stream The buildables to draw.
+     * @return The DrawOrWriteable itself (fluent interface pattern). Allows
+     * either to draw further Buildables or to write the result.
      */
     DrawOrWriteable draw(Stream<Buildable> stream);
-    
-    <T> DrawOrWriteable draw(Stream<T> stream, Function<T,Buildable> map);
-    
+
+    /**
+     * Draws a stream of values mapped via a function into a Buildable.
+     *
+     * @param <T> The type of the values.
+     * @param stream The stream of values.
+     * @param map The mapping function.
+     * @return The DrawOrWriteable itself (fluent interface pattern). Allows
+     * either to draw further Buildables or to write the result.
+     */
+    <T> DrawOrWriteable draw(Stream<T> stream, Function<T, Buildable> map);
+
     /**
      * Writes the drawing result to the given output stream. If no primitives
      * have been drawn the canvas is empty.
@@ -56,8 +67,5 @@ public interface DrawOrWriteable extends Consumer<Buildable> {
      * @throws IOException Is thrown in the case an error occurs.
      */
     void write(Path out) throws IOException;
-    
-    
-    
 
 }

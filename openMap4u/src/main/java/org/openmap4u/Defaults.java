@@ -9,6 +9,7 @@ import org.openmap4u.commons.ImageStyle;
 import org.openmap4u.commons.ShapeStyle;
 import org.openmap4u.commons.TextStyle;
 import org.openmap4u.commons.Length;
+import org.openmap4u.commons.ShapeStyleable;
 import org.openmap4u.format.Outputable;
 import org.openmap4u.plugin.format.graphics2d.Png;
 
@@ -60,7 +61,7 @@ public final class Defaults implements Serializable {
     /**
      * Stores the default shape style.
      */
-    private ShapeStyle mDefaultShapeStyle = null;
+    private ShapeStyleable mDefaultShapeStyle = null;
     /**
      * Stores the default text style.
      */
@@ -88,7 +89,7 @@ public final class Defaults implements Serializable {
      *
      * @return The default style for shape primitives.
      */
-    public ShapeStyle getShapeStyle() {
+    public ShapeStyleable getShapeStyle() {
         if (this.mDefaultShapeStyle == null) {
             this.mDefaultShapeStyle = new ShapeStyle().setStrokeSize(
                     Globals.DEFAULT_STROKE_SIZE).setStrokeColor(

@@ -5,40 +5,86 @@
  */
 package org.openmap4u.plugin.builder.core;
 
-import java.awt.Paint;
-import org.openmap4u.builder.ShapeBuilder;
-
 /**
+ * Draws a line.
  *
  * @author Michel Hadrbolec
  */
-public class Line extends ShapeBuilder<Line> {
+public class Line extends AbstractLine<Line> {
 
     /**
-     * Sets the stroke color.
+     * Draws a line
      *
-     * @param strokeColor The stroke color.
-     * @return The builder itself (method chaining pattern).
+     * @param fromX The x start coordinate.
+     * @param fromY The y start coordinate.
+     * @param toX The x end coordinate.
+     * @param toY The y end coordinate.
+     * @return The line itself (fluent interface pattern).
      */
-    @Override
-    public Line color(Paint strokeColor) {
-        return super.color(strokeColor);
-    }
-
-    /**
-     * Sets the stroke size in stroke units.
-     *
-     * @param strokeSize The stroke size in stroke units.
-     * @return The builder itself (method chaining pattern).
-     */
-    @Override
-    public Line size(double strokeSize) {
-        return super.size(strokeSize);
-    }
-
     public Line line(double fromX, double fromY, double toX, double toY) {
         super.moveTo(fromX, fromY).lineTo(toX, toY);
         return this;
+    }
+
+    /**
+     * Convenience class to draw a vertical line.
+     */
+    public static class Vertical extends AbstractLine<Vertical> {
+
+        /**
+         * Draws a vertical line from "x, fromY" to "x, toY". <img src="doc-files/verticalLine.png">
+         *
+         * @param x The x coordinate.
+         * @param fromY The y start coordinate.
+         * @param toY The y end coordinate.
+         * @return The vertical itself (fluent interface pattern).
+         */
+        public Vertical line(double x, double fromY, double toY) {
+            super.moveTo(x, fromY).lineTo(x, toY);
+            return this;
+        }
+
+        /**
+         * Draws a vertical line at a given point with the provided length.
+         * <img src="doc-files/verticalLineLength.png">
+         * @param length The length.
+         * @return The vertical itself (fluent interface pattern).
+         */
+        public Vertical length(double length) {
+            double dL = length / 2;
+            return line(0, -dL, dL);
+        }
+    }
+
+    /**
+     * Convenience class to draw a horizontal line.
+     */
+    public static class Horizontal extends AbstractLine<Horizontal> {
+
+        /**
+         * Draws a horizontal line from "fromX, y" to "toX, y". <img src="doc-files/horizontalLine.png">
+         *
+         * @param fromX The start x coordinate.
+         * @param toX The end x coordinate.
+         * @param y The y end coordinate.
+         * @return The horizontal itself (fluent interface pattern).
+         */
+        public Horizontal line(double fromX, double toX, double y) {
+            super.moveTo(fromX, y).lineTo(toX, y);
+            return this;
+        }
+
+        /**
+         * Draws a horizontal line at a given point with the provided length.
+         *
+         * @param length The length. <img src="doc-files/horizontalLineLength.png">
+         * @return The vertical itself (fluent interface pattern).
+         */
+        public Horizontal length(double length) {
+            double dL = length / 2;
+            return line(  -dL, dL,0);
+        }
+
     }
 
 }

@@ -107,12 +107,13 @@ public class AreaChartTest extends AbstractOpenMap4uTest {
         /* 3. draw your primitive(s). */
         AreaChart.Vertical horizontalAreaChart = oM4u.create(AreaChart.Vertical.class).fill(Color.lightGray).color(Color.darkGray).size(1);
         data.stream().forEach(value -> horizontalAreaChart.lineTo(value.getKey(), value.getValue()[0]));
+                
         /* 4. draw the line primitve */
         canvas.draw(horizontalAreaChart);
          /* draw horizontal lines */
         data.stream().forEach(value -> canvas.draw(oM4u.create(Line.class).color(Color.WHITE).line(0, value.getKey(), 8, value.getKey())));
        /* draw vertical lines */
-        data.stream().forEach(value -> canvas.draw(oM4u.create(Line.class).line(value.getKey(), 0, value.getKey(), value.getValue()[0])));
+        data.stream().map(value ->  oM4u.create(Line.class).line(value.getKey(), 0, value.getKey(), value.getValue()[0])).forEach( canvas);
         /* label x axis */
         data.stream().forEach(value -> canvas.draw(oM4u.create(Text.class).color(Color.BLACK).point(value.getKey(), 0).align(CenterTop).offset(0, -.25).size(2.5).text(value.getKey())));
         /* label y axis */

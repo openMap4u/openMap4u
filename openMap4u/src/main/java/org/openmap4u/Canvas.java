@@ -156,8 +156,8 @@ public class Canvas implements Plugable,   DrawOrWriteable,
     
 
     /**
-     *
-     * @return
+     * Gets the stroke units.
+     * @return The stroke units.
      */
     public final Length getStrokeUnits() {
         return this.mStrokeUnits;
