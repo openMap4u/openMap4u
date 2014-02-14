@@ -42,10 +42,10 @@
 
         <menu name="openMap4u">
             <item name="Introduction" href="index.html"/>
-            <item name="Easy 2 use" href="easy2use.html"/>
+           <!-- <item name="Easy 2 use" href="easy2use.html"/>
             <item name="Embedable" href="embedable.html"/>
             <item name="Extensable" href="extensable.html"/>
-            <item name="Lightweight" href="lightweight.html"/>
+            <item name="Lightweight" href="lightweight.html"/> -->
         </menu>
         <menu ref="reports"/>
 

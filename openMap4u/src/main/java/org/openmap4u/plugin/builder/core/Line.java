@@ -32,7 +32,7 @@ public class Line extends AbstractLine<Line> {
     public static class Vertical extends AbstractLine<Vertical> {
 
         /**
-         * Draws a vertical line from "x, fromY" to "x, toY". <img src="doc-files/verticalLine.png">
+         * Draws a vertical line from "x, fromY" to "x, toY". <img src="doc-files/verticalLine.png"  alt="">
          *
          * @param x The x coordinate.
          * @param fromY The y start coordinate.
@@ -46,7 +46,7 @@ public class Line extends AbstractLine<Line> {
 
         /**
          * Draws a vertical line at a given point with the provided length.
-         * <img src="doc-files/verticalLineLength.png">
+         * <img src="doc-files/verticalLineLength.png"  alt="">
          * @param length The length.
          * @return The vertical itself (fluent interface pattern).
          */
@@ -62,7 +62,7 @@ public class Line extends AbstractLine<Line> {
     public static class Horizontal extends AbstractLine<Horizontal> {
 
         /**
-         * Draws a horizontal line from "fromX, y" to "toX, y". <img src="doc-files/horizontalLine.png">
+         * Draws a horizontal line from "fromX, y" to "toX, y". <img src="doc-files/horizontalLine.png" alt="">
          *
          * @param fromX The start x coordinate.
          * @param toX The end x coordinate.
@@ -77,7 +77,7 @@ public class Line extends AbstractLine<Line> {
         /**
          * Draws a horizontal line at a given point with the provided length.
          *
-         * @param length The length. <img src="doc-files/horizontalLineLength.png">
+         * @param length The length. <img src="doc-files/horizontalLineLength.png"  alt="">
          * @return The vertical itself (fluent interface pattern).
          */
         public Horizontal length(double length) {

@@ -32,7 +32,7 @@ public abstract class OutputableFormatTest extends AbstractOpenMap4uTest {
     }
 
     Circle getCircle() {
-        return this.getDefaultOpenMap4u().create(Circle.class).diameter(1).point(1, 1);
+        return this.getDefaultOpenMap4u().get(Circle.class).diameter(1).point(1, 1);
     }
 
   

@@ -74,7 +74,7 @@ public class PolygonTest extends AbstractOpenMap4uTest {
      */
     @Test
     public void testWritePolygon() throws IOException {
-        write(this.getDefaultOpenMap4u().create(Polygon.class).color(Color.BLACK).size(.35).fill(Color.LIGHT_GRAY).shape(getCircle()), "c_circle.png");
+        write(this.getDefaultOpenMap4u().get(Polygon.class).color(Color.BLACK).size(.35).fill(Color.LIGHT_GRAY).shape(getCircle()), "c_circle.png");
         write(this.getPolygon(), "c_rectangle.png");
     }
 
@@ -120,7 +120,7 @@ public class PolygonTest extends AbstractOpenMap4uTest {
     }
 
     Polygon getPolygon() {
-        return this.getDefaultOpenMap4u().create(Polygon.class).color(Color.BLACK).size(.35).fill(Color.LIGHT_GRAY).shape(getRectangle());
+        return this.getDefaultOpenMap4u().get(Polygon.class).color(Color.BLACK).size(.35).fill(Color.LIGHT_GRAY).shape(getRectangle());
     }
 
     Shape getRectangle() {

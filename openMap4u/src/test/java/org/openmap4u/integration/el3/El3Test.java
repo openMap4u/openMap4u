@@ -36,7 +36,7 @@ public class El3Test extends AbstractEl3Test {
         try {
             getELProcessor().eval("n=4+3");
             getELProcessor().eval("oM4u.getCanvas(10,8)");
-            getELProcessor().eval("oM4u.getCanvas(10,8).draw(oM4u.create(Line.class).line(1,3,7,3)).write(new java.nio.file.FileSystems.getDefault().getPath('temp', 'myTemp.png'))");
+            getELProcessor().eval("oM4u.getCanvas(10,8).draw(oM4u.get(Line.class).line(1,3,7,3)).write(new java.nio.file.FileSystems.getDefault().getPath('temp', 'myTemp.png'))");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -49,18 +49,18 @@ public class El3Test extends AbstractEl3Test {
 
     @Test
     public void testGetBuilder() {
-        getELProcessor().eval("oM4u.create(Line.class)");
+        getELProcessor().eval("oM4u.get(Line.class)");
     }
 
     @Test
     public void testGetLineBuilder() {
-        getELProcessor().eval("oM4u.create(Line.class).line(1,3,7,3)");
+        getELProcessor().eval("oM4u.get(Line.class).line(1,3,7,3)");
     }
 
     @Test
     public void testGetDrawLine() {
         try {
-            getELProcessor().eval("oM4u.getCanvas(10,8).draw(oM4u.create(Line.class).line(1,3,7,3))");
+            getELProcessor().eval("oM4u.getCanvas(10,8).draw(oM4u.get(Line.class).line(1,3,7,3))");
         } catch (Exception e) {
             e.printStackTrace();
         }

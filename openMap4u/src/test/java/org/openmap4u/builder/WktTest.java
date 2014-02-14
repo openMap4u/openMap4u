@@ -30,7 +30,7 @@ public class WktTest extends AbstractSpatialTest {
     protected void process(DrawOrWriteable  draw, String outputFileName) throws IOException {
 		for (Country country : MockupData.ITERABLE_COUNTRIES) {
 			/* draw a cross in each center */
-			draw.draw(this.getDefaultOpenMap4u().create(Wkt.class)
+			draw.draw(this.getDefaultOpenMap4u().get(Wkt.class)
 					.color(Color.BLACK).size(.25).fill(Color.LIGHT_GRAY)
 					.wkt(country.getGeomAsWkt()));
 
@@ -38,7 +38,7 @@ public class WktTest extends AbstractSpatialTest {
 	 	for (Country country : MockupData.ITERABLE_COUNTRIES) {
 			/* draw a cross in each center */
 			draw.draw(this.getDefaultOpenMap4u()
-					.create(Cross.class)
+					.get(Cross.class)
 					.point(country.getX(), country.getY())
 					.color(Color.GREEN).size(1));
 		} 

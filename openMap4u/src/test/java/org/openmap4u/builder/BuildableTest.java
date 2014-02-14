@@ -315,7 +315,7 @@ public class BuildableTest extends AbstractOpenMap4uTest {
     }
 
     org.openmap4u.plugin.builder.core.Polygon getPolygon() {
-        return this.getDefaultOpenMap4u().create(org.openmap4u.plugin.builder.core.Polygon.class).color(Color.BLACK).size(.5).fill(Color.LIGHT_GRAY).shape(new Rectangle2D.Double(-.5, -.25, 1, .5)).subtract(new Rectangle2D.Double(0.1, -.1, .2, .2)).point(1.1, 1).transparence(40);
+        return this.getDefaultOpenMap4u().get(org.openmap4u.plugin.builder.core.Polygon.class).color(Color.BLACK).size(.5).fill(Color.LIGHT_GRAY).shape(new Rectangle2D.Double(-.5, -.25, 1, .5)).subtract(new Rectangle2D.Double(0.1, -.1, .2, .2)).point(1.1, 1).transparence(40);
     }
 
     Buildable getPolygonTransparent() {
@@ -323,7 +323,7 @@ public class BuildableTest extends AbstractOpenMap4uTest {
     }
 
     Polyline getBackground() {
-        return this.getDefaultOpenMap4u().create(Polyline.class).color(Color.GRAY).size(0.35).moveTo(0, 1).lineTo(2.2, 1).moveTo(1.1, 0).lineTo(1.1, 2);
+        return this.getDefaultOpenMap4u().get(Polyline.class).color(Color.GRAY).size(0.35).moveTo(0, 1).lineTo(2.2, 1).moveTo(1.1, 0).lineTo(1.1, 2);
     }
 
     /**
@@ -340,19 +340,19 @@ public class BuildableTest extends AbstractOpenMap4uTest {
     }
 
     Rectangle getRedMarker(double x, double y) {
-        return getDefaultOpenMap4u().create(Rectangle.class).color(Color.RED).fill(Color.WHITE).size(.35).width(0.1).height(.1).point(x, y);
+        return getDefaultOpenMap4u().get(Rectangle.class).color(Color.RED).fill(Color.WHITE).size(.35).width(0.1).height(.1).point(x, y);
     }
 
     Rectangle getBlueMarker(double x, double y) {
-        return getDefaultOpenMap4u().create(Rectangle.class).color(Color.BLUE).fill(Color.WHITE).size(.35).width(0.1).height(.1).point(x, y);
+        return getDefaultOpenMap4u().get(Rectangle.class).color(Color.BLUE).fill(Color.WHITE).size(.35).width(0.1).height(.1).point(x, y);
     }
 
     LineChart getLine(double fromX, double fromY, double toX, double toY) {
-        return getDefaultOpenMap4u().create(LineChart.class).color(Color.RED).size(.35).from(fromX, fromY).to(toX, toY);
+        return getDefaultOpenMap4u().get(LineChart.class).color(Color.RED).size(.35).from(fromX, fromY).to(toX, toY);
     }
 
     PieChart getAnglePie(double angle) {
-        return getDefaultOpenMap4u().create(PieChart.class).color(Color.GRAY).fill(Color.RED).radius(.85).size(.35).transparence(50).add(angle).point(1.1, 1);
+        return getDefaultOpenMap4u().get(PieChart.class).color(Color.GRAY).fill(Color.RED).radius(.85).size(.35).transparence(50).add(angle).point(1.1, 1);
     }
 
 }

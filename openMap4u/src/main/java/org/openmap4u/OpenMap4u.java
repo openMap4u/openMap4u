@@ -46,7 +46,7 @@ public final class OpenMap4u implements Serializable {
      * {@link org.openmap4u.OpenMap4u#getDefaults()} initialized builder
      * instance.
      */
-    public  <S extends Styleable<S>, B extends Buildable<S, B>> B create(
+    public  <S extends Styleable<S>, B extends Buildable<S, B>> B get(
             Class<B> builderClass) {
         B builder = Util.get().getPlugin(builderClass);
         try {

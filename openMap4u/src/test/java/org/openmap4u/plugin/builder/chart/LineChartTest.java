@@ -67,7 +67,7 @@ public class LineChartTest extends AbstractOpenMap4uTest {
         /* 2. get an canvas and specify the size which you want to draw */
         DrawOrWriteable canvas = oM4u.getCanvas(10, 8);
         /* 3. draw your primitive(s). */
-        getData().map(value -> oM4u.create(LineChart.class).from(0, value).to(value, value)).forEach(canvas);
+        getData().map(value -> canvas.draw(oM4u.get(LineChart.class).from(0, value).to(value, value)));
         /* persist your result */
         canvas.write(getPackagePath("line.png"));
     }
@@ -88,15 +88,15 @@ public class LineChartTest extends AbstractOpenMap4uTest {
         DrawOrWriteable canvas = oM4u.getCanvas(10, 8);
         /* 3. draw your primitive(s). */
         /* first start with the base line */
-        LineChart shape1 = oM4u.create(LineChart.class).color(Color.RED);
+        LineChart shape1 = oM4u.get(LineChart.class).color(Color.RED);
         values.stream().forEach(value -> shape1.lineTo(value.getKey(), value.getValue()[0]));
         canvas.draw(shape1);
         /* stack the second line */
-        LineChart shape2 = oM4u.create(LineChart.class).color(Color.green);
+        LineChart shape2 = oM4u.get(LineChart.class).color(Color.green);
         values.stream().forEach(value -> shape2.lineTo(value.getKey(), value.getValue()[0] + value.getValue()[1]));
         canvas.draw(shape2);
         /* stack the second line */
-        LineChart shape3 = oM4u.create(LineChart.class).color(Color.BLUE);
+        LineChart shape3 = oM4u.get(LineChart.class).color(Color.BLUE);
         values.stream().forEach(value -> shape3.lineTo(value.getKey(), value.getValue()[0] + value.getValue()[1] + value.getValue()[2]));
         canvas.draw(shape3);
         /* persist your result */
@@ -115,9 +115,7 @@ public class LineChartTest extends AbstractOpenMap4uTest {
         oM4u.getDefaults().getShapeStyle().setAlpha(.5).setStrokeColor(Color.GRAY);
         DrawOrWriteable canvas = oM4u.getCanvas(10, 8);
         /*  draw the horizontal raster lines */
-        getData().map(value -> oM4u.create(Line.class).line(0, value, 10, value)).forEach(canvas);
-        /* draw the vertical raster lines */
-        getData().map(value -> oM4u.create(Line.class).line(value, 0, value, 8)).forEach(canvas);
+        getData().map(value -> canvas.draw(oM4u.get(Line.class).line(0, value, 10, value)).draw( oM4u.get(Line.class).line(value, 0, value, 8)));
         /* persist your result */
         canvas.write(FileSystems.getDefault().getPath("/temp", "simpleLineRaster.png"));
     }
@@ -134,7 +132,7 @@ public class LineChartTest extends AbstractOpenMap4uTest {
         oM4u.getDefaults().getShapeStyle().setAlpha(.5).setStrokeColor(Color.GRAY);
         DrawOrWriteable draw = oM4u.getCanvas(10, 8);
         /*  draw the horizontal raster lines */
-        draw.draw(oM4u.create(LineChart.class).from(0, 4).to(8, 4)).draw(oM4u.create(Text.class).point(Position.CenterMiddle).text("HelloWorld"));
+        draw.draw(oM4u.get(LineChart.class).from(0, 4).to(8, 4)).draw(oM4u.get(Text.class).point(Position.CenterMiddle).text("HelloWorld"));
         /* persist your result */
         draw.write(FileSystems.getDefault().getPath("/temp", "simpleLineRasterWithLabel.png"));
     }
@@ -150,11 +148,11 @@ public class LineChartTest extends AbstractOpenMap4uTest {
         /* optional override default styling (for the created instance) */
         DrawOrWriteable canvas = oM4u.getCanvas(10, 8);
         /*  draw the horizontal raster lines */
-        getData().map(value -> oM4u.create(Line.class).line(0, value, 10, value).size((value % 2 == 0) ? 1 : 0.5).color((value % 2 == 0) ? Color.BLACK
-                : Color.GRAY)).forEach(canvas);
+        getData().map(value -> oM4u.get(Line.class).line(0, value, 10, value).size((value % 2 == 0) ? 1 : 0.5).color((value % 2 == 0) ? Color.BLACK
+                : Color.GRAY)).forEach(e->canvas.draw(e));
         /* draw the vertical raster lines */
-        getData().map(value -> oM4u.create(Line.class).line(value, 0, value, 8).size((value % 2 == 0) ? 1 : 0.5).color((value % 2 == 0) ? Color.BLACK
-                : Color.GRAY)).forEach(canvas);
+        getData().map(value -> canvas.draw(oM4u.get(Line.class).line(value, 0, value, 8).size((value % 2 == 0) ? 1 : 0.5).color((value % 2 == 0) ? Color.BLACK
+                : Color.GRAY)));
         /* persist your result */
         canvas.write(FileSystems.getDefault().getPath("/temp", "LineRasterWithHighightedRowsAndColumns.png"));
     }
@@ -170,11 +168,11 @@ public class LineChartTest extends AbstractOpenMap4uTest {
         /* optional override default styling (for the created instance) */
         DrawOrWriteable canvas = oM4u.getCanvas(10, 8);
         /*  draw the horizontal raster lines using the canvas as a consumer */
-        Stream.of(1, 2, 3).map(value -> oM4u.create(Circle.class).point(5, 4).radius(value).size((value % 2 == 0) ? 0.5 : 1).color((value % 2 == 0) ? Color.GRAY
-                : Color.BLACK)).forEach(canvas);
+        Stream.of(1, 2, 3).map(value -> canvas.draw(oM4u.get(Circle.class).point(5, 4).radius(value).size((value % 2 == 0) ? 0.5 : 1).color((value % 2 == 0) ? Color.GRAY
+                : Color.BLACK)));
         /* draw the vertical raster lines unsing*/
-        canvas.draw(
-                Stream.of(0d, 45d, 90d, 135d).map(value -> oM4u.create(LineChart.class).point(5, 4).from(-3.5, 0).to(3.5, 0).size((value % 2 == 0) ? 1 : 0.5).color((value % 2 == 0) ? Color.BLACK
+         
+                Stream.of(0d, 45d, 90d, 135d).map(value -> canvas.draw(oM4u.get(LineChart.class).point(5, 4).from(-3.5, 0).to(3.5, 0).size((value % 2 == 0) ? 1 : 0.5).color((value % 2 == 0) ? Color.BLACK
                                 : Color.GRAY).rotate(value)));
         /* persist your result */
         canvas.write(FileSystems.getDefault().getPath("/temp", "SimpleCircleRaster.png"));
@@ -191,9 +189,9 @@ public class LineChartTest extends AbstractOpenMap4uTest {
         /* optional override default styling (for the created instance) */
         DrawOrWriteable canvas = oM4u.getCanvas(10, 8);
         /*  draw the horizontal raster lines */
-        Stream.of(1, 2, 3).map(value -> oM4u.create(Circle.class).point(5, 4).color(Color.GRAY).radius(value)).forEach(canvas);
+        Stream.of(1, 2, 3).map(value -> canvas.draw(oM4u.get(Circle.class).point(5, 4).color(Color.GRAY).radius(value)));
         /* draw the vertical raster lines */
-        Stream.of(0d, 45d, 90d, 135d).map(value -> oM4u.create(LineChart.class).point(5, 4).from(-3.5, 0).to(3.5, 0).color(Color.GRAY).rotate(value)).forEach(canvas);
+        Stream.of(0d, 45d, 90d, 135d).map(value -> canvas.draw(oM4u.get(LineChart.class).point(5, 4).from(-3.5, 0).to(3.5, 0).color(Color.GRAY).rotate(value)));
         /* persist your result */
         canvas.write(FileSystems.getDefault().getPath("/temp", "CircleRasterWithHighightedRowsAndColumns.png"));
     }
@@ -209,9 +207,9 @@ public class LineChartTest extends AbstractOpenMap4uTest {
         /* optional override default styling (for the created instance) */
         DrawOrWriteable draw = oM4u.getCanvas(10, 8);
         /*  draw the horizontal raster lines */
-        Stream.of(1, 2, 3).map(value -> oM4u.create(Circle.class).point(5, 4).color(Color.GRAY).radius(value)).forEach(primitive -> draw.draw(primitive));
+        Stream.of(1, 2, 3).map(value -> oM4u.get(Circle.class).point(5, 4).color(Color.GRAY).radius(value)).forEach(primitive -> draw.draw(primitive));
         /* draw the vertical raster lines */
-        Stream.of(0d, 45d, 90d, 135d).map(value -> oM4u.create(LineChart.class).point(5, 4).from(-3.5, 0).to(3.5, 0).color(Color.GRAY).rotate(value)).forEach(primitive -> draw.draw(primitive));
+        Stream.of(0d, 45d, 90d, 135d).map(value -> oM4u.get(LineChart.class).point(5, 4).from(-3.5, 0).to(3.5, 0).color(Color.GRAY).rotate(value)).forEach(primitive -> draw.draw(primitive));
         /* persist your result */
         draw.write(FileSystems.getDefault().getPath("/temp", "CircleRasterWithHighightedRowsAndColumns.png"));
     }
@@ -227,7 +225,7 @@ public class LineChartTest extends AbstractOpenMap4uTest {
         /* 2. get an canvas and specify the size which you want to draw */
         DrawOrWriteable draw = oM4u.getCanvas(10, 8);
         /* 3. draw your primitive(s). */
-        Polygon shape = oM4u.create(Polygon.class);
+        Polygon shape = oM4u.get(Polygon.class);
         getData().forEach(value -> shape.lineTo(value, Math.random() * 3 + 1));
         /* 4. draw the line primitve */
         draw.draw(shape);

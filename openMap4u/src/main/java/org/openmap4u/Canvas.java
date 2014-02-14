@@ -317,21 +317,8 @@ public class Canvas implements Plugable,   DrawOrWriteable,
          write(Files.newOutputStream(out));
     }
 
-    @Override
-    public void accept(Buildable builder) {
-        draw(builder);
-    }
-
-    @Override
-    public DrawOrWriteable draw(Stream<Buildable> builders) {
-        builders.forEach(this);
-        return this;
-    }
-
-    @Override
-    public <T> DrawOrWriteable draw(Stream<T> stream, Function<T, Buildable> map) {
-        return draw(stream.map(map));
-        
-    }
+   
+ 
+ 
 
 }

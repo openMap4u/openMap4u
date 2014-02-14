@@ -4,7 +4,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.openMap4u</groupId>
-    <artifactId>openMap4u</artifactId>
+    <artifactId>openMap4u-api</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <name>openMap4u</name>
     <description>openMap4u the open source data mapping library</description>
@@ -180,7 +180,44 @@
 
      
         <plugins>
+          
             <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.1</version>
+                <configuration>
+                    <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo</altDeploymentRepository>
+                </configuration>
+            </plugin>
+ 
+            <plugin>
+                <groupId>com.github.github</groupId>
+                <artifactId>site-maven-plugin</artifactId>
+                <version>0.8</version>
+                <configuration>
+                    <message>Maven artifacts for ${project.version}</message>  <!-- git commit message -->
+                    <noJekyll>true</noJekyll>                                  <!-- disable webpage processing -->
+                    <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory> <!-- matches distribution management repository url above -->
+                    <branch>refs/heads/mvn-repo</branch>                       <!-- remote branch name -->
+                    <includes>
+                        <include>**/*</include>
+                    </includes>
+                    <repositoryName>openMap4u</repositoryName>      <!-- github repo name -->
+                    <repositoryOwner>openMap4u</repositoryOwner>    <!-- github username  -->
+                </configuration>
+                <executions>
+                    <!-- run site-maven-plugin's 'site' target as part of the build's normal 'deploy' phase -->
+                    <execution>
+                        <goals>
+                            <goal>site</goal>
+                        </goals>
+                        <phase>deploy</phase>
+                    </execution>
+                </executions>
+            </plugin>
+ 
+ 
+            
+            <!--    <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
                 <version>3.3</version>
@@ -190,7 +227,7 @@
                         <artifactId>doxia-module-markdown</artifactId>
                         <version>1.3</version>
                     </dependency>
-                    <dependency><!-- add support for ssh/scp -->
+                    <dependency>
                         <groupId>org.apache.maven.wagon</groupId>
                         <artifactId>wagon-ssh</artifactId>
                         <version>1.0</version>
@@ -199,6 +236,23 @@
                 <configuration>
                     <url>${project.baseDir}/target/site/</url>
                 </configuration>
+            </plugin>
+            -->
+            <plugin>
+                <groupId>com.github.github</groupId>
+                <artifactId>site-maven-plugin</artifactId>
+                <version>0.9</version>
+                <configuration>
+                    <message>Creating site for ${project.version}</message>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>site</goal>
+                        </goals>
+                        <phase>site</phase>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -236,7 +290,7 @@
                     <showDeprecation>true</showDeprecation>
                 </configuration>
             </plugin>
-            <plugin>
+            <!--   <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>
                 <version>${cobertura.version}</version>
@@ -245,7 +299,7 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>findbugs-maven-plugin</artifactId>
                 <version>2.5.2</version>
-            </plugin>
+            </plugin> -->
 
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -326,7 +380,7 @@
                     <outputDirectory>${basedir}/target/site</outputDirectory>
                 </configuration>
             </plugin>
-
+            <!--  
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>
@@ -339,7 +393,7 @@
                     <aggregate>false</aggregate>
                 </configuration>
             </plugin>
-            <!--    <plugin>
+              <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>findbugs-maven-plugin</artifactId>
                 <version>2.5.2</version>
@@ -382,14 +436,17 @@
 
 
 
-
     <distributionManagement>
-        <site>
-            <id>github</id>
-            <url>scm:git:https://git@github.com/openMap4u/openMap4u.git</url>
-        </site>
+        <repository>
+            <id>internal.repo</id>
+            <name>Temporary Staging Repository</name>
+            <url>file://${project.build.directory}/mvn-repo</url>
+        </repository>
     </distributionManagement>
+
  
+ 
+
 
     <!-- scm on github -->
     <scm>

@@ -37,7 +37,7 @@ public class ImageTest extends AbstractImageBuilderTest<Image> {
 
     @Override
     protected Image getBuilder() {
-       return  this.getDefaultOpenMap4u().create(Image.class).path(mImage);
+       return  this.getDefaultOpenMap4u().get(Image.class).path(mImage);
     }
 
     /**

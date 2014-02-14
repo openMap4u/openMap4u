@@ -12,7 +12,7 @@ with (CollectionsAndFiles) {
     var outputFile = java.nio.file.FileSystems.getDefault().getPath(".", "target", "test-classes", "nashorn", "simpleLine.png");
     var oM4u = new org.openmap4u.OpenMap4u();
     var canvas = oM4u.getCanvas(10, 8);
-    canvas.draw(oM4u.create(org.openmap4u.plugin.builder.core.Line.class).line(1, 1, 9, 7));
+    canvas.draw(oM4u.get(org.openmap4u.plugin.builder.core.Line.class).line(1, 1, 9, 7));
     canvas.write(outputFile);
 }
 

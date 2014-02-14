@@ -7,7 +7,6 @@ package org.openmap4u;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Path;
-import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Stream;
 import org.openmap4u.builder.Buildable;
@@ -18,7 +17,7 @@ import org.openmap4u.builder.Buildable;
  *
  * @author Michael Hadrbolec
  */
-public interface DrawOrWriteable extends Consumer<Buildable> {
+public interface DrawOrWriteable  {
 
     /**
      * Draws a single primitive.
@@ -29,26 +28,7 @@ public interface DrawOrWriteable extends Consumer<Buildable> {
      */
     DrawOrWriteable draw(Buildable buildable);
 
-    /**
-     * Draws a stream of buildables.
-     *
-     * @param stream The buildables to draw.
-     * @return The DrawOrWriteable itself (fluent interface pattern). Allows
-     * either to draw further Buildables or to write the result.
-     */
-    DrawOrWriteable draw(Stream<Buildable> stream);
-
-    /**
-     * Draws a stream of values mapped via a function into a Buildable.
-     *
-     * @param <T> The type of the values.
-     * @param stream The stream of values.
-     * @param map The mapping function.
-     * @return The DrawOrWriteable itself (fluent interface pattern). Allows
-     * either to draw further Buildables or to write the result.
-     */
-    <T> DrawOrWriteable draw(Stream<T> stream, Function<T, Buildable> map);
-
+    
     /**
      * Writes the drawing result to the given output stream. If no primitives
      * have been drawn the canvas is empty.

@@ -165,7 +165,7 @@ public abstract class AbstractOpenMap4uTest {
      * @return The quadratic point marker.
      */
     protected Rectangle getPointMarker(double x, double y, Paint strokeColor, Paint fillColor) {
-        return this.getDefaultOpenMap4u().create(Rectangle.class).color(strokeColor).fill(fillColor).size(.25).width(.125).point(x, y);
+        return this.getDefaultOpenMap4u().get(Rectangle.class).color(strokeColor).fill(fillColor).size(.25).width(.125).point(x, y);
     }
 
     /**

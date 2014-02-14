@@ -36,7 +36,7 @@ public class PieTest extends AbstractOpenMap4uTest {
      */
     @Before
     public void setUp() {
-        pie = new OpenMap4u().create(PieChart.class);
+        pie = new OpenMap4u().get(PieChart.class);
     }
 
     /**
@@ -189,7 +189,7 @@ public class PieTest extends AbstractOpenMap4uTest {
         /* 2. get an canvas and specify the size which you want to draw */
         DrawOrWriteable draw = oM4u.getCanvas(10, 8);
         /* Draw the bars */
-        draw.draw(oM4u.create(PieChart.class).point(5, 4).unit(Angle.PERCENT).start(.20).end(0.75).radius(2).fill(Color.GREEN));
+        draw.draw(oM4u.get(PieChart.class).point(5, 4).unit(Angle.PERCENT).start(.20).end(0.75).radius(2).fill(Color.GREEN));
         /* persist your result */
         draw.write(this.getPackagePath( "openMap4uPieChart.png"));
     }
@@ -205,7 +205,7 @@ public class PieTest extends AbstractOpenMap4uTest {
         /* 2. get an canvas and specify the size which you want to draw */
         DrawOrWriteable draw = oM4u.getCanvas(10, 8);
         /* Draw the bars */
-        PieChart pie = oM4u.create(PieChart.class).point(5, 4).start(0).radius(2);
+        PieChart pie = oM4u.get(PieChart.class).point(5, 4).start(0).radius(2);
         /* Draw the pies */
         getPieData().map(value -> pie.add(value)).forEach(primitive -> draw.draw(primitive.fill(getColor())));
         /* persist your result */
@@ -223,7 +223,7 @@ public class PieTest extends AbstractOpenMap4uTest {
         /* 2. get an canvas and specify the size which you want to draw */
         DrawOrWriteable draw = oM4u.getCanvas(10, 8);
         /* Draw the bars */
-        PieChart pie = oM4u.create(PieChart.class).point(5, 4).start(0).radius(2).unit(Angle.DEGREE);
+        PieChart pie = oM4u.get(PieChart.class).point(5, 4).start(0).radius(2).unit(Angle.DEGREE);
         /* Draw the pies */
         getPieData().map(value -> pie.add(value).fill(getColor()).transparence(Math.random()).radius(2)).forEach(primitive -> draw.draw(primitive));
         /* persist your result */
@@ -241,7 +241,7 @@ public class PieTest extends AbstractOpenMap4uTest {
         /* 2. get an canvas and specify the size which you want to draw */
         DrawOrWriteable draw = oM4u.getCanvas(10, 8);
         /* Draw the bars */
-        PieChart pie = oM4u.create(PieChart.class).point(5, 4).start(0).radius(2).fill(Color.DARK_GRAY);
+        PieChart pie = oM4u.get(PieChart.class).point(5, 4).start(0).radius(2).fill(Color.DARK_GRAY);
 
         /* Draw the pies */
         getPieData().map(value -> pie.add(value).transparence(Math.random()*100)).forEach(primitive -> draw.draw(primitive));
@@ -260,7 +260,7 @@ public class PieTest extends AbstractOpenMap4uTest {
         /* 2. get an canvas and specify the size which you want to draw */
         DrawOrWriteable draw = oM4u.getCanvas(10, 8);
         /* Draw the bars */
-        PieChart pie = oM4u.create(PieChart.class).point(5, 4).start(0).radius(2);
+        PieChart pie = oM4u.get(PieChart.class).point(5, 4).start(0).radius(2);
 
         /* Draw the bars */
         draw.draw(pie.add(15).fill(Color.RED)).draw(pie.add(25).fill(Color.GREEN)).draw(pie.add(15).fill(Color.YELLOW)).draw(pie.add(20).fill(Color.GRAY));
@@ -279,7 +279,7 @@ public class PieTest extends AbstractOpenMap4uTest {
         /* 2. get an canvas and specify the size which you want to draw */
         DrawOrWriteable draw = oM4u.getCanvas(10, 8);
         /* Draw the bars */
-        draw.draw(oM4u.create(PieChart.class).point(5, 4).start(30).add(120).innerRadius(2).outerRadius(3).fill(Color.GREEN));
+        draw.draw(oM4u.get(PieChart.class).point(5, 4).start(30).add(120).innerRadius(2).outerRadius(3).fill(Color.GREEN));
         /* persist your result */
         draw.write(this.getPackagePath( "openMap4uDonutChart.png"));
     }
@@ -294,7 +294,7 @@ public class PieTest extends AbstractOpenMap4uTest {
         OpenMap4u oM4u = new OpenMap4u();
         /* 2. get an canvas and specify the size which you want to draw */
         DrawOrWriteable draw = oM4u.getCanvas(10, 8);
-        PieChart donut = oM4u.create(PieChart.class).point(5, 4).innerRadius(1).outerRadius(2).start(20).end(90);
+        PieChart donut = oM4u.get(PieChart.class).point(5, 4).innerRadius(1).outerRadius(2).start(20).end(90);
         /* Draw the bars */
         draw.draw(donut.add(23).fill(Color.YELLOW)).draw(donut.add(47).fill(Color.GREEN));
         /* persist your result */
@@ -311,9 +311,9 @@ public class PieTest extends AbstractOpenMap4uTest {
         OpenMap4u oM4u = new OpenMap4u();
         /* 2. get an canvas and specify the size which you want to draw */
         DrawOrWriteable draw = oM4u.getCanvas(10, 8);
-        PieChart donut = oM4u.create(PieChart.class).point(5, 4).innerRadius(1).outerRadius(2).start(0.0000001);
+        PieChart donut = oM4u.get(PieChart.class).point(5, 4).innerRadius(1).outerRadius(2).start(0.0000001);
         /* Draw the bars */
-        PieChart pie = oM4u.create(PieChart.class).point(5, 4).start(0).radius(2);
+        PieChart pie = oM4u.get(PieChart.class).point(5, 4).start(0).radius(2);
         /* Draw the pies */
         getPieData().map(value -> pie.add(value).fill(getColor()).transparence(Math.random()).outerRadius(2 + Math.random()).innerRadius(1 + Math.random())).forEach(primitive -> draw.draw(primitive));
         /* persist your result */

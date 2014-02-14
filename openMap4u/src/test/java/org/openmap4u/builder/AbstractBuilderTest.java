@@ -240,13 +240,13 @@ public abstract class AbstractBuilderTest<T extends Buildable> extends
             throws IOException {
         for (int row = 0; row < actions.size() + 1; row++) {
             /* draw horizontal raster line */
-            draw.draw(this.getDefaultOpenMap4u().create(Polygon.class)
+            draw.draw(this.getDefaultOpenMap4u().get(Polygon.class)
                     .color(Color.LIGHT_GRAY)
                     .size(0.3).moveTo(0, row * 2)
                     .lineTo(30, row * 2));
             /* draw the focus of the test */
             if (row < actions.size()) {
-                draw.draw(this.getDefaultOpenMap4u().create(Text.class)
+                draw.draw(this.getDefaultOpenMap4u().get(Text.class)
                         .size(5)
                         .point(23, row * 2 + 1)
                         .align(Position.LeftMiddle)
@@ -256,7 +256,7 @@ public abstract class AbstractBuilderTest<T extends Buildable> extends
         for (int column = 0; column < actions.size(); column++) {
             /* draw vertical raster line */
             if (column < 12) {
-                draw.draw(this.getDefaultOpenMap4u().create(Polygon.class)
+                draw.draw(this.getDefaultOpenMap4u().get(Polygon.class)
                         .color(Color.LIGHT_GRAY)
                         .size(0.3).moveTo(column * 2, 0)
                         .lineTo(column * 2, actions.size() * 2));
@@ -264,14 +264,14 @@ public abstract class AbstractBuilderTest<T extends Buildable> extends
             for (int row = 0; row < 11; row++) {
                 /* draw a cross in each center */
                 draw.draw(this.getDefaultOpenMap4u()
-                        .create(Cross.class)
+                        .get(Cross.class)
                         .point(row * 2 + 1, column * 2 + 1)
                         .size(0.1).setSize(.3));
                 /* draw a cross in each center */
 
                 draw.draw(this
                         .getDefaultOpenMap4u()
-                        .create(Text.class)
+                        .get(Text.class)
                         .setFontColor(Color.GRAY)
                         .size(2.5)
                         .point(row * 2 + 1, column * 2 + 1)
