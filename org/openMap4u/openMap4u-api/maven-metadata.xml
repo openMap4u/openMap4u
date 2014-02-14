@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.openMap4u</groupId>
+  <artifactId>openMap4u-api</artifactId>
+  <versioning>
+    <versions>
+      <version>0.1.0-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20140214212229</lastUpdated>
+  </versioning>
+</metadata>
