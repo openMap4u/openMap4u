@@ -4,8 +4,6 @@
  */
 package org.openmap4u;
 
-import org.openmap4u.commons.Angle;
-import org.openmap4u.commons.Length;
 import org.openmap4u.format.Outputable;
 
 /**

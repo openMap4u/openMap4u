@@ -4,10 +4,6 @@ import java.awt.Color;
 import java.awt.Paint;
 import java.awt.geom.Point2D;
  
-import org.openmap4u.commons.FontStyle;
-import org.openmap4u.plugin.format.graphics2d.Png;
-import org.openmap4u.commons.Angle;
-import org.openmap4u.commons.Length;
 
 /*
  * #%L
@@ -62,11 +58,7 @@ public interface Globals {
      */
     double DEFAULT_SYMBOL_SIZE = 1;
 
-    /**
-     * The default output format plugin.
-     */
-    Class<Png> DEFAULT_OUTPUTFORMAT_PLUGIN_NAME = Png.class;
-
+  
     /**
      * The default builder plugin name.
      */

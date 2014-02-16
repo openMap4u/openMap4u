@@ -5,8 +5,6 @@
  */
 package org.openmap4u.commons;
 
-import org.openmap4u.commons.DrawableTransformable;
-
 /**
  *
  * @author hadrbolec

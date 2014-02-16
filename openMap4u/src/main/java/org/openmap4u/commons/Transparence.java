@@ -4,8 +4,6 @@
  */
 package org.openmap4u.commons;
 
-import org.openmap4u.commons.Convertable;
-
 /**
  * 
  * @author Michael Hadrbolec

@@ -6,7 +6,6 @@
 
 package org.openmap4u.commons;
 
-import org.openmap4u.commons.Drawable;
 import java.awt.Shape;
 
 /**

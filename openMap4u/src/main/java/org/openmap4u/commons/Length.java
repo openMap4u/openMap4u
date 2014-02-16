@@ -1,7 +1,5 @@
 package org.openmap4u.commons;
 
-import org.openmap4u.commons.Convertable;
-
 /*
  * #%L
  * m4u the ultimative visulisation library

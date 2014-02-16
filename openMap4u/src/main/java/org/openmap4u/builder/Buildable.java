@@ -1,11 +1,7 @@
 package org.openmap4u.builder;
 
 import java.awt.Shape;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-import java.util.HashSet;
 import java.util.Set;
-import org.openmap4u.commons.DrawableTransformable;
 import org.openmap4u.commons.Plugable;
 import org.openmap4u.commons.Position;
 import org.openmap4u.commons.Drawable;

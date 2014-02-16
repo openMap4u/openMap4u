@@ -32,10 +32,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.function.Function;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Stream;
 
 import org.openmap4u.commons.AreaOfInterestTransformable;
 import org.openmap4u.builder.Buildable;

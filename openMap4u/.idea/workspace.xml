@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="05e17744-eacf-4281-85a2-0a8c5af0c6ca" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/openmap4u/plugin/builder/core/RelativeAlingTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/format/graphics2d/AbstractJava2dPlugin.java" afterPath="$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/format/graphics2d/AbstractJava2dPlugin.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/openmap4u/plugin/builder/chart/AreaChartTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/openmap4u/plugin/builder/chart/AreaChartTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/openmap4u/plugin/builder/chart/BarChartTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/openmap4u/plugin/builder/chart/BarChartTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/openmap4u/Canvas.java" afterPath="$PROJECT_DIR$/src/main/java/org/openmap4u/Canvas.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/openmap4u/DrawOrWriteable.java" afterPath="$PROJECT_DIR$/src/main/java/org/openmap4u/DrawOrWriteable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/openmap4u/plugin/builder/chart/LineChartTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/openmap4u/plugin/builder/chart/LineChartTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/openmap4u/plugin/builder/core/LineTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/openmap4u/plugin/builder/core/LineTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/openmap4u/commons/Globals.java" afterPath="$PROJECT_DIR$/src/main/java/org/openmap4u/commons/Globals.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/format/svg/Svg.java" afterPath="$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/format/svg/Svg.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="openMap4u.iws" />
@@ -80,7 +75,7 @@
       <file leaf-file-name="Svg.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/format/svg/Svg.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="199" column="14" selection-start="6869" selection-end="6869" vertical-scroll-proportion="0.0" vertical-offset="3383" max-vertical-offset="6613">
+            <state line="197" column="14" selection-start="6792" selection-end="6792" vertical-scroll-proportion="0.0" vertical-offset="3349" max-vertical-offset="6579">
               <folding />
             </state>
           </provider>
@@ -113,11 +108,40 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Buildable.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Buildable.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/builder/Buildable.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3417">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Globals.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/commons/Globals.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="0" selection-start="150" selection-end="150" vertical-scroll-proportion="0.18681319" vertical-offset="0" max-vertical-offset="2907">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AbstractJava2dPlugin.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/format/graphics2d/AbstractJava2dPlugin.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4590">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Png.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/format/graphics2d/Png.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
+              <folding>
+                <element signature="e#0#462#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -155,6 +179,8 @@
         <option value="$PROJECT_DIR$/src/main/java/org/openmap4u/commons/SetUp.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/openmap4u/OpenMap4u.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/openmap4u/commons/Angle.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/openmap4u/builder/Buildable.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/openmap4u/commons/Globals.java" />
       </list>
     </option>
   </component>
@@ -197,6 +223,21 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="openMap4u" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="openMap4u" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -213,21 +254,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="openMap4u" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="openMap4u" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="openMap4u" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -257,29 +283,7 @@
       <recent name="org.openmap4u.commons" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ImageTest">
-    <configuration default="false" name="BuildableTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="openMap4u" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="org.openmap4u.builder" />
-      <option name="MAIN_CLASS_NAME" value="org.openmap4u.builder.BuildableTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.All in openMap4u (1)">
     <configuration default="false" name="All in openMap4u" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="openMap4u" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -368,10 +372,26 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin" singleton="true">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
-      <option name="PROGRAM_PARAMETERS" />
+    <configuration default="false" name="All in openMap4u (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="openMap4u" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
     <configuration default="true" type="GroovyScriptRunConfiguration" factoryName="Groovy">
@@ -381,6 +401,32 @@
       <setting name="params" value="" />
       <setting name="workDir" value="file://$PROJECT_DIR$" />
       <setting name="debug" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin" singleton="true">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
     <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
@@ -403,26 +449,6 @@
           </MavenRunnerParameters>
         </option>
       </MavenSettings>
-      <method />
-    </configuration>
-    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
-      <module name="" />
-      <option name="TESTING_TYPE" value="0" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="USE_COMMAND_LINE" value="true" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
     <configuration default="true" type="GriffonRunConfigurationType" factoryName="Griffon">
@@ -455,20 +481,17 @@
       </ExternalSystemSettings>
       <method />
     </configuration>
-    <configuration default="true" type="XSLT" factoryName="XSLT">
-      <option name="myOutputFile" />
-      <option name="myOpenOutputFile" value="false" />
-      <option name="myOpenInBrowser" value="false" />
-      <option name="mySmartErrorHandling" value="true" />
-      <option name="myRunnerPort" value="34873" />
-      <option name="myVmArguments" />
-      <option name="myWorkingDirectory" />
-      <option name="myModule" />
-      <option name="myJdk" />
-      <parameters />
-      <OutputType value="CONSOLE" save-to-file="false" />
-      <FileType name="XML" />
-      <JdkChoice value="FROM_MODULE" />
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -498,17 +521,20 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
+    <configuration default="true" type="XSLT" factoryName="XSLT">
+      <option name="myOutputFile" />
+      <option name="myOpenOutputFile" value="false" />
+      <option name="myOpenInBrowser" value="false" />
+      <option name="mySmartErrorHandling" value="true" />
+      <option name="myRunnerPort" value="34873" />
+      <option name="myVmArguments" />
+      <option name="myWorkingDirectory" />
+      <option name="myModule" />
+      <option name="myJdk" />
+      <parameters />
+      <OutputType value="CONSOLE" save-to-file="false" />
+      <FileType name="XML" />
+      <JdkChoice value="FROM_MODULE" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -565,19 +591,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.BuildableTest" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.All in openMap4u" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.ImageTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.TextTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.org.openmap4u.plugin.builder.core in openMap4u" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.All in openMap4u" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.ImageTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.TextTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.org.openmap4u.plugin.builder.core in openMap4u" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.All in openMap4u (1)" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.ImageTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.org.openmap4u.plugin.builder.core in openMap4u" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.TextTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.All in openMap4u" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.BuildableTest" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.All in openMap4u (1)" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.ImageTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.org.openmap4u.plugin.builder.core in openMap4u" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.TextTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.All in openMap4u" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -617,7 +643,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -625,25 +651,25 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32997763" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32842106" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Dependency Viewer" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.6336842" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18020834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6336842" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" x="0" y="363" width="1920" height="313" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6336842" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18020834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32842106" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" x="0" y="363" width="1920" height="313" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32842106" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -667,13 +693,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/format/svg/Svg.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="202" column="32" selection-start="7010" selection-end="7010" vertical-scroll-proportion="0.0" vertical-offset="3434" max-vertical-offset="6052">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/builder/core/Polygon.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="40" selection-start="244" selection-end="244" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="2312" />
@@ -824,11 +843,6 @@
         <state line="88" column="24" selection-start="2693" selection-end="2693" vertical-scroll-proportion="-0.25040916" vertical-offset="1496" max-vertical-offset="3757" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/format/graphics2d/Png.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="462" selection-end="462" vertical-scroll-proportion="0.5564648" vertical-offset="0" max-vertical-offset="611" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/builder/core/Polyline.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="72" column="14" selection-start="2196" selection-end="2196" vertical-scroll-proportion="1.97545" vertical-offset="0" max-vertical-offset="2006" />
@@ -874,11 +888,6 @@
         <state line="199" column="30" selection-start="5883" selection-end="5883" vertical-scroll-proportion="0.7671233" vertical-offset="2298" max-vertical-offset="3247" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/format/graphics2d/AbstractJava2dPlugin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="195" column="6" selection-start="7170" selection-end="7170" vertical-scroll-proportion="0.0" vertical-offset="3315" max-vertical-offset="5372" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/org/openmap4u/plugin/builder/core/TextTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="27" column="13" selection-start="762" selection-end="762" vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="1751" />
@@ -901,7 +910,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/format/svg/Svg.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="199" column="14" selection-start="6869" selection-end="6869" vertical-scroll-proportion="0.0" vertical-offset="3383" max-vertical-offset="6613">
+        <state line="197" column="14" selection-start="6792" selection-end="6792" vertical-scroll-proportion="0.0" vertical-offset="3349" max-vertical-offset="6579">
           <folding />
         </state>
       </provider>
@@ -927,9 +936,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/format/graphics2d/AbstractJava2dPlugin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4590">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/format/graphics2d/Png.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
+          <folding>
+            <element signature="e#0#462#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/builder/Buildable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3417">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/commons/Globals.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="150" selection-end="150" vertical-scroll-proportion="0.18681319" vertical-offset="0" max-vertical-offset="2907">
           <folding />
         </state>
       </provider>

@@ -6,9 +6,7 @@ import java.awt.geom.Rectangle2D;
 import java.util.HashSet;
 import java.util.Set;
 import org.openmap4u.commons.DrawableTransformable;
-import org.openmap4u.commons.Plugable;
 import org.openmap4u.commons.Position;
-import org.openmap4u.commons.Drawable;
 import org.openmap4u.commons.Styleable;
 
 import org.openmap4u.commons.Angle;
