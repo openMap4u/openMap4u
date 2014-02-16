@@ -256,9 +256,9 @@ public class Svg implements Outputable {
                             transform));
             mWriter.writeAttribute("style", getFontStyle(text.getTransform().getAlign(), text.getStyle()));
             mWriter.writeStartElement("tspan");
-            if (text.getTransform().getAlign() != null) {
+            //if (text.getTransform().getAlign() != null) {
                // mWriter.writeAttribute("dy", String.valueOf(new StyleBuilder().getDy(text.getTransform().getAlign()) * this.mStrokeUnit2DrawingUnitFactor * text.getStyle().getFontSize()));
-            }
+            //}
 
             mWriter.writeCharacters(text.getText());
             mWriter.writeEndElement();

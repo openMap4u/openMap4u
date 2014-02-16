@@ -13,8 +13,6 @@ import java.awt.Paint;
 import java.awt.Shape;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
-import java.util.ArrayList;
-import java.util.List;
 import org.openmap4u.builder.ShapeBuilder;
 
 /**
@@ -67,6 +65,7 @@ public abstract class AreaChart<T extends AreaChart<T>> extends ShapeBuilder<T> 
      * @param strokeSize The stroke size in stroke units.
      * @return The builder itself (method chaining pattern).
      */
+    @Override
     public T size(double strokeSize) {
         return super.size(strokeSize);
     }

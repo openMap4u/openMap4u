@@ -1,6 +1,5 @@
 package org.openmap4u.plugin.builder.core;
 
-import java.awt.Color;
 import java.awt.Paint;
 import org.openmap4u.builder.TextBuilder;
 import org.openmap4u.commons.FontStyle;

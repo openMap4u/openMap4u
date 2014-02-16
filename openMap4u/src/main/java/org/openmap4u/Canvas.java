@@ -217,7 +217,7 @@ public class Canvas implements Plugable,   DrawOrWriteable,
      */
     public OverrideDrawOrWriteable scale(double scaleXFactor,
             double scaleYFactor) {
-        this.mScaleX = scaleXFactor;;
+        this.mScaleX = scaleXFactor;
         this.mScaleY = scaleYFactor;
         return this;
     }
@@ -234,6 +234,7 @@ public class Canvas implements Plugable,   DrawOrWriteable,
         return this;
     }
 
+    @Override
      public <T extends Outputable> Canvas outputFormat(Class<T> outputFormat) {
         this.mOutputFormat = Util.get().getPlugin(outputFormat);
         return this;

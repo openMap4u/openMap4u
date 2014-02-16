@@ -27,9 +27,6 @@ package org.openmap4u.commons;
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  * #L%
  */
-import java.awt.Shape;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -58,9 +55,7 @@ public final class Util {
     private static final Logger LOGGER = Logger.getLogger(Util.class.getName(),
             Globals.DEFAULT_RESSOURCE_BUNDLE);
 
-    private static final double FULL_CIRCLE = 360;
-    private static final double ZERO = 360;
-
+   
     /**
      * Stores the message properties.
      */
@@ -68,7 +63,7 @@ public final class Util {
     /**
      * Single utility instance.
      */
-    private static Util mUtility = new Util();
+    private static final Util mUtility = new Util();
 
     /**
      * Singleton pattern constructor.

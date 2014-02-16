@@ -162,7 +162,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      * @return The Shape itself (method chaining pattern).
      */
     @SuppressWarnings("unchecked")
-    protected B shape(java.awt.Shape shape) {
+    protected B shape(Shape shape) {
         this.mPath= new Path2D.Double(shape);
         return (B) this;
     }
@@ -177,7 +177,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      * @param shape The shape to add. E.g.: <code>... myBuilder.shape(<img alt="" src="./doc-files/c_rectangle.png">).add(<img alt="" src="./doc-files/c_circle.png">) = <img alt="" src="./doc-files/c_add.png"></code>
      * @return The builder itself (method chaining pattern).
      */
-    protected B add(java.awt.Shape shape) {
+    protected B add(Shape shape) {
         Area area = getArea();
         area.add(new Area(shape));
         this.setShape(area);
@@ -190,7 +190,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      * @param shape The shape to intersetct. E.g.: <code>... myBuilder.shape(<img alt="" src="./doc-files/c_rectangle.png">).intersect(<img alt="" src="./doc-files/c_circle.png">) = <img alt="" src="./doc-files/c_intersect.png"></code>
      * @return The builder itself (method chaining pattern).
      */
-    protected B intersect(java.awt.Shape shape) {
+    protected B intersect(Shape shape) {
         Area area = getArea();
         area.intersect(new Area(shape));
         this.shape(area);
@@ -203,7 +203,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      * @param shape The shape to subtract. E.g.: <code>... myBuilder.shape(<img alt="" src="./doc-files/c_rectangle.png">).subtract(<img alt="" src="./doc-files/c_circle.png">) = <img alt="" src="./doc-files/c_subtract.png"></code>
      * @return The builder itself (method chaining pattern).
      */
-    protected B subtract(java.awt.Shape shape) {
+    protected B subtract(Shape shape) {
         Area area = getArea( );
         area.subtract(new Area(shape));
         this.shape(area);
@@ -216,7 +216,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      * @param shape The shape to exclusive or. E.g.: <code>... myBuilder.shape(<img alt="" src="./doc-files/c_rectangle.png">).eclusiveOr.(<img alt="" src="./doc-files/c_circle.png">) = <img alt="" src="./doc-files/c_exclusiveOr.png"></code>
      * @return The builder itself (method chaining pattern).
      */
-    protected B exclusiveOr(java.awt.Shape shape) {
+    protected B exclusiveOr(Shape shape) {
         Area area = getArea( );
         area.exclusiveOr(new Area(shape));
         this.shape(area);
