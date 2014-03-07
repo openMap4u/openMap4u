@@ -1,0 +1,10 @@
+name: "openMap4u"
+description: "openMap4u API"
+
+url: "https://github.io/openmap4u"
+
+paginate: 10
+
+markdown: rdiscount
+permalink: pretty
+pygments: true

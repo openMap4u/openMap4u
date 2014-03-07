@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.openMap4u</groupId>
-    <artifactId>openMap4u-api</artifactId>
+    <artifactId>openMap4u-parent</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <name>openMap4u</name>
     <description>openMap4u the open source data mapping library</description>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <url>https://${repository.domain}/${repository.user}/${repository.name}</url>
     <inceptionYear>2013</inceptionYear>
@@ -26,7 +25,6 @@
     <properties>
         <projectName>openMap4u</projectName>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jts.version>1.13</jts.version>
         <guava.version>14.0.1</guava.version>
         <site.basedir>${project.basedir}</site.basedir>
 
@@ -75,6 +73,8 @@
         <plugin.wagon-webdav.version>1.0</plugin.wagon-webdav.version>
 
         <plugin.scm-publish.version>1.0-beta-2</plugin.scm-publish.version>
+        <java.source>7</java.source>
+        <java.target>7</java.target>
 
 
     </properties>
@@ -121,20 +121,9 @@
     </pluginRepositories>
 
     <dependencies>
-        <dependency>
-            <groupId>com.vividsolutions</groupId>
-            <artifactId>jts</artifactId>
-            <version>${jts.version}</version>
-        </dependency>
+       
 
 
-
-        <dependency>
-            <groupId>org.geotools</groupId>
-            <artifactId>gt-shapefile</artifactId>
-            <version>9.5</version>
-            <scope>test</scope>
-        </dependency>
 
         <dependency>
             <groupId>junit</groupId>
@@ -180,7 +169,6 @@
 
      
         <plugins>
-          
             <plugin>
                 <artifactId>maven-deploy-plugin</artifactId>
                 <version>2.8.1</version>
@@ -188,9 +176,6 @@
                     <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo</altDeploymentRepository>
                 </configuration>
             </plugin>
- 
-        
-          
             <plugin>
                 <groupId>com.github.github</groupId>
                 <artifactId>site-maven-plugin</artifactId>
@@ -226,12 +211,7 @@
                         </goals>
                     </execution>
                 </executions>
-
             </plugin>
-
-
-
-
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -242,6 +222,26 @@
                     <target>8</target>
                     <showDeprecation>true</showDeprecation>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <phase>compile</phase>
+                        <configuration>
+                            <source>${java.source}</source>
+                            <target>${java.target}</target>
+                            <showDeprecation>true</showDeprecation>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>test-compile</id>
+                        <phase>test-compile</phase>
+                        <configuration>
+                            <source>8</source>
+                            <target>8</target>
+                            <showDeprecation>true</showDeprecation>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <!--   <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -269,14 +269,13 @@
                         <id>first</id>
                         <goals>
                             <goal>update-file-header</goal>
-
                         </goals>
                         <phase>post-clean</phase>
                         <configuration>
                             <licenseName>gpl_v3</licenseName>
                             <roots>
                                 <root>src/main/java</root>
-                                <root>src/test</root>
+                                <root>src/test/java</root>
                             </roots>
                         </configuration>
                     </execution>
@@ -286,12 +285,8 @@
                             <goal>download-licenses</goal>
                         </goals>
                     </execution>
-
                 </executions>
             </plugin>
-
-
-
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -299,7 +294,6 @@
                 <version>2.4.1</version>
             </plugin>
         </plugins>
-
 
     </build>
 
@@ -310,11 +304,9 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>2.9.1</version>
                 <configuration>
-                    <javaApiLinks />
+                    <javaApiLinks/>
                     <show>public</show>
                     <aggregate>false</aggregate>
-
-
                 </configuration>
                 <reportSets>
                     <reportSet>
@@ -333,13 +325,12 @@
                     <outputDirectory>${basedir}/target/site</outputDirectory>
                 </configuration>
             </plugin>
-            
            
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-pmd-plugin</artifactId>
-        <version>3.0.1</version>
-      </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.0.1</version>
+            </plugin>
      
             <!--  
             <plugin>
@@ -384,18 +375,13 @@
                 <version>2.0-beta-2</version>
             </plugin>
         </plugins>
-
-
     </reporting>
-
 
     <developers>
         <developer>
             <name>Michael Hadrbolec</name>
         </developer>
     </developers>
-
-
 
     <distributionManagement>
         <repository>
@@ -404,10 +390,6 @@
             <url>file://${project.build.directory}/mvn-repo</url>
         </repository>
     </distributionManagement>
-
- 
- 
-
 
     <!-- scm on github -->
     <scm>
@@ -432,5 +414,12 @@
         </license>
     </licenses>
 
-
+    <modules>
+        <!-- The core functionality -->
+        <module>openMap4u-core</module>
+        <!-- The spatial functionality plugin -->
+        <module>openMap4u-spatial-plugin</module>
+        <!-- The integration in jsp, jsf, ... -->
+        <module>openMap4u-integration-examples</module>
+    </modules>
 </project>
