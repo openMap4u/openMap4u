@@ -9,8 +9,6 @@ import org.openmap4u.commons.ShapeStyle;
 import org.openmap4u.commons.TextStyle;
 import org.openmap4u.commons.Length;
 import org.openmap4u.commons.ShapeStyleable;
-import org.openmap4u.format.Outputable;
-import org.openmap4u.plugin.format.graphics2d.Png;
 
 /**
  * Is a bean that contains all default values like units, styles, ... . It
@@ -48,11 +46,7 @@ public final class Defaults implements Serializable {
      */
     private Length mDefaultStrokeUnits = null;
 
-    /**
-     * Stores the doufault output format.
-     */
-    private Class<? extends Outputable> mOutputableFormat = Png.class;
-
+ 
     /**
      * Stores the default image style.
      */
@@ -67,6 +61,9 @@ public final class Defaults implements Serializable {
     private TextStyle mDefaultTextStyle = new TextStyle().setFontSize(
             Globals.DEFAULT_FONT_SIZE).setFontColor(
                     Globals.DEFAULT_STROKE_COLOR);
+    
+      private Angle mAngleUnits = Angle.DEGREE;
+
 
     /**
      * Creates a new instance.
@@ -169,8 +166,7 @@ public final class Defaults implements Serializable {
         this.mDefaultWorldUnits = worldUnits;
     }
 
-    private Angle mAngleUnits = Angle.DEGREE;
-
+  
     public void setAngleUnits(Angle angleUnits) {
         this.mAngleUnits = angleUnits;
     }

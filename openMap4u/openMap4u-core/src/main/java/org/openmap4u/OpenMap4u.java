@@ -16,7 +16,7 @@ import org.openmap4u.commons.TextStyleable;
  *
  * @author Michael Hadrbolec
  */
-public final class OpenMap4u implements Serializable {
+public class OpenMap4u implements Serializable {
 
     /**
      * The generated serialVersionUID.

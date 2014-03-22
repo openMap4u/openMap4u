@@ -34,6 +34,8 @@ public enum Transparence implements Convertable<Transparence> {
      * percent
      */
     PERCENT  {
+           private static final double HUNDRED = 100;
+
         @Override
         public double convert(double value2Convert) {
             if (value2Convert == 0) {
@@ -43,8 +45,7 @@ public enum Transparence implements Convertable<Transparence> {
             }
         }
 
-        private static final double HUNDRED = 100;
-
+     
         @Override
         public double convertFromSI(double value2Convert) {
             return (1 - value2Convert) * HUNDRED;

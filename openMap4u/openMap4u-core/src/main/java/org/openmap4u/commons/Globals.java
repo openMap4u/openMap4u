@@ -3,7 +3,7 @@ package org.openmap4u.commons;
 import java.awt.Color;
 import java.awt.Paint;
 import java.awt.geom.Point2D;
- 
+
 
 /*
  * #%L
@@ -28,37 +28,34 @@ import java.awt.geom.Point2D;
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  * #L%
  */
-
 /**
  * Contains all global default values.
- * 
+ *
  * @author Michael Hadrbolec
- * 
+ *
  */
 public interface Globals {
-    
+
     /**
      * Constant for zero.
      */
-    double ZERO =0;
-    
+    double ZERO = 0;
+
     /**
      * The default angle unit.
      */
-    public static Angle DEFAULT_ANGLE_UNIT = Angle.DEGREE;
-    
+    Angle DEFAULT_ANGLE_UNIT = Angle.DEGREE;
+
     /**
      * The default viewport center.
      */
-    public static Point2D DEFAULT_VIEWPORT_CENTER= new Point2D.Double(ZERO,ZERO );
+    Point2D DEFAULT_VIEWPORT_CENTER = new Point2D.Double(ZERO, ZERO);
 
-  
     /**
      * The default symbol size.
      */
     double DEFAULT_SYMBOL_SIZE = 1;
 
-  
     /**
      * The default builder plugin name.
      */
@@ -81,13 +78,13 @@ public interface Globals {
     String DEFAULT_RESSOURCE_BUNDLE = "org/openmap4u/resource/messages";
 
     /**
-     * The default stroke unit is mm. 
-       */
+     * The default stroke unit is mm.
+     */
     Length DEFEAULT_STROKE_UNIT = Length.MM;
 
     /**
-     * The default drawing unit is m. It is used
-     * for drawing on the "virtual" paper.
+     * The default drawing unit is m. It is used for drawing on the "virtual"
+     * paper.
      */
     Length DEFEAULT_DRAWING_UNIT = Length.CM;
 
@@ -115,7 +112,6 @@ public interface Globals {
      * The default fill (is null ... no fill).
      */
     Paint DEFAULT_FILL = null;
-
 
     /**
      * The default scale factor in x an y axis direction is <code>1</code>.
@@ -148,12 +144,12 @@ public interface Globals {
      * The dfeault dpi resolution for raster images.
      */
     int DEFAULT_DPI = 96;
-    
+
     /**
      * The default dot resolution.
      */
     int DEFAULT_DOTS = 72;
-    
+
     /**
      * Conversion factor inch to cm.
      */

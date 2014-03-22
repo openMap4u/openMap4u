@@ -12,9 +12,16 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import static org.hamcrest.CoreMatchers.*;
 import org.junit.After;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
+import org.openmap4u.commons.Point.Align;
+import static org.openmap4u.commons.HorizontalAlign.CENTER;
+import static org.openmap4u.commons.HorizontalAlign.LEFT;
+import static org.openmap4u.commons.HorizontalAlign.RIGHT;
+import static org.openmap4u.commons.VerticalAlign.BOTTOM;
+import static org.openmap4u.commons.VerticalAlign.MIDDLE;
+import static org.openmap4u.commons.VerticalAlign.TOP;
 
 /**
  *
@@ -45,18 +52,58 @@ public class TransformUtilTest {
      * Test of getPoint method, of class TransformUtil.
      */
     @Test
+    public void testGetPointDepr() {
+        Shape shape = new Rectangle2D.Double(20, 30, 400, 300);
+        assertThat((Point2D.Double)tu.getPoint(Position.LEFT_TOP, shape), is(new Point2D.Double(20, 330)));
+        assertThat((Point2D.Double)tu.getPoint(Position.CENTER_TOP, shape), is(new Point2D.Double(220, 330)));
+        assertThat((Point2D.Double)tu.getPoint(Position.RIGHT_TOP, shape), is(new Point2D.Double(420, 330)));
+        assertThat((Point2D.Double)tu.getPoint(Position.LEFT_MIDDLE, shape), is(new Point2D.Double(20, 180)));
+        assertThat((Point2D.Double)tu.getPoint(Position.CENTER_MIDDLE, shape), is(new Point2D.Double(220, 180)));
+        assertThat((Point2D.Double)tu.getPoint(Position.RIGHT_MIDDLE, shape), is(new Point2D.Double(420, 180)));
+        assertThat((Point2D.Double)tu.getPoint(Position.LEFT_BOTTOM, shape), is(new Point2D.Double(20, 30)));
+        assertThat((Point2D.Double)tu.getPoint(Position.CENTER_BOTTOM, shape), is(new Point2D.Double(220, 30)));
+        assertThat((Point2D.Double)tu.getPoint(Position.RIGHT_BOTTOM, shape), is(new Point2D.Double(420, 30)));
+    }
+
+
+
+  /**
+     * Test of getPoint method, of class TransformUtil.
+     */
+    @Test
     public void testGetPoint() {
         Shape shape = new Rectangle2D.Double(20, 30, 400, 300);
-        assertThat((Point2D.Double)tu.getPoint(Position.LeftTop, shape), is(new Point2D.Double(20, 330)));
-        assertThat((Point2D.Double)tu.getPoint(Position.CenterTop, shape), is(new Point2D.Double(220, 330)));
-        assertThat((Point2D.Double)tu.getPoint(Position.RightTop, shape), is(new Point2D.Double(420, 330)));
-        assertThat((Point2D.Double)tu.getPoint(Position.LeftMiddle, shape), is(new Point2D.Double(20, 180)));
-        assertThat((Point2D.Double)tu.getPoint(Position.CenterMiddle, shape), is(new Point2D.Double(220, 180)));
-        assertThat((Point2D.Double)tu.getPoint(Position.RightMiddle, shape), is(new Point2D.Double(420, 180)));
-        assertThat((Point2D.Double)tu.getPoint(Position.LeftBottom, shape), is(new Point2D.Double(20, 30)));
-        assertThat((Point2D.Double)tu.getPoint(Position.CenterBottom, shape), is(new Point2D.Double(220, 30)));
-        assertThat((Point2D.Double)tu.getPoint(Position.RightBottom, shape), is(new Point2D.Double(420, 30)));
+        assertThat((Point2D.Double)tu.getPoint(new Point.Align(LEFT,TOP), shape), is(new Point2D.Double(20, 330)));
+        assertThat((Point2D.Double)tu.getPoint(new Point.Align(CENTER,TOP), shape), is(new Point2D.Double(220, 330)));
+        assertThat((Point2D.Double)tu.getPoint(new Point.Align(RIGHT,TOP), shape), is(new Point2D.Double(420, 330)));
+        assertThat((Point2D.Double)tu.getPoint(new Point.Align(LEFT,MIDDLE), shape), is(new Point2D.Double(20, 180)));
+        assertThat((Point2D.Double)tu.getPoint(new Point.Align(CENTER,MIDDLE), shape), is(new Point2D.Double(220, 180)));
+        assertThat((Point2D.Double)tu.getPoint(new Point.Align(RIGHT,MIDDLE), shape), is(new Point2D.Double(420, 180)));
+        assertThat((Point2D.Double)tu.getPoint(new Point.Align(LEFT,BOTTOM), shape), is(new Point2D.Double(20, 30)));
+        assertThat((Point2D.Double)tu.getPoint(new Point.Align(CENTER,BOTTOM), shape), is(new Point2D.Double(220, 30)));
+        assertThat((Point2D.Double)tu.getPoint(new Point.Align(RIGHT,BOTTOM), shape), is(new Point2D.Double(420, 30)));
     }
+    
+      /**
+     * Test of getPoint method, of class TransformUtil.
+     */
+    @Test
+    public void testGetInversPoint() { 
+        Shape shape = new Rectangle2D.Double(20, 30, 400, 300);
+        assertThat((Point2D.Double)tu.getPointInvers(new Point.Align(LEFT,TOP), shape), is(new Point2D.Double(20,  30)));
+        assertThat((Point2D.Double)tu.getPointInvers(new Point.Align(CENTER,TOP), shape), is(new Point2D.Double(220,  30)));
+        assertThat((Point2D.Double)tu.getPointInvers(new Point.Align(RIGHT,TOP), shape), is(new Point2D.Double(420,  30)));
+        assertThat((Point2D.Double)tu.getPointInvers(new Point.Align(LEFT,MIDDLE), shape), is(new Point2D.Double(20, 180)));
+        assertThat((Point2D.Double)tu.getPointInvers(new Point.Align(CENTER,MIDDLE), shape), is(new Point2D.Double(220, 180)));
+        assertThat((Point2D.Double)tu.getPointInvers(new Point.Align(RIGHT,MIDDLE), shape), is(new Point2D.Double(420, 180)));
+        assertThat((Point2D.Double)tu.getPointInvers(new Point.Align(LEFT,BOTTOM), shape), is(new Point2D.Double(20, 330)));
+        assertThat((Point2D.Double)tu.getPointInvers(new Point.Align(CENTER,BOTTOM), shape), is(new Point2D.Double(220, 330)));
+        assertThat((Point2D.Double)tu.getPointInvers(new Point.Align(RIGHT,BOTTOM), shape), is(new Point2D.Double(420, 330)));
+    }
+
+
+
+
 
     /**
      *

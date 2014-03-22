@@ -6,10 +6,11 @@
 package org.openmap4u.builder;
 
 import java.awt.geom.Point2D;
-import org.openmap4u.commons.Globals;
-import org.openmap4u.commons.DrawableTransformable;
-import org.openmap4u.commons.Position;
 import org.openmap4u.commons.Angle;
+import org.openmap4u.commons.DrawableTransformable;
+import org.openmap4u.commons.Globals;
+import org.openmap4u.commons.Point.Align;
+import org.openmap4u.commons.Position;
 
 /**
  *
@@ -33,7 +34,7 @@ final class DrawTransform implements DrawableTransformable {
     /**
      * Stores the alignment.
      */
-    private Position mAlign = null;
+    private Align mAlign = null;
 
     @Override
     public double getRotate() {
@@ -76,12 +77,12 @@ final class DrawTransform implements DrawableTransformable {
     }
 
     @Override
-    public Position getAlign() {
+    public Align getAlign() {
         return this.mAlign;
     }
 
     @Override
-    public void setAlign(Position align) {
+    public void setAlign(Align align) {
         this.mAlign = align;
     }
 

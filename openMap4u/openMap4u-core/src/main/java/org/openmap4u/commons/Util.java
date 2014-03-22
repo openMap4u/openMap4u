@@ -49,6 +49,8 @@ import javax.imageio.ImageIO;
  */
 public final class Util {
 
+    private static final String PROPERTIES=".properties"; 
+    
     /**
      * The logger.
      */
@@ -63,7 +65,7 @@ public final class Util {
     /**
      * Single utility instance.
      */
-    private static final Util mUtility = new Util();
+    private static final Util UTIL = new Util();
 
     /**
      * Singleton pattern constructor.
@@ -76,12 +78,12 @@ public final class Util {
                     .getContextClassLoader()
                     .getResourceAsStream(
                             new StringBuilder(Globals.DEFAULT_RESSOURCE_BUNDLE)
-                                    .append(".properties").toString()));
+                                    .append(PROPERTIES).toString()));
         } catch (IOException e) {
-            LOGGER.severe(new StringBuilder(
+            LOGGER.log(Level.SEVERE,new StringBuilder(
                     "Unable to read the resource bundle. ")
                     .append(Globals.DEFAULT_RESSOURCE_BUNDLE)
-                    .append(".properties").toString());
+                    .append(PROPERTIES).toString(),e);
         }
     }
 
@@ -91,7 +93,7 @@ public final class Util {
      * @return The single utility instance.
      */
     public static Util get() {
-        return mUtility;
+        return UTIL;
     }
 
     /**

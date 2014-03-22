@@ -102,12 +102,4 @@ public interface Outputable extends Plugable {
      */
     void write(OutputStream out) throws IOException;
 
-    /**
-     * Wheter the outputable format was allready initialzed or not.
-     *
-     * @return <code>true</code> if allready initialzed, <code>false</code> if
-     * not iniatialized.
-     */
-  //  boolean isInitialized();
-
 }

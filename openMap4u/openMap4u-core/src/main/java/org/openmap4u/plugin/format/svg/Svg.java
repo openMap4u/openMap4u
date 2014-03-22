@@ -18,24 +18,28 @@ import java.nio.file.Files;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javax.xml.stream.FactoryConfigurationError;
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
-
-import org.openmap4u.commons.Globals;
+import org.openmap4u.commons.Angle;
 import org.openmap4u.commons.DrawableTransformable;
-import org.openmap4u.commons.Position;
-import org.openmap4u.commons.TransformUtil;
-import org.openmap4u.commons.Util;
-import org.openmap4u.format.Outputable;
+import org.openmap4u.commons.Globals;
 import org.openmap4u.commons.ImageDrawable;
+import org.openmap4u.commons.Length;
+import org.openmap4u.commons.Point.Align;
+import org.openmap4u.commons.Position;
 import org.openmap4u.commons.ShapeDrawable;
 import org.openmap4u.commons.TextDrawable;
 import org.openmap4u.commons.TextStyleable;
-import org.openmap4u.commons.Angle;
-import org.openmap4u.commons.Length;
+import org.openmap4u.commons.TransformUtil;
+import org.openmap4u.commons.Util;
+import org.openmap4u.format.Outputable;
+import static org.openmap4u.plugin.format.svg.Svg.Constants.HEIGHT;
+import static org.openmap4u.plugin.format.svg.Svg.Constants.STYLE;
+import static org.openmap4u.plugin.format.svg.Svg.Constants.UTF8;
+import static org.openmap4u.plugin.format.svg.Svg.Constants.WIDTH;
+import static org.openmap4u.plugin.format.svg.Svg.Constants.XLINK;
 
 /**
  *
@@ -87,13 +91,18 @@ public class Svg implements Outputable {
 
     interface Constants {
 
+        
         String SVG = "svg";
         String DTD = "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">";
         String PATH = "path";
         /* The svg namespace. */
         String NAMESPACE_URI = "http://www.w3.org/2000/svg";
         String TRANSFORM = "transform";
-
+String XLINK ="http://www.w3.org/1999/xlink";
+String WIDTH="width";
+String HEIGHT="height";
+String STYLE="style";
+String UTF8 ="UTF-8";
     }
 
     /**
@@ -126,7 +135,7 @@ public class Svg implements Outputable {
             mWriter.writeStartElement(Constants.PATH);
             mWriter.writeAttribute("d", getSvgPathAttributeValue(tShape));
             mWriter.writeAttribute(
-                    "style",
+                    STYLE,
                     new StyleBuilder()
                     .writeStrokeWidth(
                             shape.getStyle().getStrokeSize()
@@ -205,21 +214,21 @@ public class Svg implements Outputable {
           mWriter.writeStartElement("image");
             mWriter.writeAttribute("x", "0");
             mWriter.writeAttribute("y", "0");
-            mWriter.writeAttribute("http://www.w3.org/1999/xlink", "href",
+            mWriter.writeAttribute(XLINK, "href",
                     image.getPath().toUri().toString());
             mWriter.writeAttribute(
-                    "width",
+                    WIDTH,
                     String.valueOf(width
                             / this.mPixel2DrawingUnitsFactor));
             mWriter.writeAttribute(
-                    "height",
+                    HEIGHT,
                     String.valueOf(height
                             / this.mPixel2DrawingUnitsFactor));
             mWriter.writeAttribute(
                     Constants.TRANSFORM,
                     new SvgUtil().getTransform(transform));
                mWriter.writeAttribute(
-                    "style",
+                    STYLE,
                     new StyleBuilder()
                     .writeOpacity(image.getStyle().getAlpha()).toString());
 
@@ -248,18 +257,15 @@ public class Svg implements Outputable {
             mWriter.writeAttribute("y", "0");
             AffineTransform transform = this.mTransformUtil.transform(getGlobalTransform(), point, 1, 1, text.getTransform(),outline);
           transform.concatenate(new AffineTransform(
-                    1  , 0, 0, -1 , 0, 0));//text.getStyle().getFontSize()*mStrokeUnit2DrawingUnitFactor));
+                    1  , 0, 0, -1 , 0, 0));
        
             mWriter.writeAttribute(
                     Constants.TRANSFORM,
                     new SvgUtil().getTransform(
                             transform));
-            mWriter.writeAttribute("style", getFontStyle(text.getTransform().getAlign(), text.getStyle()));
+            mWriter.writeAttribute(STYLE, getFontStyle(text.getTransform().getAlign(), text.getStyle()));
             mWriter.writeStartElement("tspan");
-            //if (text.getTransform().getAlign() != null) {
-               // mWriter.writeAttribute("dy", String.valueOf(new StyleBuilder().getDy(text.getTransform().getAlign()) * this.mStrokeUnit2DrawingUnitFactor * text.getStyle().getFontSize()));
-            //}
-
+   
             mWriter.writeCharacters(text.getText());
             mWriter.writeEndElement();
             mWriter.writeEndElement();
@@ -270,7 +276,7 @@ public class Svg implements Outputable {
         return outline;
     }
 
-    String getFontStyle(Position align, TextStyleable style) {
+    String getFontStyle(Align align, TextStyleable style) {
         StyleBuilder sb = new StyleBuilder();
         sb.setFontSize(style.getFontSize() * this.mStrokeUnit2DrawingUnitFactor);
         sb.setTextAlign(align);
@@ -319,20 +325,20 @@ public class Svg implements Outputable {
                     .append(File.pathSeparator).append(Constants.SVG)
                     .toString());
             mWriter = XMLOutputFactory.newInstance().createXMLStreamWriter(
-                    new FileOutputStream(this.mTmpFile), "UTF-8");
-            mWriter.writeStartDocument("UTF-8", "1.0");
+                    new FileOutputStream(this.mTmpFile), UTF8);
+            mWriter.writeStartDocument(UTF8, "1.0");
             mWriter.writeDTD(Constants.DTD);
             mWriter.writeStartElement(Constants.SVG);
             mWriter.writeNamespace("xmlns", Constants.NAMESPACE_URI);
-            mWriter.writeNamespace("xlink", "http://www.w3.org/1999/xlink");
+            mWriter.writeNamespace("xlink", XLINK);
             mWriter.writeAttribute("version", "1.1");
             Rectangle2D bounds = shape.getBounds2D();
-            mWriter.writeAttribute("width", drawingUnits.convert(bounds.getWidth(), Length.CM) + "cm");
-            mWriter.writeAttribute("height", drawingUnits.convert(bounds.getHeight(), Length.CM) + "cm");
+            mWriter.writeAttribute(WIDTH, drawingUnits.convert(bounds.getWidth(), Length.CM) + "cm");
+            mWriter.writeAttribute(HEIGHT, drawingUnits.convert(bounds.getHeight(), Length.CM) + "cm");
             mWriter.writeAttribute("viewBox", "0 0 " + drawingUnits.convert(bounds.getWidth(), Length.CM) + " " + drawingUnits.convert(bounds.getHeight(), Length.CM));
             /* write the defaults */
             mWriter.writeStartElement("defs");
-            mWriter.writeStartElement("style");
+            mWriter.writeStartElement(STYLE);
             mWriter.writeAttribute("type", "text/css");
             mWriter.writeCData("path {fill:none;fill-rule:evenodd;font-size:0.5cm;}");
             mWriter.writeEndElement();
@@ -345,10 +351,12 @@ public class Svg implements Outputable {
 
     @Override
     public void before() {
+        /* nothing special to do */
     }
 
     @Override
     public void after() {
+        /* nothing special to do */
     }
 
     @Override

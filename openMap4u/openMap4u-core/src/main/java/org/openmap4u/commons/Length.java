@@ -62,16 +62,18 @@ public enum Length implements Convertable<Length> {
      * Point
      */
     POINT(Globals.INCH2M_FACTOR / Globals.DEFAULT_DOTS);
-
-    private Length(double mFactor2M) {
-        this.mFactor2M = mFactor2M;
-    }
-
+    
+    
     /**
      * Stores the multiplication factor to convert the given unit into SI m
      * units.
      */
     private double mFactor2M = 1;
+
+
+    private Length(double mFactor2M) {
+        this.mFactor2M = mFactor2M;
+    }
 
     /**
      * Converts the value from the given units into SI m units.

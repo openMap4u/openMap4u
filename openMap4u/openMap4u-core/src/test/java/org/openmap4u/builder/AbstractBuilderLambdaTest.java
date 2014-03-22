@@ -4,8 +4,6 @@
  */
 package org.openmap4u.builder;
 
-import org.openmap4u.plugin.builder.core.Polygon;
-import org.openmap4u.plugin.builder.core.Text;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Paint;
@@ -13,16 +11,20 @@ import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.Test;
 import org.openmap4u.AbstractOpenMap4uTest;
+import org.openmap4u.DrawOrWriteable;
 import org.openmap4u.OutputFormat;
 import org.openmap4u.builder.Action.MockupAction;
-import org.openmap4u.DrawOrWriteable;
 import org.openmap4u.commons.FontStyle;
-import org.openmap4u.commons.Position;
-import org.openmap4u.plugin.builder.symbol.Cross;
+import static org.openmap4u.commons.HorizontalAlign.CENTER;
 import org.openmap4u.commons.Length;
+import org.openmap4u.commons.Point.Align;
+import org.openmap4u.commons.Position;
+import static org.openmap4u.commons.VerticalAlign.MIDDLE;
+import org.openmap4u.plugin.builder.core.Polygon;
+import org.openmap4u.plugin.builder.core.Text;
+import org.openmap4u.plugin.builder.symbol.Cross;
 
 /**
  * Base class for all builder plugin tests.
@@ -121,7 +123,7 @@ public abstract class AbstractBuilderLambdaTest<T extends Buildable> extends
      *
      */
     public static final Action<Position> ALIGN = new Action(
-            MockupAction.ALIGN, Position.LeftTop, Position.CenterTop, Position.RightTop, Position.LeftMiddle, Position.CenterMiddle, Position.RightMiddle, Position.LeftBottom, Position.CenterBottom, Position.RightBottom,Position.LeftTop);
+            MockupAction.ALIGN, Position.LEFT_TOP, Position.CENTER_TOP, Position.RIGHT_TOP, Position.LEFT_MIDDLE, Position.CENTER_MIDDLE, Position.RIGHT_MIDDLE, Position.LEFT_BOTTOM, Position.CENTER_BOTTOM, Position.RIGHT_BOTTOM,Position.LEFT_TOP);
 
     /**
      *
@@ -197,8 +199,9 @@ public abstract class AbstractBuilderLambdaTest<T extends Buildable> extends
                     .getValues(MockupAction.OPACITY)[index]);
         }
         if (actions.contains(MockupAction.ALIGN)) {
-            builder.align((Position) actions
-                    .getValues(MockupAction.ALIGN)[index]);
+            builder.align(((Align) actions
+                    .getValues(MockupAction.ALIGN)[index]).getX(),((Align) actions
+                    .getValues(MockupAction.ALIGN)[index]).getY());
         }
      }
 
@@ -267,7 +270,7 @@ public abstract class AbstractBuilderLambdaTest<T extends Buildable> extends
                         .setFontColor(Color.GRAY)
                         .size(2.5)
                         .point(row * 2 + 1, column * 2 + 1)
-                        .align(Position.CenterMiddle)
+                        .align(CENTER,MIDDLE)
                         .offset(-.9, .9)
                         .text(
                                 new StringBuilder().append(row).append("/")

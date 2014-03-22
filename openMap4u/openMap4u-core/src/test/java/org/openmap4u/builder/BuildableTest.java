@@ -9,20 +9,26 @@
  */
 package org.openmap4u.builder;
 
-import org.junit.*;
-import org.openmap4u.AbstractOpenMap4uTest;
-import org.openmap4u.plugin.builder.core.*;
-import org.openmap4u.plugin.builder.symbol.Rectangle;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import org.junit.*;
+import org.openmap4u.AbstractOpenMap4uTest;
+import static org.openmap4u.commons.HorizontalAlign.CENTER;
+import static org.openmap4u.commons.HorizontalAlign.LEFT;
+import static org.openmap4u.commons.HorizontalAlign.RIGHT;
 
 import org.openmap4u.commons.Position;
+import static org.openmap4u.commons.VerticalAlign.BOTTOM;
+import static org.openmap4u.commons.VerticalAlign.MIDDLE;
+import static org.openmap4u.commons.VerticalAlign.TOP;
 import org.openmap4u.plugin.builder.chart.LineChart;
 import org.openmap4u.plugin.builder.chart.PieChart;
+import org.openmap4u.plugin.builder.core.*;
+import org.openmap4u.plugin.builder.symbol.Rectangle;
 
 /**
  *
@@ -197,7 +203,7 @@ public class BuildableTest extends AbstractOpenMap4uTest {
      */
     @Test
     public void tesAlignLeftTop() throws IOException {
-        write("b_alignLeftTop.png", getPolygonTransparent(), getPolygon().align(Position.LeftTop), getRedMarker(1.1, 1));
+        write("b_alignLeftTop.png", getPolygonTransparent(), getPolygon().align(LEFT,TOP), getRedMarker(1.1, 1));
     }
 
     /**
@@ -206,7 +212,7 @@ public class BuildableTest extends AbstractOpenMap4uTest {
      */
     @Test
     public void tesAlignLeftMiddle() throws IOException {
-        write("b_alignLeftMiddle.png", getPolygonTransparent(), getPolygon().align(Position.LeftMiddle), getRedMarker(1.1, 1));
+        write("b_alignLeftMiddle.png", getPolygonTransparent(), getPolygon().align(LEFT,MIDDLE), getRedMarker(1.1, 1));
     }
 
     /**
@@ -215,7 +221,7 @@ public class BuildableTest extends AbstractOpenMap4uTest {
      */
     @Test
     public void tesAlignLeftBottom() throws IOException {
-        write("b_alignLeftBottom.png", getPolygonTransparent(), getPolygon().align(Position.LeftBottom), getRedMarker(1.1, 1));
+        write("b_alignLeftBottom.png", getPolygonTransparent(), getPolygon().align(LEFT,BOTTOM), getRedMarker(1.1, 1));
     }
 
     /**
@@ -224,7 +230,7 @@ public class BuildableTest extends AbstractOpenMap4uTest {
      */
     @Test
     public void tesAlignCenterTop() throws IOException {
-        write("b_alignCenterTop.png", getPolygonTransparent(), getPolygon().align(Position.CenterTop), getRedMarker(1.1, 1));
+        write("b_alignCenterTop.png", getPolygonTransparent(), getPolygon().align(CENTER,TOP), getRedMarker(1.1, 1));
     }
 
     /**
@@ -233,7 +239,7 @@ public class BuildableTest extends AbstractOpenMap4uTest {
      */
     @Test
     public void tesAlignCenterMiddle() throws IOException {
-        write("b_alignCenterMiddle.png", getPolygonTransparent(), getPolygon().align(Position.CenterMiddle), getRedMarker(1.1, 1));
+        write("b_alignCenterMiddle.png", getPolygonTransparent(), getPolygon().align(CENTER,MIDDLE), getRedMarker(1.1, 1));
     }
 
     /**
@@ -242,7 +248,7 @@ public class BuildableTest extends AbstractOpenMap4uTest {
      */
     @Test
     public void testAlignCenterBottom() throws IOException {
-        write("b_alignCenterBottom.png", getPolygonTransparent(), getPolygon().align(Position.CenterBottom), getRedMarker(1.1, 1));
+        write("b_alignCenterBottom.png", getPolygonTransparent(), getPolygon().align(CENTER,BOTTOM), getRedMarker(1.1, 1));
     }
 
     /**
@@ -251,7 +257,7 @@ public class BuildableTest extends AbstractOpenMap4uTest {
      */
     @Test
     public void testAlignRightTop() throws IOException {
-        write("b_alignRightTop.png", getPolygonTransparent(), getPolygon().align(Position.RightTop), getRedMarker(1.1, 1));
+        write("b_alignRightTop.png", getPolygonTransparent(), getPolygon().align(RIGHT,TOP), getRedMarker(1.1, 1));
     }
 
     /**
@@ -260,7 +266,7 @@ public class BuildableTest extends AbstractOpenMap4uTest {
      */
     @Test
     public void testAligRightMiddle() throws IOException {
-        write("b_alignRightMiddle.png", getPolygonTransparent(), getPolygon().align(Position.RightMiddle), getRedMarker(1.1, 1));
+        write("b_alignRightMiddle.png", getPolygonTransparent(), getPolygon().align(RIGHT,MIDDLE), getRedMarker(1.1, 1));
     }
 
     /**
@@ -269,7 +275,7 @@ public class BuildableTest extends AbstractOpenMap4uTest {
      */
     @Test
     public void tesAlignRightBottom() throws IOException {
-        write("b_alignRightBottom.png", getPolygonTransparent(), getPolygon().align(Position.RightBottom), getRedMarker(1.1, 1));
+        write("b_alignRightBottom.png", getPolygonTransparent(), getPolygon().align(RIGHT,BOTTOM), getRedMarker(1.1, 1));
     }
 
     /**
@@ -296,7 +302,7 @@ public class BuildableTest extends AbstractOpenMap4uTest {
      */
     @Test
     public void testOffsetRotateScaleAlign() throws IOException {
-        write("b_offsetRoateScaleAlign.png", getPolygon().offset(.25, .5).rotate(30).scale(1).align(Position.LeftBottom));
+        write("b_offsetRoateScaleAlign.png", getPolygon().offset(.25, .5).rotate(30).scale(1).align(LEFT,BOTTOM));
     }
 
     /**
@@ -309,7 +315,7 @@ public class BuildableTest extends AbstractOpenMap4uTest {
         write("b_transform2gether2.png", getPolygon().offset(-.5,-.35).rotate(30), getRedMarker(.6,0.65));
            write("b_transform2gether3.png", getPolygon().offset(-.5,-.35).rotate(30).scale(1.5), getRedMarker(.6,0.65));
       
-        write("b_transform2gether4.png", getPolygon().offset(-.5,-.35).rotate(30).scale(1.5).align(Position.LeftMiddle), getRedMarker(0.6,0.65));
+        write("b_transform2gether4.png", getPolygon().offset(-.5,-.35).rotate(30).scale(1.5).align(LEFT,MIDDLE), getRedMarker(0.6,0.65));
       
 
     }

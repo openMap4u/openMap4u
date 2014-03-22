@@ -69,11 +69,11 @@ public class LineChart extends ShapeBuilder<LineChart> {
     }
     
      public final LineChart lineTo(double toX, double [] toY) {
-        return null;// super.lineTo(toX, toY);
+        return null; 
     }
      
       public final LineChart lineTo(double [] toX, double toY) {
-        return null;// super.lineTo(toX, toY);
+        return null; 
     }
      
    

@@ -43,7 +43,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      * Sets the shape.
      * @param shape The shape.
      */
-    protected void setShape(Shape shape) {
+    protected final void setShape(Shape shape) {
         this.mPath = new Path2D.Double(shape);
     }
 

@@ -4,8 +4,6 @@
  */
 package org.openmap4u.builder;
 
-import org.openmap4u.plugin.builder.core.Polygon;
-import org.openmap4u.plugin.builder.core.Text;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Paint;
@@ -13,17 +11,25 @@ import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.Test;
 import org.openmap4u.AbstractOpenMap4uTest;
+import org.openmap4u.DrawOrWriteable;
 import org.openmap4u.OutputFormat;
 import org.openmap4u.builder.Action.MockupAction;
 import static org.openmap4u.builder.Action.MockupAction.ALIGN;
-import org.openmap4u.DrawOrWriteable;
 import org.openmap4u.commons.FontStyle;
-import org.openmap4u.commons.Position;
-import org.openmap4u.plugin.builder.symbol.Cross;
+import static org.openmap4u.commons.HorizontalAlign.CENTER;
+import static org.openmap4u.commons.HorizontalAlign.LEFT;
+import static org.openmap4u.commons.HorizontalAlign.RIGHT;
 import org.openmap4u.commons.Length;
+import org.openmap4u.commons.Point.Align;
+import org.openmap4u.commons.Position;
+import static org.openmap4u.commons.VerticalAlign.BOTTOM;
+import static org.openmap4u.commons.VerticalAlign.MIDDLE;
+import static org.openmap4u.commons.VerticalAlign.TOP;
+import org.openmap4u.plugin.builder.core.Polygon;
+import org.openmap4u.plugin.builder.core.Text;
+import org.openmap4u.plugin.builder.symbol.Cross;
 
 /**
  * Base class for all builder plugin tests.
@@ -121,9 +127,9 @@ public abstract class AbstractBuilderTest<T extends Buildable> extends
     /**
      *
      */
-    public static final Action<Position> ALIGN = new Action(
-            MockupAction.ALIGN, Position.LeftTop, Position.CenterTop, Position.RightTop,
-            Position.LeftMiddle, Position.CenterMiddle, Position.RightMiddle, Position.LeftBottom, Position.CenterBottom, Position.RightBottom,Position.CenterTop, Position.RightTop);
+    public static final Action<Align> ALIGN = new Action(
+            MockupAction.ALIGN, new Align(LEFT,TOP), new Align(CENTER,TOP), new Align(RIGHT,TOP),
+            new Align(LEFT,MIDDLE), new Align(CENTER,MIDDLE), new Align(RIGHT,MIDDLE), new Align(LEFT,BOTTOM), new Align(CENTER,BOTTOM), new Align(RIGHT,BOTTOM),new Align(CENTER,TOP), new Align(RIGHT,TOP));
 
     /**
      *
@@ -199,8 +205,9 @@ public abstract class AbstractBuilderTest<T extends Buildable> extends
                     .getValues(MockupAction.OPACITY)[index]);
         }
         if (actions.contains(MockupAction.ALIGN)) {
-            builder.align((Position) actions
-                    .getValues(MockupAction.ALIGN)[index]);
+            builder.align(((Align) actions
+                    .getValues(MockupAction.ALIGN)[index]).getX(),((Align) actions
+                    .getValues(MockupAction.ALIGN)[index]).getY());
         }
          if (actions.contains(MockupAction.VISIBILITY)) {
             builder.visible((boolean) actions
@@ -249,7 +256,7 @@ public abstract class AbstractBuilderTest<T extends Buildable> extends
                 draw.draw(this.getDefaultOpenMap4u().get(Text.class)
                         .size(5)
                         .point(23, row * 2 + 1)
-                        .align(Position.LeftMiddle)
+                        .align(LEFT,MIDDLE)
                         .text(actions.get(row).getDescription()));
             }
         }
@@ -275,7 +282,7 @@ public abstract class AbstractBuilderTest<T extends Buildable> extends
                         .setFontColor(Color.GRAY)
                         .size(2.5)
                         .point(row * 2 + 1, column * 2 + 1)
-                        .align(Position.LeftTop)
+                        .align(LEFT,TOP)
                         .offset(-.9, .9)
                         .text(
                                 new StringBuilder().append(row).append("/")

@@ -31,7 +31,9 @@ import org.openmap4u.commons.ShapeDrawable;
 import org.openmap4u.commons.TextDrawable;
 import org.openmap4u.commons.TextStyleable;
 import org.openmap4u.commons.Angle;
+import org.openmap4u.commons.HorizontalAlign;
 import org.openmap4u.commons.Length;
+import org.openmap4u.commons.VerticalAlign;
 
 /**
  * All 2D Plugins are drived from this base class.
@@ -184,9 +186,11 @@ abstract class AbstractJava2dPlugin implements Outputable {
         GlyphVector glyphVector = font.createGlyphVector(
                 this.mFontRenderContext, text.getText());
         Shape fontPath = this.mFontSCaleBack.createTransformedShape(glyphVector.getOutline());
-        Polygon shape2Draw = new Polygon().fill(text.getStyle().getFontColor()).color(null)
-                .align(text.getTransform().getAlign()).transparence(text.getStyle().getAlpha())
+        Polygon shape2Draw = new Polygon().fill(text.getStyle().getFontColor()).color(null).transparence(text.getStyle().getAlpha())
                 .shape(fontPath);
+        if (text.getTransform().getAlign()!=null) {
+        shape2Draw.align(text.getTransform().getAlign().getX(),text.getTransform().getAlign().getY());
+        }
         shape2Draw.setTransform(text.getTransform());
         Shape outline = new Rectangle2D.Double(0, 0, fontPath.getBounds2D().getWidth(), text.getStyle().getFontSize() * mStrokeUnits2DrawingUnits);
         draw(point, shape2Draw, outline);

@@ -5,11 +5,14 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.HashSet;
 import java.util.Set;
+import org.openmap4u.commons.Angle;
 import org.openmap4u.commons.DrawableTransformable;
+import org.openmap4u.commons.HorizontalAlign;
+import org.openmap4u.commons.Point.Align;
 import org.openmap4u.commons.Position;
 import org.openmap4u.commons.Styleable;
-import org.openmap4u.commons.Angle;
 import org.openmap4u.commons.Transparence;
+import org.openmap4u.commons.VerticalAlign;
 
 /**
  * All builders are derived from this base class.
@@ -40,14 +43,19 @@ class Builder<S extends Styleable<S>, B extends Builder<S, B>> implements Builda
      */
     private Set<Object> mPoints = null;
 
+    private DrawableTransformable mTransform = new DrawTransform();
+
+    Builder() {
+    }
+
     @Override
     public Set<Object> getPoints() {
         return this.mPoints;
     }
 
-    private DrawableTransformable mTransform = new DrawTransform();
-
-    Builder() {
+    @Override
+    public Shape getPreviousShape() {
+        return this.mPreviousDrawnShape;
     }
 
     @Override
@@ -68,8 +76,8 @@ class Builder<S extends Styleable<S>, B extends Builder<S, B>> implements Builda
     }
 
     @Override
-    public B align(Position align) {
-        this.getTransform().setAlign(align);
+    public B align(HorizontalAlign horizontalAlign, VerticalAlign verticalAlign) {
+        this.getTransform().setAlign(new Align(horizontalAlign,verticalAlign));
         return (B) this;
     }
 
@@ -166,18 +174,33 @@ class Builder<S extends Styleable<S>, B extends Builder<S, B>> implements Builda
     public final DrawableTransformable getTransform() {
         return this.mTransform;
     }
-    
+
+    @Override
     public void setTransform(DrawableTransformable transform) {
-    this.mTransform = transform;
+        this.mTransform = transform;
     }
 
     @Override
     public boolean isPoint() {
-        return this.getPoints() != null && this.getPoints().size() > 0;
+        return this.getPoints() != null && !this.getPoints().isEmpty();
     }
 
     @Override
     public void tearDown() {
+        /* nothing to do */
+    }
+
+    @Override
+    public B point(HorizontalAlign x, VerticalAlign y) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public B point(HorizontalAlign x, double y) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public B point(double x, VerticalAlign y) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

@@ -7,7 +7,9 @@ import org.openmap4u.commons.Position;
 import org.openmap4u.commons.Drawable;
 import org.openmap4u.commons.Styleable;
 import org.openmap4u.commons.Angle;
+import org.openmap4u.commons.HorizontalAlign;
 import org.openmap4u.commons.Transparence;
+import org.openmap4u.commons.VerticalAlign;
 
 /**
  * All builders are derived from this base class.
@@ -24,7 +26,9 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
      *
      * @return The points.
      */
-    public Set<Object> getPoints();
+  Set<Object> getPoints();
+    
+      Shape getPreviousShape();
 
     /**
      * Is called before the drawable is drawn.
@@ -32,7 +36,7 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
      * @param previousDrawnShape The previous drawn shape (or in the case it is
      * the first primitive a new Rectangle2D.Double() instance).
      */
-    public void setUp(Shape previousDrawnShape);
+    void setUp(Shape previousDrawnShape);
 
     /**
      * Sets whether the primitive is drawn (is visible = true) or not (is not
@@ -41,7 +45,7 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
      * @param isVisible The visibility.
      * @return The builder itself.
      */
-    public B visible(boolean isVisible);
+     B visible(boolean isVisible);
 
     /**
      * Sets the transparence.
@@ -54,11 +58,13 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
      * <code>myBuilder.transparence(100)=<img alt="" src="./doc-files/b_transparence100.png"></code>.
      * @return The builder itself (fluent interface pattern).
      */
-    public B transparence(double tranparence);
+   B transparence(double tranparence);
 
     /**
      * Aligns the primitive (shape, text or image).
      *
+     * @param horizontalAlign
+     * @param verticalAlign
      * @param align How to align the primitive <br>
      * <code>myBuilder.align(Position.LeftTop) = <img alt="" src="./doc-files/b_alignLeftTop.png"></code>, 
      * <code>myBuilder.align(Position.CenterTop) = <img alt="" src="./doc-files/b_alignCenterTop.png"></code>, 
@@ -71,7 +77,7 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
      * <code>myBuilder.align(Position.RightBottom) = <img alt="" src="./doc-files/b_alignRightBottom.png"></code>.
      * @return The builder itself (fluent interface pattern).
      */
-    B align(Position align);
+    B align(HorizontalAlign horizontalAlign,VerticalAlign verticalAlign);
 
     /**
      * Sets the offset in darwing units in x and y direction.<br>
@@ -186,7 +192,11 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
      * @return The builder itself (fluent interface pattern).
      */
     B point(Position position);
+    
+    B point(HorizontalAlign x, VerticalAlign y);
 
+    
+    
     /**
      * Wheter it is a point (=true) or not (=false).
      *
@@ -197,6 +207,6 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
     /**
      * Cleanup code.
      */
-    public void tearDown();
+    void tearDown();
 
 }
