@@ -24,8 +24,7 @@ public class TransformUtil {
     /**
      * Gets the point position on a given shape.
      *
-     * @param x The x position, whose point should be retrieved.
-     * @param y The y position, whose point should be retrieved.
+     * @param point The position, whose point should be retrieved.
      * @param shape The shape.
      * @return The resulting point.
      */
@@ -98,63 +97,6 @@ public class TransformUtil {
         }
     }
 
-    /**
-     * Gets the point position on a given shape.
-     *
-     * @param position The position, whose point should be retrieved.
-     * @param shape The shape.
-     * @return The resulting point.
-     */
-    /*   public final Point2D getPointInvers(Position position, Shape shape) {
-     Rectangle2D bounds = shape.getBounds2D();
-     switch (position) {
-     case LEFT_TOP:
-     return new Point2D.Double(bounds.getMinX(), bounds.getMinY());
-     case CENTER_TOP:
-     return new Point2D.Double(bounds.getCenterX(), bounds.getMinY());
-     case RIGHT_TOP:
-     return new Point2D.Double(bounds.getMaxX(), bounds.getMinY());
-     case LEFT_MIDDLE:
-     return new Point2D.Double(bounds.getMinX(), bounds.getCenterY());
-     case CENTER_MIDDLE:
-     return new Point2D.Double(bounds.getCenterX(), bounds.getCenterY());
-     case RIGHT_MIDDLE:
-     return new Point2D.Double(bounds.getMaxX(), bounds.getCenterY());
-     case LEFT_BOTTOM:
-     return new Point2D.Double(bounds.getMinX(), bounds.getMaxY());
-     case CENTER_BOTTOM:
-     return new Point2D.Double(bounds.getCenterX(), bounds.getMaxY());
-     case RIGHT_BOTTOM:
-     return new Point2D.Double(bounds.getMaxX(), bounds.getMaxY());
-     default:
-     return new Point2D.Double();
-     }
-     } */
-    /*   public final Point2D getPoint(Position position, Shape shape) {
-     Rectangle2D bounds = shape.getBounds2D();
-     switch (position) {
-     case LEFT_TOP:
-     return new Point2D.Double(bounds.getMinX(), bounds.getMaxY());
-     case CENTER_TOP:
-     return new Point2D.Double(bounds.getCenterX(), bounds.getMaxY());
-     case RIGHT_TOP:
-     return new Point2D.Double(bounds.getMaxX(), bounds.getMaxY());
-     case LEFT_MIDDLE:
-     return new Point2D.Double(bounds.getMinX(), bounds.getCenterY());
-     case CENTER_MIDDLE:
-     return new Point2D.Double(bounds.getCenterX(), bounds.getCenterY());
-     case RIGHT_MIDDLE:
-     return new Point2D.Double(bounds.getMaxX(), bounds.getCenterY());
-     case LEFT_BOTTOM:
-     return new Point2D.Double(bounds.getMinX(), bounds.getMinY());
-     case CENTER_BOTTOM:
-     return new Point2D.Double(bounds.getCenterX(), bounds.getMinY());
-     case RIGHT_BOTTOM:
-     return new Point2D.Double(bounds.getMaxX(), bounds.getMinY());
-     default:
-     return new Point2D.Double();
-     }
-     } */
     /**
      * Transform the given point with the provided global transformation.
      *

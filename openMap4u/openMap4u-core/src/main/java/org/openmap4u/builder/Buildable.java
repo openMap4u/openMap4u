@@ -27,7 +27,7 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
      *
      * @return The points.
      */
-    Set<Point<?,?>> getPoints();
+    Set<Point<?, ?>> getPoints();
 
     Shape getPreviousShape();
 
@@ -62,20 +62,20 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
     B transparence(double tranparence);
 
     /**
-     * Aligns the primitive (shape, text or image).
+     * Aligns the primitive (shape, text or image) relative to its enclosing
+     * bounding box..
      *
-     * @param horizontalAlign
-     * @param verticalAlign
-     * @param align How to align the primitive <br>
-     * <code>myBuilder.align(Position.LeftTop) = <img alt="" src="./doc-files/b_alignLeftTop.png"></code>,
-     * <code>myBuilder.align(Position.CenterTop) = <img alt="" src="./doc-files/b_alignCenterTop.png"></code>,
-     * <code>myBuilder.align(Position.RightTop) = <img alt="" src="./doc-files/b_alignRightTop.png"></code><br>,
-     * <code>myBuilder.align(Position.LeftMiddle) = <img alt="" src="./doc-files/b_alignLeftMiddle.png"></code>,
-     * <code>myBuilder.align(Position.CenterMiddle) = <img alt="" src="./doc-files/b_alignCenterMiddle.png"></code>,
-     * <code>myBuilder.align(Position.RightMiddle) = <img alt="" src="./doc-files/b_alignRightMiddle.png"></code>,
-     * <code>myBuilder.align(Position.LeftBottom) = <img alt="" src="./doc-files/b_alignLeftBottom.png"></code>,
-     * <code>myBuilder.align(Position.CenterBottom) = <img alt="" src="./doc-files/b_alignCenterBottom.png"></code>,
-     * <code>myBuilder.align(Position.RightBottom) = <img alt="" src="./doc-files/b_alignRightBottom.png"></code>.
+     * @param horizontalAlign The horizontal alignment.
+     * @param verticalAlign The vertical alignment.
+     * <code>myBuilder.align(LEFT, TOP) = <img alt="" src="./doc-files/b_alignLeftTop.png"></code>,
+     * <code>myBuilder.align(CENTER, TOP) = <img alt="" src="./doc-files/b_alignCenterTop.png"></code>,
+     * <code>myBuilder.align(RIGHT, TOP) = <img alt="" src="./doc-files/b_alignRightTop.png"></code><br>,
+     * <code>myBuilder.align(LEFT, MIDDLE) = <img alt="" src="./doc-files/b_alignLeftMiddle.png"></code>,
+     * <code>myBuilder.align(CENTER, MIDDLE) = <img alt="" src="./doc-files/b_alignCenterMiddle.png"></code>,
+     * <code>myBuilder.align(RIGHT, MIDDLE) = <img alt="" src="./doc-files/b_alignRightMiddle.png"></code>,
+     * <code>myBuilder.align(LEFT, BOTTOM) = <img alt="" src="./doc-files/b_alignLeftBottom.png"></code>,
+     * <code>myBuilder.align(CENTER, BOTTOM) = <img alt="" src="./doc-files/b_alignCenterBottom.png"></code>,
+     * <code>myBuilder.align(RIGHT, BOTTOM) = <img alt="" src="./doc-files/b_alignRightBottom.png"></code>.
      * @return The builder itself (fluent interface pattern).
      */
     B align(HorizontalAlign horizontalAlign, VerticalAlign verticalAlign);
@@ -189,13 +189,29 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
      * Sets the x and y coordinate of the point relative to the previous drawn
      * shape.
      *
-     * @param x
-     * @param y
+     * @param x The horizontal coordinate relative to the last previous drawn primitive.
+    * @param y The vertical coordinate relative to the last previous drawn primitive.
+      * @return The builder itself (fluent interface pattern).
      */
     B point(HorizontalAlign x, VerticalAlign y);
 
+    /**
+     * Sets the x and y coordinate of the point relative to the previous drawn
+     *
+     * @param x The horizontal coordinate relative to the last previous drawn primitive.
+     * @param y The y coordinate of the point in map units.
+     * @return The builder itself (fluent interface pattern).
+     */
     B point(HorizontalAlign x, double y);
 
+    /**
+     * Sets the point relative to the last previous drawn primitive.
+     *
+     * @param x The x coordinate of the point in map units.
+     * @param y The vertical coordinate relative to the last previous drawn
+     * shape.
+     * @return The builder itself (fluent interface pattern).
+     */
     B point(double x, VerticalAlign y);
 
     /**
