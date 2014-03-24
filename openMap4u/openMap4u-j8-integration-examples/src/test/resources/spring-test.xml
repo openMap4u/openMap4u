@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+	<bean id="defaultOpenMap4u" class="org.openmap4u.OpenMap4u">
+
+	</bean>
+
+	<bean id="overriddenOpenMap4u" class="org.openmap4u.OpenMap4u">
+	</bean>
+
+	<!-- Tests the svg output format -->
+	<beans profile="svg">
+		<bean id="outputFormat" class="org.openmap4u.plugin.ouputformat.graphics2d.PngPlugin" />
+	</beans>
+
+	<!-- Tests the png output format -->
+	<beans profile="png">
+		<bean id="ouputFormat" class="org.openmap4u.plugin.óutputformat.svg.SvgPlugin" />
+	</beans>
+</beans>
