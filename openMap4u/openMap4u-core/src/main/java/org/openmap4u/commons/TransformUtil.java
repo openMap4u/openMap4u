@@ -21,8 +21,7 @@ import static org.openmap4u.commons.VerticalAlign.TOP;
  */
 public class TransformUtil {
 
-
- /**
+    /**
      * Gets the point position on a given shape.
      *
      * @param x The x position, whose point should be retrieved.
@@ -31,44 +30,43 @@ public class TransformUtil {
      * @return The resulting point.
      */
     public final Point2D getPoint(Point<?, ?> point, Shape shape) {
-        Point2D.Double pt = new Point2D.Double();
+        double x = 0;
+        double y = 0;
         if (point.getX() instanceof Double) {
-            pt.x = (Double) point.getX();
+            x = (Double) point.getX();
         } else if (point.getX() instanceof HorizontalAlign) {
-            pt.x = getPoint((HorizontalAlign) point.getX(), shape.getBounds2D());
+            x = getPoint((HorizontalAlign) point.getX(), shape.getBounds2D());
         }
         if (point.getY() instanceof Double) {
-            pt.y = (Double) point.getY();
+            y = (Double) point.getY();
         } else if (point.getY() instanceof VerticalAlign) {
-            pt.y = getPoint((VerticalAlign) point.getY(), shape.getBounds2D());
+            y = getPoint((VerticalAlign) point.getY(), shape.getBounds2D());
         }
-        return pt;
+        return new Point2D.Double(x, y);
     }
-    
-    
-      /**
+
+    /**
      * Gets the point position on a given shape.
      *
-     * @param x The x position, whose point should be retrieved.
-     * @param y The y position, whose point should be retrieved.
+     * @param point The position, whose point should be retrieved.
      * @param shape The shape.
      * @return The resulting point.
      */
     public final Point2D getPointInvers(Point<?, ?> point, Shape shape) {
-        Point2D.Double pt = new Point2D.Double();
+        double x = 0;
+        double y = 0;
         if (point.getX() instanceof Double) {
-            pt.x = (Double) point.getX();
+            x = (Double) point.getX();
         } else if (point.getX() instanceof HorizontalAlign) {
-            pt.x = getPoint((HorizontalAlign) point.getX(), shape.getBounds2D());
+            x = getPoint((HorizontalAlign) point.getX(), shape.getBounds2D());
         }
         if (point.getY() instanceof Double) {
-            pt.y = (Double) point.getY();
+            y = (Double) point.getY();
         } else if (point.getY() instanceof VerticalAlign) {
-            pt.y = getInversPoint((VerticalAlign) point.getY(), shape.getBounds2D());
+            y = getInversPoint((VerticalAlign) point.getY(), shape.getBounds2D());
         }
-        return pt;
+        return new Point2D.Double(x, y);
     }
-
 
     double getPoint(HorizontalAlign horizontalAlign, Rectangle2D bounds) {
         if (horizontalAlign == LEFT) {
@@ -100,11 +98,6 @@ public class TransformUtil {
         }
     }
 
-
-
-
-
-
     /**
      * Gets the point position on a given shape.
      *
@@ -112,58 +105,56 @@ public class TransformUtil {
      * @param shape The shape.
      * @return The resulting point.
      */
-    public final Point2D getPointInvers(Position position, Shape shape) {
-        Rectangle2D bounds = shape.getBounds2D();
-        switch (position) {
-            case LEFT_TOP:
-                return new Point2D.Double(bounds.getMinX(), bounds.getMinY());
-            case CENTER_TOP:
-                return new Point2D.Double(bounds.getCenterX(), bounds.getMinY());
-            case RIGHT_TOP:
-                return new Point2D.Double(bounds.getMaxX(), bounds.getMinY());
-            case LEFT_MIDDLE:
-                return new Point2D.Double(bounds.getMinX(), bounds.getCenterY());
-            case CENTER_MIDDLE:
-                return new Point2D.Double(bounds.getCenterX(), bounds.getCenterY());
-            case RIGHT_MIDDLE:
-                return new Point2D.Double(bounds.getMaxX(), bounds.getCenterY());
-            case LEFT_BOTTOM:
-                return new Point2D.Double(bounds.getMinX(), bounds.getMaxY());
-            case CENTER_BOTTOM:
-                return new Point2D.Double(bounds.getCenterX(), bounds.getMaxY());
-            case RIGHT_BOTTOM:
-                return new Point2D.Double(bounds.getMaxX(), bounds.getMaxY());
-            default:
-                return new Point2D.Double();
-        }
-    }
-    
-     public final Point2D getPoint(Position position, Shape shape) {
-        Rectangle2D bounds = shape.getBounds2D();
-        switch (position) {
-            case LEFT_TOP:
-                return new Point2D.Double(bounds.getMinX(), bounds.getMaxY());
-            case CENTER_TOP:
-                return new Point2D.Double(bounds.getCenterX(), bounds.getMaxY());
-            case RIGHT_TOP:
-                return new Point2D.Double(bounds.getMaxX(), bounds.getMaxY());
-            case LEFT_MIDDLE:
-                return new Point2D.Double(bounds.getMinX(), bounds.getCenterY());
-            case CENTER_MIDDLE:
-                return new Point2D.Double(bounds.getCenterX(), bounds.getCenterY());
-            case RIGHT_MIDDLE:
-                return new Point2D.Double(bounds.getMaxX(), bounds.getCenterY());
-            case LEFT_BOTTOM:
-                return new Point2D.Double(bounds.getMinX(), bounds.getMinY());
-            case CENTER_BOTTOM:
-                return new Point2D.Double(bounds.getCenterX(), bounds.getMinY());
-            case RIGHT_BOTTOM:
-                return new Point2D.Double(bounds.getMaxX(), bounds.getMinY());
-            default:
-                return new Point2D.Double();
-        }
-    }
-
+    /*   public final Point2D getPointInvers(Position position, Shape shape) {
+     Rectangle2D bounds = shape.getBounds2D();
+     switch (position) {
+     case LEFT_TOP:
+     return new Point2D.Double(bounds.getMinX(), bounds.getMinY());
+     case CENTER_TOP:
+     return new Point2D.Double(bounds.getCenterX(), bounds.getMinY());
+     case RIGHT_TOP:
+     return new Point2D.Double(bounds.getMaxX(), bounds.getMinY());
+     case LEFT_MIDDLE:
+     return new Point2D.Double(bounds.getMinX(), bounds.getCenterY());
+     case CENTER_MIDDLE:
+     return new Point2D.Double(bounds.getCenterX(), bounds.getCenterY());
+     case RIGHT_MIDDLE:
+     return new Point2D.Double(bounds.getMaxX(), bounds.getCenterY());
+     case LEFT_BOTTOM:
+     return new Point2D.Double(bounds.getMinX(), bounds.getMaxY());
+     case CENTER_BOTTOM:
+     return new Point2D.Double(bounds.getCenterX(), bounds.getMaxY());
+     case RIGHT_BOTTOM:
+     return new Point2D.Double(bounds.getMaxX(), bounds.getMaxY());
+     default:
+     return new Point2D.Double();
+     }
+     } */
+    /*   public final Point2D getPoint(Position position, Shape shape) {
+     Rectangle2D bounds = shape.getBounds2D();
+     switch (position) {
+     case LEFT_TOP:
+     return new Point2D.Double(bounds.getMinX(), bounds.getMaxY());
+     case CENTER_TOP:
+     return new Point2D.Double(bounds.getCenterX(), bounds.getMaxY());
+     case RIGHT_TOP:
+     return new Point2D.Double(bounds.getMaxX(), bounds.getMaxY());
+     case LEFT_MIDDLE:
+     return new Point2D.Double(bounds.getMinX(), bounds.getCenterY());
+     case CENTER_MIDDLE:
+     return new Point2D.Double(bounds.getCenterX(), bounds.getCenterY());
+     case RIGHT_MIDDLE:
+     return new Point2D.Double(bounds.getMaxX(), bounds.getCenterY());
+     case LEFT_BOTTOM:
+     return new Point2D.Double(bounds.getMinX(), bounds.getMinY());
+     case CENTER_BOTTOM:
+     return new Point2D.Double(bounds.getCenterX(), bounds.getMinY());
+     case RIGHT_BOTTOM:
+     return new Point2D.Double(bounds.getMaxX(), bounds.getMinY());
+     default:
+     return new Point2D.Double();
+     }
+     } */
     /**
      * Transform the given point with the provided global transformation.
      *
@@ -329,8 +320,17 @@ public class TransformUtil {
      * @throws NoninvertibleTransformException Is thrown in the case the global
      * transformation cannot be inverted.
      */
-    public Point2D transform(Position position, Shape shape, AffineTransform globalTransform) throws NoninvertibleTransformException {
-        return inverseTransform(getPointInvers(position, shape), globalTransform);
+    public Point2D transform(Point<?, ?> position, Shape shape, AffineTransform globalTransform) throws NoninvertibleTransformException {
+        // Technical debt 
+        if (position instanceof Point.NoAlign) {
+            return new Point2D.Double(((Point.NoAlign) position).getX(), ((Point.NoAlign) position).getY());
+        } else if (position instanceof Point.Align) {
+            return inverseTransform(getPointInvers(position, shape), globalTransform);
+        } else if (position instanceof Point.HorizontalAlign) {
+             return new Point2D.Double(inverseTransform(getPointInvers(position, shape), globalTransform).getX(),((Point.HorizontalAlign)position).getY());
+        } else {
+            return new Point2D.Double(((Point.VerticalAlign)position).getX(),inverseTransform(getPointInvers(position, shape), globalTransform).getX() );
+        }
     }
 
 }

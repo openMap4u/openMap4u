@@ -23,9 +23,8 @@ package org.openmap4u;
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  * #L%
  */
-import org.openmap4u.commons.Globals;
 import java.awt.Shape;
-import java.awt.geom.NoninvertibleTransformException;
+import java.awt.geom.NoninvertibleTransformException; 
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.io.IOException;
@@ -34,20 +33,20 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import org.openmap4u.commons.AreaOfInterestTransformable;
 import org.openmap4u.builder.Buildable;
+import org.openmap4u.commons.Angle;
+import org.openmap4u.commons.AreaOfInterestTransformable;
+import org.openmap4u.commons.Globals;
+import org.openmap4u.commons.ImageDrawable;
+import org.openmap4u.commons.Length;
 import org.openmap4u.commons.Plugable;
-import org.openmap4u.commons.Position;
+import org.openmap4u.commons.Point;
+import org.openmap4u.commons.ShapeDrawable;
+import org.openmap4u.commons.TextDrawable;
 import org.openmap4u.commons.TransformUtil;
 import org.openmap4u.commons.Util;
 import org.openmap4u.format.Outputable;
 import org.openmap4u.plugin.format.graphics2d.Png;
-import org.openmap4u.commons.Angle;
-import org.openmap4u.commons.Length;
-import org.openmap4u.commons.ShapeDrawable;
-import org.openmap4u.commons.ImageDrawable;
-import org.openmap4u.commons.TextDrawable;
 
 /**
  * Default implementation of the Canvas interface.
@@ -55,16 +54,21 @@ import org.openmap4u.commons.TextDrawable;
  * @author Michael Hadrbolec
  *
  */
-public class Canvas implements Plugable,   DrawOrWriteable,
-        OverrideDrawOrWriteable, AreaOfInterestTransformable  {
+public class Canvas implements Plugable, DrawOrWriteable,
+        OverrideDrawOrWriteable, AreaOfInterestTransformable {
 
     /**
      * The name of the plugin.
      */
     public static final String PLUGIN_NAME = "DrawPlugin";
     private Outputable mOutputFormat = new Png();
-    private Shape previousDrawnShape = new Rectangle2D.Double();
-    
+
+    /**
+     * The default value for the previous drawn shape is an rectangle with the
+     * width and height = 0 and positioned on the point 0,0.
+     */
+    private Shape previousDrawnShape = new Rectangle2D.Double(0, 0, 0, 0);
+
     /**
      * Whether the output format has been initialized.
      */
@@ -112,14 +116,13 @@ public class Canvas implements Plugable,   DrawOrWriteable,
 
     private double mRotate = Globals.DEFAULT_ROTATE;
 
-    Canvas(Length worldUnits,Length drawingUnits, Length strokeUnits, Angle angleUnits) {
-        this.mWorldUnits=worldUnits;
-        this.mDrawingUnits= drawingUnits;
-        this.mStrokeUnits= strokeUnits;
+    Canvas(Length worldUnits, Length drawingUnits, Length strokeUnits, Angle angleUnits) {
+        this.mWorldUnits = worldUnits;
+        this.mDrawingUnits = drawingUnits;
+        this.mStrokeUnits = strokeUnits;
         this.mAngleUnits = angleUnits;
     }
 
-  
     /**
      * Writes the rendering result into the given output stream.
      *
@@ -133,7 +136,7 @@ public class Canvas implements Plugable,   DrawOrWriteable,
         this.mOutputFormat.tearDown();
     }
 
-      public final Overrideable worldUnits(Length worldUnits) {
+    public final Overrideable worldUnits(Length worldUnits) {
         this.mWorldUnits = worldUnits;
         return this;
     }
@@ -151,10 +154,9 @@ public class Canvas implements Plugable,   DrawOrWriteable,
         return this.mDrawingUnits;
     }
 
-    
-
     /**
      * Gets the stroke units.
+     *
      * @return The stroke units.
      */
     public final Length getStrokeUnits() {
@@ -196,7 +198,7 @@ public class Canvas implements Plugable,   DrawOrWriteable,
         return this.mRotate;
     }
 
-     public OverrideDrawOrWriteable size(double width, double height) {
+    public OverrideDrawOrWriteable size(double width, double height) {
         this.mViewportShape = new Rectangle2D.Double(0, 0, width, height);
         return this;
     }
@@ -235,7 +237,7 @@ public class Canvas implements Plugable,   DrawOrWriteable,
     }
 
     @Override
-     public <T extends Outputable> Canvas outputFormat(Class<T> outputFormat) {
+    public <T extends Outputable> Canvas outputFormat(Class<T> outputFormat) {
         this.mOutputFormat = Util.get().getPlugin(outputFormat);
         return this;
     }
@@ -250,7 +252,7 @@ public class Canvas implements Plugable,   DrawOrWriteable,
                     this.getWorldUnits(), this.getDrawingUnits(), getStrokeUnits(), getAngleUnits(),
                     new TransformUtil().getGlobalTransform(this));
             /* set initialzed true */
-            this.isInitialized=true;
+            this.isInitialized = true;
         }
 
         /* only in the case the primitive is visible */
@@ -258,17 +260,17 @@ public class Canvas implements Plugable,   DrawOrWriteable,
             /* perform setup tasks */
             this.mOutputFormat.before();
             /* process in the case it is a point based primitive */
+
             if (builder.isPoint()) {
                 for (Object point : builder.getPoints()) {
-                    if (point instanceof Point2D) {
-                        /* create the individual transformation */
-                        previousDrawnShape = draw((Point2D) point, builder, previousDrawnShape);
-                    } else if (point instanceof Position) {
-                        try {
-                             previousDrawnShape = draw(new TransformUtil().transform((Position) point, previousDrawnShape, this.mOutputFormat.getGlobalTransform()), builder, previousDrawnShape);
-                        } catch (NoninvertibleTransformException ex) {
-                            Logger.getLogger(Canvas.class.getName()).log(Level.SEVERE, null, ex);
-                        }
+                    try {
+                             try {
+                                previousDrawnShape = draw(new TransformUtil().transform((Point<?,?>) point, previousDrawnShape, this.mOutputFormat.getGlobalTransform()), builder, previousDrawnShape);
+                            } catch (NoninvertibleTransformException ex) {
+                                Logger.getLogger(Canvas.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                    } catch (Exception ex) {
+                        Logger.getLogger(Canvas.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             } else {
@@ -313,11 +315,7 @@ public class Canvas implements Plugable,   DrawOrWriteable,
 
     @Override
     public void write(Path out) throws IOException {
-         write(Files.newOutputStream(out));
+        write(Files.newOutputStream(out));
     }
-
-   
- 
- 
 
 }

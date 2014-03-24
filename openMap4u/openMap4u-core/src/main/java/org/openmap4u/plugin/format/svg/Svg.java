@@ -28,7 +28,6 @@ import org.openmap4u.commons.Globals;
 import org.openmap4u.commons.ImageDrawable;
 import org.openmap4u.commons.Length;
 import org.openmap4u.commons.Point.Align;
-import org.openmap4u.commons.Position;
 import org.openmap4u.commons.ShapeDrawable;
 import org.openmap4u.commons.TextDrawable;
 import org.openmap4u.commons.TextStyleable;

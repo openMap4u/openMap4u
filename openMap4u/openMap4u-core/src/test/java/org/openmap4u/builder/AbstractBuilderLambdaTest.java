@@ -18,10 +18,13 @@ import org.openmap4u.OutputFormat;
 import org.openmap4u.builder.Action.MockupAction;
 import org.openmap4u.commons.FontStyle;
 import static org.openmap4u.commons.HorizontalAlign.CENTER;
+import static org.openmap4u.commons.HorizontalAlign.LEFT;
+import static org.openmap4u.commons.HorizontalAlign.RIGHT;
 import org.openmap4u.commons.Length;
 import org.openmap4u.commons.Point.Align;
-import org.openmap4u.commons.Position;
+import static org.openmap4u.commons.VerticalAlign.BOTTOM;
 import static org.openmap4u.commons.VerticalAlign.MIDDLE;
+import static org.openmap4u.commons.VerticalAlign.TOP;
 import org.openmap4u.plugin.builder.core.Polygon;
 import org.openmap4u.plugin.builder.core.Text;
 import org.openmap4u.plugin.builder.symbol.Cross;
@@ -122,8 +125,8 @@ public abstract class AbstractBuilderLambdaTest<T extends Buildable> extends
     /**
      *
      */
-    public static final Action<Position> ALIGN = new Action(
-            MockupAction.ALIGN, Position.LEFT_TOP, Position.CENTER_TOP, Position.RIGHT_TOP, Position.LEFT_MIDDLE, Position.CENTER_MIDDLE, Position.RIGHT_MIDDLE, Position.LEFT_BOTTOM, Position.CENTER_BOTTOM, Position.RIGHT_BOTTOM,Position.LEFT_TOP);
+    public static final Action<Align> ALIGN = new Action(
+            MockupAction.ALIGN, new Align(LEFT,TOP), new Align(CENTER,TOP),new Align(RIGHT,TOP), new Align(LEFT,MIDDLE), new Align(CENTER,MIDDLE), new Align(RIGHT,MIDDLE), new Align(LEFT,BOTTOM), new Align(CENTER,BOTTOM), new Align(RIGHT,BOTTOM),new Align(LEFT,TOP));
 
     /**
      *

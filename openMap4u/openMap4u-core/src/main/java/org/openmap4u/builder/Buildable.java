@@ -2,12 +2,13 @@ package org.openmap4u.builder;
 
 import java.awt.Shape;
 import java.util.Set;
-import org.openmap4u.commons.Plugable;
-import org.openmap4u.commons.Position;
-import org.openmap4u.commons.Drawable;
-import org.openmap4u.commons.Styleable;
 import org.openmap4u.commons.Angle;
+import org.openmap4u.commons.Drawable;
 import org.openmap4u.commons.HorizontalAlign;
+import org.openmap4u.commons.Plugable;
+import org.openmap4u.commons.Point;
+
+import org.openmap4u.commons.Styleable;
 import org.openmap4u.commons.Transparence;
 import org.openmap4u.commons.VerticalAlign;
 
@@ -26,9 +27,9 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
      *
      * @return The points.
      */
-  Set<Object> getPoints();
-    
-      Shape getPreviousShape();
+    Set<Point<?,?>> getPoints();
+
+    Shape getPreviousShape();
 
     /**
      * Is called before the drawable is drawn.
@@ -45,20 +46,20 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
      * @param isVisible The visibility.
      * @return The builder itself.
      */
-     B visible(boolean isVisible);
+    B visible(boolean isVisible);
 
     /**
      * Sets the transparence.
      *
      * @param tranparence The transparence.<br>
-     * <code>myBuilder.transparence(0)=<img alt="" src="./doc-files/b_transparence0.png"></code>, 
-     * <code>myBuilder.transparence(25)=<img alt="" src="./doc-files/b_transparence25.png"></code>, 
-     * <code>myBuilder.transparence(50)=<img alt="" src="./doc-files/b_transparence50.png"></code>, 
-     * <code>myBuilder.transparence(75)=<img alt="" src="./doc-files/b_transparence75.png"></code>, 
+     * <code>myBuilder.transparence(0)=<img alt="" src="./doc-files/b_transparence0.png"></code>,
+     * <code>myBuilder.transparence(25)=<img alt="" src="./doc-files/b_transparence25.png"></code>,
+     * <code>myBuilder.transparence(50)=<img alt="" src="./doc-files/b_transparence50.png"></code>,
+     * <code>myBuilder.transparence(75)=<img alt="" src="./doc-files/b_transparence75.png"></code>,
      * <code>myBuilder.transparence(100)=<img alt="" src="./doc-files/b_transparence100.png"></code>.
      * @return The builder itself (fluent interface pattern).
      */
-   B transparence(double tranparence);
+    B transparence(double tranparence);
 
     /**
      * Aligns the primitive (shape, text or image).
@@ -66,18 +67,18 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
      * @param horizontalAlign
      * @param verticalAlign
      * @param align How to align the primitive <br>
-     * <code>myBuilder.align(Position.LeftTop) = <img alt="" src="./doc-files/b_alignLeftTop.png"></code>, 
-     * <code>myBuilder.align(Position.CenterTop) = <img alt="" src="./doc-files/b_alignCenterTop.png"></code>, 
-     * <code>myBuilder.align(Position.RightTop) = <img alt="" src="./doc-files/b_alignRightTop.png"></code><br>, 
-     * <code>myBuilder.align(Position.LeftMiddle) = <img alt="" src="./doc-files/b_alignLeftMiddle.png"></code>, 
-     * <code>myBuilder.align(Position.CenterMiddle) = <img alt="" src="./doc-files/b_alignCenterMiddle.png"></code>, 
-     * <code>myBuilder.align(Position.RightMiddle) = <img alt="" src="./doc-files/b_alignRightMiddle.png"></code>, 
-     * <code>myBuilder.align(Position.LeftBottom) = <img alt="" src="./doc-files/b_alignLeftBottom.png"></code>, 
-     * <code>myBuilder.align(Position.CenterBottom) = <img alt="" src="./doc-files/b_alignCenterBottom.png"></code>, 
+     * <code>myBuilder.align(Position.LeftTop) = <img alt="" src="./doc-files/b_alignLeftTop.png"></code>,
+     * <code>myBuilder.align(Position.CenterTop) = <img alt="" src="./doc-files/b_alignCenterTop.png"></code>,
+     * <code>myBuilder.align(Position.RightTop) = <img alt="" src="./doc-files/b_alignRightTop.png"></code><br>,
+     * <code>myBuilder.align(Position.LeftMiddle) = <img alt="" src="./doc-files/b_alignLeftMiddle.png"></code>,
+     * <code>myBuilder.align(Position.CenterMiddle) = <img alt="" src="./doc-files/b_alignCenterMiddle.png"></code>,
+     * <code>myBuilder.align(Position.RightMiddle) = <img alt="" src="./doc-files/b_alignRightMiddle.png"></code>,
+     * <code>myBuilder.align(Position.LeftBottom) = <img alt="" src="./doc-files/b_alignLeftBottom.png"></code>,
+     * <code>myBuilder.align(Position.CenterBottom) = <img alt="" src="./doc-files/b_alignCenterBottom.png"></code>,
      * <code>myBuilder.align(Position.RightBottom) = <img alt="" src="./doc-files/b_alignRightBottom.png"></code>.
      * @return The builder itself (fluent interface pattern).
      */
-    B align(HorizontalAlign horizontalAlign,VerticalAlign verticalAlign);
+    B align(HorizontalAlign horizontalAlign, VerticalAlign verticalAlign);
 
     /**
      * Sets the offset in darwing units in x and y direction.<br>
@@ -188,15 +189,15 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
      * Sets the x and y coordinate of the point relative to the previous drawn
      * shape.
      *
-     * @param position The relative position to the previous drawn shape.
-     * @return The builder itself (fluent interface pattern).
+     * @param x
+     * @param y
      */
-    B point(Position position);
-    
     B point(HorizontalAlign x, VerticalAlign y);
 
-    
-    
+    B point(HorizontalAlign x, double y);
+
+    B point(double x, VerticalAlign y);
+
     /**
      * Wheter it is a point (=true) or not (=false).
      *

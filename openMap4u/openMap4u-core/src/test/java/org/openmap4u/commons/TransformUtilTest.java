@@ -48,22 +48,7 @@ public class TransformUtilTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of getPoint method, of class TransformUtil.
-     */
-    @Test
-    public void testGetPointDepr() {
-        Shape shape = new Rectangle2D.Double(20, 30, 400, 300);
-        assertThat((Point2D.Double)tu.getPoint(Position.LEFT_TOP, shape), is(new Point2D.Double(20, 330)));
-        assertThat((Point2D.Double)tu.getPoint(Position.CENTER_TOP, shape), is(new Point2D.Double(220, 330)));
-        assertThat((Point2D.Double)tu.getPoint(Position.RIGHT_TOP, shape), is(new Point2D.Double(420, 330)));
-        assertThat((Point2D.Double)tu.getPoint(Position.LEFT_MIDDLE, shape), is(new Point2D.Double(20, 180)));
-        assertThat((Point2D.Double)tu.getPoint(Position.CENTER_MIDDLE, shape), is(new Point2D.Double(220, 180)));
-        assertThat((Point2D.Double)tu.getPoint(Position.RIGHT_MIDDLE, shape), is(new Point2D.Double(420, 180)));
-        assertThat((Point2D.Double)tu.getPoint(Position.LEFT_BOTTOM, shape), is(new Point2D.Double(20, 30)));
-        assertThat((Point2D.Double)tu.getPoint(Position.CENTER_BOTTOM, shape), is(new Point2D.Double(220, 30)));
-        assertThat((Point2D.Double)tu.getPoint(Position.RIGHT_BOTTOM, shape), is(new Point2D.Double(420, 30)));
-    }
+   
 
 
 

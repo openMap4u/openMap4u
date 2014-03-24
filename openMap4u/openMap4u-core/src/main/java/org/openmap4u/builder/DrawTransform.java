@@ -10,7 +10,6 @@ import org.openmap4u.commons.Angle;
 import org.openmap4u.commons.DrawableTransformable;
 import org.openmap4u.commons.Globals;
 import org.openmap4u.commons.Point.Align;
-import org.openmap4u.commons.Position;
 
 /**
  *

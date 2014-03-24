@@ -21,8 +21,7 @@ import static org.openmap4u.commons.HorizontalAlign.CENTER;
 import static org.openmap4u.commons.HorizontalAlign.LEFT;
 import static org.openmap4u.commons.HorizontalAlign.RIGHT;
 
-import org.openmap4u.commons.Position;
-import static org.openmap4u.commons.VerticalAlign.BOTTOM;
+ import static org.openmap4u.commons.VerticalAlign.BOTTOM;
 import static org.openmap4u.commons.VerticalAlign.MIDDLE;
 import static org.openmap4u.commons.VerticalAlign.TOP;
 import org.openmap4u.plugin.builder.chart.LineChart;

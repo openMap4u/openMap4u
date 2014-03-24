@@ -8,8 +8,8 @@ import java.util.Set;
 import org.openmap4u.commons.Angle;
 import org.openmap4u.commons.DrawableTransformable;
 import org.openmap4u.commons.HorizontalAlign;
+import org.openmap4u.commons.Point;
 import org.openmap4u.commons.Point.Align;
-import org.openmap4u.commons.Position;
 import org.openmap4u.commons.Styleable;
 import org.openmap4u.commons.Transparence;
 import org.openmap4u.commons.VerticalAlign;
@@ -41,7 +41,7 @@ class Builder<S extends Styleable<S>, B extends Builder<S, B>> implements Builda
     /**
      * Stores the points.
      */
-    private Set<Object> mPoints = null;
+    private Set<Point<?, ?>> mPoints = null;
 
     private DrawableTransformable mTransform = new DrawTransform();
 
@@ -49,7 +49,7 @@ class Builder<S extends Styleable<S>, B extends Builder<S, B>> implements Builda
     }
 
     @Override
-    public Set<Object> getPoints() {
+    public Set<Point<?, ?>> getPoints() {
         return this.mPoints;
     }
 
@@ -77,7 +77,7 @@ class Builder<S extends Styleable<S>, B extends Builder<S, B>> implements Builda
 
     @Override
     public B align(HorizontalAlign horizontalAlign, VerticalAlign verticalAlign) {
-        this.getTransform().setAlign(new Align(horizontalAlign,verticalAlign));
+        this.getTransform().setAlign(new Align(horizontalAlign, verticalAlign));
         return (B) this;
     }
 
@@ -142,7 +142,7 @@ class Builder<S extends Styleable<S>, B extends Builder<S, B>> implements Builda
     /**
      * initializes the points.
      */
-    private B addPoint(Object point2Add) {
+    private B addPoint(Point<?, ?> point2Add) {
         if (this.mPoints == null) {
             this.mPoints = new HashSet<>();
         }
@@ -152,12 +152,7 @@ class Builder<S extends Styleable<S>, B extends Builder<S, B>> implements Builda
 
     @Override
     public final B point(double x, double y) {
-        return addPoint(new Point2D.Double(x, y));
-    }
-
-    @Override
-    public final B point(Position position) {
-        return addPoint(position);
+        return addPoint(new Point.NoAlign(x, y));
     }
 
     @Override
@@ -192,15 +187,17 @@ class Builder<S extends Styleable<S>, B extends Builder<S, B>> implements Builda
 
     @Override
     public B point(HorizontalAlign x, VerticalAlign y) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return addPoint(new Align(x, y));
     }
 
+    @Override
     public B point(HorizontalAlign x, double y) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return addPoint(new Point.HorizontalAlign(x, y));
     }
 
+    @Override
     public B point(double x, VerticalAlign y) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return addPoint(new Point.VerticalAlign(x, y));
     }
 
 }
