@@ -76,6 +76,10 @@
         <java.source>7</java.source>
         <java.target>7</java.target>
 
+<!-- SonarCube specifics -->
+<sonar.dynamicAnalysis>true</sonar.dynamicAnalysis>
+<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+
 
     </properties>
 
@@ -421,5 +425,6 @@
         <module>openMap4u-spatial-plugin</module>
         <!-- The integration in jsp, jsf, ... -->
         <module>openMap4u-integration-examples</module>
+        <module>openMap4u-j8-integration-examples</module>
     </modules>
 </project>

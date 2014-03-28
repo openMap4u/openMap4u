@@ -22,9 +22,16 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="openMap4u" />
+        <module name="openMap4u-core" />
+        <module name="openMap4u-integration-examples" />
+        <module name="openMap4u-j8-integration-examples" />
+        <module name="openMap4u-spatial-plugin" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="openMap4u-core" target="1.7" />
+      <module name="openMap4u-integration-examples" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>
 

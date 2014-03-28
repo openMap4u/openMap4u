@@ -5,10 +5,61 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="05e17744-eacf-4281-85a2-0a8c5af0c6ca" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/openmap4u/plugin/builder/chart/LineChartTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/openmap4u/plugin/builder/chart/LineChartTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/openmap4u/plugin/builder/core/TextTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/openmap4u/plugin/builder/core/TextTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/openmap4u/commons/TransformUtil.java" afterPath="$PROJECT_DIR$/src/main/java/org/openmap4u/commons/TransformUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/openMap4u-j8-integration-examples/src/test/java/org/openmap4u/data/Data.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/openMap4u-j8-integration-examples/src/test/java/org/openmap4u/data/Debug.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/openMap4u-j8-integration-examples/src/test/java/org/openmap4u/data/EntryImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/openMap4u-j8-integration-examples/src/test/java/org/openmap4u/data/MockupData.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/openMap4u-j8-integration-examples/src/test/java/org/openmap4u/data/MockupDataTest.java" />
+      <change type="DELETED" beforePath="C:\work\git\openMap4u\openMap4u\openMap4u-integration-examples\src\test\resources\nashorn\simple.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\work\git\openMap4u\openMap4u\openMap4u-integration-examples\src\test\resources\nashorn\simpleOpenMap4u.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\work\git\openMap4u\openMap4u\openMap4u-java8\src\org\openmap4u\RangeSupplier.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\work\git\openMap4u\openMap4u\openMap4u-java8\src\org\openmap4u\RangeTest.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\work\git\openMap4u\openMap4u\openMap4u-java8\src\org\openmap4u\integration\lambda\AbstractLambdaTest.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\work\git\openMap4u\openMap4u\openMap4u-java8\src\org\openmap4u\integration\lambda\CustomStroke.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\work\git\openMap4u\openMap4u\openMap4u-java8\src\org\openmap4u\integration\nashorn\AbstractNashornTest.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\work\git\openMap4u\openMap4u\openMap4u-java8\src\org\openmap4u\integration\nashorn\NashornTest.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\work\git\openMap4u\openMap4u\openMap4u-java8\src\org\openmap4u\plugin\builder\chart\AreaChartTest.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\work\git\openMap4u\openMap4u\openMap4u-java8\src\org\openmap4u\plugin\builder\chart\BarChartTest.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\work\git\openMap4u\openMap4u\openMap4u-java8\src\org\openmap4u\plugin\builder\chart\LineChartTest.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\work\git\openMap4u\openMap4u\openMap4u-java8\src\org\openmap4u\plugin\builder\chart\PieTest.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\work\git\openMap4u\openMap4u\openMap4u-java8\src\org\openmap4u\plugin\builder\core\LineTest.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\work\git\openMap4u\openMap4u\openMap4u-java8\src\org\openmap4u\plugin\builder\core\PolygonTest.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\work\git\openMap4u\openMap4u\openMap4u-java8\src\org\openmap4u\plugin\builder\core\PolylineTest.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\work\git\openMap4u\openMap4u\openMap4u-java8\src\org\openmap4u\plugin\builder\core\RelativeAlingTest.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\work\git\openMap4u\openMap4u\openMap4u-java8\src\org\openmap4u\plugin\builder\core\TextTest.java" afterPath="" />
+      <change type="MOVED" beforePath="C:\work\git\openMap4u\openMap4u\openMap4u-integration-examples\src\test\java\org\openmap4u\integration\el3\AbstractEl3Test.java" afterPath="$PROJECT_DIR$/openMap4u-j8-integration-examples/src/test/java/org/openmap4u/integration/el3/AbstractEl3Test.java" />
+      <change type="MOVED" beforePath="C:\work\git\openMap4u\openMap4u\openMap4u-integration-examples\src\test\java\org\openmap4u\integration\el3\El3Test.java" afterPath="$PROJECT_DIR$/openMap4u-j8-integration-examples/src/test/java/org/openmap4u/integration/el3/El3Test.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.gitignore" afterPath="$PROJECT_DIR$/../.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openMap4u-core/src/test/java/org/openmap4u/builder/AbstractBuilderLambdaTest.java" afterPath="$PROJECT_DIR$/openMap4u-core/src/test/java/org/openmap4u/builder/AbstractBuilderLambdaTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openMap4u-core/src/test/java/org/openmap4u/builder/AbstractBuilderTest.java" afterPath="$PROJECT_DIR$/openMap4u-core/src/test/java/org/openmap4u/builder/AbstractBuilderTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/builder/Buildable.java" afterPath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/builder/Buildable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openMap4u-core/src/test/java/org/openmap4u/builder/BuildableTest.java" afterPath="$PROJECT_DIR$/openMap4u-core/src/test/java/org/openmap4u/builder/BuildableTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/builder/Builder.java" afterPath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/builder/Builder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/Defaults.java" afterPath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/Defaults.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/commons/DrawableTransformable.java" afterPath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/commons/DrawableTransformable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/commons/Globals.java" afterPath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/commons/Globals.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/commons/Length.java" afterPath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/commons/Length.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/plugin/builder/chart/LineChart.java" afterPath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/plugin/builder/chart/LineChart.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/OpenMap4u.java" afterPath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/OpenMap4u.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/format/Outputable.java" afterPath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/format/Outputable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/plugin/builder/core/Polyline.java" afterPath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/plugin/builder/core/Polyline.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/commons/Position.java" afterPath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/commons/Position.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/builder/ShapeBuilder.java" afterPath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/builder/ShapeBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/plugin/format/svg/StyleBuilder.java" afterPath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/plugin/format/svg/StyleBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/plugin/format/svg/Svg.java" afterPath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/plugin/format/svg/Svg.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/commons/TransformUtil.java" afterPath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/commons/TransformUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openMap4u-core/src/test/java/org/openmap4u/commons/TransformUtilTest.java" afterPath="$PROJECT_DIR$/openMap4u-core/src/test/java/org/openmap4u/commons/TransformUtilTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/commons/Transparence.java" afterPath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/commons/Transparence.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/commons/Util.java" afterPath="$PROJECT_DIR$/openMap4u-core/src/main/java/org/openmap4u/commons/Util.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openMap4u-integration-examples/nb-configuration.xml" afterPath="$PROJECT_DIR$/openMap4u-integration-examples/nb-configuration.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openMap4u.iml" afterPath="$PROJECT_DIR$/openMap4u.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openMap4u-integration-examples/pom.xml" afterPath="$PROJECT_DIR$/openMap4u-integration-examples/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openMap4u-integration-examples/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/openMap4u-integration-examples/src/main/webapp/WEB-INF/web.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="openMap4u.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -71,80 +122,7 @@
     <favorites_list name="openMap4u" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Svg.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/format/svg/Svg.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="197" column="14" selection-start="6792" selection-end="6792" vertical-scroll-proportion="0.0" vertical-offset="3349" max-vertical-offset="6579">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OpenMap4u.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/OpenMap4u.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="90" selection-start="1250" selection-end="1250" vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="1785">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Outputable.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/format/Outputable.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="36" selection-start="522" selection-end="522" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="2023">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Angle.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/commons/Angle.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="867">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Buildable.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/builder/Buildable.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3553">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Globals.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/commons/Globals.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="0" selection-start="78" selection-end="78" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="2856">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AbstractJava2dPlugin.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/format/graphics2d/AbstractJava2dPlugin.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5151">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Png.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/format/graphics2d/Png.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -206,7 +184,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
-    <option name="STATE" value="0" />
+    <option name="STATE" value="2" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
@@ -221,6 +199,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -235,7 +214,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -251,6 +229,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="openMap4u" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="openMap4u" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="openMap4u" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="openMap4u-core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -392,12 +384,6 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin" singleton="true">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
-      <option name="PROGRAM_PARAMETERS" />
-      <method />
-    </configuration>
     <configuration default="true" type="GroovyScriptRunConfiguration" factoryName="Groovy">
       <module name="" />
       <setting name="path" value="" />
@@ -405,6 +391,32 @@
       <setting name="params" value="" />
       <setting name="workDir" value="file://$PROJECT_DIR$" />
       <setting name="debug" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin" singleton="true">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
     <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
@@ -429,26 +441,6 @@
       </MavenSettings>
       <method />
     </configuration>
-    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
-      <module name="" />
-      <option name="TESTING_TYPE" value="0" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="USE_COMMAND_LINE" value="true" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <method />
-    </configuration>
     <configuration default="true" type="GriffonRunConfigurationType" factoryName="Griffon">
       <module name="" />
       <setting name="vmparams" value="" />
@@ -469,6 +461,7 @@
       <ExternalSystemSettings>
         <option name="externalProjectPath" />
         <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -479,20 +472,17 @@
       </ExternalSystemSettings>
       <method />
     </configuration>
-    <configuration default="true" type="XSLT" factoryName="XSLT">
-      <option name="myOutputFile" />
-      <option name="myOpenOutputFile" value="false" />
-      <option name="myOpenInBrowser" value="false" />
-      <option name="mySmartErrorHandling" value="true" />
-      <option name="myRunnerPort" value="34873" />
-      <option name="myVmArguments" />
-      <option name="myWorkingDirectory" />
-      <option name="myModule" />
-      <option name="myJdk" />
-      <parameters />
-      <OutputType value="CONSOLE" save-to-file="false" />
-      <FileType name="XML" />
-      <JdkChoice value="FROM_MODULE" />
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -522,17 +512,20 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
+    <configuration default="true" type="XSLT" factoryName="XSLT">
+      <option name="myOutputFile" />
+      <option name="myOpenOutputFile" value="false" />
+      <option name="myOpenInBrowser" value="false" />
+      <option name="mySmartErrorHandling" value="true" />
+      <option name="myRunnerPort" value="34873" />
+      <option name="myVmArguments" />
+      <option name="myWorkingDirectory" />
+      <option name="myModule" />
+      <option name="myJdk" />
+      <parameters />
+      <OutputType value="CONSOLE" save-to-file="false" />
+      <FileType name="XML" />
+      <JdkChoice value="FROM_MODULE" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -671,7 +664,7 @@
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
-    <option name="RECENTLY_FILTERED_USERS">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
       <collection />
     </option>
   </component>
@@ -691,79 +684,14 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/builder/core/Polygon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="40" selection-start="244" selection-end="244" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="2312" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/builder/ShapeBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="24" selection-start="2693" selection-end="2693" vertical-scroll-proportion="0.0" vertical-offset="1496" max-vertical-offset="3910" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/openmap4u/plugin/builder/core/PolylineTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="0" selection-start="3285" selection-end="3285" vertical-scroll-proportion="0.0" vertical-offset="1292" max-vertical-offset="2040" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/format/graphics2d/Png.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="462" selection-end="462" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="442" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/builder/core/Polyline.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="14" selection-start="2196" selection-end="2196" vertical-scroll-proportion="0.0" vertical-offset="1224" max-vertical-offset="2023" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="42" column="0" selection-start="1459" selection-end="1459" vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="7123" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/openmap4u/plugin/builder/core/PolygonTest.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="34" selection-start="852" selection-end="852" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1904" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/openmap4u/AbstractOpenMap4uTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="48" selection-start="1382" selection-end="1382" vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="2210" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/OpenMap4u.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="21" selection-start="883" selection-end="883" vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="1768" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/format/svg/Svg.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="300" column="39" selection-start="11688" selection-end="11688" vertical-scroll-proportion="0.0" vertical-offset="5100" max-vertical-offset="5967" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/builder/core/Polygon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="40" selection-start="244" selection-end="244" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="2312" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/builder/ShapeBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="87" column="24" selection-start="2499" selection-end="2499" vertical-scroll-proportion="0.0" vertical-offset="1479" max-vertical-offset="3893" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/openmap4u/plugin/builder/core/PolylineTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="47" selection-start="2443" selection-end="2443" vertical-scroll-proportion="0.0" vertical-offset="1156" max-vertical-offset="1836" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/format/graphics2d/Png.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="267" selection-end="267" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="442" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/builder/core/Polyline.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="14" selection-start="2474" selection-end="2474" vertical-scroll-proportion="0.0" vertical-offset="1343" max-vertical-offset="2142" />
+        <state line="42" column="0" selection-start="1459" selection-end="1459" vertical-scroll-proportion="0.0" vertical-offset="63" max-vertical-offset="7123" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
@@ -771,195 +699,14 @@
         <state line="42" column="0" selection-start="1459" selection-end="1459" vertical-scroll-proportion="0.0" vertical-offset="63" max-vertical-offset="7123" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/openmap4u/plugin/builder/core/PolygonTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="34" selection-start="852" selection-end="852" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1904" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/openmap4u/AbstractOpenMap4uTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="41" selection-start="2480" selection-end="2480" vertical-scroll-proportion="0.0" vertical-offset="1224" max-vertical-offset="2210" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/format/svg/Svg.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="300" column="39" selection-start="11688" selection-end="11688" vertical-scroll-proportion="0.0" vertical-offset="5100" max-vertical-offset="5338" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/openmap4u/plugin/builder/core/PolylineTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="100" selection-start="1315" selection-end="1315" vertical-scroll-proportion="0.0" vertical-offset="833" max-vertical-offset="1632" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/builder/core/Polyline.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="14" selection-start="2474" selection-end="2474" vertical-scroll-proportion="0.0" vertical-offset="1343" max-vertical-offset="2142" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="42" column="0" selection-start="1459" selection-end="1459" vertical-scroll-proportion="0.0" vertical-offset="63" max-vertical-offset="7123" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/openmap4u/plugin/builder/core/PolygonTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="34" selection-start="852" selection-end="852" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1904" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/openmap4u/AbstractOpenMap4uTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="41" selection-start="2480" selection-end="2480" vertical-scroll-proportion="0.0" vertical-offset="1224" max-vertical-offset="2210" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/format/svg/Svg.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="300" column="92" selection-start="11741" selection-end="11741" vertical-scroll-proportion="0.0" vertical-offset="5100" max-vertical-offset="5967" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/openmap4u/plugin/builder/core/PolylineTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="18" selection-start="1006" selection-end="1006" vertical-scroll-proportion="0.0" vertical-offset="918" max-vertical-offset="918" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="0" selection-start="1459" selection-end="1459" vertical-scroll-proportion="0.0" vertical-offset="63" max-vertical-offset="7123" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/openmap4u/AbstractOpenMap4uTestTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="32" selection-start="665" selection-end="665" vertical-scroll-proportion="0.5564648" vertical-offset="0" max-vertical-offset="731" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/builder/core/Polygon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="40" selection-start="244" selection-end="244" vertical-scroll-proportion="-0.055646483" vertical-offset="187" max-vertical-offset="2278" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/builder/ShapeBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="24" selection-start="2693" selection-end="2693" vertical-scroll-proportion="-0.25040916" vertical-offset="1496" max-vertical-offset="3757" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/builder/core/Polyline.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="14" selection-start="2196" selection-end="2196" vertical-scroll-proportion="1.97545" vertical-offset="0" max-vertical-offset="2006" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/openmap4u/builder/TextTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="13" selection-start="385" selection-end="385" vertical-scroll-proportion="0.25542572" vertical-offset="0" max-vertical-offset="935" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/openmap4u/plugin/builder/core/PolygonTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="34" selection-start="852" selection-end="852" vertical-scroll-proportion="-0.79010236" vertical-offset="616" max-vertical-offset="1496" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/openmap4u/data/MockupData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="238" column="6" selection-start="8213" selection-end="8213" vertical-scroll-proportion="0.6894198" vertical-offset="3166" max-vertical-offset="4046" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/openmap4u/AbstractOpenMap4uTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="190" column="0" selection-start="5627" selection-end="5627" vertical-scroll-proportion="0.0" vertical-offset="3230" max-vertical-offset="3655" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/commons/TransformUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="9" selection-start="4442" selection-end="4442" vertical-scroll-proportion="0.0" vertical-offset="1768" max-vertical-offset="3740" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/openmap4u/builder/BuildableTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="310" column="5" selection-start="7981" selection-end="7981" vertical-scroll-proportion="0.0" vertical-offset="4968" max-vertical-offset="5848" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="320" column="20" selection-start="10865" selection-end="10865" vertical-scroll-proportion="0.0" vertical-offset="4675" max-vertical-offset="7208" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/commons/Util.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="199" column="30" selection-start="5883" selection-end="5883" vertical-scroll-proportion="0.7671233" vertical-offset="2298" max-vertical-offset="3247" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/openmap4u/plugin/builder/core/TextTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="13" selection-start="762" selection-end="762" vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="1751" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/openmap4u/plugin/builder/core/PolylineTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="13" selection-start="839" selection-end="839" vertical-scroll-proportion="-0.2361111" vertical-offset="442" max-vertical-offset="2601" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/openmap4u/plugin/builder/chart/AreaChartTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="0" selection-start="2718" selection-end="2718" vertical-scroll-proportion="-0.18229716" vertical-offset="1023" max-vertical-offset="1972" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/format/svg/SvgUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="6" selection-start="110" selection-end="110" vertical-scroll-proportion="0.07165437" vertical-offset="0" max-vertical-offset="949" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/format/svg/Svg.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="197" column="14" selection-start="6792" selection-end="6792" vertical-scroll-proportion="0.0" vertical-offset="3349" max-vertical-offset="6579">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/OpenMap4u.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="90" selection-start="1250" selection-end="1250" vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="1785">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/format/Outputable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="36" selection-start="522" selection-end="522" vertical-scroll-proportion="0.0" vertical-offset="1200" max-vertical-offset="1836">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/commons/Angle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="867">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/format/graphics2d/AbstractJava2dPlugin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4590">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/plugin/format/graphics2d/Png.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/builder/Buildable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3417">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openmap4u/commons/Globals.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="78" selection-end="78" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="2856">
-          <folding />
-        </state>
       </provider>
     </entry>
   </component>
