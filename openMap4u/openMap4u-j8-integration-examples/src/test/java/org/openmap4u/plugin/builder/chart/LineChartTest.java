@@ -117,7 +117,7 @@ public class LineChartTest extends AbstractOpenMap4uTest {
         getData().map(value -> oM4u.get(Line.class).line(0, value, 10, value)).forEach(e -> canvas.draw(e));
         getData().map(value -> oM4u.get(Line.class).line(value, 0, value, 8)).forEach(e -> canvas.draw(e));
         /* persist your result */
-        canvas.write(FileSystems.getDefault().getPath("/temp", "simpleLineRaster.png"));
+        canvas.write(this.getPackagePath( "simpleLineRaster.png"));
     }
 
     /**
@@ -134,7 +134,7 @@ public class LineChartTest extends AbstractOpenMap4uTest {
         /*  draw the horizontal raster lines */
         draw.draw(oM4u.get(LineChart.class).from(0, 4).to(8, 4)).draw(oM4u.get(Text.class).point(CENTER,MIDDLE).text("HelloWorld"));
         /* persist your result */
-        draw.write(FileSystems.getDefault().getPath("/temp", "simpleLineRasterWithLabel.png"));
+        draw.write(this.getPackagePath( "simpleLineRasterWithLabel.png"));
     }
 
     /**
@@ -153,7 +153,7 @@ public class LineChartTest extends AbstractOpenMap4uTest {
                 : Color.GRAY)).draw(oM4u.get(Line.class).line(value, 0, value, 8).size((value % 2 == 0) ? 1 : 0.5).color((value % 2 == 0) ? Color.BLACK
                                 : Color.GRAY)));
         /* persist your result */
-        canvas.write(FileSystems.getDefault().getPath("/temp", "LineRasterWithHighightedRowsAndColumns.png"));
+        canvas.write(this.getPackagePath( "LineRasterWithHighightedRowsAndColumns.png"));
     }
 
     /**
@@ -174,7 +174,7 @@ public class LineChartTest extends AbstractOpenMap4uTest {
         Stream.of(0d, 45d, 90d, 135d).map(value -> oM4u.get(LineChart.class).point(5, 4).from(-3.5, 0).to(3.5, 0).size((value % 2 == 0) ? 1 : 0.5).color((value % 2 == 0) ? Color.BLACK
                 : Color.GRAY).rotate(value)).forEach(e -> canvas.draw(e));
         /* persist your result */
-        canvas.write(FileSystems.getDefault().getPath("/temp", "SimpleCircleRaster.png"));
+        canvas.write(this.getPackagePath( "SimpleCircleRaster.png"));
     }
 
     /**
@@ -192,7 +192,7 @@ public class LineChartTest extends AbstractOpenMap4uTest {
         /* draw the vertical raster lines */
         Stream.of(0d, 45d, 90d, 135d).map(value -> oM4u.get(LineChart.class).point(5, 4).from(-3.5, 0).to(3.5, 0).color(Color.GRAY).rotate(value)).forEach(e -> canvas.draw(e));
         /* persist your result */
-        canvas.write(FileSystems.getDefault().getPath("/temp", "CircleRasterWithHighightedRowsAndColumns.png"));
+        canvas.write(this.getPackagePath( "CircleRasterWithHighightedRowsAndColumns.png"));
     }
 
     /**
@@ -210,7 +210,7 @@ public class LineChartTest extends AbstractOpenMap4uTest {
         /* draw the vertical raster lines */
         Stream.of(0d, 45d, 90d, 135d).map(value -> oM4u.get(LineChart.class).point(5, 4).from(-3.5, 0).to(3.5, 0).color(Color.GRAY).rotate(value)).forEach(primitive -> draw.draw(primitive));
         /* persist your result */
-        draw.write(FileSystems.getDefault().getPath("/temp", "CircleRasterWithHighightedRowsAndColumns.png"));
+        draw.write(this.getPackagePath( "CircleRasterWithHighightedRowsAndColumns.png"));
     }
 
     /**
@@ -231,5 +231,9 @@ public class LineChartTest extends AbstractOpenMap4uTest {
         /* persist your result */
         draw.write(this.getPackagePath("openMap4uLineChart.png"));
     }
+    
+    
+   
+ 
 
 }

@@ -55,37 +55,7 @@ public class AbstractLambdaTest extends AbstractOpenMap4uTest {
 
   
 
-    /**
-     *
-     * @throws IOException
-     */
-    @Test
-    public void testBarChart() throws IOException {
-        /* 1. get an instance */
-        OpenMap4u oM4u = new OpenMap4u();
-        /* 2. get an canvas and specify the size which you want to draw */
-        DrawOrWriteable draw = oM4u.getCanvas(10, 8);
-        /* Draw the bars */
-        getData().map(value -> oM4u.get(BarChart.class).fill(getColor()).point(value, 0.5).setSize(.5, Math.random() * 3 + 1).align(CENTER,BOTTOM)).forEach(primitive -> draw.draw(primitive));
-        /* persist your result */
-        draw.write(FileSystems.getDefault().getPath("/temp", "openMap4uBarChart.png"));
-    }
 
-    /**
-     *
-     * @throws IOException
-     */
-    @Test
-    public void testRoundedBarChart() throws IOException {
-        /* 1. get an instance */
-        OpenMap4u oM4u = new OpenMap4u();
-        /* 2. get an canvas and specify the size which you want to draw */
-        DrawOrWriteable draw = oM4u.getCanvas(10, 8);
-        /* Draw the bars */
-        getData().map(value -> oM4u.get(BarChart.class).point(value, 0.5).setSize(.5, Math.random() * 3 + 1).align(CENTER,BOTTOM).radius(.2)).forEach(primitive -> draw.draw(primitive));
-        /* persist your result */
-        draw.write(FileSystems.getDefault().getPath("/temp", "openMap4uRoundedBarChart.png"));
-    }
 
  
     
