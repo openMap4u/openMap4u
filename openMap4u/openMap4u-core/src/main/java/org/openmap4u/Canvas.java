@@ -24,7 +24,7 @@ package org.openmap4u;
  * #L%
  */
 import java.awt.Shape;
-import java.awt.geom.NoninvertibleTransformException; 
+import java.awt.geom.NoninvertibleTransformException;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.io.IOException;
@@ -175,12 +175,7 @@ public class Canvas implements Plugable, DrawOrWriteable,
 
     @Override
     public final Point2D getCenter() {
-        if (this.mCenter == null) {
-            Rectangle2D bounds = getShape().getBounds2D();
-            return new Point2D.Double(bounds.getWidth() / 2d / getScaleX(), bounds.getHeight() / 2d / getScaleY());
-        } else {
-            return this.mCenter;
-        }
+        return this.mCenter;
     }
 
     @Override
@@ -264,11 +259,7 @@ public class Canvas implements Plugable, DrawOrWriteable,
             if (builder.isPoint()) {
                 for (Object point : builder.getPoints()) {
                     try {
-                             try {
-                                previousDrawnShape = draw(new TransformUtil().transform((Point<?,?>) point, previousDrawnShape, this.mOutputFormat.getGlobalTransform()), builder, previousDrawnShape);
-                            } catch (NoninvertibleTransformException ex) {
-                                Logger.getLogger(Canvas.class.getName()).log(Level.SEVERE, null, ex);
-                            }
+                        previousDrawnShape = draw(new TransformUtil().transform((Point<?, ?>) point, previousDrawnShape, this.mOutputFormat.getGlobalTransform()), builder, previousDrawnShape);
                     } catch (Exception ex) {
                         Logger.getLogger(Canvas.class.getName()).log(Level.SEVERE, null, ex);
                     }

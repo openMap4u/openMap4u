@@ -11,7 +11,7 @@ import java.awt.geom.Point2D;
 
 /**
  *
- * @author zwotti
+ * @author Michael Hadrbolec
  */
 public interface AreaOfInterestTransformable extends Transformable {
     

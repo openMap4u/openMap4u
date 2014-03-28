@@ -5,9 +5,6 @@ import java.awt.Paint;
 import org.openmap4u.commons.FontStyle;
 import org.openmap4u.commons.FontWeight;
 import org.openmap4u.commons.HorizontalAlign;
-import static org.openmap4u.commons.HorizontalAlign.CENTER;
-import static org.openmap4u.commons.HorizontalAlign.LEFT;
-import static org.openmap4u.commons.HorizontalAlign.RIGHT;
 import org.openmap4u.commons.Point.Align;
 import org.openmap4u.commons.VerticalAlign;
 
@@ -96,38 +93,6 @@ class StyleBuilder {
             } else if (align == VerticalAlign.BOTTOM) {
             dy=0;
             }
-            /*   switch (position) {
-             case LEFT_TOP:
-             dy = 1;
-             break;
-             case CENTER_TOP:
-             dy = 1;
-             break;
-             case RIGHT_TOP:
-             dy = 1;
-             break;
-             case LEFT_MIDDLE:
-             dy = 0.5;
-             break;
-             case CENTER_MIDDLE:
-             dy = 0.5;
-             break;
-             case RIGHT_MIDDLE:
-             dy = 0.5;
-             break;
-             case LEFT_BOTTOM:
-             dy = 0;
-             break;
-             case CENTER_BOTTOM:
-             dy = 0;
-             break;
-             case RIGHT_BOTTOM:
-             dy = 0;
-             break;
-             default:
-             dy = 0;
-             break;
-             } */
         }
         return dy;
     }
@@ -181,46 +146,6 @@ class StyleBuilder {
                 write(ALIGNMENT_BASELINE, BOTTOM);
 
             }
-
-            /*    case LEFT_TOP:
-             write(ALIGNMENT_BASELINE, TOP);
-             write(TEXT_ANCHOR, START);
-             break;
-             case CENTER_TOP:
-             write(ALIGNMENT_BASELINE, TOP);
-             write(TEXT_ANCHOR, MIDDLE);
-             break;
-             case RIGHT_TOP:
-             write(ALIGNMENT_BASELINE, TOP);
-             write(TEXT_ANCHOR, END);
-             break;
-             case LEFT_MIDDLE:
-             write(ALIGNMENT_BASELINE, MIDDLE);
-             write(TEXT_ANCHOR, START);
-             break;
-             case CENTER_MIDDLE:
-             write(ALIGNMENT_BASELINE, MIDDLE);
-             write(TEXT_ANCHOR, MIDDLE);
-             break;
-             case RIGHT_MIDDLE:
-             write(ALIGNMENT_BASELINE, MIDDLE);
-             write(TEXT_ANCHOR, END);
-             break;
-             case LEFT_BOTTOM:
-             write(ALIGNMENT_BASELINE, BOTTOM);
-             write(TEXT_ANCHOR, START);
-             break;
-             case CENTER_BOTTOM:
-             write(ALIGNMENT_BASELINE, BOTTOM);
-             write(TEXT_ANCHOR, MIDDLE);
-             break;
-             case RIGHT_BOTTOM:
-             write(ALIGNMENT_BASELINE, BOTTOM);
-             write(TEXT_ANCHOR, END);
-             break;
-             default:
-             break;
-             }*/
         }
 
         return this;

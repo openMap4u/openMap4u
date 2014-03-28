@@ -226,28 +226,27 @@ public class TransformUtil {
     public AffineTransform getGlobalTransform(AreaOfInterestTransformable areaOfInterest) {
         AffineTransform global = new AffineTransform();
         /* perform the scalign */
-        global.scale(areaOfInterest.getScaleX(),
-                areaOfInterest.getScaleY());
+        global.scale(areaOfInterest.getScaleX(), areaOfInterest.getScaleY());
+
         /* perform the translation */
         Rectangle2D bounds = areaOfInterest.getShape().getBounds2D();
-        /* set the center in the case it is null */
-
-        if (areaOfInterest.getCenter() != null) {
-            global.translate(
-                    -getGlobalTransformTranslate(areaOfInterest.getCenter().getX(),
-                            areaOfInterest.getDrawingUnits().convert(bounds.getWidth(), areaOfInterest.getWorldUnits()),
-                            areaOfInterest.getScaleX()),
-                    -getGlobalTransformTranslate(areaOfInterest.getCenter().getY(),
-                            areaOfInterest.getDrawingUnits().convert(bounds.getHeight(), areaOfInterest.getWorldUnits()),
-                            areaOfInterest.getScaleY()));
+        /* set the center in the case no center is provided set it to the center of the shape. */
+        Point2D center = areaOfInterest.getCenter();
+        /* in the case no center is provided the center of the provided shape is used. */
+        if (center == null) {
+            center = new Point2D.Double(bounds.getCenterX(), bounds.getCenterY());
         }
+        global.translate(
+                -getGlobalTransformTranslate(center.getX(),
+                        areaOfInterest.getDrawingUnits().convert(bounds.getWidth(), areaOfInterest.getWorldUnits()),
+                        areaOfInterest.getScaleX()),
+                -getGlobalTransformTranslate(center.getY(),
+                        areaOfInterest.getDrawingUnits().convert(bounds.getHeight(), areaOfInterest.getWorldUnits()),
+                        areaOfInterest.getScaleY()));
         /* perform the rotation */
-        if (isRotate(areaOfInterest.getRotate())) {
-            global.rotate(Math.toRadians(areaOfInterest.getRotate()),
-                    areaOfInterest.getWorldUnits().convert(areaOfInterest.getCenter().getX(), areaOfInterest.getDrawingUnits()),
-                    areaOfInterest.getWorldUnits().convert(areaOfInterest.getCenter().getY(), areaOfInterest.getDrawingUnits()));
-
-        }
+        global.rotate(areaOfInterest.getRotate(),
+                areaOfInterest.getWorldUnits().convert(center.getX(), areaOfInterest.getDrawingUnits()),
+                areaOfInterest.getWorldUnits().convert(center.getY(), areaOfInterest.getDrawingUnits()));
         return global;
     }
 
@@ -269,9 +268,9 @@ public class TransformUtil {
         } else if (position instanceof Point.Align) {
             return inverseTransform(getPointInvers(position, shape), globalTransform);
         } else if (position instanceof Point.HorizontalAlign) {
-             return new Point2D.Double(inverseTransform(getPointInvers(position, shape), globalTransform).getX(),((Point.HorizontalAlign)position).getY());
+            return new Point2D.Double(inverseTransform(getPointInvers(position, shape), globalTransform).getX(), ((Point.HorizontalAlign) position).getY());
         } else {
-            return new Point2D.Double(((Point.VerticalAlign)position).getX(),inverseTransform(getPointInvers(position, shape), globalTransform).getX() );
+            return new Point2D.Double(((Point.VerticalAlign) position).getX(), inverseTransform(getPointInvers(position, shape), globalTransform).getX());
         }
     }
 
