@@ -234,7 +234,7 @@ public class TransformUtil {
         Point2D center = areaOfInterest.getCenter();
         /* in the case no center is provided the center of the provided shape is used. */
         if (center == null) {
-            center = new Point2D.Double(bounds.getCenterX(), bounds.getCenterY());
+            center = new Point2D.Double(areaOfInterest.getDrawingUnits().convert(bounds.getCenterX(), areaOfInterest.getWorldUnits()), areaOfInterest.getDrawingUnits().convert(bounds.getCenterY(), areaOfInterest.getWorldUnits()));
         }
         global.translate(
                 -getGlobalTransformTranslate(center.getX(),
