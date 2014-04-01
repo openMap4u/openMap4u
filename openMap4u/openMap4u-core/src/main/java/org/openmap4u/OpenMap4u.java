@@ -12,7 +12,7 @@ import org.openmap4u.commons.Styleable;
 import org.openmap4u.commons.TextStyleable;
 
 /**
- * The openMap4u API.
+ * The openMap4u API. 
  *
  * @author Michael Hadrbolec
  */

@@ -9,7 +9,7 @@ import java.awt.Paint;
 
 /**
  *
- * @author zwotti
+ * @author Michael Hadrbolec
  */
 public interface TextStyleable extends Styleable<TextStyleable> {
 

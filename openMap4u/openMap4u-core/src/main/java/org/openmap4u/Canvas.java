@@ -54,7 +54,7 @@ import org.openmap4u.plugin.format.graphics2d.Png;
  * @author Michael Hadrbolec
  *
  */
-public class Canvas implements Plugable, DrawOrWriteable,
+ class Canvas implements Plugable, DrawOrWriteable,
         OverrideDrawOrWriteable, AreaOfInterestTransformable {
 
     /**

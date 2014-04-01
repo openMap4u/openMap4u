@@ -7,7 +7,7 @@ package org.openmap4u.commons;
 
 /**
  *
- * @author zwotti
+ * @author Michael Hadrbolec
  */
 public enum HorizontalAlign implements Align {
 

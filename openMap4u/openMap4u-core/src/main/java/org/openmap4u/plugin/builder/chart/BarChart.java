@@ -13,7 +13,7 @@ import org.openmap4u.builder.ShapeBuilder;
 
 /**
  *
- * @author zwotti
+ * @author Michael Hadrbolec
  */
 public class BarChart extends ShapeBuilder<BarChart> {
 
