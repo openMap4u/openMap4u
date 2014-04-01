@@ -27,7 +27,7 @@ import static org.hamcrest.CoreMatchers.*;
 
 /**
  *
- * @author zwotti
+ * @author Michael Hadrbolec
  */
 public class TransformUtilTest {
 

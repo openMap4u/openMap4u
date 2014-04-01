@@ -11,7 +11,7 @@ import org.junit.Test;
 
 /**
  *
- * @author zwotti
+ * @author Michael Hadrbolec
  */
 public class SvgUtilTest {
 	

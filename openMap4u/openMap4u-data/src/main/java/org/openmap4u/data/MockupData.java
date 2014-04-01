@@ -23,6 +23,10 @@ package org.openmap4u.data;
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  * #L%
  */
+import com.vividsolutions.jts.geom.Envelope;
+import com.vividsolutions.jts.geom.Geometry;
+import com.vividsolutions.jts.io.WKBWriter;
+import com.vividsolutions.jts.io.WKTReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -33,15 +37,20 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
-
-import java.util.Map.Entry;
+import org.geotools.data.DataStore;
+import org.geotools.data.DataStoreFinder;
+import org.geotools.data.FeatureSource;
+import org.geotools.feature.FeatureCollection;
+import org.geotools.feature.FeatureIterator;
+import org.opengis.feature.Feature;
 
 /**
  *
- * @author zwotti
+ * @author Michael Hadrbolec
  */
 public class MockupData {
 
@@ -52,12 +61,53 @@ public class MockupData {
      */
     public static String IMAGE_URL = null;
 
+    /**
+     * The iterable countries.
+     */
+    public static List<Country> ITERABLE_COUNTRIES;
+    /**
+     * The bounding box of all countries.
+     */
+    public static Envelope BOUNDINGBOX_COUNTRIES;
+
     static {
 
         try {
             IMAGE_URL = Thread.currentThread().getContextClassLoader()
                     .getResource("image/image.png").toURI().toString();
         } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        WKTReader reader = new WKTReader();
+        WKBWriter writer = new WKBWriter();
+
+        try {
+            readShapeFile();
+        } catch (IOException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        try {
+            ITERABLE_COUNTRIES = readShapeFile();
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+
+
+        /* set the bounding box */
+        List<Geometry> geoms = new ArrayList<Geometry>();
+        for (Country country : ITERABLE_COUNTRIES) {
+            geoms.add(country.getGeomAsJTS());
+        }
+        BOUNDINGBOX_COUNTRIES = getBBox(geoms);
+
+        try {
+            IMAGE_URL = Thread.currentThread().getContextClassLoader()
+                    .getResource("image/image.png").toURI().toString();
+        } catch (URISyntaxException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
@@ -275,6 +325,55 @@ public class MockupData {
             }
         }
         return list;
+    }
+
+    /**
+     * Gets the overall enclosing envelope of all given geometries.
+     *
+     * @param values The geometries whose overall envelope should be retrieved.
+     * @return The overall enclosing envelope of all given geometries.
+     */
+    static final Envelope getBBox(List<Geometry> values) {
+        final Envelope bBox = new Envelope();
+        values.forEach(value -> {
+            bBox.expandToInclude(value.getEnvelopeInternal());
+
+        });
+
+        return bBox;
+    }
+
+    static List<Country> readShapeFile() throws IOException {
+        List<Country> countries = new ArrayList<Country>();
+        Map<String, Object> map = new HashMap<String, Object>();
+        System.out.println(Thread.currentThread().getContextClassLoader().getResource("spatial/tm_world_borders_v0_3/TM_WORLD_BORDERS_SIMPL-0.3.shp"));
+        map.put("url", Thread.currentThread().getContextClassLoader().getResource("spatial/tm_world_borders_v0_3/TM_WORLD_BORDERS_SIMPL-0.3.shp"));
+        DataStore dataStore = DataStoreFinder.getDataStore(map);
+        String typeName = dataStore.getTypeNames()[0];
+
+        FeatureSource source = dataStore.getFeatureSource(typeName);
+
+        FeatureCollection collection = source.getFeatures();
+        FeatureIterator iterator = collection.features();
+        try {
+            while (iterator.hasNext()) {
+                Feature feature = (Feature) iterator.next();
+                countries.add(new Country((Geometry) feature.getDefaultGeometryProperty().getValue(), feature.getProperty("FIPS").getValue().toString(), feature.getProperty("ISO2").getValue().toString(), feature.getProperty("ISO3").getValue().toString(), feature.getProperty("NAME").getValue().toString(), Integer.valueOf(feature.getProperty("REGION").getValue().toString()), Integer.valueOf(feature.getProperty("SUBREGION").getValue().toString()), Integer.valueOf(feature.getProperty("UN").getValue().toString())));
+
+            }
+        } finally {
+
+        }
+        return countries;
+    }
+
+    /**
+     * Gets the countries.
+     *
+     * @return The countries.
+     */
+    public final List<Country> getCountries() {
+        return ITERABLE_COUNTRIES;
     }
 
 }

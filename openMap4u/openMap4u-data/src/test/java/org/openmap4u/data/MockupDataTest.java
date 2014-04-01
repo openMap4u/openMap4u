@@ -38,7 +38,7 @@ import org.junit.BeforeClass;
 
 /**
  *
- * @author zwotti
+ * @author Michael Hadrbolec
  */
 public class MockupDataTest {
 
@@ -102,4 +102,17 @@ public class MockupDataTest {
         }
 
     }
+    
+    
+      /**
+     *
+     */
+    @Test
+    public void testITERABLE_COUNTRIES() {
+        assertThat("Countries", MockupData.ITERABLE_COUNTRIES.iterator().next(), instanceOf(Country.class));
+        assertThat("Number of Countries", MockupData.ITERABLE_COUNTRIES.size(), is(246));
+    }
+
+   
+    
 }

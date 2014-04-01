@@ -62,9 +62,9 @@ public abstract class Point<T, V> {
     /**
      * Not at all aligne point.
      */
-    public static class NoAlign extends Point<Double, Double> {
+    public static class Coord extends Point<Double, Double> {
 
-        public NoAlign(Double x, Double y) {
+        public Coord(Double x, Double y) {
             super(x, y);
         }
     }

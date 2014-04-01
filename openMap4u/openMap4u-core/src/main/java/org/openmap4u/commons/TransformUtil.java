@@ -10,7 +10,8 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.NoninvertibleTransformException;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
-import static org.openmap4u.commons.HorizontalAlign.CENTER;
+
+ import static org.openmap4u.commons.HorizontalAlign.CENTER;
 import static org.openmap4u.commons.HorizontalAlign.LEFT;
 import static org.openmap4u.commons.VerticalAlign.MIDDLE;
 import static org.openmap4u.commons.VerticalAlign.TOP;
@@ -263,8 +264,8 @@ public class TransformUtil {
      */
     public Point2D transform(Point<?, ?> position, Shape shape, AffineTransform globalTransform) throws NoninvertibleTransformException {
         // Technical debt 
-        if (position instanceof Point.NoAlign) {
-            return new Point2D.Double(((Point.NoAlign) position).getX(), ((Point.NoAlign) position).getY());
+        if (position instanceof Point.Coord) {
+            return new Point2D.Double(((Point.Coord) position).getX() , ((Point.Coord)position).getY());
         } else if (position instanceof Point.Align) {
             return inverseTransform(getPointInvers(position, shape), globalTransform);
         } else if (position instanceof Point.HorizontalAlign) {

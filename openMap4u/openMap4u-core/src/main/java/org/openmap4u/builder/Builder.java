@@ -152,7 +152,7 @@ class Builder<S extends Styleable<S>, B extends Builder<S, B>> implements Builda
 
     @Override
     public final B point(double x, double y) {
-        return addPoint(new Point.NoAlign(x, y));
+        return addPoint(new Point.Coord(x, y));
     }
 
     @Override

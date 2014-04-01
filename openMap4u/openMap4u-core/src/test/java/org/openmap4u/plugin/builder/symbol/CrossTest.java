@@ -6,7 +6,7 @@ import org.openmap4u.builder.AbstractShapeBuilderTest;
  
 /**
  *
- * @author zwotti
+ * @author Michael Hadrbolec
  */
 public class CrossTest extends AbstractShapeBuilderTest {
 
