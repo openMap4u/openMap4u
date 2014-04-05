@@ -266,16 +266,23 @@
                     <verbose>false</verbose>
                     <addSvnKeyWords>true</addSvnKeyWords>
                     <inceptionYear>2012</inceptionYear>
-                    <organizationName>VillaBunterHund</organizationName>
+                    <projectName>openMap4u</projectName>
+                    <organizationName>openMap4u</organizationName>
                 </configuration>
                 <executions>
                     <execution>
+                        
                         <id>first</id>
                         <goals>
                             <goal>update-file-header</goal>
                         </goals>
                         <phase>post-clean</phase>
                         <configuration>
+                            <excludes>
+                                <exclude>**/*.properties</exclude>
+                            </excludes>
+                            <encoding>UTF-8</encoding>
+        
                             <licenseName>lgpl_v3</licenseName>
                             <roots>
                                 <root>src/main/java</root>
@@ -412,8 +419,8 @@
     <!-- The projects licence -->
     <licenses>
         <license>
-            <name>GNU General Public License, version 3 (GPL-3.0)</name>
-            <url>http://www.gnu.org/licenses/agpl-3.0-standalone.html</url>
+            <name>GNU LESSER GENERAL PUBLIC LICENSE Version 3 (GPL-3.0)</name>
+            <url>http://www.gnu.org/licenses/lgpl-3.0.html</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
