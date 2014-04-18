@@ -4,7 +4,8 @@
  */
 package org.openmap4u;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Paint;
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
@@ -15,11 +16,11 @@ import java.util.List;
 
 import org.junit.runner.RunWith;
 import org.openmap4u.builder.Buildable;
+import org.openmap4u.commons.Length;
 import org.openmap4u.format.Outputable;
 import org.openmap4u.plugin.builder.symbol.Rectangle;
 import org.openmap4u.plugin.format.graphics2d.Png;
 import org.openmap4u.plugin.format.svg.Svg;
-import org.openmap4u.commons.Length;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;

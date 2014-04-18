@@ -5,13 +5,17 @@
  */
 package org.openmap4u.integration.nashorn;
 
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.nio.file.FileSystems;
+
 import javax.script.ScriptException;
+
 import org.junit.Test;
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
 
 /**
  *

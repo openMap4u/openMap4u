@@ -5,17 +5,17 @@
  */
 package org.openmap4u.integration.lambda;
 
+import static org.openmap4u.commons.HorizontalAlign.CENTER;
+import static org.openmap4u.commons.VerticalAlign.BOTTOM;
+
 import java.awt.Color;
 import java.io.IOException;
-import java.nio.file.FileSystems;
 import java.util.stream.Stream;
+
 import org.junit.Test;
 import org.openmap4u.AbstractOpenMap4uTest;
 import org.openmap4u.DrawOrWriteable;
 import org.openmap4u.OpenMap4u;
-import static org.openmap4u.commons.HorizontalAlign.CENTER;
-import static org.openmap4u.commons.VerticalAlign.BOTTOM;
-import org.openmap4u.plugin.builder.chart.BarChart;
 import org.openmap4u.plugin.builder.core.Polygon;
 import org.openmap4u.plugin.builder.symbol.Circle;
 import org.openmap4u.plugin.builder.symbol.Rectangle;

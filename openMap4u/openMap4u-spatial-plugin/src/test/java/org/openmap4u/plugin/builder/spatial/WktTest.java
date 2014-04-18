@@ -1,4 +1,4 @@
-package org.openmap4u.builder;
+package org.openmap4u.plugin.builder.spatial;
 
 import org.openmap4u.plugin.builder.spatial.Wkt;
 import java.awt.Color;

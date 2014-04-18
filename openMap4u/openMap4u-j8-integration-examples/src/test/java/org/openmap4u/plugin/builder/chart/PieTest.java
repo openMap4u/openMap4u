@@ -5,18 +5,20 @@
  */
 package org.openmap4u.plugin.builder.chart;
 
-import java.awt.Color;
-import java.io.IOException;
-import java.nio.file.FileSystems;
-import java.util.stream.Stream;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+
+import java.awt.Color;
+import java.io.IOException;
+import java.util.stream.Stream;
+
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import org.openmap4u.AbstractOpenMap4uTest;
-import org.openmap4u.OpenMap4u;
 import org.openmap4u.DrawOrWriteable;
+import org.openmap4u.OpenMap4u;
 import org.openmap4u.commons.Angle;
 
 /**

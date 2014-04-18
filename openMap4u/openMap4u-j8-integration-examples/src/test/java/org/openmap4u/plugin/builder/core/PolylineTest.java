@@ -12,13 +12,16 @@ package org.openmap4u.plugin.builder.core;
 import java.awt.Color;
 import java.awt.geom.Point2D;
 import java.io.IOException;
-import java.nio.file.FileSystems;
-import org.junit.*;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
 import org.openmap4u.AbstractOpenMap4uTest;
 import org.openmap4u.OverrideDrawOrWriteable;
 import org.openmap4u.plugin.builder.chart.LineChart;
 import org.openmap4u.plugin.builder.symbol.Rectangle;
-import org.openmap4u.commons.Length;
 
 /**
  *

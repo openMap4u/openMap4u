@@ -9,19 +9,20 @@
  */
 package org.openmap4u.plugin.builder.chart;
 
+import static org.openmap4u.commons.HorizontalAlign.CENTER;
+import static org.openmap4u.commons.VerticalAlign.MIDDLE;
+
 import java.awt.Color;
 import java.io.IOException;
-import java.nio.file.FileSystems;
 import java.util.List;
 import java.util.stream.Stream;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openmap4u.AbstractOpenMap4uTest;
 import org.openmap4u.DrawOrWriteable;
 import org.openmap4u.OpenMap4u;
-import static org.openmap4u.commons.HorizontalAlign.CENTER;
-import static org.openmap4u.commons.VerticalAlign.MIDDLE;
 import org.openmap4u.data.Data;
 import org.openmap4u.data.MockupData;
 import org.openmap4u.plugin.builder.core.Line;

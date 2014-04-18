@@ -5,8 +5,12 @@
  */
 package org.openmap4u.plugin.builder.core;
 
+import static org.openmap4u.commons.HorizontalAlign.RIGHT;
+import static org.openmap4u.commons.VerticalAlign.TOP;
+
 import java.awt.Color;
 import java.io.IOException;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -15,8 +19,6 @@ import org.junit.Test;
 import org.openmap4u.AbstractOpenMap4uTest;
 import org.openmap4u.DrawOrWriteable;
 import org.openmap4u.OpenMap4u;
-import static org.openmap4u.commons.HorizontalAlign.RIGHT;
-import static org.openmap4u.commons.VerticalAlign.TOP;
 import org.openmap4u.plugin.builder.symbol.Rectangle;
 
 /**

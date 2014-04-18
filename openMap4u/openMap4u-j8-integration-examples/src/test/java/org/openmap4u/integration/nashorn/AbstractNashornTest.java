@@ -1,10 +1,11 @@
 package org.openmap4u.integration.nashorn;
 
 import java.io.Reader;
+
 import javax.script.Compilable;
 import javax.script.CompiledScript;
-import javax.script.ScriptEngine;
 import javax.script.ScriptException;
+
 import jdk.nashorn.api.scripting.NashornScriptEngineFactory;
 
 import org.junit.BeforeClass;

@@ -1,4 +1,4 @@
-package org.openmap4u.builder;
+package org.openmap4u.plugin.builder.spatial;
 
 import java.awt.Color;
 import java.io.IOException;
