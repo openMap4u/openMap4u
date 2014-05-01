@@ -295,7 +295,7 @@ String UTF8 ="UTF-8";
      */
     protected static double getMultiplicationFactor(Length unit,
             Length drawingUnits) {
-        return unit.convert(1, drawingUnits);
+        return unit.convertTo(1, drawingUnits);
     }
 
     @Override
@@ -311,7 +311,7 @@ String UTF8 ="UTF-8";
         this.mStrokeUnit2DrawingUnitFactor = getMultiplicationFactor(
                 strokeUnits, drawingUnits);
 
-        this.mPixel2DrawingUnitsFactor = drawingUnits.convert(1, Length.PIXEL);
+        this.mPixel2DrawingUnitsFactor = drawingUnits.convertTo(1, Length.PIXEL);
         /* create the global transformation */
         globalTransform.preConcatenate(new AffineTransform(
                 mWorldUnit2DrawingUnitFactor, 0, 0,
@@ -332,9 +332,9 @@ String UTF8 ="UTF-8";
             mWriter.writeNamespace("xlink", XLINK);
             mWriter.writeAttribute("version", "1.1");
             Rectangle2D bounds = shape.getBounds2D();
-            mWriter.writeAttribute(WIDTH, drawingUnits.convert(bounds.getWidth(), Length.CM) + "cm");
-            mWriter.writeAttribute(HEIGHT, drawingUnits.convert(bounds.getHeight(), Length.CM) + "cm");
-            mWriter.writeAttribute("viewBox", "0 0 " + drawingUnits.convert(bounds.getWidth(), Length.CM) + " " + drawingUnits.convert(bounds.getHeight(), Length.CM));
+            mWriter.writeAttribute(WIDTH, drawingUnits.convertTo(bounds.getWidth(), Length.CM) + "cm");
+            mWriter.writeAttribute(HEIGHT, drawingUnits.convertTo(bounds.getHeight(), Length.CM) + "cm");
+            mWriter.writeAttribute("viewBox", "0 0 " + drawingUnits.convertTo(bounds.getWidth(), Length.CM) + " " + drawingUnits.convertTo(bounds.getHeight(), Length.CM));
             /* write the defaults */
             mWriter.writeStartElement("defs");
             mWriter.writeStartElement(STYLE);

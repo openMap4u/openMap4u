@@ -138,7 +138,7 @@ public class PieChart extends ShapeBuilder<PieChart> {
    * @return The piechart itself (fluent interface pattern).
        */
     public PieChart start(double startAngle) {
-        this.mStartAngle = this.getTransform().getAngleUnits().convert(startAngle);
+        this.mStartAngle = this.getTransform().getAngleUnits().convertTo(startAngle);
         return this;
     }
 
@@ -148,7 +148,7 @@ public class PieChart extends ShapeBuilder<PieChart> {
     * @return The piechart itself (fluent interface pattern).
       */
     public PieChart end(double endAngle) {
-        this.mExtent = this.getTransform().getAngleUnits().convert(endAngle) - getStart();
+        this.mExtent = this.getTransform().getAngleUnits().convertTo(endAngle) - getStart();
         return this;
     }
 
@@ -161,7 +161,7 @@ public class PieChart extends ShapeBuilder<PieChart> {
       */
     public PieChart add(double value) {
         /* add the value */
-        this.mExtent = this.getTransform().getAngleUnits().convert(value);
+        this.mExtent = this.getTransform().getAngleUnits().convertTo(value);
         return this;
     }
 
@@ -192,7 +192,7 @@ public class PieChart extends ShapeBuilder<PieChart> {
     }
 
     double convert2Deg(double radiant) {
-        return Angle.DEGREE.convertFromSI(radiant);
+        return Angle.DEGREE.convertFrom(radiant);
     }
 
     /**

@@ -20,10 +20,10 @@ public class TransparenceTest {
      */
     @Test
     public void testConvert2SI() {
-        assertEquals(Transparence.ALPHA.convert(1), 1, 0.0001);
-        assertEquals(Transparence.ALPHA.convert(0), 0, 0.0001);
-        assertEquals(Transparence.PERCENT.convert(0), 1, 0.0001);
-        assertEquals(Transparence.PERCENT.convert(100), 0, 0.0001);
+        assertEquals(Transparence.ALPHA.convertTo(1), 1, 0.0001);
+        assertEquals(Transparence.ALPHA.convertTo(0), 0, 0.0001);
+        assertEquals(Transparence.PERCENT.convertTo(0), 1, 0.0001);
+        assertEquals(Transparence.PERCENT.convertTo(100), 0, 0.0001);
     }
 
     /**
@@ -31,10 +31,10 @@ public class TransparenceTest {
      */
     @Test
     public void testConvertFromSI() {
-        assertEquals(Transparence.ALPHA.convertFromSI(1), 1, 0.0001);
-        assertEquals(Transparence.ALPHA.convertFromSI(0), 0, 0.0001);
-        assertEquals(Transparence.PERCENT.convertFromSI(1), 0, 0.0001);
-        assertEquals(Transparence.PERCENT.convertFromSI(0), 100, 0.0001);
+        assertEquals(Transparence.ALPHA.convertFrom(1), 1, 0.0001);
+        assertEquals(Transparence.ALPHA.convertFrom(0), 0, 0.0001);
+        assertEquals(Transparence.PERCENT.convertFrom(1), 0, 0.0001);
+        assertEquals(Transparence.PERCENT.convertFrom(0), 100, 0.0001);
     }
 
     /**
@@ -42,10 +42,10 @@ public class TransparenceTest {
      */
     @Test
     public void testConvert() {
-        assertEquals(Transparence.PERCENT.convert(100, Transparence.ALPHA), 0, 0.0001);
-        assertEquals(Transparence.PERCENT.convert(0, Transparence.ALPHA), 1, 0.0001);
-        assertEquals(Transparence.ALPHA.convert(0, Transparence.PERCENT), 100, 0.0001);
-        assertEquals(Transparence.ALPHA.convert(1, Transparence.PERCENT), 0, 0.0001);
+        assertEquals(Transparence.PERCENT.convertTo(100, Transparence.ALPHA), 0, 0.0001);
+        assertEquals(Transparence.PERCENT.convertTo(0, Transparence.ALPHA), 1, 0.0001);
+        assertEquals(Transparence.ALPHA.convertTo(0, Transparence.PERCENT), 100, 0.0001);
+        assertEquals(Transparence.ALPHA.convertTo(1, Transparence.PERCENT), 0, 0.0001);
 
     }
 }

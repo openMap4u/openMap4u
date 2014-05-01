@@ -54,7 +54,7 @@ import org.openmap4u.plugin.format.graphics2d.Png;
  * @author Michael Hadrbolec
  *
  */
- class Canvas implements Plugable, DrawOrWriteable,
+class Canvas implements Plugable, DrawOrWriteable,
         OverrideDrawOrWriteable, AreaOfInterestTransformable {
 
     /**
@@ -227,7 +227,7 @@ import org.openmap4u.plugin.format.graphics2d.Png;
 
     @Override
     public OverrideDrawOrWriteable rotate(double rotation) {
-        this.mRotate = getAngleUnits().convert(rotation);
+        this.mRotate = getAngleUnits().convertTo(rotation);
         return this;
     }
 
@@ -249,13 +249,11 @@ import org.openmap4u.plugin.format.graphics2d.Png;
             /* set initialzed true */
             this.isInitialized = true;
         }
-
         /* only in the case the primitive is visible */
         if (builder.getStyle().isVisible()) {
             /* perform setup tasks */
             this.mOutputFormat.before();
             /* process in the case it is a point based primitive */
-
             if (builder.isPoint()) {
                 for (Object point : builder.getPoints()) {
                     try {
@@ -269,6 +267,15 @@ import org.openmap4u.plugin.format.graphics2d.Png;
             }
             /* perform the cleanup tasks */
             this.mOutputFormat.after();
+            /* traverse recursive over all childs (if there are any) */
+            if (builder.hasChilds()) {
+                /* memorize parent shape */
+                Shape parentShape = previousDrawnShape;
+                for (Object childBuilder : builder.getChilds()) {
+                    previousDrawnShape = parentShape;
+                    draw((Buildable) childBuilder);
+                }
+            }
         }
 
         return this;

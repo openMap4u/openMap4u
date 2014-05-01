@@ -30,6 +30,7 @@ package org.openmap4u.commons;
  * 
  */
 public enum Length implements Convertable<Length> {
+	
 
     /**
      * Kilometer
@@ -64,12 +65,16 @@ public enum Length implements Convertable<Length> {
     POINT(Globals.INCH2M_FACTOR / Globals.DEFAULT_DOTS);
     
     
+    
+    
+    
     /**
      * Stores the multiplication factor to convert the given unit into SI m
      * units.
      */
     private double mFactor2M = 1;
 
+	
 
     private Length(double mFactor2M) {
         this.mFactor2M = mFactor2M;
@@ -83,7 +88,7 @@ public enum Length implements Convertable<Length> {
      * @return The converted value in SI m units.
      */
     @Override
-    public final double convert(double value2convert) {
+    public final double convertTo(double value2convert) {
         return mFactor2M * value2convert;
     }
 
@@ -95,7 +100,7 @@ public enum Length implements Convertable<Length> {
      * @return The convertet value in units.
      */
     @Override
-    public final double convertFromSI(double value2convert) {
+    public final double convertFrom(double value2convert) {
         return value2convert / this.mFactor2M;
     }
 
@@ -109,7 +114,7 @@ public enum Length implements Convertable<Length> {
      * @return The converted value.
      */
     @Override
-    public final double convert(double value2convert, Length targetUnit) {
-        return targetUnit.convertFromSI(convert(value2convert));
+    public final double convertTo(double value2convert, Length targetUnit) {
+        return targetUnit.convertFrom(convertTo(value2convert));
     }
 }

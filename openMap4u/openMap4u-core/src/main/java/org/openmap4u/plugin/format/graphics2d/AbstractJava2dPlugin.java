@@ -233,13 +233,13 @@ abstract class AbstractJava2dPlugin implements Outputable {
          * first calculate the multiplication factore with which world, drawing
          * and stroke units have to be multiplied in order to get pixel.
          */
-        double mWorldUnit2PixelFactor = worldUnits.convert(1, Length.PIXEL);
-        this.mDrawingUnit2PixelFactor = drawingUnits.convert(1, Length.PIXEL);
-        this.mStrokeUnit2PixelFactor = strokeUnits.convert(1, Length.PIXEL);
-        this.mStrokeUnits2DrawingUnits = strokeUnits.convert(1, drawingUnits);
+        double mWorldUnit2PixelFactor = worldUnits.convertTo(1, Length.PIXEL);
+        this.mDrawingUnit2PixelFactor = drawingUnits.convertTo(1, Length.PIXEL);
+        this.mStrokeUnit2PixelFactor = strokeUnits.convertTo(1, Length.PIXEL);
+        this.mStrokeUnits2DrawingUnits = strokeUnits.convertTo(1, drawingUnits);
         /* create the buffered image */
-        this.mBufferedImage = new BufferedImage((int) drawingUnits.convert(
-                shape.getBounds().getWidth(), Length.PIXEL), (int) drawingUnits.convert(shape.getBounds().getHeight(),
+        this.mBufferedImage = new BufferedImage((int) drawingUnits.convertTo(
+                shape.getBounds().getWidth(), Length.PIXEL), (int) drawingUnits.convertTo(shape.getBounds().getHeight(),
                         Length.PIXEL), BufferedImage.TYPE_4BYTE_ABGR);
          /* generate the global transformation */
         /* first change the orientation of the coordinate system */

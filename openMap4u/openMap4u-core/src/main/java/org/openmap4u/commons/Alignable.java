@@ -10,7 +10,7 @@ package org.openmap4u.commons;
  *
  * @author Michael Hadrbolec
  */
-interface Align {
+interface Alignable {
     
       
       

@@ -1,13 +1,13 @@
 package org.openmap4u.builder;
 
 import java.awt.Shape;
+import java.util.List;
 import java.util.Set;
 import org.openmap4u.commons.Angle;
 import org.openmap4u.commons.Drawable;
 import org.openmap4u.commons.HorizontalAlign;
 import org.openmap4u.commons.Plugable;
 import org.openmap4u.commons.Point;
-
 import org.openmap4u.commons.Styleable;
 import org.openmap4u.commons.Transparence;
 import org.openmap4u.commons.VerticalAlign;
@@ -220,10 +220,22 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>> ex
      * @return Wheter it is a point (=true) or not (=false).
      */
     boolean isPoint();
+    
+    /**
+     * Gets childs (optional).
+     * @return The child builders.
+     */
+    List<Buildable> getChilds(); 
 
     /**
      * Cleanup code.
      */
     void tearDown();
+
+    /**
+     * Determines wether the buildable has childs.
+     * @return true ... has childs, false ... none.
+     */
+    public boolean hasChilds();
 
 }

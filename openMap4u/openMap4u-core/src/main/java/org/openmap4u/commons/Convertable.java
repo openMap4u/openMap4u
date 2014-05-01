@@ -10,7 +10,7 @@ package org.openmap4u.commons;
  * @author Michael Hadrbolec
  * @param <T> The convertable type.
  */
-public interface Convertable<T extends Convertable> {
+public interface Convertable<T extends Convertable<T>> {
 
     /**
      * Converts the given value into SI units.
@@ -19,7 +19,7 @@ public interface Convertable<T extends Convertable> {
      *            The value to convert.
      * @return The converted value in SI units.
      */
-    double convert(double value2Convert);
+    double convertTo(double value2Convert);
 
     /**
      * Converts the given value from SI units into the provided unit.
@@ -28,7 +28,7 @@ public interface Convertable<T extends Convertable> {
      *            The value to convert.
      * @return The converted value in units.
      */
-    double convertFromSI(double value2Convert);
+    double convertFrom(double value2Convert);
 
     /**
      * Converts the given value into to target units.
@@ -39,6 +39,6 @@ public interface Convertable<T extends Convertable> {
      *            The target units.
      * @return The converted value.
      */
-    double convert(double value2Convert, T targetUnit);
+    double convertTo(double value2Convert, T targetUnit);
 
 }

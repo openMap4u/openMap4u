@@ -9,7 +9,7 @@ package org.openmap4u.commons;
  *
  * @author Michael Hadrbolec
  */
-public enum VerticalAlign implements Align {
+public enum VerticalAlign implements Alignable {
 
     TOP  , MIDDLE  , BOTTOM ;
 

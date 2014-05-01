@@ -23,7 +23,7 @@ public class AreaOfInterestDebug implements AreaOfInterestTransformable {
             this.mCenter = center;
         }
          if (rotate != null) {
-            this.mRotateRad = getAngleUnits().convert(rotate);
+            this.mRotateRad = getAngleUnits().convertTo(rotate);
         }
     }
 

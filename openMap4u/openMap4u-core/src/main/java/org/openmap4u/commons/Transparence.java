@@ -37,7 +37,7 @@ public enum Transparence implements Convertable<Transparence> {
            private static final double HUNDRED = 100;
 
         @Override
-        public double convert(double value2Convert) {
+        public double convertTo(double value2Convert) {
             if (value2Convert == 0) {
                 return 1;
             } else {
@@ -47,7 +47,7 @@ public enum Transparence implements Convertable<Transparence> {
 
      
         @Override
-        public double convertFromSI(double value2Convert) {
+        public double convertFrom(double value2Convert) {
             return (1 - value2Convert) * HUNDRED;
         }
     };
@@ -55,17 +55,17 @@ public enum Transparence implements Convertable<Transparence> {
   
 
     @Override
-    public double convert(double value2Convert) {
+    public double convertTo(double value2Convert) {
         return value2Convert;
     }
 
     @Override
-    public double convertFromSI(double value2Convert) {
+    public double convertFrom(double value2Convert) {
         return value2Convert;
     }
 
     @Override
-    public double convert(double value2Convert, Transparence targetUnit) {
-        return targetUnit.convertFromSI(convert(value2Convert));
+    public double convertTo(double value2Convert, Transparence targetUnit) {
+        return targetUnit.convertFrom(convertTo(value2Convert));
     }
 }

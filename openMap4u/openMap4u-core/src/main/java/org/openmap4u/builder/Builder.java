@@ -3,7 +3,9 @@ package org.openmap4u.builder;
 import java.awt.Shape;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import org.openmap4u.commons.Angle;
 import org.openmap4u.commons.DrawableTransformable;
@@ -43,6 +45,11 @@ class Builder<S extends Styleable<S>, B extends Builder<S, B>> implements Builda
      */
     private Set<Point<?, ?>> mPoints = null;
 
+    /**
+     * Stores the childs.
+     */
+    private List<Buildable> mChilds = null;
+
     private DrawableTransformable mTransform = new DrawTransform();
 
     Builder() {
@@ -71,7 +78,7 @@ class Builder<S extends Styleable<S>, B extends Builder<S, B>> implements Builda
 
     @Override
     public B transparence(double tranparence) {
-        getStyle().setAlpha(mTransparence.convert(tranparence));
+        getStyle().setAlpha(mTransparence.convertTo(tranparence));
         return (B) this;
     }
 
@@ -135,7 +142,7 @@ class Builder<S extends Styleable<S>, B extends Builder<S, B>> implements Builda
 
     @Override
     public final B rotate(double rotation) {
-        this.mTransform.setRotate(this.mTransform.getAngleUnits().convert(rotation));
+        this.mTransform.setRotate(this.mTransform.getAngleUnits().convertTo(rotation));
         return (B) this;
     }
 
@@ -198,6 +205,29 @@ class Builder<S extends Styleable<S>, B extends Builder<S, B>> implements Builda
     @Override
     public B point(double x, VerticalAlign y) {
         return addPoint(new Point.VerticalAlign(x, y));
+    }
+
+    @Override
+    public List<Buildable> getChilds() {
+        return this.mChilds;
+    }
+
+    @Override
+    public boolean hasChilds() {
+        return this.mChilds != null;
+    }
+
+    /**
+     * Adds a new child builder.
+     *
+     * @param builder The child builder to add.
+     */
+    protected B add(Buildable builder) {
+        if (!hasChilds()) {
+            this.mChilds = new ArrayList<>();
+        }
+        this.mChilds.add(builder);
+        return (B) this;
     }
 
 }

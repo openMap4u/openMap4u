@@ -13,7 +13,7 @@ import org.openmap4u.commons.Length;
 class RasterUtil {
 
     double getMultuplicationFactor(int dpi, Length drawingUnits) {
-        return drawingUnits.convert(1, Length.INCH) * dpi;
+        return drawingUnits.convertTo(1, Length.INCH) * dpi;
     }
 
 }

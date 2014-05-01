@@ -29,17 +29,17 @@ public enum Angle implements Convertable<Angle> {
     }
 
     @Override
-    public double convert(double value2Convert) {
+    public double convertTo(double value2Convert) {
         return this.mConversionFactor2SI * value2Convert;
     }
 
     @Override
-    public double convertFromSI(double value2Convert) {
+    public double convertFrom(double value2Convert) {
         return value2Convert / this.mConversionFactor2SI;
     }
 
     @Override
-    public double convert(double value2Convert, Angle targetUnit) {
-        return targetUnit.convertFromSI(convert(value2Convert));
+    public double convertTo(double value2Convert, Angle targetUnit) {
+        return targetUnit.convertFrom(convertTo(value2Convert));
     }
 }
