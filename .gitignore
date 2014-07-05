@@ -7,6 +7,8 @@
 
 # Maven target file
 target
+*.iml
+
 
 # Eclipse specific files
 .project
