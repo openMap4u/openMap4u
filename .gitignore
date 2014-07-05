@@ -10,3 +10,5 @@ target
 
 # Eclipse specific files
 .project
+.settings
+.classpath
