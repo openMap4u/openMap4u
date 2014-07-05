@@ -1,0 +1,301 @@
+/* css released under Creative Commons License -  http://creativecommons.org/licenses/by/2.0/deed.en  */
+/* html5 + CSS 3 Template created by miss monorom  http://intensivstation.ch 2013 */
+
+/* reset */
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+/* render html5 elements as block 
+   rendert html5 elemente als block  */
+
+header, footer, section, aside, nav, article { display: block;}
+
+body {
+background-color: #aaa;
+font-size: 1em;
+font-family: Arial, SunSans-Regular, Sans-Serif;
+color:#564b47;
+}
+pre, code {
+font-size: 1.3em;
+}
+a {color: #999;}
+a:visited {color:#999;}
+a:hover {color: #ccc;}
+a:active { color:#000000;}
+
+h1, h2 {
+font-size:1.8em;
+font-weight: normal;
+margin: 0 0 10px;
+}
+
+h3 {
+font-size:1.38em;
+font-weight: normal;
+margin: 0 0 10px;
+}
+
+img.download {vertical-align:middle;}
+img{border:none;}
+
+ul{
+	list-style-type:none;}
+/* ----------container zentriert das layout-------------- */
+
+#container {
+max-width: 1200px;
+min-width:320px;
+margin:0  auto;
+background-color: #eee;
+}
+
+/* ----------header for logo-------------- */
+#top:after{
+    height: 0;
+    content: ".";
+    display: block;
+    clear: both;
+  visibility:hidden;
+  } 
+#top {
+  background-color: #ccc;
+	}
+
+#top header{
+  padding:20px;
+  float:left;
+  width:50%;
+  }
+  
+header p{
+	text-transform:uppercase;
+  font-size:0.8434em;
+
+}
+header img{ 
+border:0;
+padding: 0 0 10px;
+}  
+.mini, .menubutton{
+  display:none;
+  }
+
+.menubutton a {
+  cursor:pointer;
+}
+ 
+/* new nav */
+nav{
+  padding:0 20px 0 0;
+  margin:0 0 2px;
+  float:right;
+  width:50%;
+} 
+
+
+nav ul:after {
+    height: 0;
+    content: ".";
+    display: block;
+    clear: both;
+  visibility:hidden;
+  } 
+nav ul {
+  list-style-type: none;
+  float:right;
+}   
+nav li {
+  float: left;
+  margin: 0 3px 0 0;
+  }
+
+nav a, nav a:visited {
+  background-color: #999999;
+  color: #FFFFFF;
+  display: block;
+  padding: 5px 20px;
+  text-decoration: none;
+  transition: all 0.5s linear;
+  box-shadow: 0 1px 3px #666666;
+}
+
+
+nav a:hover {
+  color:#564b47;
+  background-color: #ccc; 
+  }
+nav a:active { color:#000000;}
+nav a.selected {
+  color:#fff;
+  background-color: #f67; 
+} 
+
+/* ----------------- content--------------------- */
+section:before {
+    height: 0;
+    content: ".";
+    display: block;
+    clear: both;
+  visibility:hidden;
+  }
+
+section#content {
+float: left;
+width: 75%;
+padding: 20px;
+background-color: #fff;
+min-height:600px;
+}
+p, pre{
+padding:  0 0 20px;
+line-height:1.5em;
+}
+ul{
+	list-style-type:none;
+	line-height:1.5em;
+}
+article header{
+	background:#fff;
+	padding:0;
+	}
+	
+article footer{
+	border-bottom: 1px solid #564B47;
+	color:#564B47;
+	padding:0 0 20px;
+	margin:0 0 20px;
+}
+
+/* -------------- side infos ------------- */
+
+aside {
+padding:20px;
+float:right;
+width: 25%;
+}
+
+/* -----------footer--------------------------- */
+footer.footer {
+padding: 20px;
+clear:both;
+background-color: #564B47;
+color:#fff;
+}
+
+footer a {
+	color: #999; text-decoration:none;
+	}
+
+.footer-segment {
+    display: inline-block;
+    vertical-align: top;
+    width: 32%;
+}
+
+
+/* -------------------- Media Queries -------------------- */
+
+
+@media only screen and (max-width: 860px) { 
+ #top header, nav {
+    float:none;
+    width:100%;
+  }
+  nav {
+    padding:0;
+  } 
+  nav ul {
+    float:none;
+  }
+  nav li {
+    float: left;
+    margin: 0;
+    width:25%;
+  } 
+}
+
+@media only screen and (max-width: 768px) { 
+
+section#content {
+float: none;
+width: 100%;
+padding: 20px;
+}
+
+aside {
+padding:20px;
+float: none;
+width: 100%;
+}
+
+.footer-segment {
+    display: inline-block;
+    vertical-align: top;
+    width: 49%;
+	padding: 0 0 20px;
+}
+
+.footer-segment:last-child {
+    border-top:1px solid #999;
+    display: block;
+    width: 100%;
+	padding:20px 0 0 ;
+}
+}
+
+
+
+@media only screen and (max-width: 480px) { 
+
+  nav li {
+    float: none;
+    margin: 0;
+    width:100%;
+    display:block;
+  } 
+  nav a {
+    font-size:1.2em;
+    position:relative;
+  }
+    
+  nav a:not(.selected):after {
+    content:'»';
+    position:absolute;
+    right:10px;
+  }
+  
+  .mini {
+    display:block;
+    /* 20% space rechts fuer .menubutton: */
+    width: 80%;
+  } 
+  
+  .menubutton {
+    display:block;
+    position:absolute;
+    right:20px;
+    top:20px;
+    z-index: 400;
+  }
+  
+  .maxi{
+    display:none;
+  }
+
+footer.footer {
+padding: 0;
+}
+
+  .footer-segment, .footer-segment:last-child  {
+    display: block;
+    vertical-align: top;
+    width: 100%;
+	border-bottom:1px solid #999;
+	padding:20px;
+}
+
+}
+

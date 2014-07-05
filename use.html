@@ -1,0 +1,58 @@
+---
+layout: default
+title: How to use openMap4u
+---
+<div id="home">
+<ol class="breadcrumb">
+   <li class="active">Use</li>
+</ol>
+
+<h3>Apache Maven</h3>
+{% highlight xml %}
+<repositories>
+  ...
+  <repository>
+    <id>openMap4u</id>
+    <url>https://github.com/openMap4u/openMap4u/tree/mvn-repo</url>
+  </repository>
+  ...
+</repositories>
+  ...
+<dependencies>
+  ...
+  <dependency>
+    <groupId>org.openMap4u</groupId>
+    <artifactId>openMap4u-api</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+  </dependency>
+  ...
+</dependencies>
+{% endhighlight %}
+ 
+
+<h3>Apache Buildr</h3>
+{% highlight xml %}
+'org.openMap4u:openMap4u-api:jar:0.1.0-SNAPSHOT'
+{% endhighlight %}
+
+
+<h3>Apache Ant</h3>
+{% highlight xml %}
+<dependency org="org.openMap4u" name="openMap4u-api" rev="0.1.0-SNAPSHOT">
+  <artifact name="openMap4u-api" type="jar" />
+</dependency>
+{% endhighlight %}
+
+
+<h3>Groovy Grape</h3>
+{% highlight xml %}
+@Grapes(
+  @Grab(group='org.openMap4u', module='openMap4u-api', version='0.1.0-SNAPSHOT')
+)
+{% endhighlight %}
+
+<h3>Grails</h3>
+{% highlight xml %}
+compile 'org.openMap4u:openMap4u-api:0.1.0-SNAPSHOT'
+{% endhighlight %}
+</div>

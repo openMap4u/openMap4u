@@ -1,0 +1,49 @@
+---
+layout: default
+title:  "How to draw a polygon!"
+---
+<div id="home">
+<ol class="breadcrumb">
+  <li><a href="{{ site.baseurl }}/documentation.html">Docs</a></li>
+  <li> Primitive </li>
+   <li class="active">How to draw a polygon</li>
+</ol>
+
+<h2>How to draw a polygon</h2>
+Obtain a polygon primitive (with the configured default style).
+{% highlight java%}
+OpenMap4u om4u = new OpenMap4u();
+...
+SetAreaOfInterestOrDrawOrWriteable myCanvas =  om4u.getCanvas(4, 1);
+...
+Polygon myPolygon = om4u.get(Polygon.class);
+{% endhighlight %}
+
+Set the polygon to draw
+{% highlight java%}
+myPolygon.text("Hello world");
+{% endhighlight %}
+Set the position where to draw
+{% highlight java%}
+myPolygon.lineTo(0.25, 0.125).lineTo(2.0,0.75).lineTo(3.75,0.25).lineTo(0.25,0.125).fill(Color.LIGHT_GRAY);
+{% endhighlight %}
+And last but not least draw it
+{% highlight java%}
+myCanvas.draw(myPolygon);
+{% endhighlight%}
+Write the result 
+{% highlight java%}
+canvas.write("myPolygon.png");
+{% endhighlight %}
+Which results in the following output.<br/>
+<div id="image-container">
+    <img id="image" class="media-object" src="{{ site.baseurl }}/docs/primitive/myPolygon.png" alt="the result">
+</div>
+But wait you can do it much faster and simpler with the fluent builder pattern
+{% highlight java%}
+myCanvas.draw(
+  om4u.get(Polygon.class).lineTo(0.25, 0.125).lineTo(2.0,0.75).lineTo(3.75,0.25).lineTo(0.25,0.125).fill(Color.LIGHT_GRAY)
+).write("myPolygon.png");
+{% endhighlight %}
+</div>
+

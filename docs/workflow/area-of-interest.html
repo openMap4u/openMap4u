@@ -1,0 +1,66 @@
+---
+layout: default
+title:  "How to use openMap4u!"
+---
+
+<div id="home">
+<ol class="breadcrumb">
+  <li><a href="{{ site.baseurl }}/documentation.html">Docs</a></li>
+  <li>Workflow</li>
+   <li class="active">How to set the area of interest</li>
+</ol>
+
+<h2>How to set the area of interest</h2>
+Create a new openMap4u instance (with the default settings).
+{% highlight java%}
+OpenMap4u oM4u = new OpenMap4u();
+{% endhighlight %}
+Optional override the default settings.<br/><br/>
+Create a rectangular drawing canvas with the given width (=4 cm) and height (=2 cm).     
+{% highlight java %}
+OverrideDrawOrWriteable myCanvas = oM4u.getCanvas(4.0, 4.0);
+{% endhighlight %}
+Set zero or more of the following (The order of the function call is irelevant):
+<ul>
+<li>Center of the drawing canvas in map units.
+   {% highlight java %}
+  myCanvas.center(1.0,1.5);
+ {% endhighlight %}
+ <div id="image-container">
+    <img id="image" class="media-object" src="{{ site.baseurl }}/docs/workflow/center.png" alt="the result">
+</div>
+
+</li> 
+<li>Scale of the drawing canvas.
+  {% highlight java %}
+  myCanvas.scale(.5);
+ {% endhighlight %}
+ <div id="image-container">
+    <img id="image" class="media-object" src="{{ site.baseurl }}/docs/workflow/scale.png" alt="the result">
+</div>
+</li>
+<li>Rotation of the drawing canvas angle units.
+  {% highlight java %}
+  myCanvas.rotate(30);
+ {% endhighlight %}
+ <div id="image-container">
+    <img id="image" class="media-object" src="{{ site.baseurl }}/docs/workflow/rotate.png" alt="the result">
+</div>
+</li>
+</ul>
+The draw a primitive
+  {% highlight java %}
+  myCanvas.draw(om4u.get(Text.class).text("Hello world!").center(2.0,2.0);
+ {% endhighlight %}
+Write the result
+{% highlight java%}
+myCanvas.write("myText.png");
+{% endhighlight %}
+<br/><br/>
+But wait you can do it much faster and simpler with the fluent builder pattern
+{% highlight java %}
+new OpenMap4u().canvas(4.0,4.0).center(1.0,1.5).scale(0.5).rotate(30).draw(
+    om4u.get(Text.class).text("Hello world").center(0.5,0.25)
+  ).write("myText.png");
+{% endhighlight %}
+</div>

@@ -1,0 +1,50 @@
+---
+layout: default
+title:  "How to use openMap4u!"
+---
+<ol class="breadcrumb">
+  <li><a href="{{ site.baseurl }}/documentation.html">Docs</a></li>
+  <li>extend</li>
+   <li class="active">How to extend openMap4u</li>
+</ol>
+
+
+<h2>How to extend openMap4u</h2>
+<div id="image-container">
+    <img id="image" class="media-object" src="{{ site.baseurl }}/docs/extend/extend.png" alt="openMap4u overview">
+</div>
+ There are two point where to extend the openMap4u API.
+ <h3>Outputable</h3>
+ You can develop your own custom output format, by implementing the Outputable interface.
+ <h3>Buildable</h3>
+ You can develop your own drawing plugin, by implementing the Buildable interface or extending one of the following abstract template classes<ul><li>ShapeBuilder (= vector graphic)</li><li>TextBuilder (= text) and </li><li>ImageBuilder (= raster image)</li></ul>
+
+<br/><br/>
+As an example we show you here some built in plugins.
+
+<h4>org.openmap4u.plugin.builder.core package</h4>
+ <ul>
+ <li><a href="https://github.com/openMap4u/openMap4u/blob/master/openMap4u/openMap4u-core/src/main/java/org/openmap4u/plugin/builder/core/Line.java">Line.java</a></li>
+ <li><a href="https://github.com/openMap4u/openMap4u/blob/master/openMap4u/openMap4u-core/src/main/java/org/openmap4u/plugin/builder/core/Polyline.java">Polyline.java</a></li>
+ <li><a href="https://github.com/openMap4u/openMap4u/blob/master/openMap4u/openMap4u-core/src/main/java/org/openmap4u/plugin/builder/core/Polygon.java">Polygon.java</a></li>
+ <li><a href="https://github.com/openMap4u/openMap4u/blob/master/openMap4u/openMap4u-core/src/main/java/org/openmap4u/plugin/builder/core/Text.java">Text.java</a></li>
+  <li><a href="https://github.com/openMap4u/openMap4u/blob/master/openMap4u/openMap4u-core/src/main/java/org/openmap4u/plugin/builder/core/Image.java">Image.java</a></li>
+ </ul>
+
+<h4>org.openmap4u.plugin.builder.symbol package</h4>
+ <ul>
+ <li><a href="https://github.com/openMap4u/openMap4u/blob/master/openMap4u/openMap4u-core/src/main/java/org/openmap4u/plugin/builder/symbol/Rectangle.java">Rectangle.java</a></li>
+ <li><a href="https://github.com/openMap4u/openMap4u/blob/master/openMap4u/openMap4u-core/src/main/java/org/openmap4u/plugin/builder/symbol/Circle.java">Circle.java</a></li>
+ <li><a href="https://github.com/openMap4u/openMap4u/blob/master/openMap4u/openMap4u-core/src/main/java/org/openmap4u/plugin/builder/symbol/Cross.java">Cross.java</a></li>
+ </ul>
+
+<h4>org.openmap4u.plugin.builder.chart package</h4>
+ <ul>
+ <li><a href="https://github.com/openMap4u/openMap4u/blob/master/openMap4u/openMap4u-core/src/main/java/org/openmap4u/plugin/builder/chart/AreaChart.java">AreaChart.java</a></li>
+ <li><a href="https://github.com/openMap4u/openMap4u/blob/master/openMap4u/openMap4u-core/src/main/java/org/openmap4u/plugin/builder/chart/BarChart.java">BarChart.java</a></li>
+ <li><a href="https://github.com/openMap4u/openMap4u/blob/master/openMap4u/openMap4u-core/src/main/java/org/openmap4u/plugin/builder/chart/LineChart.java">LineChart.java</a></li>
+ <li><a href="https://github.com/openMap4u/openMap4u/blob/master/openMap4u/openMap4u-core/src/main/java/org/openmap4u/plugin/builder/chart/PieChart.java">PieChart.java</a></li>
+ </ul>
+
+
+</div>

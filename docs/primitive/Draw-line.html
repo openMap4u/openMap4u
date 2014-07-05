@@ -1,0 +1,44 @@
+---
+layout: default
+title:  "How to draw a line!"
+---
+<div id="home">
+<ol class="breadcrumb">
+  <li><a href="{{ site.baseurl }}/documentation.html">Docs</a></li>
+  <li> Primitive </li>
+   <li class="active">How to draw a line</li>
+</ol>
+
+<h2>How to draw a line</h2>
+Obtain a canvas and a line primitive (with the configured default style).
+{% highlight java %}
+OpenMap4u om4u = new OpenMap4u();
+...
+SetAreaOfInterestOrDrawOrWriteable myCanvas =  om4u.getCanvas(4, 1);
+...
+Line myLine = om4u.get(Line.class);
+{% endhighlight %}
+
+Set the line from a start to an end point (xStart, yStart, xEnd, yEnd).
+{% highlight java%}
+myLine.line(.25, .125, 3.75, 0.75);
+ {% endhighlight %}
+Draw the line
+{% highlight java%}
+myCanvas.draw(myLine);
+{% endhighlight %}
+Write the result 
+{% highlight java%}
+canvas.write("myLine.png");
+{% endhighlight %}
+Which results in the following output.<br/>
+<div id="image-container">
+    <img id="image" class="media-object" src="{{ site.baseurl }}/docs/primitive/myLine.png" alt="the result">
+</div>
+But wait you can do it much faster and simpler with the fluent builder pattern
+{% highlight java%}
+myCanvas.draw(
+  om4u.get(Line.class).line(.25, .125, 3.75, 0.75)
+).write("myLine.png");
+{% endhighlight %}
+</div>

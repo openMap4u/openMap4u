@@ -1,0 +1,44 @@
+---
+layout: default
+title:  "How to use openMap4u!"
+---
+<ol class="breadcrumb">
+  <li><a href="{{ site.baseurl }}/documentation.html">Docs</a></li>
+  <li>Workflow</li>
+   <li class="active">How to use openMap4u</li>
+</ol>
+
+
+<h2>How to use openMap4u</h2>
+Create a new openMap4u instance (with the default settings).
+{% highlight java%}
+OpenMap4u oM4u = new OpenMap4u();
+{% endhighlight %}
+Optional override the default settings.<br/><br/>
+Create a rectangular drawing canvas with the given width (=4 cm) and height (=2 cm).     
+{% highlight java %}
+OverrideDrawOrWriteable myCanvas = oM4u.getCanvas(4.0, 1.0);
+{% endhighlight %}
+Optional set the <a href="{{ site.baseurl }}/docs/workflow/area-of-interest.html">area of interest</a>.<br/><br/>
+Draw "Hello world" at the given position on the canvas.
+{% highlight java %}
+myCanvas.draw(
+  oM4u.get(Text.class).text("Hello world").center(0.5,0.25)
+);
+{% endhighlight %}
+Write the output.
+{% highlight java %}
+canvas.write("myText.png");
+{% endhighlight %}
+Which results:
+<div id="image-container">
+    <img id="image" class="media-object" src="{{ site.baseurl }}/docs/primitive/myText.png" alt="the result">
+</div>
+
+But wait you can do it much faster and simpler with the fluent builder pattern
+{% highlight java %}
+new OpenMap4u().canvas(4.0,1.0).draw(
+    om4u.get(Text.class).text("Hello world").center(0.5,0.25)
+  ).write("myText.png");
+{% endhighlight %}
+</div>

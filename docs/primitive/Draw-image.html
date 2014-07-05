@@ -1,0 +1,54 @@
+---
+layout: default
+title:  "How to draw an image!"
+---
+<div id="home">
+
+<ol class="breadcrumb">
+  <li><a href="{{ site.baseurl }}/documentation.html">Docs</a></li>
+  <li> Primitive </li>
+   <li class="active">How to draw an image</li>
+</ol>
+
+
+
+<h2>How to draw an image</h2>
+Obtain an image primitive (with the configured default style).
+{% highlight java %}
+OpenMap4u om4u = new OpenMap4u();
+...
+SetAreaOfInterestOrDrawOrWriteable myCanvas =  om4u.getCanvas(4, 1);
+...
+Image myImage = om4u.get(Image.class);
+{% endhighlight %}
+
+Set the image to draw
+{% highlight java %}
+myImage.path("image.png");
+{% endhighlight %}
+Set the position where to draw
+{% highlight java %}
+myImage.center(0.5,0.25);
+{% endhighlight %}
+And last but not least draw it
+{% highlight java%}
+myCanvas.draw(myImage);
+{% endhighlight%}
+Write the result:
+{% highlight java%}
+myCanvas.write("myImage.png");
+{% endhighlight %}
+Which results in the following output.<br/>
+<div id="image-container">
+    <img id="image" class="media-object" src="{{ site.baseurl }}/docs/primitive/myImage.png" alt="the result">
+</div>
+
+
+</div>
+But wait you can do it much faster and simpler with the fluent builder pattern
+{% highlight java%}
+myCanvas.draw(
+    om4u.get(Image.class).path("myImage.png").center(0.5,0.25)
+  ).write("myImage.png");;
+{% endhighlight %}
+</div>

@@ -1,0 +1,10 @@
+org.openmap4u
+org.openmap4u.builder
+org.openmap4u.commons
+org.openmap4u.format
+org.openmap4u.plugin.builder.chart
+org.openmap4u.plugin.builder.connector
+org.openmap4u.plugin.builder.core
+org.openmap4u.plugin.builder.symbol
+org.openmap4u.plugin.format.graphics2d
+org.openmap4u.plugin.format.svg

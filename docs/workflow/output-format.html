@@ -1,0 +1,44 @@
+---
+layout: default
+title:  "How to set the output format!"
+---
+<div id="home">
+<ol class="breadcrumb">
+  <li><a href="{{ site.baseurl }}/documentation.html">Docs</a></li>
+  <li>Workflow</li>
+   <li class="active">How to set the output format</li>
+</ol>
+ 
+ <h2>How to set the output format</h2>
+ 
+<h3>Use the default output format</h3>
+There is allways an output format configured.
+{% highlight java %}
+OpenMap4u om4u = new OpenMap4u();
+...
+SetAreaOfInterestOrDrawOrWriteable myCanvas =  om4u.getCanvas(4, 1);
+...
+myCanvas.draw(
+  om4u.get(Line.class).line(.25, .125, 3.75, 0.75)
+).write("myLine.png");
+{% endhighlight %}
+Which results in the following output.<br/>
+<div id="image-container">
+    <img id="image" class="media-object" src="{{ site.baseurl }}/docs/primitive/myLine.png" alt="the result">
+</div>
+<h3>Set a custom output format</h3>
+{% highlight java%}
+OpenMap4u om4u = new OpenMap4u();
+...
+SetAreaOfInterestOrDrawOrWriteable myCanvas =  om4u.getCanvas(4, 1).outputFormat(Svg.class);
+...
+myCanvas.draw(
+  om4u.get(Line.class).line(.25, .125, 3.75, 0.75)
+).write("myLine.svg");
+{% endhighlight %}
+Which results in the following output.<br/>
+<div id="image-container">
+    <object id="image" class="media-object" data="{{ site.baseurl }}/docs/workflow/myLine.svg" alt="the result">
+</div>
+
+</div>

@@ -1,0 +1,43 @@
+---
+layout: default
+title:  "How to draw a polyline!"
+---
+<div id="home">
+<ol class="breadcrumb">
+  <li><a href="{{ site.baseurl }}/documentation.html">Docs</a></li>
+  <li> Primitive </li>
+   <li class="active">How to draw a polyline</li>
+</ol>
+
+<h2>How to draw a polyline</h2>
+{% highlight java  %}
+OpenMap4u om4u = new OpenMap4u();
+...
+SetAreaOfInterestOrDrawOrWriteable myCanvas =  om4u.getCanvas(4, 1);
+...
+Polyline myPolyline = om4u.get(Polyline.class);
+{% endhighlight %}
+
+Set the polyline to draw
+{% highlight java %}
+myPolyline.lineTo(0.25,.125).lineTo(1.0, 0.75).lineTo(2.0, 0.125).lineTo(3,0.5).lineTo(3.75,0.15);
+{% endhighlight %}
+Draw it:
+{% highlight java %}
+myCanvas.draw(myPolyline);
+{% endhighlight %}
+Write the result
+{% highlight java%}
+myCanvas.write("C:/temp/myPolyline.png");
+{% endhighlight %}
+Which results in the following output.<br/>
+<div id="image-container">
+    <img id="image" class="media-object" src="{{ site.baseurl }}/docs/primitive/myPolyline.png" alt="the result">
+</div>
+But wait you can do it much faster and simpler with the fluent builder pattern
+{% highlight java %}
+myCanvas.draw(
+    om4u.get(Text.class).text("Hello world").center(0.5,0.25)
+  ).write("myPolyline.png");
+{% endhighlight %}
+</div>

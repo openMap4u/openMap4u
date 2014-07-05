@@ -1,0 +1,12 @@
+@CHARSET "UTF-8";
+
+#image-container {
+	padding-top:10px;
+	padding-bottom:15px;
+}
+
+#image {
+	border: solid black 1px;
+	background-color: white;
+	box-shadow: 7px 7px 3px #888888;
+}
