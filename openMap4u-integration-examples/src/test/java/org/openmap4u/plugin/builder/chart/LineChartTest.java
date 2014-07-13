@@ -62,7 +62,7 @@ public class LineChartTest extends AbstractOpenMap4uTest {
         /* 1. get an instance */
         OpenMap4u oM4u = new OpenMap4u();
         /* optional override default styling (for the created instance) */
-        oM4u.getDefaults().getShapeStyle().setAlpha(.5).setStrokeColor(Color.GRAY);
+        oM4u.getDefaults().getShapeStyle().alpha(.5).strokeColor(Color.GRAY);
         /* 2. get an canvas and specify the size which you want to draw */
         DrawOrWriteable canvas = oM4u.getCanvas(10, 8);
         /* 3. draw your primitive(s). */
@@ -82,7 +82,7 @@ public class LineChartTest extends AbstractOpenMap4uTest {
         /* 1. get an instance */
         OpenMap4u oM4u = new OpenMap4u();
         /* optional override default styling (for the created instance) */
-        oM4u.getDefaults().getShapeStyle().setAlpha(.5).setStrokeColor(Color.GRAY).setStrokeSize(2);
+        oM4u.getDefaults().getShapeStyle().alpha(.5).strokeColor(Color.GRAY).strokeSize(2);
         /* 2. get an canvas and specify the size which you want to draw */
         DrawOrWriteable canvas = oM4u.getCanvas(10, 8);
         /* 3. draw your primitive(s). */
@@ -111,7 +111,7 @@ public class LineChartTest extends AbstractOpenMap4uTest {
         /* 1. get an instance */
         OpenMap4u oM4u = new OpenMap4u();
         /* optional override default styling (for the created instance) */
-        oM4u.getDefaults().getShapeStyle().setAlpha(.5).setStrokeColor(Color.GRAY);
+        oM4u.getDefaults().getShapeStyle().alpha(.5).strokeColor(Color.GRAY);
         DrawOrWriteable canvas = oM4u.getCanvas(10, 8);
         /*  draw the horizontal raster lines */
         getData().map(value -> oM4u.get(Line.class).line(0, value, 10, value)).forEach(e -> canvas.draw(e));
@@ -129,7 +129,7 @@ public class LineChartTest extends AbstractOpenMap4uTest {
         /* 1. get an instance */
         OpenMap4u oM4u = new OpenMap4u();
         /* optional override default styling (for the created instance) */
-        oM4u.getDefaults().getShapeStyle().setAlpha(.5).setStrokeColor(Color.GRAY);
+        oM4u.getDefaults().getShapeStyle().alpha(.5).strokeColor(Color.GRAY);
         DrawOrWriteable draw = oM4u.getCanvas(10, 8);
         /*  draw the horizontal raster lines */
         draw.draw(oM4u.get(LineChart.class).from(0, 4).to(8, 4)).draw(oM4u.get(Text.class).center(CENTER,MIDDLE).text("HelloWorld"));

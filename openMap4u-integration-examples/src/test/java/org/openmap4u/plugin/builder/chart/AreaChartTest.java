@@ -60,7 +60,7 @@ public class AreaChartTest extends AbstractOpenMap4uTest {
         /* 1. get an instance */
         OpenMap4u oM4u = new OpenMap4u();
         /* optional override default styling (for the created instance) */
-        oM4u.getDefaults().getShapeStyle().setAlpha(.5).setStrokeColor(Color.BLACK).setStrokeFill(Color.GRAY);
+        oM4u.getDefaults().getShapeStyle().alpha(.5).strokeColor(Color.BLACK).strokeFill(Color.GRAY);
         /* 2. get an canvas and specify the size which you want to draw */
         DrawOrWriteable draw = oM4u.getCanvas(10, 8).center(5, 3);
         /* 3. draw your primitive(s). */
@@ -82,7 +82,7 @@ public class AreaChartTest extends AbstractOpenMap4uTest {
         /* 1. get an instance */
         OpenMap4u oM4u = new OpenMap4u();
         /* optional override default styling (for the created instance) */
-        oM4u.getDefaults().getShapeStyle().setAlpha(.5).setStrokeColor(Color.BLACK).setStrokeFill(Color.GRAY);
+        oM4u.getDefaults().getShapeStyle().alpha(.5).strokeColor(Color.BLACK).strokeFill(Color.GRAY);
         /* 2. get an canvas and specify the size which you want to draw */
         DrawOrWriteable draw = oM4u.getCanvas(10, 8).center(4, 4);
         /* 3. draw your primitive(s). */
@@ -104,7 +104,7 @@ public class AreaChartTest extends AbstractOpenMap4uTest {
         /* 1. get an instance */
         OpenMap4u oM4u = new OpenMap4u();
         /* optional override default styling (for the created instance) */
-        oM4u.getDefaults().getShapeStyle().setStrokeColor(Color.BLACK).setStrokeFill(Color.GRAY);
+        oM4u.getDefaults().getShapeStyle().strokeColor(Color.BLACK).strokeFill(Color.GRAY);
         /* 2. get an canvas and specify the size which you want to draw */
         DrawOrWriteable canvas = oM4u.getCanvas(10, 8).center(4, 3);
         /* 3. draw your primitive(s). */

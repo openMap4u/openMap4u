@@ -60,7 +60,7 @@ public class ShapeStyle extends Style<ShapeStyleable> implements ShapeStyleable 
      *
       */
     @Override
-     public ShapeStyleable setStrokeColor(Paint color) {
+     public ShapeStyleable strokeColor(Paint color) {
         this.mStrokeColor = color;
         return this;
     }
@@ -70,7 +70,7 @@ public class ShapeStyle extends Style<ShapeStyleable> implements ShapeStyleable 
      *
       */
     @Override
-    public ShapeStyleable setStrokeFill(Paint fill) {
+    public ShapeStyleable strokeFill(Paint fill) {
         this.fill = fill;
         return this;
     }
@@ -82,7 +82,7 @@ public class ShapeStyle extends Style<ShapeStyleable> implements ShapeStyleable 
      * @return The method chaining pattern.
      */
     @Override
-    public ShapeStyle setStrokeSize(double strokeSize) {
+    public ShapeStyle strokeSize(double strokeSize) {
         this.strokeSize = strokeSize;
         return this;
     }

@@ -6,6 +6,7 @@
 package org.openmap4u.commons;
 
 import java.awt.geom.Point2D;
+
 import org.openmap4u.commons.Point.Align;
 
 /**

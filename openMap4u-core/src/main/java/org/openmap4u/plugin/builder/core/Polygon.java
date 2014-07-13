@@ -2,6 +2,7 @@ package org.openmap4u.plugin.builder.core;
 
 import java.awt.Paint;
 import java.awt.Shape;
+
 import org.openmap4u.builder.ShapeBuilder;
 
 /**

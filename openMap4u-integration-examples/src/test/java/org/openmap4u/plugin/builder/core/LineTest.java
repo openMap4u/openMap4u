@@ -139,7 +139,7 @@ public class LineTest extends AbstractOpenMap4uTest {
         /* 1. get an instance */
         OpenMap4u oM4u = new OpenMap4u();
         /* optional override default styling (for the created instance) */
-        oM4u.getDefaults().getShapeStyle().setAlpha(.5).setStrokeColor(Color.GRAY);
+        oM4u.getDefaults().getShapeStyle().alpha(.5).strokeColor(Color.GRAY);
         /* 2. get an canvas and specify the size which you want to draw */
         DrawOrWriteable draw = oM4u.getCanvas(2, 8);
         /* 3. draw your primitive(s). */
@@ -158,7 +158,7 @@ public class LineTest extends AbstractOpenMap4uTest {
         /* 1. get an instance */
         OpenMap4u oM4u = new OpenMap4u();
         /* optional override default styling (for the created instance) */
-        oM4u.getDefaults().getShapeStyle().setAlpha(.5).setStrokeColor(Color.GRAY);
+        oM4u.getDefaults().getShapeStyle().alpha(.5).strokeColor(Color.GRAY);
         /* 2. get an canvas and specify the size which you want to draw */
         DrawOrWriteable draw = oM4u.getCanvas(4, 8);
         /* 3. draw your primitive(s). */
@@ -175,7 +175,7 @@ public class LineTest extends AbstractOpenMap4uTest {
         /* 1. get an instance */
         OpenMap4u oM4u = new OpenMap4u();
         /* optional override default styling (for the created instance) */
-        oM4u.getDefaults().getShapeStyle().setAlpha(.5).setStrokeColor(Color.BLACK);
+        oM4u.getDefaults().getShapeStyle().alpha(.5).strokeColor(Color.BLACK);
         /* 2. get an canvas and specify the size which you want to draw */
         DrawOrWriteable draw = oM4u.getCanvas(10, 2);
         /* 3. draw your primitive(s). */
@@ -191,7 +191,7 @@ public class LineTest extends AbstractOpenMap4uTest {
         /* 1. get an instance */
         OpenMap4u oM4u = new OpenMap4u();
         /* optional override default styling (for the created instance) */
-        oM4u.getDefaults().getShapeStyle().setStrokeColor(Color.BLACK);
+        oM4u.getDefaults().getShapeStyle().strokeColor(Color.BLACK);
         /* 2. get an canvas and specify the size which you want to draw */
         DrawOrWriteable canvas = oM4u.getCanvas(2, 1);
         canvas.draw(oM4u.get(Vertical.class).length(.8).center(1, .5));
@@ -207,7 +207,7 @@ public class LineTest extends AbstractOpenMap4uTest {
         /* 1. get an instance */
         OpenMap4u oM4u = new OpenMap4u();
         /* optional override default styling (for the created instance) */
-        oM4u.getDefaults().getShapeStyle().setStrokeColor(Color.BLACK);
+        oM4u.getDefaults().getShapeStyle().strokeColor(Color.BLACK);
         /* 2. get an canvas and specify the size which you want to draw */
         DrawOrWriteable canvas = oM4u.getCanvas(2, 1);
         canvas.draw(oM4u.get(Horizontal.class).length(.8).center(1, .5));
@@ -223,7 +223,7 @@ public class LineTest extends AbstractOpenMap4uTest {
         /* 1. get an instance */
         OpenMap4u oM4u = new OpenMap4u();
         /* optional override default styling (for the created instance) */
-        oM4u.getDefaults().getShapeStyle().setStrokeColor(Color.BLACK);
+        oM4u.getDefaults().getShapeStyle().strokeColor(Color.BLACK);
         /* 2. get an canvas and specify the size which you want to draw */
         DrawOrWriteable canvas = oM4u.getCanvas(2, 1);
         canvas.draw(oM4u.get(Horizontal.class).line(-.4, .4, .0).center(1, .5));
@@ -240,7 +240,7 @@ public class LineTest extends AbstractOpenMap4uTest {
         /* 1. get an instance */
         OpenMap4u oM4u = new OpenMap4u();
         /* optional override default styling (for the created instance) */
-        oM4u.getDefaults().getShapeStyle().setStrokeColor(Color.BLACK);
+        oM4u.getDefaults().getShapeStyle().strokeColor(Color.BLACK);
         /* 2. get an canvas and specify the size which you want to draw */
         DrawOrWriteable canvas = oM4u.getCanvas(2.1, 1);
         canvas.draw(oM4u.get(Vertical.class).line(0, -.4, .4).center(1, .5));

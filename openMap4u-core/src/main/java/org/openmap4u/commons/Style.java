@@ -36,7 +36,7 @@ abstract class Style<T extends Styleable<T>>  implements Styleable<T>, Cloneable
      * {@inheritDoc}
      */
     @Override
-    public final T setAlpha(double alpha) {
+    public final T alpha(double alpha) {
         this.alpha = alpha;
         return (T) this;
     } 
@@ -52,8 +52,9 @@ abstract class Style<T extends Styleable<T>>  implements Styleable<T>, Cloneable
     /**
      * {@inheritDoc}
      */
-    @Override
-    public final T setVisible(boolean visible) {
+    @SuppressWarnings("unchecked")
+	@Override
+    public final T visible(boolean visible) {
         this.visible = visible;
         return (T) this;
     }

@@ -10,6 +10,7 @@
 package org.openmap4u.plugin.builder.chart;
 
 import java.awt.Paint;
+
 import org.openmap4u.builder.ShapeBuilder;
 
 /**

@@ -29,7 +29,7 @@ public class ShapeUtil {
     List<Point2D.Double> getVertices(Shape shape) {
         List<Point2D.Double> vertices = new ArrayList<>();
         PathIterator pI = shape.getPathIterator(null);
-        double coords[] = null;
+        double [] coords  = null;
         while (pI.isDone()) {
             int type = pI.currentSegment(coords);
             switch (type) {
@@ -45,6 +45,8 @@ public class ShapeUtil {
                 case PathIterator.SEG_CUBICTO:
                     vertices.add(new Point2D.Double(coords[4],coords[5]));
                     break;
+                default:
+                	break;
             }
            pI.next();
         }

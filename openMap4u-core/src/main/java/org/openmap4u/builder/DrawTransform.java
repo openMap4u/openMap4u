@@ -6,6 +6,7 @@
 package org.openmap4u.builder;
 
 import java.awt.geom.Point2D;
+
 import org.openmap4u.commons.Angle;
 import org.openmap4u.commons.DrawableTransformable;
 import org.openmap4u.commons.Globals;

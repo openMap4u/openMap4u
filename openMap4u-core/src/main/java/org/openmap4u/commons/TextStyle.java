@@ -80,7 +80,7 @@ public final class TextStyle extends Style<TextStyleable> implements TextStyleab
     /**
      * {@inheritDoc}
      */
-    public TextStyle setFontColor(Paint fontColor) {
+    public TextStyle fontColor(Paint fontColor) {
         this.mFontColor = fontColor;
         return this;
     }
@@ -88,7 +88,7 @@ public final class TextStyle extends Style<TextStyleable> implements TextStyleab
     /**
      * {@inheritDoc}
      */
-    public TextStyle setFontFamily(String fontFamily) {
+    public TextStyle fontFamily(String fontFamily) {
         this.mFontFamily = fontFamily;
         return this;
     }
@@ -96,7 +96,7 @@ public final class TextStyle extends Style<TextStyleable> implements TextStyleab
     /**
      * {@inheritDoc}
       */
-    public TextStyle setFontSize(double fontSize) {
+    public TextStyle fontSize(double fontSize) {
         this.mFontSize = fontSize;
         return this;
     }
@@ -104,7 +104,7 @@ public final class TextStyle extends Style<TextStyleable> implements TextStyleab
     /**
      * {@inheritDoc}
      */
-     public TextStyle setFontStyle(FontStyle fontStyle) {
+     public TextStyle fontStyle(FontStyle fontStyle) {
         this.mFontStyle = fontStyle;
         return this;
     }
@@ -112,7 +112,7 @@ public final class TextStyle extends Style<TextStyleable> implements TextStyleab
     /**
      * {@inheritDoc}
      */
-    public TextStyle setFontWeight(FontWeight fontWeight) {
+    public TextStyle fontWeight(FontWeight fontWeight) {
         this.mFontWeight = fontWeight;
         return this;
     }

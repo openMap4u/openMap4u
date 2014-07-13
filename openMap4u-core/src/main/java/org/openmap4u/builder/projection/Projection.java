@@ -15,9 +15,7 @@ import java.awt.geom.Point2D;
  */
 public class Projection {
     
-    private Axis mXAxis=null;
-    private Axis mYAxis=null;
-    
+       
     public Projection(Axis xAxis, Axis yAxis) {
     }
     

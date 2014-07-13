@@ -5,16 +5,16 @@
  */
 package org.openmap4u.commons;
 
+import static org.openmap4u.commons.HorizontalAlign.CENTER;
+import static org.openmap4u.commons.HorizontalAlign.LEFT;
+import static org.openmap4u.commons.VerticalAlign.MIDDLE;
+import static org.openmap4u.commons.VerticalAlign.TOP;
+
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.NoninvertibleTransformException;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
-
- import static org.openmap4u.commons.HorizontalAlign.CENTER;
-import static org.openmap4u.commons.HorizontalAlign.LEFT;
-import static org.openmap4u.commons.VerticalAlign.MIDDLE;
-import static org.openmap4u.commons.VerticalAlign.TOP;
 
 /**
  *

@@ -25,7 +25,7 @@ public interface Styleable<T extends Styleable<T>> extends Cloneable, Serializab
      * @param alpha The alpha value.
      * @return Method chaining pattern.
      */
-    T setAlpha(double alpha);
+    T alpha(double alpha);
 
     /**
      * Gets the visibility.
@@ -38,7 +38,7 @@ public interface Styleable<T extends Styleable<T>> extends Cloneable, Serializab
      * @param visible The visibility (true ... visible, false ... not visible).
      * @return Method chaining pattern.
      */
-    T setVisible(boolean visible);
+    T visible(boolean visible);
 
   
 }

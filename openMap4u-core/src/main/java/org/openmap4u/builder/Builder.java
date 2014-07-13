@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 import org.openmap4u.commons.Angle;
 import org.openmap4u.commons.DrawableTransformable;
 import org.openmap4u.commons.HorizontalAlign;
@@ -43,12 +44,12 @@ class Builder<S extends Styleable<S>, B extends Builder<S, B>> implements Builda
     /**
      * Stores the points.
      */
-    private Set<Point<?, ?>> mPoints = null;
+    private Set<Point> mPoints = null;
 
     /**
      * Stores the childs.
      */
-    private List<Buildable<?,?>> mChilds = null;
+    private List<Buildable<S,B>> mChilds = null;
 
     private DrawableTransformable mTransform = new DrawTransform();
 
@@ -56,7 +57,7 @@ class Builder<S extends Styleable<S>, B extends Builder<S, B>> implements Builda
     }
 
     @Override
-    public Set<Point<?, ?>> getPoints() {
+    public Set<Point> getPoints() {
         return this.mPoints;
     }
 
@@ -72,13 +73,13 @@ class Builder<S extends Styleable<S>, B extends Builder<S, B>> implements Builda
 
     @Override
     public B visible(boolean isVisible) {
-        getStyle().setVisible(isVisible);
+        getStyle().visible(isVisible);
         return (B) this;
     }
 
     @Override
     public B transparence(double tranparence) {
-        getStyle().setAlpha(mTransparence.convert(tranparence));
+        getStyle().alpha(mTransparence.convert(tranparence));
         return (B) this;
     }
 
@@ -149,7 +150,7 @@ class Builder<S extends Styleable<S>, B extends Builder<S, B>> implements Builda
     /**
      * initializes the points.
      */
-    private B addPoint(Point<?, ?> point2Add) {
+    private B addPoint(Point  point2Add) {
         if (this.mPoints == null) {
             this.mPoints = new HashSet<>();
         }
@@ -208,7 +209,7 @@ class Builder<S extends Styleable<S>, B extends Builder<S, B>> implements Builda
     }
 
     @Override
-    public List<Buildable<?,?>> getChilds() {
+    public List<Buildable<S,B>> getChilds() {
         return this.mChilds;
     }
 

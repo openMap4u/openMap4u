@@ -1,7 +1,8 @@
 package org.openmap4u.plugin.builder.core;
 
-import org.openmap4u.builder.ShapeBuilder;
 import java.awt.Paint;
+
+import org.openmap4u.builder.ShapeBuilder;
 
 /**
  * Builds a polyline.

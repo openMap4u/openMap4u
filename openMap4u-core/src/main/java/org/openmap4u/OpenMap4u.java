@@ -1,15 +1,16 @@
 package org.openmap4u;
 
 import java.io.Serializable;
+
 import org.openmap4u.builder.Buildable;
 import org.openmap4u.builder.ImageBuilder;
 import org.openmap4u.builder.ShapeBuilder;
 import org.openmap4u.builder.TextBuilder;
-import org.openmap4u.commons.Util;
 import org.openmap4u.commons.ImageStyleable;
 import org.openmap4u.commons.ShapeStyleable;
 import org.openmap4u.commons.Styleable;
 import org.openmap4u.commons.TextStyleable;
+import org.openmap4u.commons.Util;
 
 /**
  * The openMap4u API. 

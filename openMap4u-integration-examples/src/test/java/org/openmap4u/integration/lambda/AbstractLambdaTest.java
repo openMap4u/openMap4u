@@ -39,7 +39,7 @@ public class AbstractLambdaTest extends AbstractOpenMap4uTest {
         /* 1. get an instance */
         OpenMap4u oM4u = new OpenMap4u();
         /* optional override default styling (for the created instance) */
-        oM4u.getDefaults().getShapeStyle().setAlpha(.5).setStrokeFill(Color.RED);
+        oM4u.getDefaults().getShapeStyle().alpha(.5).strokeFill(Color.RED);
         /* 2. get an canvas and specify the size which you want to draw */
         DrawOrWriteable draw = oM4u.getCanvas(10, 8);
         /* 3. draw your primitive(s). */

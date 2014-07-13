@@ -1,14 +1,15 @@
 package org.openmap4u;
 
-import org.openmap4u.commons.Globals;
 import java.io.Serializable;
 import java.util.Locale;
+
 import org.openmap4u.commons.Angle;
+import org.openmap4u.commons.Globals;
 import org.openmap4u.commons.ImageStyle;
-import org.openmap4u.commons.ShapeStyle;
-import org.openmap4u.commons.TextStyle;
 import org.openmap4u.commons.Length;
+import org.openmap4u.commons.ShapeStyle;
 import org.openmap4u.commons.ShapeStyleable;
+import org.openmap4u.commons.TextStyle;
 
 /**
  * Is a bean that contains all default values like units, styles, ... . It
@@ -58,8 +59,8 @@ public final class Defaults implements Serializable {
     /**
      * Stores the default text style.
      */
-    private TextStyle mDefaultTextStyle = new TextStyle().setFontSize(
-            Globals.DEFAULT_FONT_SIZE).setFontColor(
+    private TextStyle mDefaultTextStyle = new TextStyle().fontSize(
+            Globals.DEFAULT_FONT_SIZE).fontColor(
                     Globals.DEFAULT_STROKE_COLOR);
     
       private Angle mAngleUnits = Angle.DEGREE;
@@ -87,9 +88,9 @@ public final class Defaults implements Serializable {
      */
     public ShapeStyleable getShapeStyle() {
         if (this.mDefaultShapeStyle == null) {
-            this.mDefaultShapeStyle = new ShapeStyle().setStrokeSize(
-                    Globals.DEFAULT_STROKE_SIZE).setStrokeColor(
-                            Globals.DEFAULT_STROKE_COLOR).setStrokeFill(Globals.DEFAULT_FILL);
+            this.mDefaultShapeStyle = new ShapeStyle().strokeSize(
+                    Globals.DEFAULT_STROKE_SIZE).strokeColor(
+                            Globals.DEFAULT_STROKE_COLOR).strokeFill(Globals.DEFAULT_FILL);
         }
         return this.mDefaultShapeStyle;
     }

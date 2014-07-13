@@ -21,20 +21,18 @@ import java.util.logging.Logger;
 import javax.activation.MimeType;
 import javax.imageio.ImageIO;
 
-import org.openmap4u.commons.Globals;
+import org.openmap4u.commons.Angle;
 import org.openmap4u.commons.DrawableTransformable;
+import org.openmap4u.commons.Globals;
+import org.openmap4u.commons.ImageDrawable;
+import org.openmap4u.commons.Length;
+import org.openmap4u.commons.ShapeDrawable;
+import org.openmap4u.commons.TextDrawable;
+import org.openmap4u.commons.TextStyleable;
 import org.openmap4u.commons.TransformUtil;
 import org.openmap4u.commons.Util;
 import org.openmap4u.format.Outputable;
 import org.openmap4u.plugin.builder.core.Polygon;
-import org.openmap4u.commons.ImageDrawable;
-import org.openmap4u.commons.ShapeDrawable;
-import org.openmap4u.commons.TextDrawable;
-import org.openmap4u.commons.TextStyleable;
-import org.openmap4u.commons.Angle;
-import org.openmap4u.commons.HorizontalAlign;
-import org.openmap4u.commons.Length;
-import org.openmap4u.commons.VerticalAlign;
 
 /**
  * All 2D Plugins are drived from this base class.

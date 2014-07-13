@@ -24,7 +24,6 @@ package org.openmap4u;
  * #L%
  */
 import java.awt.Shape;
-import java.awt.geom.NoninvertibleTransformException;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.io.IOException;
@@ -34,6 +33,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.openmap4u.builder.Buildable;
 import org.openmap4u.commons.Angle;
 import org.openmap4u.commons.AreaOfInterestTransformable;

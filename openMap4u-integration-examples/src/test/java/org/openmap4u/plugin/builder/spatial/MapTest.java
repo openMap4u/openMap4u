@@ -68,7 +68,7 @@ public class MapTest extends AbstractOpenMap4uTest {
         /* 1. get an instance */
         OpenMap4u oM4u = new OpenMap4u();
         /* optional override default styling (for the created instance) */
-        oM4u.getDefaults().getShapeStyle().setAlpha(.5).setStrokeColor(Color.GRAY);
+        oM4u.getDefaults().getShapeStyle().alpha(.5).strokeColor(Color.GRAY);
         /* 2. get an canvas and specify the size which you want to draw */
         DrawOrWriteable canvas = oM4u.getCanvas(7, 7).scale(.5).center(14, 45);
         /* 3. draw your primitive(s). */

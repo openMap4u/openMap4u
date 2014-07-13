@@ -30,7 +30,7 @@ public class ShapeStyleTest {
     @Before
     public void setUp() {
         mS = new ShapeStyle();
-        mSD = new ShapeStyle().setStrokeColor(Color.GREEN).setStrokeFill(Color.YELLOW).setStrokeSize(3).setAlpha(.5).setVisible(false);
+        mSD = new ShapeStyle().strokeColor(Color.GREEN).strokeFill(Color.YELLOW).strokeSize(3).alpha(.5).visible(false);
     }
 
     /**
@@ -56,7 +56,7 @@ public class ShapeStyleTest {
 
         System.out.println(cloned);
         /* change the cloned values */
-        cloned.setVisible(true).setAlpha(.6).setStrokeColor(Color.BLACK).setStrokeFill(Color.BLUE).setStrokeSize(7);
+        cloned.visible(true).alpha(.6).strokeColor(Color.BLACK).strokeFill(Color.BLUE).strokeSize(7);
         System.out.println(mSD);
         System.out.println(cloned);
         assertThat(cloned.isVisible(), not(mSD.isVisible()));

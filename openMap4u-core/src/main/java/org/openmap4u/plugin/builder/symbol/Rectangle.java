@@ -3,8 +3,8 @@ package org.openmap4u.plugin.builder.symbol;
 import java.awt.Paint;
 import java.awt.geom.Rectangle2D;
 
-import org.openmap4u.commons.Globals;
 import org.openmap4u.builder.ShapeBuilder;
+import org.openmap4u.commons.Globals;
 
 /**
  * Rectangle symbol

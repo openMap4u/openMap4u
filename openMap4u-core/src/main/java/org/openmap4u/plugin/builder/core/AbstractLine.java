@@ -6,6 +6,7 @@
 package org.openmap4u.plugin.builder.core;
 
 import java.awt.Paint;
+
 import org.openmap4u.builder.ShapeBuilder;
 
 /**

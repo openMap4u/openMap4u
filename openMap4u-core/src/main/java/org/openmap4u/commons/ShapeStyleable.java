@@ -40,7 +40,7 @@ public interface ShapeStyleable extends Styleable<ShapeStyleable> {
      * @param color The shape stroke color.
      * @return The method chaining pattern.
      */
-    ShapeStyleable setStrokeColor(Paint color);
+    ShapeStyleable strokeColor(Paint color);
 
     /**
      * Sets the shape fill color.
@@ -48,7 +48,7 @@ public interface ShapeStyleable extends Styleable<ShapeStyleable> {
      * @param fill The shape fill color.
      * @return The method chaining pattern.
      */
-    ShapeStyleable setStrokeFill(Paint fill);
+    ShapeStyleable strokeFill(Paint fill);
 
     /**
      * Sets the stroke size in drawing units.
@@ -56,7 +56,7 @@ public interface ShapeStyleable extends Styleable<ShapeStyleable> {
      * @param strokeSize The stroke size in drawing units.
      * @return The method chaining pattern.
      */
-    ShapeStyleable setStrokeSize(double strokeSize);
+    ShapeStyleable strokeSize(double strokeSize);
 
     /**
      * Clones the shape style.

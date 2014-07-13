@@ -44,7 +44,7 @@ public abstract class TextBuilder<B extends TextBuilder<B>> extends
      */
     @SuppressWarnings("unchecked")
     protected B setFontColor(Paint fontColor) {
-        this.getStyle().setFontColor(fontColor);
+        this.getStyle().fontColor(fontColor);
         return (B) this;
     }
 
@@ -56,7 +56,7 @@ public abstract class TextBuilder<B extends TextBuilder<B>> extends
      */
     @SuppressWarnings("unchecked")
     protected B family(String fontFamily) {
-        this.getStyle().setFontFamily(fontFamily);
+        this.getStyle().fontFamily(fontFamily);
         return (B) this;
     }
 
@@ -68,7 +68,7 @@ public abstract class TextBuilder<B extends TextBuilder<B>> extends
      */
     @SuppressWarnings("unchecked")
     protected B size(double fontSize) {
-        this.getStyle().setFontSize(fontSize);
+        this.getStyle().fontSize(fontSize);
         return (B) this;
     }
 
@@ -80,7 +80,7 @@ public abstract class TextBuilder<B extends TextBuilder<B>> extends
      */
     @SuppressWarnings("unchecked")
     protected B style(FontStyle fontStyle) {
-        this.getStyle().setFontStyle(fontStyle);
+        this.getStyle().fontStyle(fontStyle);
         return (B) this;
     }
 

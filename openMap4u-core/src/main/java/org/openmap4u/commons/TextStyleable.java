@@ -48,35 +48,35 @@ public interface TextStyleable extends Styleable<TextStyleable> {
      * @param fontColor The font color.
      * @return Method chaining pattern.
      */
-    TextStyleable setFontColor(Paint fontColor);
+    TextStyleable fontColor(Paint fontColor);
 
     /**
      * Sets the font family.
      * @param fontFamily The font family.
      * @return Method chaining pattern.
      */
-    TextStyleable setFontFamily(String fontFamily);
+    TextStyleable fontFamily(String fontFamily);
 
     /**
      * Sets the font size in drawing units.
      * @param fontSize The font size in drawing units.
      * @return Method chaining pattern.
      */
-    TextStyleable setFontSize(double fontSize);
+    TextStyleable fontSize(double fontSize);
 
     /**
      * Sets the font style.
      * @param fontStyle The font style.
      * @return Method chaining pattern.
      */
-    TextStyleable setFontStyle(FontStyle fontStyle);
+    TextStyleable fontStyle(FontStyle fontStyle);
 
     /**
      * Sets the font weight.
      * @param fontWeight The font weight.
      * @return Method chaining pattern.
      */
-    TextStyleable setFontWeight(FontWeight fontWeight);
+    TextStyleable fontWeight(FontWeight fontWeight);
 
     /**
      * Clones the TextStyleable.

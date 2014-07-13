@@ -4,8 +4,8 @@ import java.awt.Paint;
 import java.awt.Shape;
 import java.awt.geom.Path2D;
 
-import org.openmap4u.commons.Globals;
 import org.openmap4u.builder.ShapeBuilder;
+import org.openmap4u.commons.Globals;
 
 /**
  * Cross symbol.

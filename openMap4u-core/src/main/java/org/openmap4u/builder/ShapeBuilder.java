@@ -72,7 +72,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      */
     @SuppressWarnings("unchecked")
     protected B size(double strokeSize) {
-        this.getStyle().setStrokeSize(strokeSize);
+        this.getStyle().strokeSize(strokeSize);
         return (B) this;
     }
 
@@ -96,7 +96,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      */
     @SuppressWarnings("unchecked")
     protected B color(Paint strokeColor) {
-        this.getStyle().setStrokeColor(strokeColor);
+        this.getStyle().strokeColor(strokeColor);
         return (B) this;
     }
 
@@ -120,7 +120,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      */
     @SuppressWarnings("unchecked")
     protected B fill(Paint fill) {
-        this.getStyle().setStrokeFill(fill);
+        this.getStyle().strokeFill(fill);
         return (B) this;
     }
 

@@ -4,6 +4,7 @@ import java.net.URI;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
 import org.openmap4u.commons.ImageDrawable;
 import org.openmap4u.commons.ImageStyleable;
 

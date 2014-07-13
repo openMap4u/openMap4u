@@ -3,6 +3,7 @@ package org.openmap4u.builder;
 import java.awt.Shape;
 import java.util.List;
 import java.util.Set;
+
 import org.openmap4u.commons.Angle;
 import org.openmap4u.commons.Drawable;
 import org.openmap4u.commons.HorizontalAlign;
@@ -31,7 +32,8 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>>
 	 *
 	 * @return The points.
 	 */
-	Set<Point<?, ?>> getPoints();
+	@SuppressWarnings("rawtypes")
+	Set<Point> getPoints();
 
 	Shape getPreviousShape();
 
@@ -314,7 +316,7 @@ public interface Buildable<S extends Styleable<S>, B extends Buildable<S, B>>
 	 * 
 	 * @return The primitive child's in the case there are any.
 	 */
-	List<Buildable<?, ?>> getChilds();
+	List<Buildable<S, B>> getChilds();
 
 	/**
 	 * Cleanup code.
