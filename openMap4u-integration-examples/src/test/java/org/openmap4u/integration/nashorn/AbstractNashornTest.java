@@ -13,7 +13,7 @@ import org.junit.BeforeClass;
 
 /**
  *
- * @author zwotti
+ * @author Michael Hadrbolec
  */
 public abstract class AbstractNashornTest {
 

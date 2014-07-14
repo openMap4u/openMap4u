@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author zwotti
+ * @author MIchael Hadrbolec
  */
 public class RangeTest {
 

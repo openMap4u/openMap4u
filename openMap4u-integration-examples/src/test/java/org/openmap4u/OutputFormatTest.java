@@ -10,7 +10,7 @@ import org.openmap4u.plugin.format.graphics2d.Png;
 
 /**
  *
- * @author zwotti
+ * @author Michael Hadrbolec
  */
 public class OutputFormatTest {
 

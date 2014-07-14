@@ -47,15 +47,9 @@ public class El3Test extends AbstractEl3Test {
         getELProcessor().eval("oM4u.getCanvas(10,8)");
     }
 
-    @Test
-    public void testGetBuilder() {
-        getELProcessor().eval("oM4u.get(Line.class)");
-    }
+   
 
-    @Test
-    public void testGetLineBuilder() {
-        getELProcessor().eval("oM4u.get(Line.class).line(1,3,7,3)");
-    }
+ 
 
     @Test
     public void testGetDrawLine() {

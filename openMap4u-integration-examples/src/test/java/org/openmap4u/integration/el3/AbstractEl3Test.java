@@ -6,7 +6,7 @@ import org.openmap4u.OpenMap4u;
 
 /**
  *
- * @author zwotti
+ * @author Michael Hadrbolec
  */
 public class AbstractEl3Test {
 

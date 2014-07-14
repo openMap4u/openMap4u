@@ -22,7 +22,7 @@ import org.openmap4u.plugin.builder.symbol.Rectangle;
 
 /**
  *
- * @author zwotti
+ * @author Michael Hadrbolec
  */
 public class AbstractLambdaTest extends AbstractOpenMap4uTest {
 

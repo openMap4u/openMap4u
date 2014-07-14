@@ -12,7 +12,7 @@ import org.openmap4u.plugin.builder.symbol.Cross;
 
 /**
  *
- * @author zwotti
+ * @author Michael Hadrbolec
  */
 public class WktTest extends AbstractSpatialTest {
 

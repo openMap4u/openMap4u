@@ -15,7 +15,7 @@ import org.openmap4u.commons.Length;
 
 /**
  *
- * @author zwotti
+ * @author Michael Hadrbolec
  */
 public abstract class AbstractSpatialTest extends AbstractOpenMap4uTest {
 
