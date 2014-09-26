@@ -10,7 +10,7 @@ package org.openmap4u.commons;
  * @author Michael Hadrbolec
  * @param <T> The convertable type.
  */
-public interface Convertable<T extends Convertable> {
+public interface Convertable<T extends Convertable<T>> {
 
     /**
      * Converts the given value into SI units.

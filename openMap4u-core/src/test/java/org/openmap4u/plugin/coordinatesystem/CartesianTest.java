@@ -1,4 +1,4 @@
-package org.openmap4u.geom;
+package org.openmap4u.plugin.coordinatesystem;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -7,16 +7,17 @@ import java.awt.Point;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.openmap4u.plugin.coordinatesystem.Cartesian;
 
-public class GeomUtilTest {
+public class CartesianTest {
 	
-	private GeomUtil gu1 = null;
-	private GeomUtil gu2 = null;
+	private Cartesian gu1 = null;
+	private Cartesian gu2 = null;
  
 	@Before
 	public void beforeClass() {
-		gu1 = new GeomUtil();
-		gu2 = new GeomUtil();
+		gu1 = new Cartesian();
+		gu2 = new Cartesian();
 		gu2.convert(12,14);
 	}
 

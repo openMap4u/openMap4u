@@ -1,8 +1,8 @@
-package org.openmap4u.geom;
+package org.openmap4u.coordinatesystem;
 
 import java.awt.geom.Point2D.Double;
 
-public class GeomUtil {
+public abstract class CoordinateSystem {
 	
 	/**
 	 * The previous x coordinate.
@@ -15,6 +15,11 @@ public class GeomUtil {
 	private double mPy=0;
 	
 	
+    protected abstract double transformX(double x, double y);
+	
+	protected abstract double transformY(double x, double y);
+	
+	
 	/**
 	 * Nothing to convert (is absolute).
 	 * @param x The absolute x coordinate.
@@ -22,7 +27,7 @@ public class GeomUtil {
 	 * @return The resulting point.
 	 */
 	public Double convert(double x, double y ) {
-	return create(x,y);
+	return create(transformX(x,y),transformY(x,y));
 	}
 	
 	/**
@@ -32,7 +37,7 @@ public class GeomUtil {
 	 * @return The resulting absolute point.
 	 */
 	public Double convert(String x, double y ) {
-		return create(convertX(x),y);
+		return convert(convertX(x),y);
 	}
 	
 	
@@ -43,7 +48,7 @@ public class GeomUtil {
 	 * @return The resulting absolute point.
 	 */
 	public Double convert(double x, String y ) {
-		return create(x,convertY(y));
+		return convert(x,convertY(y));
 	}
 	
 	/**
@@ -53,7 +58,7 @@ public class GeomUtil {
 	 * @return The resulting absolute point.
 	 */
 	public Double convert(String x, String y ) {
-		return create(convertX(x),convertY(y));
+		return convert(convertX(x),convertY(y));
 	}
 	
 	/**
