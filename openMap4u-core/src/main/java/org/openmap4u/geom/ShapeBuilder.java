@@ -12,41 +12,41 @@ import org.openmap4u.builder.Buildable;
 
 /**
  *
- * @author zwotti
+ * @author Michael Hadrbolec
  */
-public class ShapeBuilder extends LinkedList<ShapeItem> {
+public class ShapeBuilder extends LinkedList<PathFragment> {
 
     public ShapeBuilder move2(double toX, double toY) {
-        this.add(new Move2(toX, toY));
+        this.add(new PathFragment.Move2(toX, toY));
         return this;
     }
 
     public ShapeBuilder line2(double toX, double toY) {
-        this.add(new Line2(toX, toY));
+        this.add(new PathFragment.Line2(toX, toY));
         return this;
     }
 
     public ShapeBuilder quad2(double cpX, double cpY, double toX, double toY) {
-        this.add(new Quad2(cpX, cpY, toX, toY));
+        this.add(new PathFragment.Quad2(cpX, cpY, toX, toY));
         return this;
     }
 
     public ShapeBuilder bezier2(double cp1X, double cp1Y, double cp2X, double cp2Y, double toX, double toY) {
-        this.add(new Bezier2(cp1X, cp1Y, cp2X, cp2Y, toX, toY));
+        this.add(new PathFragment.Bezier2(cp1X, cp1Y, cp2X, cp2Y, toX, toY));
         return this;
     }
 
     Path2D.Double build() {
         Path2D.Double path = new Path2D.Double(Path2D.WIND_EVEN_ODD);
-        for (ShapeItem item : this) {
-            if (item instanceof Line2) {
-                path.lineTo(item.to.x, item.to.y);
-            } else if (item instanceof Move2) {
-                path.lineTo(item.to.x, item.to.y);
-            } else if (item instanceof Quad2) {
-                path.quadTo(((Quad2) item).cp.x, ((Quad2) item).cp.y, item.to.x, item.to.y);
-            } else if (item instanceof Bezier2) {
-                path.curveTo(((Bezier2) item).cp1.x, ((Bezier2) item).cp2.y, ((Bezier2) item).cp1.x, ((Bezier2) item).cp2.y, item.to.x, item.to.y);
+        for (PathFragment item : this) {
+            if (item.type == FragmentType.LINE2) {
+                path.lineTo(item.points[0].getX(), item.points[0].getY());
+            } else if (item.type == FragmentType.MOVE2) {
+                path.lineTo(item.points[0].getX(), item.points[0].getY());
+            } else if (item.type == FragmentType.QUAD2) {
+                path.quadTo(item.points[1].getX(), item.points[1].getY(), item.points[0].getX(), item.points[0].getY());
+            } else if (item.type == FragmentType.BEZIER2) {
+                path.curveTo(item.points[1].getX(), item.points[1].getY(),item.points[2].getX(), item.points[2].getY(), item.points[0].getX(), item.points[0].getY());
             } else {
                 throw new java.lang.IllegalArgumentException(new StringBuilder(item.getClass().getName()).append(" is not supported.").toString());
             }
