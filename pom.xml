@@ -48,14 +48,6 @@
 		<!-- @OVERRIDE [SCM location for documentation repository] -->
 		<scm-publish.pubScmUrl>scm:git:git@github.com:openMap4u/openMap4u.git</scm-publish.pubScmUrl>
 		<scm-publish.siteDocOuputDirectory>${project.reporting.outputDirectory}</scm-publish.siteDocOuputDirectory>
-
-
-
-
-
-
-
-
 		<github.global.server>github</github.global.server>
 		<custom.fluidoSkin.googleSearch.sitesearch>http://openMap4u.github.com/openMap4u</custom.fluidoSkin.googleSearch.sitesearch>
 		<org.springframework.version>4.0.0.RELEASE</org.springframework.version>
@@ -67,8 +59,8 @@
 		<plugin.wagon-webdav.version>1.0</plugin.wagon-webdav.version>
 
 		<plugin.scm-publish.version>1.0-beta-2</plugin.scm-publish.version>
-		<java.source>7</java.source>
-		<java.target>7</java.target>
+		<java.source>8</java.source>
+		<java.target>8</java.target>
 
 		<!-- SonarCube specifics -->
 		<sonar.dynamicAnalysis>true</sonar.dynamicAnalysis>
