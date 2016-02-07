@@ -7,6 +7,7 @@ package org.openmap4u.builder;
 import org.openmap4u.plugin.builder.core.Image;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.junit.Before;
@@ -25,7 +26,7 @@ public class ImageTest extends AbstractImageBuilderTest<Image> {
      */
     @Before
     public void setUp() {
-        this.mImage = FileSystems.getDefault().getPath("target\\test-classes\\image\\image.png");
+        this.mImage = Paths.get("/image/image.png").getFileName();
     }
     
     

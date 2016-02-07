@@ -7,6 +7,7 @@ package org.openmap4u.plugin.builder.core;
 
 import java.awt.Color;
 import java.io.IOException;
+import java.nio.file.Paths;
 import org.junit.Test;
 import org.openmap4u.OpenMap4u;
 import org.openmap4u.SetAreaOfInterestOrDrawOrWriteable;
@@ -57,7 +58,7 @@ public class TestPrimitives {
     public void testDrawImage() throws IOException {
        OpenMap4u om4u = new OpenMap4u();
        SetAreaOfInterestOrDrawOrWriteable myCanvas =  om4u.getCanvas(4, 1);
-       Image myImage = om4u.get(Image.class).path("image.png").center(.25, 0.125);
+       Image myImage = om4u.get(Image.class).path(Paths.get("/image/image.png").getFileName()).center(.25, 0.125);
        myCanvas.draw(myImage);
        myCanvas.write("myImage.png");
     }

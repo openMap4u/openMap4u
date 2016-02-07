@@ -14,6 +14,7 @@ import java.awt.geom.Point2D;
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Stream;
 import org.junit.*;
@@ -100,7 +101,7 @@ public class RelativeAlignTest extends AbstractOpenMap4uTest {
         /* 2. get an canvas and specify the size which you want to draw */
         DrawOrWriteable canvas = oM4u.getCanvas(3, 3);
         /* draw the line */ 
-        String  path = ("image.png");
+        Path  path = Paths.get("/image/image.png").getFileName();;
        /* draw the line */
         canvas.draw(oM4u.get(Rectangle.class).width(2).size(1).center(1.5, 1.5).color(Color.GRAY)).draw(oM4u.get(Image.class).path(path).center(LEFT,TOP).align(CENTER,MIDDLE));
         canvas.draw(oM4u.get(Rectangle.class).width(2).size(1).center(1.5, 1.5).color(Color.GRAY)).draw(oM4u.get(Image.class).path(path).center(CENTER,TOP).align(CENTER,MIDDLE));

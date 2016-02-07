@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URISyntaxException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -65,13 +66,7 @@ public class MockupData {
 
     static {
 
-        try {
-            IMAGE_URL = Thread.currentThread().getContextClassLoader()
-                    .getResource("image/image.png").toURI().toString();
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+  
 
         WKTReader reader = new WKTReader();
         WKBWriter writer = new WKBWriter();
@@ -97,14 +92,7 @@ public class MockupData {
         }
         BOUNDINGBOX_COUNTRIES = getBBox(geoms);
 
-        try {
-            IMAGE_URL = Thread.currentThread().getContextClassLoader()
-                    .getResource("image/image.png").toURI().toString();
-        } catch (URISyntaxException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        ;
+        
     }
 
     /**
