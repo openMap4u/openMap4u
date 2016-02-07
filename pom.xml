@@ -28,17 +28,10 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<guava.version>14.0.1</guava.version>
 		<site.basedir>${project.basedir}</site.basedir>
-
 		<site-docs.url>/${env.HOME}/sitedocs/${project.artifactId}</site-docs.url>
-
 		<!-- Properties for licence plugin -->
 		<license.licenseName>my_license</license.licenseName>
 		<license.licenseResolver>file://${basedir}/src/license</license.licenseResolver>
-
-
-
-
-
 
 		<!-- ======================== -->
 		<!-- SITE DOC PROPERTIES -->
@@ -99,11 +92,11 @@
 			<name>Java.net repository</name>
 			<url>http://download.java.net/maven/2</url>
 		</repository>
-		<repository>
-			<id>osgeo</id>
-			<name>Open Source Geospatial Foundation Repository</name>
-			<url>http://download.osgeo.org/webdav/geotools/</url>
-		</repository>
+		    <repository>
+            <id>osgeo</id>
+            <name>Open Source Geospatial Foundation Repository</name>
+            <url>http://download.osgeo.org/webdav/geotools/</url>
+        </repository>
 		<repository>
 			<snapshots>
 				<enabled>true</enabled>
@@ -273,177 +266,112 @@
 							<goal>check</goal>
 						</goals>
 						 
-					</execution>
-				</executions>
-			</plugin> 
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>findbugs-maven-plugin</artifactId>
-				<version>3.0.0</version>
-			</plugin> -->
+                            </execution>
+                    </executions>
+            </plugin> 
+            <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>findbugs-maven-plugin</artifactId>
+                    <version>3.0.0</version>
+            </plugin> -->
 
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>license-maven-plugin</artifactId>
-				<version>1.6</version>
-				<configuration>
-					<verbose>false</verbose>
-					<addSvnKeyWords>true</addSvnKeyWords>
-					<inceptionYear>2012</inceptionYear>
-					<projectName>openMap4u</projectName>
-					<organizationName>openMap4u</organizationName>
-				</configuration>
-				<executions>
-					<execution>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>1.8</version>
+                <configuration>
+                    <verbose>false</verbose>
+                    <addSvnKeyWords>true</addSvnKeyWords>
+                    <inceptionYear>2012</inceptionYear>
+                    <projectName>openMap4u</projectName>
+                    <organizationName>openMap4u</organizationName>
+                </configuration>
+                <executions>
+                    <execution>
 
-						<id>first</id>
-						<goals>
-							<goal>update-file-header</goal>
-						</goals>
-						<phase>post-clean</phase>
-						<configuration>
-							<excludes>
-								<exclude>**/*.properties</exclude>
-							</excludes>
-							<encoding>UTF-8</encoding>
+                        <id>first</id>
+                        <goals>
+                            <goal>update-file-header</goal>
+                        </goals>
+                        <phase>post-clean</phase>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/*.properties</exclude>
+                            </excludes>
+                            <encoding>UTF-8</encoding>
 
-							<licenseName>lgpl_v3</licenseName>
-							<roots>
-								<root>src/main/java</root>
-								<root>src/test/java</root>
-							</roots>
-						</configuration>
-					</execution>
-					<execution>
-						<id>download-licenses</id>
-						<goals>
-							<goal>download-licenses</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+                            <licenseName>lgpl_v3</licenseName>
+                            <roots>
+                                <root>src/main/java</root>
+                                <root>src/test/java</root>
+                            </roots>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>download-licenses</id>
+                        <goals>
+                            <goal>download-licenses</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-release-plugin</artifactId>
-				<version>2.5</version>
-			</plugin>
-		</plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5</version>
+            </plugin>
+        </plugins>
 
-	</build>
+    </build>
 
-<!-- 	<reporting>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.9.1</version>
-				<configuration>
-					<javaApiLinks />
-					<show>protected</show>
-					<aggregate>false</aggregate>
-				</configuration>
-				<reportSets>
-					<reportSet>
-						<id>default</id>
-						<reports>
-							<report>javadoc</report>
-						</reports>
-					</reportSet>
-				</reportSets>
-			</plugin>
- 	<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-report-plugin</artifactId>
-				<version>2.16</version>
-				<configuration>
-					<outputDirectory>${basedir}/target/site</outputDirectory>
-				</configuration>
-			</plugin>
+ 
+    <developers>
+        <developer>
+            <name>Michael Hadrbolec</name>
+        </developer>
+    </developers>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-pmd-plugin</artifactId>
-				<version>3.0.1</version>
-			</plugin>
+    <distributionManagement>
+        <repository>
+            <id>internal.repo</id>
+            <name>Temporary Staging Repository</name>
+            <url>file://${project.build.directory}/mvn-repo</url>
+        </repository>
+    </distributionManagement>
 
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>findbugs-maven-plugin</artifactId>
-				<version>3.0.0-SNAPSHOT</version>
-				<configuration>
-					<effort>Max</effort>
-					<threshold>Low</threshold>
-					<xmlOutput>true</xmlOutput>
-					<xmlOutputDirectory>target/site</xmlOutputDirectory>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-project-info-reports-plugin</artifactId>
-				<version>2.6</version>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jxr-plugin</artifactId>
-				<version>2.3</version>
-				<configuration>
-					<aggregate>false</aggregate>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>jdepend-maven-plugin</artifactId>
-				<version>2.0-beta-2</version>
-			</plugin>
-		</plugins>
-	</reporting> -->
+    <!-- scm on github -->
+    <scm>
+        <connection>scm:git:ssh://${repository.domain}/${repository.user}/${repository.name}.git</connection>
+        <url>https://${repository.domain}/${repository.user}/${repository.name}</url>
+        <developerConnection>scm:git:ssh://${repository.domain}/${repository.user}/${repository.name}.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
 
-	<developers>
-		<developer>
-			<name>Michael Hadrbolec</name>
-		</developer>
-	</developers>
+    <!-- The issue management system -->
+    <issueManagement>
+        <url>https://github.com/openMap4u/openMap4u/issues</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
 
-	<distributionManagement>
-		<repository>
-			<id>internal.repo</id>
-			<name>Temporary Staging Repository</name>
-			<url>file://${project.build.directory}/mvn-repo</url>
-		</repository>
-	</distributionManagement>
+    <!-- The projects licence -->
+    <licenses>
+        <license>
+            <name>GNU LESSER GENERAL PUBLIC LICENSE Version 3 (GPL-3.0)</name>
+            <url>http://www.gnu.org/licenses/lgpl-3.0.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
 
-	<!-- scm on github -->
-	<scm>
-		<connection>scm:git:ssh://${repository.domain}/${repository.user}/${repository.name}.git</connection>
-		<url>https://${repository.domain}/${repository.user}/${repository.name}</url>
-		<developerConnection>scm:git:ssh://${repository.domain}/${repository.user}/${repository.name}.git</developerConnection>
-		<tag>HEAD</tag>
-	</scm>
-
-	<!-- The issue management system -->
-	<issueManagement>
-		<url>https://github.com/openMap4u/openMap4u/issues</url>
-		<system>GitHub Issues</system>
-	</issueManagement>
-
-	<!-- The projects licence -->
-	<licenses>
-		<license>
-			<name>GNU LESSER GENERAL PUBLIC LICENSE Version 3 (GPL-3.0)</name>
-			<url>http://www.gnu.org/licenses/lgpl-3.0.html</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
-
-	<modules>
-		<!-- Test data -->
-		<module>openMap4u-data</module>
-		<!-- The core functionality -->
-		<module>openMap4u-core</module>
-		<!-- The spatial functionality plugin -->
-		<module>openMap4u-spatial-plugin</module>
-		<!-- The integration in jsp, jsf, ... -->
-		<module>openMap4u-integration-examples</module>
-	</modules>
+    <modules>
+        <!-- Test data -->
+        <module>openMap4u-data</module>
+        <!-- The core functionality -->
+        <module>openMap4u-core</module>
+        <!-- The spatial functionality plugin -->
+        <module>openMap4u-spatial-plugin</module>
+        <!-- The integration in jsp, jsf, ... -->
+        <module>openMap4u-integration-examples</module>
+        <module>openMap4u-api</module>
+    </modules>
 </project>
