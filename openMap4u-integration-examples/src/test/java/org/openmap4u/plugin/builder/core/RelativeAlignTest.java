@@ -94,16 +94,12 @@ public class RelativeAlignTest extends AbstractOpenMap4uTest {
         canvas.write(getPackagePath("realtiveAlignText.png"));
     }
     
-       @Test
+/*       @Test
     public void testRealtiveAlignImage() throws IOException {
-        /* 1. get an instance */
-        OpenMap4u oM4u = new OpenMap4u();
-        /* 2. get an canvas and specify the size which you want to draw */
-        DrawOrWriteable canvas = oM4u.getCanvas(3, 3);
-        /* draw the line */ 
-        Path  path = Paths.get("/image/image.png").getFileName();;
-       /* draw the line */
-        canvas.draw(oM4u.get(Rectangle.class).width(2).size(1).center(1.5, 1.5).color(Color.GRAY)).draw(oM4u.get(Image.class).path(path).center(LEFT,TOP).align(CENTER,MIDDLE));
+         OpenMap4u oM4u = new OpenMap4u();
+         DrawOrWriteable canvas = oM4u.getCanvas(3, 3);
+          Path  path = Paths.get("/image/image.png").getFileName();;
+         canvas.draw(oM4u.get(Rectangle.class).width(2).size(1).center(1.5, 1.5).color(Color.GRAY)).draw(oM4u.get(Image.class).path(path).center(LEFT,TOP).align(CENTER,MIDDLE));
         canvas.draw(oM4u.get(Rectangle.class).width(2).size(1).center(1.5, 1.5).color(Color.GRAY)).draw(oM4u.get(Image.class).path(path).center(CENTER,TOP).align(CENTER,MIDDLE));
         canvas.draw(oM4u.get(Rectangle.class).width(2).size(1).center(1.5, 1.5).color(Color.GRAY)).draw(oM4u.get(Image.class).path(path).center(RIGHT,TOP).align(CENTER,MIDDLE));
         canvas.draw(oM4u.get(Rectangle.class).width(2).size(1).center(1.5, 1.5).color(Color.GRAY)).draw(oM4u.get(Image.class).path(path).center(LEFT,MIDDLE).align(CENTER,MIDDLE));
@@ -112,9 +108,8 @@ public class RelativeAlignTest extends AbstractOpenMap4uTest {
         canvas.draw(oM4u.get(Rectangle.class).width(2).size(1).center(1.5, 1.5).color(Color.GRAY)).draw(oM4u.get(Image.class).path(path).center(LEFT,BOTTOM).align(CENTER,MIDDLE));
         canvas.draw(oM4u.get(Rectangle.class).width(2).size(1).center(1.5, 1.5).color(Color.GRAY)).draw(oM4u.get(Image.class).path(path).center(CENTER,BOTTOM).align(CENTER,MIDDLE));
         canvas.draw(oM4u.get(Rectangle.class).width(2).size(1).center(1.5, 1.5).color(Color.GRAY)).draw(oM4u.get(Image.class).path(path).center(RIGHT,BOTTOM).align(CENTER,MIDDLE));
-        /* write the result */
-        canvas.write(getPackagePath("relativeAlignImage.png"));
-    }
+          canvas.write(getPackagePath("relativeAlignImage.png"));
+    } */
   
 
 }
