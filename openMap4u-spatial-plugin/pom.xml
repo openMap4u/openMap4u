@@ -3,12 +3,12 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.openMap4u</groupId>
-        <artifactId>openMap4u-parent</artifactId>
+        <groupId>org.openmap4u</groupId>
+        <artifactId>openmap4u-parent</artifactId>
         <version>0.1.0-SNAPSHOT</version>
     </parent>
-    <groupId>org.openMap4u</groupId>
-    <artifactId>openMap4u-spatial-plugin</artifactId>
+    <groupId>org.openmap4u</groupId>
+    <artifactId>openmap4u-spatial-plugin</artifactId>
     <name>openMap4u Spatial Plugin</name>
     <packaging>jar</packaging>
     <url>http://maven.apache.org</url>
@@ -19,7 +19,7 @@
     </properties>
     <dependencies>
         <dependency>
-               <groupId>org.openmap4u</groupId>
+             <groupId>org.openmap4u</groupId>
              <artifactId>openmap4u-core</artifactId>
              <version>0.1.0-SNAPSHOT</version>
         </dependency>
@@ -29,8 +29,8 @@
             <version>1.13</version>
         </dependency>
       <dependency>
-            <groupId>org.openMap4u</groupId>
-            <artifactId>openMap4u-data</artifactId>
+            <groupId>org.openmap4u</groupId>
+            <artifactId>openmap4u-data</artifactId>
             <version>0.1.0-SNAPSHOT</version>
             <scope>test</scope>
         </dependency>
