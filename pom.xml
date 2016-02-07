@@ -361,9 +361,9 @@
         <!-- The core functionality -->
         <module>openMap4u-core</module>
         <!-- The spatial functionality plugin -->
-        <module>openMap4u-spatial-plugin</module>
+        <!--<module>openMap4u-spatial-plugin</module> -->
         <!-- The integration in jsp, jsf, ... -->
-        <module>openMap4u-integration-examples</module>
+        <!--<module>openMap4u-integration-examples</module>-->
         <!--<module>openMap4u-api</module>-->
     </modules>
 </project>
