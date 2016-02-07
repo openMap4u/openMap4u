@@ -8,13 +8,14 @@
     </parent>
     <artifactId>openMap4u-data</artifactId>
     <packaging>jar</packaging>
+ 
     
     <dependencies>
         <!-- shape file loading for tests -->
         <dependency>
             <groupId>org.geotools</groupId>
             <artifactId>gt-shapefile</artifactId>
-            <version>9.5</version>
+            <version>14.2</version>
         </dependency>
     </dependencies>
 </project>
