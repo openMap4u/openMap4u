@@ -1,0 +1,15 @@
+org.openmap4u
+org.openmap4u.builder
+org.openmap4u.canvas
+org.openmap4u.common
+org.openmap4u.draw
+org.openmap4u.format
+org.openmap4u.geom
+org.openmap4u.interact
+org.openmap4u.plugin.builder.core
+org.openmap4u.plugin.builder.symbol
+org.openmap4u.plugin.format.graphics2d
+org.openmap4u.plugin.format.svg
+org.openmap4u.primitive
+org.openmap4u.style
+org.openmap4u.transform
