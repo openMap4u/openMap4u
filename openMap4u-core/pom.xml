@@ -10,7 +10,6 @@
     <artifactId>openMap4u-core</artifactId>
     <name>openMap4u core API</name>
     <packaging>jar</packaging>
-    <url>http://maven.apache.org</url>
     <build>
         <plugins>
             <plugin>
