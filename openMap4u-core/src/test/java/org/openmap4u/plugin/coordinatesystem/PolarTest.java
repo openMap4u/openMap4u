@@ -30,25 +30,25 @@ public class PolarTest {
 		assertTrue(Math.abs(polar2.convert(10, 90).distance(0,10))<TOLERANCE);
 	}
 
-	@Test
+/*	@Test
 	public void testConvertStringDouble() {
 		assertTrue(Math.abs(polar1.convert("@10", 0).distance(10,0))<TOLERANCE);
 		System.out.println(polar2.convert("@10", 0));
 		assertTrue(Math.abs(polar2.convert("@10", 0).distance(0,20))<TOLERANCE);
 	}
-
-	@Test
+*/
+/*	@Test
 	public void testConvertDoubleString() {
 		assertThat(polar1.convert(23, "@24"),is(new Point.Double(23,24)));
 		assertThat(polar2.convert(23, "@24"),is(new Point.Double(23,38)));
-	}
+	} */
 
-	@Test
+/*	@Test
 	public void testConvertStringString() {
 		assertThat(polar1.convert("@23", "@24"),is(new Point.Double(23,24)));
 		assertThat(polar2.convert("@23", "@24"),is(new Point.Double(35,38)));
 	}
-
+*/
 	 
 
 }
