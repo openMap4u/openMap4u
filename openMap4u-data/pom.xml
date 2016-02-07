@@ -6,7 +6,7 @@
         <artifactId>openmap4u-parent</artifactId>
         <version>0.1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>openMap4u-data</artifactId>
+    <artifactId>openmap4u-data</artifactId>
     <packaging>jar</packaging>
  
     
