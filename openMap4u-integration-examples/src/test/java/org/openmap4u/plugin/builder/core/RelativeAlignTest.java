@@ -99,7 +99,7 @@ public class RelativeAlignTest extends AbstractOpenMap4uTest {
         OpenMap4u oM4u = new OpenMap4u();
         /* 2. get an canvas and specify the size which you want to draw */
         DrawOrWriteable canvas = oM4u.getCanvas(3, 3);
-        /* draw the line */
+        /* draw the line */ 
         Path path = FileSystems.getDefault().getPath("target","test-classes","image","image.png");
        /* draw the line */
         canvas.draw(oM4u.get(Rectangle.class).width(2).size(1).center(1.5, 1.5).color(Color.GRAY)).draw(oM4u.get(Image.class).path(path).center(LEFT,TOP).align(CENTER,MIDDLE));
@@ -112,7 +112,7 @@ public class RelativeAlignTest extends AbstractOpenMap4uTest {
         canvas.draw(oM4u.get(Rectangle.class).width(2).size(1).center(1.5, 1.5).color(Color.GRAY)).draw(oM4u.get(Image.class).path(path).center(CENTER,BOTTOM).align(CENTER,MIDDLE));
         canvas.draw(oM4u.get(Rectangle.class).width(2).size(1).center(1.5, 1.5).color(Color.GRAY)).draw(oM4u.get(Image.class).path(path).center(RIGHT,BOTTOM).align(CENTER,MIDDLE));
         /* write the result */
-        canvas.write(getPackagePath("realtiveAlignImage.png"));
+        canvas.write(getPackagePath("relativeAlignImage.png"));
     }
   
 
