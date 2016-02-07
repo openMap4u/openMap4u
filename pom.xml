@@ -364,6 +364,6 @@
         <module>openMap4u-spatial-plugin</module>
         <!-- The integration in jsp, jsf, ... -->
         <module>openMap4u-integration-examples</module>
-        <module>openMap4u-api</module>
+        <!--<module>openMap4u-api</module>-->
     </modules>
 </project>
