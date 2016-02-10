@@ -3,7 +3,7 @@ package org.openmap4u.builder;
 import java.awt.Paint;
 
 import org.openmap4u.commons.FontStyle;
-import org.openmap4u.commons.TextDrawable;
+import org.openmap4u.interfaces.TextDrawable;
 import org.openmap4u.commons.TextStyleable;
 
 /**
@@ -31,7 +31,7 @@ public abstract class TextBuilder<B extends TextBuilder<B>> extends
     * @return Method chaining pattern.
        */
     @Override
-    public final String getText() {
+    public final String getPrimitive() {
     return this.mText;
     }
     

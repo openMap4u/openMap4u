@@ -5,7 +5,7 @@ import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import org.openmap4u.commons.ImageDrawable;
+import org.openmap4u.interfaces.ImageDrawable;
 import org.openmap4u.commons.ImageStyleable;
 
 /**
@@ -27,7 +27,7 @@ public abstract class ImageBuilder<B extends ImageBuilder<B>> extends
      * @return The Image itself (method chaining pattern).
      */
     @Override
-    public Path getPath() {
+    public Path getPrimitive() {
         return this.mPath;
     }
 

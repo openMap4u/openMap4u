@@ -50,7 +50,7 @@ public class PolygonTest extends AbstractShapeBuilderTest<Polygon> {
     @Test
     public void testSetMoveTo() {
         this.mShape.moveTo(1, 2);
-        assertThat(this.mShape.getShape(), notNullValue());
+        assertThat(this.mShape.getPrimitive(), notNullValue());
     }
 
     /**
@@ -59,7 +59,7 @@ public class PolygonTest extends AbstractShapeBuilderTest<Polygon> {
     @Test
     public void testSetLineTo() {
         this.mShape.moveTo(1, 2).lineTo(4, 5);
-        assertThat(this.mShape.getShape(), notNullValue());
+        assertThat(this.mShape.getPrimitive(), notNullValue());
     }
 
     /**
@@ -68,7 +68,7 @@ public class PolygonTest extends AbstractShapeBuilderTest<Polygon> {
     @Test
     public void testSetQuadTo() {
         this.mShape.moveTo(1, 2).quadTo(2, 3, 4, 5);
-        assertThat(this.mShape.getShape(), notNullValue());
+        assertThat(this.mShape.getPrimitive(), notNullValue());
     }
 
     /**
@@ -77,7 +77,7 @@ public class PolygonTest extends AbstractShapeBuilderTest<Polygon> {
     @Test
     public void testSeBezierTo() {
         this.mShape.moveTo(1, 2).bezierTo(1.2, 1.4, 2, 3, 4, 5);
-        assertThat(this.mShape.getShape(), notNullValue());
+        assertThat(this.mShape.getPrimitive(), notNullValue());
     }
 
     @Override

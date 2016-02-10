@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 
-package org.openmap4u.commons;
+package org.openmap4u.interfaces;
+
+import org.openmap4u.commons.TextStyleable;
+import org.openmap4u.commons.TextStyleable;
 
 /**
  * A text primitive.
@@ -16,7 +19,7 @@ public interface TextDrawable extends Drawable<TextStyleable> {
      * Gets the text.
      * @return The text.
      */
-    String getText();
+    String getPrimitive();
     
    
     

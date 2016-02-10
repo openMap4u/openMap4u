@@ -5,7 +5,7 @@ import java.awt.Shape;
 import java.awt.geom.Area;
 import java.awt.geom.Path2D;
 
-import org.openmap4u.commons.ShapeDrawable;
+import org.openmap4u.interfaces.ShapeDrawable;
 import org.openmap4u.commons.ShapeStyle;
 import org.openmap4u.commons.ShapeStyleable;
 
@@ -39,7 +39,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      * @return The builder itself (method chaining pattern).
      */
     @Override
-    public Shape getShape() {
+    public Shape getPrimitive() {
         return this.mPath;
     }
 

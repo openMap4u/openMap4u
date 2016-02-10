@@ -74,8 +74,8 @@ public abstract class AreaChart<T extends AreaChart<T>> extends ShapeBuilder<T> 
     public static class Vertical extends AreaChart<Vertical> {
 
         @Override
-        public Shape getShape() {
-            Path2D.Double path = new Path2D.Double(super.getShape());
+        public Shape getPrimitive() {
+            Path2D.Double path = new Path2D.Double(super.getPrimitive());
             path.lineTo(mEnd.x, 0);
             path.lineTo(mStart.x, 0);
             path.lineTo(mStart.x, mStart.y);
@@ -87,8 +87,8 @@ public abstract class AreaChart<T extends AreaChart<T>> extends ShapeBuilder<T> 
     public static class Horizontal extends AreaChart<Horizontal> {
 
         @Override
-        public Shape getShape() {
-            Path2D.Double path = new Path2D.Double(super.getShape());
+        public Shape getPrimitive() {
+            Path2D.Double path = new Path2D.Double(super.getPrimitive());
             path.lineTo(0, mEnd.y);
             path.lineTo(0, mStart.y);
             path.lineTo(mStart.x, mStart.y);

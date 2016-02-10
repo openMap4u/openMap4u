@@ -1,4 +1,4 @@
-package org.openmap4u.commons;
+package org.openmap4u.interfaces;
 
 /**
  * All builders are derives from this base interface.

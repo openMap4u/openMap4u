@@ -4,9 +4,10 @@
  * and open the template in the editor.
  */
 
-package org.openmap4u.commons;
+package org.openmap4u.interfaces;
 
 import java.nio.file.Path;
+import org.openmap4u.commons.ImageStyleable;
 
 /**
  * A raster image primitive.
@@ -18,6 +19,6 @@ public interface ImageDrawable extends Drawable<ImageStyleable> {
      * Gets the path to the image.
      * @return The path to the image.
      */
-    Path getPath();
+    Path getPrimitive();
     
 }

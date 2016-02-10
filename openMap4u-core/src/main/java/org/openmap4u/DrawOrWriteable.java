@@ -47,6 +47,11 @@ public interface DrawOrWriteable  {
      */
     void write(Path out) throws IOException;
     
+    /**
+     * @param first
+     * @param more
+     * @throws IOException
+     */
     void write(String first , String ... more) throws IOException;
 
 }

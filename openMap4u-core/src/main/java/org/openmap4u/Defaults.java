@@ -168,10 +168,16 @@ public final class Defaults implements Serializable {
     }
 
   
+    /**
+     * @param angleUnits
+     */
     public void setAngleUnits(Angle angleUnits) {
         this.mAngleUnits = angleUnits;
     }
 
+    /**
+     * @return
+     */
     public Angle getAngleUnits() {
         return this.mAngleUnits;
     }

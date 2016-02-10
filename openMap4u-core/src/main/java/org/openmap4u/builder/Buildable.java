@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.openmap4u.commons.Angle;
-import org.openmap4u.commons.Drawable;
+import org.openmap4u.interfaces.Drawable;
 import org.openmap4u.commons.HorizontalAlign;
 import org.openmap4u.commons.Plugable;
 import org.openmap4u.commons.Point;

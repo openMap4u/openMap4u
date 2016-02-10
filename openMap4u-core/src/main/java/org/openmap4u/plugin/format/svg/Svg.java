@@ -28,11 +28,11 @@ import javax.xml.stream.XMLStreamWriter;
 import org.openmap4u.commons.Angle;
 import org.openmap4u.commons.DrawableTransformable;
 import org.openmap4u.commons.Globals;
-import org.openmap4u.commons.ImageDrawable;
+import org.openmap4u.interfaces.ImageDrawable;
 import org.openmap4u.commons.Length;
 import org.openmap4u.commons.Point.Align;
-import org.openmap4u.commons.ShapeDrawable;
-import org.openmap4u.commons.TextDrawable;
+import org.openmap4u.interfaces.ShapeDrawable;
+import org.openmap4u.interfaces.TextDrawable;
 import org.openmap4u.commons.TextStyleable;
 import org.openmap4u.commons.TransformUtil;
 import org.openmap4u.commons.Util;
@@ -140,9 +140,9 @@ public class Svg implements Outputable {
     public Rectangle2D drawShape(Point2D point,
             ShapeDrawable shape) {
         /* first get the global transformation */
-        AffineTransform transform = getTransform(point, shape.getTransform(), shape.getShape());
+        AffineTransform transform = getTransform(point, shape.getTransform(), shape.getPrimitive());
         /* create the transformed shape that will be drawn */
-        Shape tShape = transform.createTransformedShape(shape.getShape());
+        Shape tShape = transform.createTransformedShape(shape.getPrimitive());
         try {
             mWriter.writeStartElement(Svg.PATH);
             mWriter.writeAttribute("d", getSvgPathAttributeValue(tShape));
@@ -212,7 +212,7 @@ public class Svg implements Outputable {
             ImageDrawable image) {
         Shape imageOutline = null;
         try {
-            imageOutline = Util.get().getImageSize(image.getPath());
+            imageOutline = Util.get().getImageSize(image.getPrimitive());
             double width = imageOutline.getBounds2D().getWidth();
             double height = imageOutline.getBounds2D().getHeight();
             Rectangle2D.Double outline = new Rectangle2D.Double(0, 0, width / mPixel2DrawingUnitsFactor, height / mPixel2DrawingUnitsFactor);
@@ -227,7 +227,7 @@ public class Svg implements Outputable {
             mWriter.writeAttribute("x", "0");
             mWriter.writeAttribute("y", "0");
             mWriter.writeAttribute(Svg.XLINK, "href",
-                    image.getPath().toUri().toString());
+                    image.getPrimitive().toUri().toString());
             mWriter.writeAttribute(
                     Svg.WIDTH,
                     String.valueOf(width
@@ -278,7 +278,7 @@ public class Svg implements Outputable {
             mWriter.writeAttribute(Svg.STYLE, getFontStyle(text.getTransform().getAlign(), text.getStyle()));
             mWriter.writeStartElement("tspan");
    
-            mWriter.writeCharacters(text.getText());
+            mWriter.writeCharacters(text.getPrimitive());
             mWriter.writeEndElement();
             mWriter.writeEndElement();
             outline = transform.createTransformedShape(outline);

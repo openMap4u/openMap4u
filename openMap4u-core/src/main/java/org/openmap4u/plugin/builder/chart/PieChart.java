@@ -166,14 +166,14 @@ public class PieChart extends ShapeBuilder<PieChart> {
     }
 
     @Override
-    public Shape getShape() {
+    public Shape getPrimitive() {
         /* determine wheter it is a pie or a donut */
         if (Double.isNaN(getInnerRadius())) {
             super.shape(getArc(getOuterRadius(), getStart(), getExtent(), Arc2D.PIE));
         } else {
             super.shape(getArc(getOuterRadius(), getStart(), getExtent(), Arc2D.PIE)).subtract(new Ellipse2D.Double(-getInnerRadius(),-getInnerRadius(), getInnerRadius()*2, getInnerRadius()*2));
         }
-        return super.getShape();
+        return super.getPrimitive();
     }
 
     /**

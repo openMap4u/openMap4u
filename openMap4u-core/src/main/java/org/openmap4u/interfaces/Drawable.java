@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.openmap4u.commons;
+package org.openmap4u.interfaces;
+
+import org.openmap4u.commons.DrawableTransformable;
+import org.openmap4u.commons.Styleable;
 
 /**
  *

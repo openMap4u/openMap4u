@@ -4,9 +4,10 @@
  * and open the template in the editor.
  */
 
-package org.openmap4u.commons;
+package org.openmap4u.interfaces;
 
 import java.awt.Shape;
+import org.openmap4u.commons.ShapeStyleable;
 
 /**
  * A shape primitive.
@@ -18,7 +19,7 @@ public interface ShapeDrawable extends Drawable<ShapeStyleable> {
      * Gets the shape.
      * @return THe shape.
      */
-    Shape getShape();
+    Shape getPrimitive();
     
     
 }

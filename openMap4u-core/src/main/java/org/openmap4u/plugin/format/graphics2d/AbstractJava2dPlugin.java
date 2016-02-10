@@ -24,10 +24,10 @@ import javax.imageio.ImageIO;
 import org.openmap4u.commons.Angle;
 import org.openmap4u.commons.DrawableTransformable;
 import org.openmap4u.commons.Globals;
-import org.openmap4u.commons.ImageDrawable;
+import org.openmap4u.interfaces.ImageDrawable;
 import org.openmap4u.commons.Length;
-import org.openmap4u.commons.ShapeDrawable;
-import org.openmap4u.commons.TextDrawable;
+import org.openmap4u.interfaces.ShapeDrawable;
+import org.openmap4u.interfaces.TextDrawable;
 import org.openmap4u.commons.TextStyleable;
 import org.openmap4u.commons.TransformUtil;
 import org.openmap4u.commons.Util;
@@ -132,7 +132,7 @@ abstract class AbstractJava2dPlugin implements Outputable {
 		AffineTransform transform = getTransform(point, shape.getTransform(),
 				shapeBounds);
 		/* create the trasnformed shape that will be drawn */
-		Shape tshape = transform.createTransformedShape(shape.getShape());
+		Shape tshape = transform.createTransformedShape(shape.getPrimitive());
 		/* fill the shape if a fill value was provided */
 		if (shape.getStyle().getStrokeFill() != null) {
 			this.mG2D.setPaint(shape.getStyle().getStrokeFill());
@@ -148,7 +148,7 @@ abstract class AbstractJava2dPlugin implements Outputable {
 
 	@Override
 	public Shape drawShape(Point2D point, ShapeDrawable shape) {
-		return draw(point, shape, shape.getShape());
+		return draw(point, shape, shape.getPrimitive());
 	}
 
 	@Override
@@ -156,7 +156,7 @@ abstract class AbstractJava2dPlugin implements Outputable {
 		Shape imageOutline = null;
 		try {
 			/* get the image */
-			BufferedImage img = Util.get().getImage(image.getPath());
+			BufferedImage img = Util.get().getImage(image.getPrimitive());
 			/* set the alphaValue */
 			this.mG2D.setComposite(AlphaComposite.getInstance(
 					AlphaComposite.SRC_OVER, (float) image.getStyle()
@@ -192,7 +192,7 @@ abstract class AbstractJava2dPlugin implements Outputable {
 		 */
 		Font font = getFont(text.getStyle());
 		GlyphVector glyphVector = font.createGlyphVector(
-				this.mFontRenderContext, text.getText());
+				this.mFontRenderContext, text.getPrimitive());
 		Shape fontPath = this.mFontSCaleBack.createTransformedShape(glyphVector
 				.getOutline());
 		Polygon shape2Draw = new Polygon().fill(text.getStyle().getFontColor())

@@ -11,6 +11,16 @@ package org.openmap4u.commons;
  */
 public enum HorizontalAlign implements Align {
 
-    LEFT, CENTER , RIGHT;
+    /**
+     * horizontal align to the left */  
+    LEFT,
+    /**
+     * horizontal align to the center 
+     */
+    CENTER , 
+    /**
+     * horizontal align to the right
+     */
+    RIGHT;
 
 }

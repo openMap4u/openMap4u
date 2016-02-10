@@ -101,13 +101,13 @@ public class BarChart extends ShapeBuilder<BarChart> {
     }
 
     @Override
-    public Shape getShape() {
+    public Shape getPrimitive() {
         if (Double.isNaN(getRadius())) {
             shape(new Rectangle2D.Double(-getWidth() / 2, -getHeight() / 2, getWidth(), getHeight()));
         } else {
             shape(new RoundRectangle2D.Double(-getWidth() / 2, -getHeight() / 2, getWidth(), getHeight(), getRadius(), getRadius()));
         }
-        return super.getShape();
+        return super.getPrimitive();
     }
 
     double getWidth() {
