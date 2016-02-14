@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.runner.RunWith;
-import org.openmap4u.builder.Buildable;
+import org.openmap4u.builder.BuildablePrimitive;
 import org.openmap4u.format.Outputable;
 import org.openmap4u.plugin.builder.symbol.Rectangle;
 import org.openmap4u.plugin.format.graphics2d.Png;
@@ -197,9 +197,9 @@ public abstract class AbstractOpenMap4uTest {
      * @param primitives2Draw
      * @throws java.io.IOException
      */
-    protected final void drawOnCanvas(double width, double height, String fileName, Buildable... primitives2Draw) throws IOException {
+    protected final void drawOnCanvas(double width, double height, String fileName, BuildablePrimitive... primitives2Draw) throws IOException {
         SetAreaOfInterestOrDrawOrWriteable canvas = getCanvas(width, height);
-        for (Buildable primitive2Draw : primitives2Draw) {
+        for (BuildablePrimitive primitive2Draw : primitives2Draw) {
             canvas.draw(primitive2Draw);
         }
         canvas.write(getPackagePath(fileName));
