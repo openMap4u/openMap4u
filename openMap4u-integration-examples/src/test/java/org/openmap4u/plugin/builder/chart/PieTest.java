@@ -44,7 +44,7 @@ public class PieTest extends AbstractOpenMap4uTest {
      */
     @Test
     public void testEnd() {
-        assertThat(pie.getTransform().getAngleUnits(), is(Angle.DEGREE));
+        assertThat(pie.build().getTransform().getAngleUnits(), is(Angle.DEGREE));
         assertThat(pie.getExtent(), is(0d));
         pie.end(180);
         assertThat(pie.getExtent(), is(Math.PI));
@@ -55,7 +55,7 @@ public class PieTest extends AbstractOpenMap4uTest {
      */
     @Test
     public void testStart() {
-        assertThat(pie.getTransform().getAngleUnits(), is(Angle.DEGREE));
+        assertThat(pie.build().getTransform().getAngleUnits(), is(Angle.DEGREE));
         assertThat(pie.getStart(), is(0d));
         pie.start(90);
         assertThat(pie.getStart(), is(Math.PI / 2d));
@@ -67,7 +67,7 @@ public class PieTest extends AbstractOpenMap4uTest {
     @Test
     public void testStrokeColor() {
         pie.color(Color.CYAN);
-        assertThat(pie.getStyle().getStrokeColor(), is(Color.CYAN));
+        assertThat(pie.build().getStyle().getStrokeColor(), is(Color.CYAN));
     }
 
     /**
@@ -76,7 +76,7 @@ public class PieTest extends AbstractOpenMap4uTest {
     @Test
     public void testStrokeFill() {
         pie.fill(Color.RED);
-        assertThat(pie.getStyle().getStrokeFill(), is(Color.RED));
+        assertThat(pie.build().getStyle().getStrokeFill(), is(Color.RED));
     }
 
     /**
@@ -85,7 +85,7 @@ public class PieTest extends AbstractOpenMap4uTest {
     @Test
     public void testStrokeSize() {
         pie.size(5d);
-        assertThat(pie.getStyle().getStrokeSize(), is(5d));
+        assertThat(pie.build().getStyle().getStrokeSize(), is(5d));
     }
 
     /**
@@ -134,9 +134,9 @@ public class PieTest extends AbstractOpenMap4uTest {
     @Test
     public void testUnit() {
         pie.unit(Angle.DEGREE);
-        assertThat(pie.getTransform().getAngleUnits(), is(Angle.DEGREE));
+        assertThat(pie.build().getTransform().getAngleUnits(), is(Angle.DEGREE));
         pie.unit(Angle.RADIANT);
-        assertThat(pie.getTransform().getAngleUnits(), is(Angle.RADIANT));
+        assertThat(pie.build().getTransform().getAngleUnits(), is(Angle.RADIANT));
     }
 
     /**
@@ -156,9 +156,9 @@ public class PieTest extends AbstractOpenMap4uTest {
      */
     @Test
     public void testGetAngularUnit() {
-        assertThat(pie.getTransform().getAngleUnits(), is(Angle.DEGREE));
+        assertThat(pie.build().getTransform().getAngleUnits(), is(Angle.DEGREE));
         pie.unit(Angle.PERCENT);
-        assertThat(pie.getTransform().getAngleUnits(), is(Angle.PERCENT));
+        assertThat(pie.build().getTransform().getAngleUnits(), is(Angle.PERCENT));
     }
 
     /**
@@ -167,7 +167,7 @@ public class PieTest extends AbstractOpenMap4uTest {
     @Test
     public void testGetPrimitive() {
         pie.start(0.3).end(.5).radius(2);
-        assertThat(pie.getShape(), notNullValue());
+        assertThat(pie.build().getPrimitive(), notNullValue());
     }
 
     /**
