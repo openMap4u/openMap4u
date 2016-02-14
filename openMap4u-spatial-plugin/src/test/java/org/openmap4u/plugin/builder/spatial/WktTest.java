@@ -44,7 +44,7 @@ public class WktTest extends AbstractSpatialTest {
 		} 
 		/* write the result into the given */
 		  draw.write(FileSystems.getDefault().getPath(
-				".\\target\\test-classes", outputFileName));
+				"target","test-classes", outputFileName));
 
 
 	}
