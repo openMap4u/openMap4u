@@ -24,6 +24,7 @@ package org.openmap4u;
  * #L%
  */
 import java.awt.Shape;
+import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.io.IOException;
@@ -34,20 +35,21 @@ import java.nio.file.Path;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.openmap4u.builder.Buildable;
 import org.openmap4u.commons.Angle;
 import org.openmap4u.commons.AreaOfInterestTransformable;
 import org.openmap4u.commons.Globals;
-import org.openmap4u.interfaces.ImageDrawable;
+import org.openmap4u.commons.ImageStyleable;
 import org.openmap4u.commons.Length;
 import org.openmap4u.commons.Plugable;
 import org.openmap4u.commons.Point;
-import org.openmap4u.interfaces.ShapeDrawable;
-import org.openmap4u.interfaces.TextDrawable;
+import org.openmap4u.commons.ShapeStyleable;
+import org.openmap4u.commons.TextStyleable;
 import org.openmap4u.commons.TransformUtil;
 import org.openmap4u.commons.Util;
 import org.openmap4u.format.Outputable;
+import org.openmap4u.interfaces.Drawable;
 import org.openmap4u.plugin.format.graphics2d.Png;
+import org.openmap4u.builder.BuildablePrimitive;
 
 /**
  * Default implementation of the Canvas interface.
@@ -257,7 +259,11 @@ class Canvas implements Plugable, DrawOrWriteable, SetAreaOfInterestOrDrawOrWrit
     }
 
     @Override
-    public DrawOrWriteable draw(Buildable builder) {
+    public DrawOrWriteable draw(BuildablePrimitive builder) {
+        return draw(builder.build());
+    }
+
+    public DrawOrWriteable draw(Drawable builder) {
         /* check wethter the ouptputable format has been initialized */
         if (!this.isInitialized) {
             /* Initialize the global transformation */
@@ -298,7 +304,7 @@ class Canvas implements Plugable, DrawOrWriteable, SetAreaOfInterestOrDrawOrWrit
                 Shape parentShape = previousDrawnShape;
                 for (Object childBuilder : builder.getChilds()) {
                     previousDrawnShape = parentShape;
-                    draw((Buildable) childBuilder);
+                    draw((BuildablePrimitive) childBuilder);
                 }
             }
         }
@@ -313,21 +319,21 @@ class Canvas implements Plugable, DrawOrWriteable, SetAreaOfInterestOrDrawOrWrit
      * @param builder The builder to draw.
      * @param previousDrawnShape The previous drawn shape.
      */
-    final Shape draw(Point2D point, Buildable builder, Shape previousDrawnShape) {
+    final Shape draw(Point2D point, Drawable builder, Shape previousDrawnShape) {
         Shape drawnShape = null;
         builder.setUp(this.previousDrawnShape);
         /* process the shape primitive */
-        if (builder instanceof ShapeDrawable) {
+        if (builder.getPrimitive() instanceof Shape) {
             drawnShape = this.mOutputFormat.drawShape(point,
-                    (ShapeDrawable) builder);
+                    (Drawable<ShapeStyleable,Path2D>) builder);
             /* process the image primitive */
-        } else if (builder instanceof ImageDrawable) {
+        } else if (builder.getPrimitive() instanceof Path) {
             drawnShape = this.mOutputFormat.drawImage(point,
-                    (ImageDrawable) builder);
+                    (Drawable<ImageStyleable,Path>) builder);
             /* process the text primitive */
-        } else if (builder instanceof TextDrawable) {
+        } else if (builder.getPrimitive() instanceof String) {
             drawnShape = this.mOutputFormat.drawText(point,
-                    (TextDrawable) builder);
+                    (Drawable<TextStyleable,String>) builder);
         } else {
             throw new java.lang.IllegalArgumentException(builder.getClass()
                     .toString());

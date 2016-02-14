@@ -5,7 +5,6 @@ import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import org.openmap4u.interfaces.ImageDrawable;
 import org.openmap4u.commons.ImageStyleable;
 
 /**
@@ -17,20 +16,12 @@ import org.openmap4u.commons.ImageStyleable;
  * @param <B> The type of the image builder.
  */
 public abstract class ImageBuilder<B extends ImageBuilder<B>> extends
-        Builder<ImageStyleable, B> implements ImageDrawable {
+        Builder<ImageStyleable, B,Path>  {
 
-    private Path mPath = null;
+	
 
-    /**
-     * {@inheritDoc}
-     *
-     * @return The Image itself (method chaining pattern).
-     */
-    @Override
-    public Path getPrimitive() {
-        return this.mPath;
-    }
-
+	
+	
     /**
      * Sets the image.
      *
@@ -39,7 +30,7 @@ public abstract class ImageBuilder<B extends ImageBuilder<B>> extends
      */
     @SuppressWarnings("unchecked")
     protected B path(Path imagePath) {
-        this.mPath = imagePath;
+        this.getDrawable().setPrimitive(imagePath);
         return (B) this;
     }
 
@@ -56,5 +47,10 @@ public abstract class ImageBuilder<B extends ImageBuilder<B>> extends
     protected B path(URI imageURI) {
         return this.path(Paths.get(imageURI));
     }
+    
+    
+  
+    
+    
 
 }

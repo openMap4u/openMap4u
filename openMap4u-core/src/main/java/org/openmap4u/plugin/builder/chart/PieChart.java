@@ -14,6 +14,8 @@ import java.awt.geom.Path2D;
 
 import org.openmap4u.builder.ShapeBuilder;
 import org.openmap4u.commons.Angle;
+import org.openmap4u.commons.ShapeStyleable;
+import org.openmap4u.interfaces.Drawable;
 
 /**
  * Represents a pie ord a donut.
@@ -138,7 +140,7 @@ public class PieChart extends ShapeBuilder<PieChart> {
    * @return The piechart itself (fluent interface pattern).
        */
     public PieChart start(double startAngle) {
-        this.mStartAngle = this.getTransform().getAngleUnits().convert(startAngle);
+        this.mStartAngle = this.getDrawable().getTransform().getAngleUnits().convert(startAngle);
         return this;
     }
 
@@ -148,7 +150,7 @@ public class PieChart extends ShapeBuilder<PieChart> {
     * @return The piechart itself (fluent interface pattern).
       */
     public PieChart end(double endAngle) {
-        this.mExtent = this.getTransform().getAngleUnits().convert(endAngle) - getStart();
+        this.mExtent = this.getDrawable().getTransform().getAngleUnits().convert(endAngle) - getStart();
         return this;
     }
 
@@ -161,19 +163,21 @@ public class PieChart extends ShapeBuilder<PieChart> {
       */
     public PieChart add(double value) {
         /* add the value */
-        this.mExtent = this.getTransform().getAngleUnits().convert(value);
+        this.mExtent = this.getDrawable().getTransform().getAngleUnits().convert(value);
         return this;
     }
 
     @Override
-    public Shape getPrimitive() {
+    public Drawable<ShapeStyleable,Path2D> build() {
+    	
         /* determine wheter it is a pie or a donut */
         if (Double.isNaN(getInnerRadius())) {
             super.shape(getArc(getOuterRadius(), getStart(), getExtent(), Arc2D.PIE));
         } else {
             super.shape(getArc(getOuterRadius(), getStart(), getExtent(), Arc2D.PIE)).subtract(new Ellipse2D.Double(-getInnerRadius(),-getInnerRadius(), getInnerRadius()*2, getInnerRadius()*2));
         }
-        return super.getPrimitive();
+        this.mStartAngle = getStart() + getExtent();
+        return this.getDrawable();
     }
 
     /**
@@ -213,10 +217,6 @@ public class PieChart extends ShapeBuilder<PieChart> {
         return this.mOuterRadius;
     }
 
-    @Override
-    public void tearDown() {
-        super.tearDown();
-        this.mStartAngle = getStart() + getExtent();
-    }
+   
 
 }

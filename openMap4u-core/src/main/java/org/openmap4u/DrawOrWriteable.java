@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Path;
 
-import org.openmap4u.builder.Buildable;
+import org.openmap4u.builder.BuildablePrimitive;
 
 /**
  * Allow either to draw another primitive on the canvas, or to write the result
@@ -25,7 +25,7 @@ public interface DrawOrWriteable  {
      * @return Allow by applying the method chaining pattern either to draw more
      * primitive(s) or to write the resulting map.
      */
-    DrawOrWriteable draw(Buildable buildable);
+    DrawOrWriteable draw(BuildablePrimitive buildable);
 
     
     /**

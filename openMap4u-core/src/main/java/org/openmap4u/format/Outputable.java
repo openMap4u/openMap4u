@@ -6,16 +6,19 @@ package org.openmap4u.format;
 
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.file.Path;
 
 import org.openmap4u.commons.Angle;
-import org.openmap4u.interfaces.ImageDrawable;
+import org.openmap4u.commons.ImageStyleable;
+import org.openmap4u.interfaces.Drawable;
 import org.openmap4u.commons.Length;
 import org.openmap4u.commons.Plugable;
-import org.openmap4u.interfaces.ShapeDrawable;
-import org.openmap4u.interfaces.TextDrawable;
+import org.openmap4u.commons.ShapeStyleable;
+import org.openmap4u.commons.TextStyleable;
 
 /**
  * This interface has to be implemented for every output format.<br> 
@@ -33,7 +36,7 @@ public interface Outputable extends Plugable {
      * @return The bounds of the shape primitive.
      */
     Shape drawShape(Point2D point,
-            ShapeDrawable shape);
+            Drawable<ShapeStyleable,Path2D> shape);
 
     /**
      * Draws an image primitive. 
@@ -42,7 +45,7 @@ public interface Outputable extends Plugable {
      * @param image The image.
      * @return The bounds of the image primitive.
      */
-    Shape drawImage(Point2D point, ImageDrawable image);
+    Shape drawImage(Point2D point, Drawable<ImageStyleable,Path> image);
 
     /**
      * Draws a text primitive.  
@@ -51,7 +54,7 @@ public interface Outputable extends Plugable {
      * @param text The text primitive.
      * @return The bounds of the text primitive.
      */
-    Shape drawText(Point2D point, TextDrawable text);
+    Shape drawText(Point2D point, Drawable<TextStyleable,String> text);
 
     /**
      * Is only called once, before anything is drawn. It acts as initial setup.

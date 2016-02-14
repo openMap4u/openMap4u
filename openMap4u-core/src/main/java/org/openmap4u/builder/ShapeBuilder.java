@@ -5,10 +5,9 @@ import java.awt.Shape;
 import java.awt.geom.Area;
 import java.awt.geom.Path2D;
 
-import org.openmap4u.interfaces.ShapeDrawable;
 import org.openmap4u.commons.ShapeStyle;
 import org.openmap4u.commons.ShapeStyleable;
-
+ 
 /**
  * All shape builder plugins are derived from this abstract base class. The
  * protected methods can be exposed by the respective implementation of this
@@ -18,7 +17,7 @@ import org.openmap4u.commons.ShapeStyleable;
  * @param <B> The type of the shape builder.
  */
 public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
-        Builder<ShapeStyleable, B> implements ShapeDrawable {
+        Builder<ShapeStyleable, B,Path2D>  {
 
     /**
      * Stores a reference to the path.
@@ -29,28 +28,12 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      * Creates a new ShapeBuilder instance.
      */
     public ShapeBuilder() {
-        setStyle(new ShapeStyle());
-        resetPath();
+          resetPath();
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @return The builder itself (method chaining pattern).
-     */
-    @Override
-    public Shape getPrimitive() {
-        return this.mPath;
-    }
+   
 
-    /**
-     * Sets the shape.
-     *
-     * @param shape The shape.
-     */
-    protected final void setShape(Shape shape) {
-        this.mPath = new Path2D.Double(shape);
-    }
+   
 
     /**
      * Sets the stroke size in stroke units.
@@ -72,7 +55,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      */
     @SuppressWarnings("unchecked")
     protected B size(double strokeSize) {
-        this.getStyle().strokeSize(strokeSize);
+        this.getDrawable().getStyle().strokeSize(strokeSize);
         return (B) this;
     }
 
@@ -96,7 +79,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      */
     @SuppressWarnings("unchecked")
     protected B color(Paint strokeColor) {
-        this.getStyle().strokeColor(strokeColor);
+        this.getDrawable().getStyle().strokeColor(strokeColor);
         return (B) this;
     }
 
@@ -120,7 +103,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      */
     @SuppressWarnings("unchecked")
     protected B fill(Paint fill) {
-        this.getStyle().strokeFill(fill);
+        this.getDrawable().getStyle().strokeFill(fill);
         return (B) this;
     }
 
@@ -146,7 +129,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
     @SuppressWarnings("unchecked")
     protected B bezierTo(double cp1X, double cp1Y, double cp2X, double cp2Y,
             double toX, double toY) {
-        this.mPath.curveTo(cp1X, cp1Y, cp2X, cp2Y, toX, toY);
+        this.getDrawable().getPrimitive().curveTo(cp1X, cp1Y, cp2X, cp2Y, toX, toY);
         return (B) this;
     }
 
@@ -163,10 +146,10 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      */
     @SuppressWarnings("unchecked")
     protected B lineTo(double toX, double toY) {
-        if (this.mPath.getCurrentPoint() == null) {
-            this.moveTo(toX, toY);
+        if (this.getDrawable().getPrimitive().getCurrentPoint() == null) {
+            this.getDrawable().getPrimitive().moveTo(toX, toY);
         } else {
-            this.mPath.lineTo(toX, toY);
+            this.getDrawable().getPrimitive().lineTo(toX, toY);
         }
         return (B) this;
     }
@@ -186,10 +169,10 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      */
     @SuppressWarnings("unchecked")
     protected B moveTo(double toX, double toY) {
-        if (this.mPath == null) {
+        if (this.getDrawable().getPrimitive() == null) {
             resetPath();
         }
-        this.mPath.moveTo(toX, toY);
+        this.getDrawable().getPrimitive().moveTo(toX, toY);
         return (B) this;
     }
 
@@ -209,7 +192,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      */
     @SuppressWarnings("unchecked")
     protected B quadTo(double cpX, double cpY, double toX, double toY) {
-        this.mPath.quadTo(cpX, cpY, toX, toY);
+        this.getDrawable().getPrimitive().quadTo(cpX, cpY, toX, toY);
         return (B) this;
     }
 
@@ -224,12 +207,12 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      */
     @SuppressWarnings("unchecked")
     protected B shape(Shape shape) {
-        this.mPath = new Path2D.Double(shape);
+        this.getDrawable().setPrimitive(new Path2D.Double(shape));
         return (B) this;
     }
 
     Area getArea() {
-        return new Area(this.mPath);
+        return new Area(this.getDrawable().getPrimitive());
     }
 
     /**
@@ -244,8 +227,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
     protected B add(Shape shape) {
         Area area = getArea();
         area.add(new Area(shape));
-        this.setShape(area);
-        return (B) this;
+        return this.shape(area);
     }
 
     /**
@@ -261,9 +243,8 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
     protected B intersect(Shape shape) {
         Area area = getArea();
         area.intersect(new Area(shape));
-        this.shape(area);
-        return (B) this;
-    }
+        return this.shape(area);
+     }
 
     /**
      * Subtracts the primitive with the provided shape.
@@ -278,8 +259,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
     protected B subtract(Shape shape) {
         Area area = getArea();
         area.subtract(new Area(shape));
-        this.shape(area);
-        return (B) this;
+        return this.shape(area);
     }
 
     /**
@@ -294,8 +274,7 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
     protected B exclusiveOr(Shape shape) {
         Area area = getArea();
         area.exclusiveOr(new Area(shape));
-        this.shape(area);
-        return (B) this;
+        return this.shape(area);
     }
 
     /**
@@ -304,9 +283,9 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      * @return
      */
     final B resetPath() {
-        this.mPath = new Path2D.Double(Path2D.WIND_EVEN_ODD);
-        setShape(mPath);
-        return (B) this;
-    }
+        return shape(new Path2D.Double(Path2D.WIND_EVEN_ODD));
+     }
+    
+    
 
 }

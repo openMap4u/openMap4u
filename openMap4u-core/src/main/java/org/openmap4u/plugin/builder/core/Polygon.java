@@ -127,5 +127,7 @@ public final class Polygon extends ShapeBuilder<Polygon> {
     public Polygon size(double strokeSize) {
         return super.size(strokeSize);
     }
+    
+    
 
 }

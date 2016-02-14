@@ -10,11 +10,13 @@ import java.awt.Shape;
 import java.awt.font.FontRenderContext;
 import java.awt.font.GlyphVector;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.file.Path;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,11 +26,12 @@ import javax.imageio.ImageIO;
 import org.openmap4u.commons.Angle;
 import org.openmap4u.commons.DrawableTransformable;
 import org.openmap4u.commons.Globals;
-import org.openmap4u.interfaces.ImageDrawable;
+import org.openmap4u.commons.ImageStyleable;
+import org.openmap4u.interfaces.Drawable;
 import org.openmap4u.commons.Length;
-import org.openmap4u.interfaces.ShapeDrawable;
-import org.openmap4u.interfaces.TextDrawable;
+import org.openmap4u.commons.ShapeStyleable;
 import org.openmap4u.commons.TextStyleable;
+import org.openmap4u.commons.ImageStyleable;
 import org.openmap4u.commons.TransformUtil;
 import org.openmap4u.commons.Util;
 import org.openmap4u.format.Outputable;
@@ -120,7 +123,7 @@ abstract class AbstractJava2dPlugin implements Outputable {
 				individual, shape);
 	}
 
-	public Shape draw(Point2D point, ShapeDrawable shape, Shape shapeBounds) {
+	public Shape draw(Point2D point, Drawable<ShapeStyleable,Path2D> shape, Shape shapeBounds) {
 		/* set the alphaValue */
 		this.mG2D.setComposite(AlphaComposite.getInstance(
 				AlphaComposite.SRC_OVER, (float) shape.getStyle().getAlpha()));
@@ -147,12 +150,12 @@ abstract class AbstractJava2dPlugin implements Outputable {
 	}
 
 	@Override
-	public Shape drawShape(Point2D point, ShapeDrawable shape) {
+	public Shape drawShape(Point2D point, Drawable<ShapeStyleable,Path2D> shape) {
 		return draw(point, shape, shape.getPrimitive());
 	}
 
 	@Override
-	public Shape drawImage(Point2D point, ImageDrawable image) {
+	public Shape drawImage(Point2D point, Drawable<ImageStyleable,Path> image) {
 		Shape imageOutline = null;
 		try {
 			/* get the image */
@@ -185,7 +188,7 @@ abstract class AbstractJava2dPlugin implements Outputable {
 	}
 
 	@Override
-	public Shape drawText(Point2D point, TextDrawable text) {
+	public Shape drawText(Point2D point, Drawable<TextStyleable,String> text) {
 		/*
 		 * derive the path from the glyph vector so that the transformation can
 		 * be applied
@@ -202,11 +205,11 @@ abstract class AbstractJava2dPlugin implements Outputable {
 			shape2Draw.align(text.getTransform().getAlign().getX(), text
 					.getTransform().getAlign().getY());
 		}
-		shape2Draw.setTransform(text.getTransform());
+		shape2Draw.build().setTransform( text.getTransform());
 		Shape outline = new Rectangle2D.Double(0, 0, fontPath.getBounds2D()
 				.getWidth(), text.getStyle().getFontSize()
 				* mStrokeUnits2DrawingUnits);
-		draw(point, shape2Draw, outline);
+	draw( point, shape2Draw.build(), outline);
 		return outline;
 
 	}

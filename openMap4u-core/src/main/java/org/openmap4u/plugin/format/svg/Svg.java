@@ -7,6 +7,7 @@ package org.openmap4u.plugin.format.svg;
 
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Path2D;
 import java.awt.geom.PathIterator;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
@@ -16,6 +17,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,11 +30,11 @@ import javax.xml.stream.XMLStreamWriter;
 import org.openmap4u.commons.Angle;
 import org.openmap4u.commons.DrawableTransformable;
 import org.openmap4u.commons.Globals;
-import org.openmap4u.interfaces.ImageDrawable;
+import org.openmap4u.commons.ImageStyleable;
+import org.openmap4u.interfaces.Drawable;
 import org.openmap4u.commons.Length;
 import org.openmap4u.commons.Point.Align;
-import org.openmap4u.interfaces.ShapeDrawable;
-import org.openmap4u.interfaces.TextDrawable;
+import org.openmap4u.commons.ShapeStyleable;
 import org.openmap4u.commons.TextStyleable;
 import org.openmap4u.commons.TransformUtil;
 import org.openmap4u.commons.Util;
@@ -138,7 +140,7 @@ public class Svg implements Outputable {
 
     @Override
     public Rectangle2D drawShape(Point2D point,
-            ShapeDrawable shape) {
+            Drawable<ShapeStyleable,Path2D> shape) {
         /* first get the global transformation */
         AffineTransform transform = getTransform(point, shape.getTransform(), shape.getPrimitive());
         /* create the transformed shape that will be drawn */
@@ -209,7 +211,7 @@ public class Svg implements Outputable {
 
     @Override
     public Shape drawImage(Point2D point,
-            ImageDrawable image) {
+            Drawable<ImageStyleable,Path> image) {
         Shape imageOutline = null;
         try {
             imageOutline = Util.get().getImageSize(image.getPrimitive());
@@ -259,7 +261,7 @@ public class Svg implements Outputable {
 
     @Override
     public Shape drawText(Point2D point,
-            TextDrawable text) {
+            Drawable<TextStyleable,String> text) {
         Shape outline = new Rectangle2D.Double(0, 0, 0.00000000000000000001, text.getStyle().getFontSize()*mStrokeUnit2DrawingUnitFactor);
 
         try {

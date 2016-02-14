@@ -15,6 +15,8 @@ import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
 
 import org.openmap4u.builder.ShapeBuilder;
+import org.openmap4u.commons.ShapeStyleable;
+import org.openmap4u.interfaces.Drawable;
 
 /**
  * Represents a area chart
@@ -74,12 +76,12 @@ public abstract class AreaChart<T extends AreaChart<T>> extends ShapeBuilder<T> 
     public static class Vertical extends AreaChart<Vertical> {
 
         @Override
-        public Shape getPrimitive() {
-            Path2D.Double path = new Path2D.Double(super.getPrimitive());
-            path.lineTo(mEnd.x, 0);
-            path.lineTo(mStart.x, 0);
-            path.lineTo(mStart.x, mStart.y);
-            return path;
+        public Drawable<ShapeStyleable,Path2D> build() {
+        	Drawable<ShapeStyleable, Path2D> drawable =super.build();
+        	drawable.getPrimitive().lineTo(mEnd.x, 0);
+        	drawable.getPrimitive().lineTo(mStart.x, 0);
+        	drawable.getPrimitive().lineTo(mStart.x, mStart.y);
+             return this.getDrawable();
         }
 
     }
@@ -87,12 +89,12 @@ public abstract class AreaChart<T extends AreaChart<T>> extends ShapeBuilder<T> 
     public static class Horizontal extends AreaChart<Horizontal> {
 
         @Override
-        public Shape getPrimitive() {
-            Path2D.Double path = new Path2D.Double(super.getPrimitive());
-            path.lineTo(0, mEnd.y);
-            path.lineTo(0, mStart.y);
-            path.lineTo(mStart.x, mStart.y);
-            return path;
+        public Drawable<ShapeStyleable,Path2D> build() {
+        	Drawable<ShapeStyleable, Path2D> drawable =super.build();
+        	drawable.getPrimitive().lineTo(0, mEnd.y);
+        	drawable.getPrimitive().lineTo(0, mStart.y);
+        	drawable.getPrimitive().lineTo(mStart.x, mStart.y);
+            return drawable;
         }
 
     }

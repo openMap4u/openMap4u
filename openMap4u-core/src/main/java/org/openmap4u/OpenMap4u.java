@@ -2,7 +2,6 @@ package org.openmap4u;
 
 import java.io.Serializable;
 
-import org.openmap4u.builder.Buildable;
 import org.openmap4u.builder.ImageBuilder;
 import org.openmap4u.builder.ShapeBuilder;
 import org.openmap4u.builder.TextBuilder;
@@ -11,6 +10,7 @@ import org.openmap4u.commons.ShapeStyleable;
 import org.openmap4u.commons.Styleable;
 import org.openmap4u.commons.TextStyleable;
 import org.openmap4u.commons.Util;
+import org.openmap4u.builder.BuildablePrimitive;
 
 /**
  * The openMap4u API. 
@@ -46,19 +46,19 @@ public class OpenMap4u implements Serializable {
      * {@link org.openmap4u.OpenMap4u#getDefaults()} initialized builder
      * instance.
      */
-    public  <S extends Styleable<S>, B extends Buildable<S, B>> B get(
+    public  <S extends Styleable<S>, B extends BuildablePrimitive<S, B,P>,P> B get(
             Class<B> builderClass) {
         B builder = Util.get().getPlugin(builderClass);
         try {
             if (builder instanceof ShapeBuilder) {
-                ((ShapeBuilder) builder).setStyle(((ShapeStyleable) getDefaults()
+                ((ShapeBuilder) builder).style(((ShapeStyleable) getDefaults()
                         .getShapeStyle()).clone());
             } else if (builder instanceof ImageBuilder) {
-                ((ImageBuilder) builder).setStyle(((ImageStyleable) getDefaults()
+                ((ImageBuilder) builder).style(((ImageStyleable) getDefaults()
                         .getImageStyle()).clone());
             } else if (builder instanceof TextBuilder) {
                 ((TextBuilder) builder).
-                        setStyle(((TextStyleable) getDefaults()
+                        style(((TextStyleable) getDefaults()
                                 .getTextStyle()).clone());
             }
         } catch (CloneNotSupportedException e) {

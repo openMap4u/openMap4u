@@ -7,10 +7,13 @@ package org.openmap4u.plugin.builder.chart;
 
 import java.awt.Paint;
 import java.awt.Shape;
+import java.awt.geom.Path2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
 
 import org.openmap4u.builder.ShapeBuilder;
+import org.openmap4u.commons.ShapeStyleable;
+import org.openmap4u.interfaces.Drawable;
 
 /**
  *
@@ -101,13 +104,13 @@ public class BarChart extends ShapeBuilder<BarChart> {
     }
 
     @Override
-    public Shape getPrimitive() {
+    public Drawable<ShapeStyleable,Path2D> build() {
         if (Double.isNaN(getRadius())) {
             shape(new Rectangle2D.Double(-getWidth() / 2, -getHeight() / 2, getWidth(), getHeight()));
         } else {
             shape(new RoundRectangle2D.Double(-getWidth() / 2, -getHeight() / 2, getWidth(), getHeight(), getRadius(), getRadius()));
         }
-        return super.getPrimitive();
+        return this.getDrawable();
     }
 
     double getWidth() {
