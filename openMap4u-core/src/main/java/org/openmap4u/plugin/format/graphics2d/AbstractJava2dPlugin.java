@@ -199,8 +199,6 @@ abstract class AbstractJava2dPlugin implements Outputable {
 				this.mFontRenderContext, text.getPrimitive());
 		Shape fontPath = this.mFontSCaleBack.createTransformedShape(glyphVector
 				.getOutline());
-		System.out.println(text);
-		System.out.println(text.getStyle());
 		// TODO default style for font
 		Polygon shape2Draw = new Polygon().style(new ShapeStyle()).fill(text.getStyle().getFontColor())
 				.color(null).transparence(text.getStyle().getAlpha())

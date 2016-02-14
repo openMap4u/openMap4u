@@ -103,8 +103,6 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      */
     @SuppressWarnings("unchecked")
     protected B fill(Paint fill) {
-    	System.out.println(this.getDrawable());
-    	System.out.println(this.getDrawable().getStyle());
         this.getDrawable().getStyle().strokeFill(fill);
         return (B) this;
     }

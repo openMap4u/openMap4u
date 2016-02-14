@@ -52,13 +52,8 @@ public class ShapeStyleTest {
         assertThat(cloned.getStrokeColor(), is(mSD.getStrokeColor()));
         assertThat(cloned.getStrokeFill(), is(mSD.getStrokeFill()));
         assertThat(cloned.getStrokeSize(), is(mSD.getStrokeSize()));
-        System.out.println(mSD);
-
-        System.out.println(cloned);
         /* change the cloned values */
         cloned.visible(true).alpha(.6).strokeColor(Color.BLACK).strokeFill(Color.BLUE).strokeSize(7);
-        System.out.println(mSD);
-        System.out.println(cloned);
         assertThat(cloned.isVisible(), not(mSD.isVisible()));
         assertThat(cloned.getAlpha(), not(mSD.getAlpha()));
         assertThat(cloned.getStrokeColor(), not(mSD.getStrokeColor()));

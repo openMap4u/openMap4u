@@ -59,8 +59,7 @@ public class AreaOfInterestTest extends AbstractOpenMap4uTest {
     public void testScale() throws IOException {
         OpenMap4u m4u = new OpenMap4u();
         /* 2. get an canvas and specify the size which you want to draw */
-        System.out.println("just scale");
-        DrawOrWriteable canvas = m4u.getCanvas(3, 2).scale(0.75) ;
+         DrawOrWriteable canvas = m4u.getCanvas(3, 2).scale(0.75) ;
         /* Draw the bars */
         canvas.draw(getPolygon(m4u));
         canvas.draw(getPointMarker(2, 1.33333333, Color.BLUE, Color.GRAY));
