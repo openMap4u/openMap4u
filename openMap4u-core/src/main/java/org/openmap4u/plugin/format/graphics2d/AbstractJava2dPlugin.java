@@ -29,6 +29,7 @@ import org.openmap4u.commons.Globals;
 import org.openmap4u.commons.ImageStyleable;
 import org.openmap4u.interfaces.Drawable;
 import org.openmap4u.commons.Length;
+import org.openmap4u.commons.ShapeStyle;
 import org.openmap4u.commons.ShapeStyleable;
 import org.openmap4u.commons.TextStyleable;
 import org.openmap4u.commons.ImageStyleable;
@@ -198,7 +199,10 @@ abstract class AbstractJava2dPlugin implements Outputable {
 				this.mFontRenderContext, text.getPrimitive());
 		Shape fontPath = this.mFontSCaleBack.createTransformedShape(glyphVector
 				.getOutline());
-		Polygon shape2Draw = new Polygon().fill(text.getStyle().getFontColor())
+		System.out.println(text);
+		System.out.println(text.getStyle());
+		// TODO default style for font
+		Polygon shape2Draw = new Polygon().style(new ShapeStyle()).fill(text.getStyle().getFontColor())
 				.color(null).transparence(text.getStyle().getAlpha())
 				.shape(fontPath);
 		if (text.getTransform().getAlign() != null) {

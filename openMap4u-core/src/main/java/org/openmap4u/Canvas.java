@@ -319,7 +319,7 @@ class Canvas implements Plugable, DrawOrWriteable, SetAreaOfInterestOrDrawOrWrit
      * @param builder The builder to draw.
      * @param previousDrawnShape The previous drawn shape.
      */
-    final Shape draw(Point2D point, Drawable builder, Shape previousDrawnShape) {
+    final Shape  draw(Point2D point, Drawable builder, Shape previousDrawnShape) {
         Shape drawnShape = null;
         builder.setUp(this.previousDrawnShape);
         /* process the shape primitive */

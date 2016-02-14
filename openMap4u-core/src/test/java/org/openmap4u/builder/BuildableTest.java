@@ -323,7 +323,7 @@ public class BuildableTest extends AbstractOpenMap4uTest {
         return this.getDefaultOpenMap4u().get(org.openmap4u.plugin.builder.core.Polygon.class).color(Color.BLACK).size(.5).fill(Color.LIGHT_GRAY).shape(new Rectangle2D.Double(-.5, -.25, 1, .5)).subtract(new Rectangle2D.Double(0.1, -.1, .2, .2)).center(1.1, 1).transparence(40);
     }
 
-    Buildable getPolygonTransparent() {
+    BuildablePrimitive getPolygonTransparent() {
         return getPolygon().transparence(70);
     }
 
@@ -337,11 +337,11 @@ public class BuildableTest extends AbstractOpenMap4uTest {
      * @param primitives
      * @throws IOException
      */
-    public void write(String fileName, Buildable... primitives) throws IOException {
-        ArrayList<Buildable> builders = new ArrayList<>();
-        builders.addAll(Arrays.<Buildable>asList(primitives));
+    public void write(String fileName, BuildablePrimitive... primitives) throws IOException {
+        ArrayList<BuildablePrimitive> builders = new ArrayList<>();
+        builders.addAll(Arrays.<BuildablePrimitive>asList(primitives));
        builders.add(0, getBackground());
-        super.drawOnCanvas(2.2, 2, fileName, builders.toArray(new Buildable[builders.size()]));
+        super.drawOnCanvas(2.2, 2, fileName, builders.toArray(new BuildablePrimitive[builders.size()]));
     }
 
     Rectangle getRedMarker(double x, double y) {

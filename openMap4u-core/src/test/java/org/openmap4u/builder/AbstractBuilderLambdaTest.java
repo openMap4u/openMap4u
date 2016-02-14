@@ -35,7 +35,7 @@ import org.openmap4u.plugin.builder.symbol.Cross;
  * @author Michael Hadrbolec
  * @param <T>
  */
-public abstract class AbstractBuilderLambdaTest<T extends Buildable> extends
+public abstract class AbstractBuilderLambdaTest<T extends BuildablePrimitive> extends
         AbstractOpenMap4uTest {
 
     /**

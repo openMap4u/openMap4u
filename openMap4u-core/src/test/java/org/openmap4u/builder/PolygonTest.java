@@ -34,12 +34,12 @@ public class PolygonTest extends AbstractShapeBuilderTest<Polygon> {
     @Test
     public void testIsVisible() {
         /* Test the default value */
-        assertThat(mShape.getStyle().isVisible(), is(true));
+        assertThat(mShape.build().getStyle().isVisible(), is(true));
         mShape.visible(false);
          /* Test the default value */
-        assertThat(mShape.getStyle().isVisible(), is(false));
+        assertThat(mShape.build().getStyle().isVisible(), is(false));
        mShape.visible(true);
-        assertThat(mShape.getStyle().isVisible(), is(true));
+        assertThat(mShape.build().getStyle().isVisible(), is(true));
     }
 
     
@@ -50,7 +50,7 @@ public class PolygonTest extends AbstractShapeBuilderTest<Polygon> {
     @Test
     public void testSetMoveTo() {
         this.mShape.moveTo(1, 2);
-        assertThat(this.mShape.getPrimitive(), notNullValue());
+        assertThat(this.mShape.build().getPrimitive(), notNullValue());
     }
 
     /**
@@ -59,7 +59,7 @@ public class PolygonTest extends AbstractShapeBuilderTest<Polygon> {
     @Test
     public void testSetLineTo() {
         this.mShape.moveTo(1, 2).lineTo(4, 5);
-        assertThat(this.mShape.getPrimitive(), notNullValue());
+        assertThat(this.mShape.build().getPrimitive(), notNullValue());
     }
 
     /**
@@ -68,7 +68,7 @@ public class PolygonTest extends AbstractShapeBuilderTest<Polygon> {
     @Test
     public void testSetQuadTo() {
         this.mShape.moveTo(1, 2).quadTo(2, 3, 4, 5);
-        assertThat(this.mShape.getPrimitive(), notNullValue());
+        assertThat(this.mShape.build().getPrimitive(), notNullValue());
     }
 
     /**
@@ -77,7 +77,7 @@ public class PolygonTest extends AbstractShapeBuilderTest<Polygon> {
     @Test
     public void testSeBezierTo() {
         this.mShape.moveTo(1, 2).bezierTo(1.2, 1.4, 2, 3, 4, 5);
-        assertThat(this.mShape.getPrimitive(), notNullValue());
+        assertThat(this.mShape.build().getPrimitive(), notNullValue());
     }
 
     @Override

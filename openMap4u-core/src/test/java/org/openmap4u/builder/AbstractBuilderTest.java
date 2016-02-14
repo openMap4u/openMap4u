@@ -36,7 +36,7 @@ import org.openmap4u.plugin.builder.symbol.Cross;
  * @author Michael Hadrbolec
  * @param <T> The buildable type
  */
-public abstract class AbstractBuilderTest<T extends Buildable> extends
+public abstract class AbstractBuilderTest<T extends BuildablePrimitive> extends
         AbstractOpenMap4uTest {
 
     /**

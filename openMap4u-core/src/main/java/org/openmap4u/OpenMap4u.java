@@ -51,15 +51,21 @@ public class OpenMap4u implements Serializable {
         B builder = Util.get().getPlugin(builderClass);
         try {
             if (builder instanceof ShapeBuilder) {
+            	System.out.println("is shape");
                 ((ShapeBuilder) builder).style(((ShapeStyleable) getDefaults()
                         .getShapeStyle()).clone());
+                System.out.println("shape default style set");
             } else if (builder instanceof ImageBuilder) {
+            	System.out.println("is image");
                 ((ImageBuilder) builder).style(((ImageStyleable) getDefaults()
                         .getImageStyle()).clone());
+                System.out.println("image default style set");
             } else if (builder instanceof TextBuilder) {
+            	System.out.println("is text");
                 ((TextBuilder) builder).
                         style(((TextStyleable) getDefaults()
                                 .getTextStyle()).clone());
+                System.out.println("text default style set");
             }
         } catch (CloneNotSupportedException e) {
             throw new java.lang.IllegalArgumentException(e);
