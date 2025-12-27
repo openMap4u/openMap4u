@@ -5,16 +5,16 @@ package org.openmap4u.managed;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Named;
+import jakarta.faces.context.FacesContext;
 import org.openmap4u.OpenMap4u;
 
 /**
  *
  * @author Michael Hadrbolec
  */
-@ManagedBean(name = "m4u")
+@Named("m4u")
 @RequestScoped
 public class ManagedM4u extends OpenMap4u {
 
