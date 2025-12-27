@@ -35,9 +35,9 @@ package org.openmap4u.plugin.builder.spatial;
 
 import java.awt.geom.Path2D;
 
-import com.vividsolutions.jts.awt.IdentityPointTransformation;
-import com.vividsolutions.jts.awt.ShapeWriter;
-import com.vividsolutions.jts.geom.Geometry;
+import org.locationtech.jts.awt.IdentityPointTransformation;
+import org.locationtech.jts.awt.ShapeWriter;
+import org.locationtech.jts.geom.Geometry;
 import java.awt.Paint;
 import org.openmap4u.builder.ShapeBuilder;
 

@@ -2,8 +2,8 @@ package org.openmap4u.plugin.builder.spatial;
 
 import org.openmap4u.commons.Util;
 
-import com.vividsolutions.jts.io.ParseException;
-import com.vividsolutions.jts.io.WKTReader;
+import org.locationtech.jts.io.ParseException;
+import org.locationtech.jts.io.WKTReader;
 
 /**
  * Supports the well known text format.
