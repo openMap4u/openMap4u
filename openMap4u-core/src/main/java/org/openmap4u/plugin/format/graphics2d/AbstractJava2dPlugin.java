@@ -20,7 +20,7 @@ import java.nio.file.Path;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.activation.MimeType;
+import jakarta.activation.MimeType;
 import javax.imageio.ImageIO;
 
 import org.openmap4u.commons.Angle;

@@ -49,7 +49,7 @@
 		<scm-publish.siteDocOuputDirectory>${project.reporting.outputDirectory}</scm-publish.siteDocOuputDirectory>
 		<github.global.server>github</github.global.server>
 		<custom.fluidoSkin.googleSearch.sitesearch>http://openMap4u.github.com/openMap4u</custom.fluidoSkin.googleSearch.sitesearch>
-		<org.springframework.version>4.0.0.RELEASE</org.springframework.version>
+		<org.springframework.version>7.0.0</org.springframework.version>
 		<cobertura.version>2.6</cobertura.version>
 		<github.global.server>github</github.global.server>
 		<repository.domain>github.com</repository.domain>

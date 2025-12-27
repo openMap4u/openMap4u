@@ -6,25 +6,35 @@
 
 package org.openmap4u.managed;
 
-import javax.annotation.PostConstruct;
-import javax.el.ELContextEvent;
-import javax.el.ELContextListener;
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
+import jakarta.annotation.PostConstruct;
+import jakarta.el.ELContextEvent;
+import jakarta.el.ELContextListener;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.Initialized;
+import jakarta.enterprise.event.Observes;
+import jakarta.inject.Named;
+import jakarta.faces.context.FacesContext;
 
-@ManagedBean(eager=true)
+@Named
 @ApplicationScoped
 public class Config {
 
+    public void init(@Observes @Initialized(ApplicationScoped.class) Object init) {
+        // Observer method to force bean initialization
+        registerListener();
+    }
+
     @PostConstruct
-    public void init() {
-        FacesContext.getCurrentInstance().getApplication().addELContextListener(new ELContextListener() {
-            @Override
-            public void contextCreated(ELContextEvent event) {
-                event.getELContext().getImportHandler().importPackage("org.m4u.plugin.builder.core");
-            }
-        });
+    public void registerListener() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        if (context != null) {
+            context.getApplication().addELContextListener(new ELContextListener() {
+                @Override
+                public void contextCreated(ELContextEvent event) {
+                    event.getELContext().getImportHandler().importPackage("org.m4u.plugin.builder.core");
+                }
+            });
+        }
     }
 
 }

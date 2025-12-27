@@ -33,7 +33,7 @@ import static org.junit.Assert.assertThat;
 
 import java.awt.geom.AffineTransform;
 
-import javax.activation.MimeType;
+import jakarta.activation.MimeType;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
