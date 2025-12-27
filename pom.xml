@@ -26,7 +26,6 @@
 	<properties>
 		<projectName>openMap4u</projectName>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<guava.version>14.0.1</guava.version>
 		<site.basedir>${project.basedir}</site.basedir>
 		<site-docs.url>/${env.HOME}/sitedocs/${project.artifactId}</site-docs.url>
 		<!-- Properties for licence plugin -->
