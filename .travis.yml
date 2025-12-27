@@ -1,6 +1,6 @@
 language: java
 jdk:
-  - oraclejdk8
+  - openjdk21
 # whitelist branches to build
 branches:
   only:

@@ -16,9 +16,9 @@
  */
 package org.openmap4u.data;
 
-import com.vividsolutions.jts.geom.Geometry;
-import com.vividsolutions.jts.io.WKBWriter;
-import com.vividsolutions.jts.io.WKTWriter;
+import org.locationtech.jts.geom.Geometry;
+import org.locationtech.jts.io.WKBWriter;
+import org.locationtech.jts.io.WKTWriter;
 
 /**
  *
