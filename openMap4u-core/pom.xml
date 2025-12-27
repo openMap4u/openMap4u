@@ -12,8 +12,8 @@
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.source>21</java.source>
-        <java.target>21</java.target>
+        <java.source>25</java.source>
+        <java.target>25</java.target>
     </properties>
     <dependencies>
         <dependency>

@@ -59,8 +59,8 @@
 		<plugin.wagon-webdav.version>1.0</plugin.wagon-webdav.version>
 
 		<plugin.scm-publish.version>1.0-beta-2</plugin.scm-publish.version>
-		<java.source>21</java.source>
-		<java.target>21</java.target>
+		<java.source>25</java.source>
+		<java.target>25</java.target>
 
 		<!-- SonarCube specifics -->
 		<sonar.dynamicAnalysis>true</sonar.dynamicAnalysis>
@@ -116,9 +116,15 @@
 
 
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>5.11.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.vintage</groupId>
+			<artifactId>junit-vintage-engine</artifactId>
+			<version>5.11.0</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -177,6 +183,12 @@
 						<phase>site</phase>
 					</execution>
 				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.5.0</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
