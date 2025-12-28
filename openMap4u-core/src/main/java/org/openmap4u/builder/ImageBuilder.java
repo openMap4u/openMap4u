@@ -28,10 +28,9 @@ public abstract class ImageBuilder<B extends ImageBuilder<B>> extends
      * @param imagePath The image path.
      * @return The Image itself (method chaining pattern).
      */
-    @SuppressWarnings("unchecked")
     protected B path(Path imagePath) {
         this.getDrawable().setPrimitive(imagePath);
-        return (B) this;
+        return self();
     }
 
     protected B path(String first, String... more) {

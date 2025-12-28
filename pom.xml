@@ -58,8 +58,8 @@
 		<plugin.wagon-webdav.version>1.0</plugin.wagon-webdav.version>
 
 		<plugin.scm-publish.version>1.0-beta-2</plugin.scm-publish.version>
-		<java.source>25</java.source>
-		<java.target>25</java.target>
+		<java.source>21</java.source>
+		<java.target>21</java.target>
 
 		<!-- SonarCube specifics -->
 		<sonar.dynamicAnalysis>true</sonar.dynamicAnalysis>

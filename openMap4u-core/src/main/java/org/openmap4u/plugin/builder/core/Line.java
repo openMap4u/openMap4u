@@ -12,6 +12,11 @@ package org.openmap4u.plugin.builder.core;
  */
 public class Line extends AbstractLine<Line> {
 
+    @Override
+    protected Line self() {
+        return this;
+    }
+
     /**
      * Draws a line
      *
@@ -30,6 +35,11 @@ public class Line extends AbstractLine<Line> {
      * Convenience class to draw a vertical line.
      */
     public static class Vertical extends AbstractLine<Vertical> {
+
+        @Override
+        protected Vertical self() {
+            return this;
+        }
 
         /**
          * Draws a vertical line from "x, fromY" to "x, toY". <img src="doc-files/verticalLine.png"  alt="">
@@ -60,6 +70,11 @@ public class Line extends AbstractLine<Line> {
      * Convenience class to draw a horizontal line.
      */
     public static class Horizontal extends AbstractLine<Horizontal> {
+
+        @Override
+        protected Horizontal self() {
+            return this;
+        }
 
         /**
          * Draws a horizontal line from "fromX, y" to "toX, y". <img src="doc-files/horizontalLine.png" alt="">

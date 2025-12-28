@@ -14,7 +14,7 @@ import org.openmap4u.builder.ShapeBuilder;
  * @author Michel Hadrbolec
  * @param <T> The line type.
  */
- class AbstractLine<T extends AbstractLine<T>> extends ShapeBuilder<T> {
+ abstract class AbstractLine<T extends AbstractLine<T>> extends ShapeBuilder<T> {
 
     /**
      * Sets the stroke color.
@@ -24,7 +24,7 @@ import org.openmap4u.builder.ShapeBuilder;
      */
     @Override
     public T color(Paint strokeColor) {
-        return (T)super.color(strokeColor);
+        return super.color(strokeColor);
     }
 
     /**
@@ -35,7 +35,7 @@ import org.openmap4u.builder.ShapeBuilder;
      */
     @Override
     public T size(double strokeSize) {
-        return (T)super.size(strokeSize);
+        return super.size(strokeSize);
     }
 
    

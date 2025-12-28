@@ -76,6 +76,11 @@ public abstract class AreaChart<T extends AreaChart<T>> extends ShapeBuilder<T> 
     public static class Vertical extends AreaChart<Vertical> {
 
         @Override
+        protected Vertical self() {
+            return this;
+        }
+
+        @Override
         public Drawable<ShapeStyleable,Path2D> build() {
         	Drawable<ShapeStyleable, Path2D> drawable =super.build();
         	drawable.getPrimitive().lineTo(mEnd.x, 0);
@@ -87,6 +92,11 @@ public abstract class AreaChart<T extends AreaChart<T>> extends ShapeBuilder<T> 
     }
 
     public static class Horizontal extends AreaChart<Horizontal> {
+
+        @Override
+        protected Horizontal self() {
+            return this;
+        }
 
         @Override
         public Drawable<ShapeStyleable,Path2D> build() {

@@ -66,22 +66,22 @@ abstract class AbstractJts<T extends AbstractJts<T>> extends ShapeBuilder<T> {
                     new IdentityPointTransformation());
         }
         shape(new Path2D.Double(this.mShapeWriter.toShape(jtsGeometry)));
-        return (T)this;
+        return self();
     }
 
     @Override
     public T color(Paint strokeColor) {
-        return (T) super.color(strokeColor);
+        return super.color(strokeColor);
     }
 
     @Override
     public T size(double strokeSize) {
-        return (T) super.size(strokeSize);
+        return super.size(strokeSize);
     }
 
     @Override
     public T fill(Paint fill) {
-        return (T) super.fill(fill);
+        return super.fill(fill);
     }
 
 }

@@ -21,6 +21,11 @@ import org.openmap4u.interfaces.Drawable;
  */
 public class BarChart extends ShapeBuilder<BarChart> {
 
+    @Override
+    protected BarChart self() {
+        return this;
+    }
+
     private double mRadius = Double.NaN;
 
     private double mWidth = 0;

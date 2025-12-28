@@ -11,6 +11,11 @@ import org.openmap4u.builder.ImageBuilder;
  */
 public final class Image extends ImageBuilder<Image> {
 
+    @Override
+    protected Image self() {
+        return this;
+    }
+
     /**
      * Sets the image.
      *

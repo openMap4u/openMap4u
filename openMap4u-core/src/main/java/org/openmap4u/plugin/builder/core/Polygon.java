@@ -12,6 +12,11 @@ import org.openmap4u.builder.ShapeBuilder;
  */
 public final class Polygon extends ShapeBuilder<Polygon> {
 
+    @Override
+    protected Polygon self() {
+        return this;
+    }
+
     /**
      * Moves the path to the given point without drawing anything. It is used to
      * move the "pencil" to the point, where you want to start-, or where you

@@ -33,38 +33,39 @@ abstract class Builder<S extends Styleable<S>, B extends Builder<S, B, P>, P> im
         return this.drawable;
     }
 
-    @SuppressWarnings("unchecked")
+    /**
+     * Returns the builder instance (self-type idiom).
+     * @return The builder instance.
+     */
+    protected abstract B self();
+
 	public B style(S style) {
     	this.getDrawable().setStyle(style);
-    	return(B)this;
+	return self();
     }
     
-    @SuppressWarnings("unchecked")
 	@Override
     public B visible(boolean isVisible) {
         getDrawable().getStyle().visible(isVisible);
-        return (B) this;
+        return self();
     }
 
-    @SuppressWarnings("unchecked")
 	@Override
     public B transparence(double tranparence) {
         getDrawable().getStyle().alpha(mTransparence.convert(tranparence));
-        return (B) this;
+        return self();
     }
 
-    @SuppressWarnings("unchecked")
 	@Override
     public B align(HorizontalAlign horizontalAlign, VerticalAlign verticalAlign) {
         getDrawable().getTransform().setAlign(new Align(horizontalAlign, verticalAlign));
-        return (B) this;
+        return self();
     }
 
-    @SuppressWarnings("unchecked")
 	@Override
     public final B offset(double offsetX, double offsetY) {
         getDrawable().getTransform().setOffset(new Point2D.Double(offsetX, offsetY));
-        return (B) this;
+        return self();
     }
 
     @Override
@@ -82,75 +83,65 @@ abstract class Builder<S extends Styleable<S>, B extends Builder<S, B, P>, P> im
         return scale(scaleFactor, scaleFactor);
     }
 
-    @SuppressWarnings("unchecked")
 	@Override
     public final B scale(double scaleX, double scaleY) {
         scaleX(scaleX);
         scaleY(scaleY);
-        return (B) this;
+        return self();
     }
 
-    @SuppressWarnings("unchecked")
 	@Override
     public final B scaleX(double scaleX) {
         this.getDrawable().getTransform().setScaleX(scaleX);
-        return (B) this;
+        return self();
     }
 
-    @SuppressWarnings("unchecked")
 	@Override
     public final B scaleY(double scaleY) {
         this.getDrawable().getTransform().setScaleY(scaleY);
-        return (B) this;
+        return self();
     }
 
-    @SuppressWarnings("unchecked")
 	@Override
     public final B unit(Angle angleUnits) {
         this.getDrawable().getTransform().setAngleUnits(angleUnits);
-        return (B) this;
+        return self();
     }
 
-    @SuppressWarnings("unchecked")
 	@Override
     public final B unit(Transparence transparenceUnits) {
         mTransparence = transparenceUnits;
-        return (B) this;
+        return self();
     }
 
-    @SuppressWarnings("unchecked")
 	@Override
     public final B rotate(double rotation) {
         this.getDrawable().getTransform().setRotate(this.getDrawable().getTransform().getAngleUnits().convert(rotation));
-        return (B) this;
+        return self();
     }
 
-    @SuppressWarnings("unchecked")
 	@Override
     public final B center(double x, double y) {
         this.getDrawable().addPoint(new Point.Coord(x, y));
-        return (B) this;
+        return self();
     }
 
-    @SuppressWarnings("unchecked")
 	@Override
     public B center(HorizontalAlign x, VerticalAlign y) {
         this.getDrawable().addPoint(new Align(x, y));
-        return (B) this;
+        return self();
     }
 
-    @SuppressWarnings("unchecked")
 	@Override
     public B center(HorizontalAlign x, double y) {
         this.getDrawable().addPoint(new Point.HorizontalAlign(x, y));
-        return (B) this;
+        return self();
     }
 
-    @SuppressWarnings("unchecked")
 	@Override
     public B center(double x, VerticalAlign y) {
         this.getDrawable().addPoint(new Point.VerticalAlign(x, y));
-        return (B) this;
+        return self();
     }
 
     /**
@@ -158,10 +149,9 @@ abstract class Builder<S extends Styleable<S>, B extends Builder<S, B, P>, P> im
      *
      * @param builder The child builder to add.
      */
-    @SuppressWarnings("unchecked")
 	protected B add(BuildablePrimitive builder) {
         this.getDrawable().addChild(builder.build());
-        return (B) this;
+        return self();
     }
 
     @Override

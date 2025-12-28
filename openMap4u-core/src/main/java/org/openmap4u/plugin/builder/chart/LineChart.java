@@ -19,6 +19,10 @@ import org.openmap4u.builder.ShapeBuilder;
  */
 public class LineChart extends ShapeBuilder<LineChart> {
 
+    @Override
+    protected LineChart self() {
+        return this;
+    }
   
     /**
      * Sets the stroke color.

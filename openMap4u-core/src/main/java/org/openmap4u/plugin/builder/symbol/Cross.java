@@ -17,6 +17,11 @@ public class Cross extends ShapeBuilder<Cross> {
     private static final Shape DEFAULT_CROSS_SYMBOL = getCross(
             Globals.DEFAULT_SYMBOL_SIZE, Globals.DEFAULT_SYMBOL_SIZE);
 
+    @Override
+    protected Cross self() {
+        return this;
+    }
+
     /**
      * Creates a new cross symbol.
      */
