@@ -11,6 +11,11 @@ import org.openmap4u.commons.FontStyle;
  */
 public final class Text extends TextBuilder<Text> {
 
+    @Override
+    protected Text self() {
+        return this;
+    }
+
     /**
      * Sets the text.
      *

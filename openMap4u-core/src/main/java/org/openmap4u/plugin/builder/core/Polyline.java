@@ -11,6 +11,11 @@ import org.openmap4u.builder.ShapeBuilder;
  */
 public final class Polyline extends ShapeBuilder<Polyline> {
 
+    @Override
+    protected Polyline self() {
+        return this;
+    }
+
     /**
      * Moves the path to the given point without drawing anything. It is used to
      * move the "pencil" to the point, where you want to start-, or where you

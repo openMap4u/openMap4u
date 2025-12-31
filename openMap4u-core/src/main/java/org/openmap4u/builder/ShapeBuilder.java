@@ -53,10 +53,9 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      * </table>
      * @return The builder itself (method chaining pattern).
      */
-    @SuppressWarnings("unchecked")
     protected B size(double strokeSize) {
         this.getDrawable().getStyle().strokeSize(strokeSize);
-        return (B) this;
+        return self();
     }
 
     /**
@@ -77,10 +76,9 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      * </table>
      * @return The builder itself (fluent interface pattern).
      */
-    @SuppressWarnings("unchecked")
     protected B color(Paint strokeColor) {
         this.getDrawable().getStyle().strokeColor(strokeColor);
-        return (B) this;
+        return self();
     }
 
     /**
@@ -101,10 +99,9 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      * </table>
      * @return The builder itself (fluent interface pattern).
      */
-    @SuppressWarnings("unchecked")
     protected B fill(Paint fill) {
         this.getDrawable().getStyle().strokeFill(fill);
-        return (B) this;
+        return self();
     }
 
     /**
@@ -126,11 +123,10 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      * alt="" src="./doc-files/bezier3.png"></td></tr></table>
    * @return The builder itself (fluent interface pattern).
        */
-    @SuppressWarnings("unchecked")
     protected B bezierTo(double cp1X, double cp1Y, double cp2X, double cp2Y,
             double toX, double toY) {
         this.getDrawable().getPrimitive().curveTo(cp1X, cp1Y, cp2X, cp2Y, toX, toY);
-        return (B) this;
+        return self();
     }
 
     /**
@@ -144,14 +140,13 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      * src="./doc-files/lineTo.png">
      * @return The builder itself (fluent interface pattern).
      */
-    @SuppressWarnings("unchecked")
     protected B lineTo(double toX, double toY) {
         if (this.getDrawable().getPrimitive().getCurrentPoint() == null) {
             this.getDrawable().getPrimitive().moveTo(toX, toY);
         } else {
             this.getDrawable().getPrimitive().lineTo(toX, toY);
         }
-        return (B) this;
+        return self();
     }
 
     /**
@@ -167,13 +162,12 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      * <code>myBuilder.moveTo(1.0,1.1)</code>= displays nothing (just moves the
      * pen).
      */
-    @SuppressWarnings("unchecked")
     protected B moveTo(double toX, double toY) {
         if (this.getDrawable().getPrimitive() == null) {
             resetPath();
         }
         this.getDrawable().getPrimitive().moveTo(toX, toY);
-        return (B) this;
+        return self();
     }
 
     /**
@@ -190,10 +184,9 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      * src="./doc-files/quadTo.png">
      * @return The builder itself (fluent interface pattern).
      */
-    @SuppressWarnings("unchecked")
     protected B quadTo(double cpX, double cpY, double toX, double toY) {
         this.getDrawable().getPrimitive().quadTo(cpX, cpY, toX, toY);
-        return (B) this;
+        return self();
     }
 
     /**
@@ -205,10 +198,9 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      * <code>... myBuilder.shape(<img alt="" src="./doc-files/c_rectangle.png">) = <img alt="" src="./doc-files/c_rectangle.png"></code>
      * @return The Shape itself (method chaining pattern).
      */
-    @SuppressWarnings("unchecked")
     protected B shape(Shape shape) {
         this.getDrawable().setPrimitive(new Path2D.Double(shape));
-        return (B) this;
+        return self();
     }
 
     Area getArea() {
@@ -239,7 +231,6 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      * <code>... myBuilder.shape(<img alt="" src="./doc-files/c_rectangle.png">).intersect(<img alt="" src="./doc-files/c_circle.png">) = <img alt="" src="./doc-files/c_intersect.png"></code>
      * @return The builder itself (method chaining pattern).
      */
-    @SuppressWarnings("unchecked")
     protected B intersect(Shape shape) {
         Area area = getArea();
         area.intersect(new Area(shape));
@@ -255,7 +246,6 @@ public abstract class ShapeBuilder<B extends ShapeBuilder<B>> extends
      * <code>... myBuilder.shape(<img alt="" src="./doc-files/c_rectangle.png">).subtract(<img alt="" src="./doc-files/c_circle.png">) = <img alt="" src="./doc-files/c_subtract.png"></code>
      * @return The builder itself (method chaining pattern).
      */
-    @SuppressWarnings("unchecked")
     protected B subtract(Shape shape) {
         Area area = getArea();
         area.subtract(new Area(shape));

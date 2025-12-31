@@ -16,6 +16,11 @@ public class Circle extends ShapeBuilder<Circle> {
     private static final Ellipse2D.Double DEFAULT_ELLIPSE_SYMBOL = getEllipse(
             Globals.DEFAULT_SYMBOL_SIZE, Globals.DEFAULT_SYMBOL_SIZE);
 
+    @Override
+    protected Circle self() {
+        return this;
+    }
+
     /**
      * Creates a new circle symbol.
      */

@@ -16,6 +16,11 @@ public final class Rectangle extends ShapeBuilder<Rectangle> {
     private static final Rectangle2D.Double DEFAULT_RECTANGLE_SYMBOL = getRectangle(
             Globals.DEFAULT_SYMBOL_SIZE, Globals.DEFAULT_SYMBOL_SIZE);
 
+    @Override
+    protected Rectangle self() {
+        return this;
+    }
+
     /**
      * Creates a new Rectangle symbol and initialzes it with the default
      * rectangle symbol.

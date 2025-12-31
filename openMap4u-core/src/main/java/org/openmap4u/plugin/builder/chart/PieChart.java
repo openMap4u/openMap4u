@@ -24,6 +24,11 @@ import org.openmap4u.interfaces.Drawable;
  */
 public class PieChart extends ShapeBuilder<PieChart> {
 
+    @Override
+    protected PieChart self() {
+        return this;
+    }
+
     /**
      * Stores the outer radius in drawing units.
      */

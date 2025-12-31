@@ -27,10 +27,9 @@ public abstract class TextBuilder<B extends TextBuilder<B>> extends
      * @param fontColor The font color.
      * @return Method chaining pattern.
      */
-    @SuppressWarnings("unchecked")
     protected B setFontColor(Paint fontColor) {
         this.getDrawable().getStyle().fontColor(fontColor);
-        return (B) this;
+        return self();
     }
 
     /**
@@ -39,10 +38,9 @@ public abstract class TextBuilder<B extends TextBuilder<B>> extends
      * @param fontFamily The font size.
      * @return The Text itself (method chaining pattern).
      */
-    @SuppressWarnings("unchecked")
     protected B family(String fontFamily) {
         this.getDrawable().getStyle().fontFamily(fontFamily);
-        return (B) this;
+        return self();
     }
 
     /**
@@ -51,10 +49,9 @@ public abstract class TextBuilder<B extends TextBuilder<B>> extends
      * @param fontSize The font size.
      * @return The Text itself (method chaining pattern).
      */
-    @SuppressWarnings("unchecked")
     protected B size(double fontSize) {
         this.getDrawable().getStyle().fontSize(fontSize);
-        return (B) this;
+        return self();
     }
 
     /**
@@ -63,10 +60,9 @@ public abstract class TextBuilder<B extends TextBuilder<B>> extends
      * @param fontStyle The font size.
      * @return The Text itself (method chaining pattern).
      */
-    @SuppressWarnings("unchecked")
     protected B style(FontStyle fontStyle) {
         this.getDrawable().getStyle().fontStyle(fontStyle);
-        return (B) this;
+        return self();
     }
 
     /**
@@ -75,10 +71,9 @@ public abstract class TextBuilder<B extends TextBuilder<B>> extends
      * @param text The text.
      * @return The Text itself (method chaining pattern).
      */
-    @SuppressWarnings("unchecked")
     protected B text(String text) {
         this.getDrawable().setPrimitive(text);
-        return (B) this;
+        return self();
     }
 
     /**

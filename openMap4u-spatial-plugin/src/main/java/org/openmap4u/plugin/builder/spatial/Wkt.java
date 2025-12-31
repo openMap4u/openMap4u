@@ -12,6 +12,11 @@ import org.locationtech.jts.io.WKTReader;
  */
 public final class Wkt extends AbstractJts<Wkt> {
 
+    @Override
+    protected Wkt self() {
+        return this;
+    }
+
     /**
      * Stores the wkb reader .
      */
