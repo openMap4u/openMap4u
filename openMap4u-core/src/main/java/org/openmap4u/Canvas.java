@@ -263,16 +263,38 @@ class Canvas implements Plugable, DrawOrWriteable, SetAreaOfInterestOrDrawOrWrit
         return draw(builder.build());
     }
 
-    public DrawOrWriteable draw(Drawable builder) {
-        /* check wethter the ouptputable format has been initialized */
-        if (!this.isInitialized) {
-            /* Initialize the global transformation */
-            this.mOutputFormat.setUp(this.getShape(), this.getWorldUnits(),
-                    this.getDrawingUnits(), getStrokeUnits(), getAngleUnits(),
-                    new TransformUtil().getGlobalTransform(this));
-            /* set initialzed true */
-            this.isInitialized = true;
+    @Override
+    public DrawOrWriteable fillPolygonWithText(BuildablePrimitive polygonBuilder, BuildablePrimitive textBuilder) {
+        /* check whether the outputable format has been initialized */
+        ensureInitialized();
+
+        /* perform setup tasks */
+        this.mOutputFormat.before();
+
+        Drawable polygonDrawable = polygonBuilder.build();
+        Drawable textDrawable = textBuilder.build();
+
+        polygonDrawable.setUp(this.previousDrawnShape);
+        textDrawable.setUp(this.previousDrawnShape);
+
+        Shape resultShape = this.mOutputFormat.drawTextFilledPolygon(null, polygonDrawable, textDrawable);
+
+        if (resultShape != null) {
+            this.previousDrawnShape = resultShape;
         }
+
+        polygonDrawable.tearDown();
+        textDrawable.tearDown();
+
+        /* perform the cleanup tasks */
+        this.mOutputFormat.after();
+
+        return this;
+    }
+
+    public DrawOrWriteable draw(Drawable builder) {
+        /* check whether the outputable format has been initialized */
+        ensureInitialized();
         /* only in the case the primitive is visible */
         if (builder.getStyle().isVisible()) {
             /* perform setup tasks */
@@ -351,6 +373,17 @@ class Canvas implements Plugable, DrawOrWriteable, SetAreaOfInterestOrDrawOrWrit
     @Override
     public void write(String first, String... more) throws IOException {
         write(FileSystems.getDefault().getPath(first, more));
+    }
+
+    private void ensureInitialized() {
+        if (!this.isInitialized) {
+            /* Initialize the global transformation */
+            this.mOutputFormat.setUp(this.getShape(), this.getWorldUnits(),
+                    this.getDrawingUnits(), getStrokeUnits(), getAngleUnits(),
+                    new TransformUtil().getGlobalTransform(this));
+            /* set initialized true */
+            this.isInitialized = true;
+        }
     }
 
 }

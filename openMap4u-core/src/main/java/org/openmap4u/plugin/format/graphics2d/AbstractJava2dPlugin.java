@@ -216,6 +216,62 @@ abstract class AbstractJava2dPlugin implements Outputable {
 
 	}
 
+	@Override
+	public Shape drawTextFilledPolygon(Point2D point, Drawable<ShapeStyleable, Path2D> polygon, Drawable<TextStyleable, String> text) {
+		/* first get teh global transformation */
+		AffineTransform transform = getTransform(point, polygon.getTransform(),
+				polygon.getPrimitive());
+		/* create the trasnformed shape that will be drawn */
+		Shape tPolygon = transform.createTransformedShape(polygon.getPrimitive());
+
+		Shape oldClip = this.mG2D.getClip();
+		this.mG2D.setClip(tPolygon);
+
+		// Calculate tiling
+		Rectangle2D polyBounds = polygon.getPrimitive().getBounds2D();
+
+		// Get text shape to determine size in drawing units
+		Font font = getFont(text.getStyle());
+		GlyphVector glyphVector = font.createGlyphVector(
+				this.mFontRenderContext, text.getPrimitive());
+		Shape textShapeInDrawingUnits = this.mFontSCaleBack.createTransformedShape(glyphVector.getOutline());
+
+		// Use logical bounds for better tiling (includes spacing)
+		Shape logicalShape = this.mFontSCaleBack.createTransformedShape(glyphVector.getLogicalBounds());
+		Rectangle2D logicalBounds = logicalShape.getBounds2D();
+
+		double textWidth = logicalBounds.getWidth();
+		double textHeight = logicalBounds.getHeight();
+
+		// Fallback if logical bounds are zero (e.g. empty string)
+		if (textWidth <= 0) textWidth = textShapeInDrawingUnits.getBounds2D().getWidth();
+		if (textHeight <= 0) textHeight = textShapeInDrawingUnits.getBounds2D().getHeight();
+
+		if (textWidth <= 0 || textHeight <= 0) {
+			this.mG2D.setClip(oldClip);
+			return tPolygon;
+		}
+
+		double startX = polyBounds.getX();
+		double startY = polyBounds.getY();
+		double endX = startX + polyBounds.getWidth();
+		double endY = startY + polyBounds.getHeight();
+
+		// Adjust start if needed, but simple tiling starts at bounds.
+
+		// We use drawText which expects a point.
+		// drawText implementation uses getTransform(point, ...)
+
+		for (double y = startY; y < endY; y += textHeight) {
+			for (double x = startX; x < endX; x += textWidth) {
+				drawText(new Point2D.Double(x, y), text);
+			}
+		}
+
+		this.mG2D.setClip(oldClip);
+		return tPolygon;
+	}
+
 	/**
 	 * Gets the font.
 	 *

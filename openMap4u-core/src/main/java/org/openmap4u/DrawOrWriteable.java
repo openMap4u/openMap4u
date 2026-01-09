@@ -27,6 +27,13 @@ public interface DrawOrWriteable  {
      */
     DrawOrWriteable draw(BuildablePrimitive buildable);
 
+    /**
+     * Fills the given polygon with the given text.
+     * @param polygonBuilder The polygon builder.
+     * @param textBuilder The text builder.
+     * @return The canvas itself.
+     */
+    DrawOrWriteable fillPolygonWithText(BuildablePrimitive polygonBuilder, BuildablePrimitive textBuilder);
     
     /**
      * Writes the drawing result to the given output stream. If no primitives
