@@ -18,6 +18,7 @@ import org.openmap4u.interfaces.Drawable;
 import org.openmap4u.commons.Length;
 import org.openmap4u.commons.Plugable;
 import org.openmap4u.commons.ShapeStyleable;
+import org.openmap4u.commons.TextOnPath;
 import org.openmap4u.commons.TextStyleable;
 
 /**
@@ -55,6 +56,16 @@ public interface Outputable extends Plugable {
      * @return The bounds of the text primitive.
      */
     Shape drawText(Point2D point, Drawable<TextStyleable,String> text);
+
+    /**
+     * Draws a text primitive along a path.
+     *
+     * @param textOnPath The text primitive with path.
+     * @return The bounds of the text primitive.
+     */
+    default Shape drawText(Drawable<TextStyleable,TextOnPath> textOnPath) {
+        throw new UnsupportedOperationException("Text on path not implemented by default.");
+    }
 
     /**
      * Is only called once, before anything is drawn. It acts as initial setup.

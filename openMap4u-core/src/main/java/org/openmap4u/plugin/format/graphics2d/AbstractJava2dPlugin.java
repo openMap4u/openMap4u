@@ -11,6 +11,7 @@ import java.awt.font.FontRenderContext;
 import java.awt.font.GlyphVector;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Path2D;
+import java.awt.geom.PathIterator;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
@@ -31,6 +32,7 @@ import org.openmap4u.interfaces.Drawable;
 import org.openmap4u.commons.Length;
 import org.openmap4u.commons.ShapeStyle;
 import org.openmap4u.commons.ShapeStyleable;
+import org.openmap4u.commons.TextOnPath;
 import org.openmap4u.commons.TextStyleable;
 import org.openmap4u.commons.ImageStyleable;
 import org.openmap4u.commons.TransformUtil;
@@ -214,6 +216,99 @@ abstract class AbstractJava2dPlugin implements Outputable {
 	draw( point, shape2Draw.build(), outline);
 		return outline;
 
+	}
+
+	@Override
+	public Shape drawText(Drawable<TextStyleable, TextOnPath> textOnPath) {
+		TextOnPath primitive = textOnPath.getPrimitive();
+		String text = primitive.getText();
+		Shape path = primitive.getPath();
+		TextStyleable style = textOnPath.getStyle();
+
+		Font font = getFont(style);
+		GlyphVector gv = font.createGlyphVector(mFontRenderContext, text);
+
+		AffineTransform transform = getTransform(null, textOnPath.getTransform(), path);
+
+		// 1. Transform path to device space (pixels)
+		Shape transformedPath = transform.createTransformedShape(path);
+		PathIterator tpi = transformedPath.getPathIterator(null, 1.0);
+
+		java.util.List<double[]> segments = new java.util.ArrayList<>();
+		double[] coords = new double[6];
+		double lastX = 0, lastY = 0;
+		double totalLength = 0;
+		boolean first = true;
+
+		while(!tpi.isDone()) {
+			int type = tpi.currentSegment(coords);
+			if(type == PathIterator.SEG_MOVETO) {
+				lastX = coords[0];
+				lastY = coords[1];
+				if (!first && totalLength > 0) {
+					// Discontinuous path, maybe handle it? For now assume continuous or restart
+				}
+				first = false;
+			} else if(type == PathIterator.SEG_LINETO) {
+				double dist = Point2D.distance(lastX, lastY, coords[0], coords[1]);
+				segments.add(new double[]{lastX, lastY, coords[0], coords[1], dist, totalLength});
+				totalLength += dist;
+				lastX = coords[0];
+				lastY = coords[1];
+			}
+			tpi.next();
+		}
+
+		this.mG2D.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, (float) style.getAlpha()));
+		this.mG2D.setPaint(style.getFontColor());
+
+		double currentGlyphPos = 0;
+		int lastSegmentIndex = 0;
+
+		for (int i = 0; i < gv.getNumGlyphs(); i++) {
+			Shape glyph = gv.getGlyphOutline(i);
+			double charWidth = gv.getGlyphMetrics(i).getAdvance();
+
+			// Center the glyph on the current segment position?
+			// Usually text is drawn at baseline.
+
+			// Find segment for currentGlyphPos + charWidth/2
+			double targetDist = currentGlyphPos + charWidth / 2.0;
+
+			double[] segment = null;
+			for(int j = lastSegmentIndex; j < segments.size(); j++) {
+			    double[] seg = segments.get(j);
+				if(targetDist >= seg[5] && targetDist <= seg[5] + seg[4]) {
+					segment = seg;
+					lastSegmentIndex = j;
+					break;
+				}
+			}
+
+			if(segment != null) {
+				double distOnSeg = targetDist - segment[5];
+				double ratio = distOnSeg / segment[4];
+				double x = segment[0] + (segment[2] - segment[0]) * ratio;
+				double y = segment[1] + (segment[3] - segment[1]) * ratio;
+				double angle = Math.atan2(segment[3] - segment[1], segment[2] - segment[0]);
+
+				AffineTransform at = new AffineTransform();
+				at.translate(x, y);
+				at.rotate(angle);
+				at.translate(-charWidth/2.0, 0);
+
+				Shape glyphShape = glyph;
+				glyphShape = mFontSCaleBack.createTransformedShape(glyphShape);
+
+				// Now transform to position
+				Shape placedGlyph = at.createTransformedShape(glyphShape);
+				this.mG2D.fill(placedGlyph);
+			}
+
+			currentGlyphPos += charWidth;
+		}
+
+		return path;
 	}
 
 	/**

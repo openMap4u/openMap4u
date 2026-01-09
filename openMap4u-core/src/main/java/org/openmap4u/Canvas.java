@@ -43,6 +43,7 @@ import org.openmap4u.commons.Length;
 import org.openmap4u.commons.Plugable;
 import org.openmap4u.commons.Point;
 import org.openmap4u.commons.ShapeStyleable;
+import org.openmap4u.commons.TextOnPath;
 import org.openmap4u.commons.TextStyleable;
 import org.openmap4u.commons.TransformUtil;
 import org.openmap4u.commons.Util;
@@ -334,6 +335,10 @@ class Canvas implements Plugable, DrawOrWriteable, SetAreaOfInterestOrDrawOrWrit
         } else if (builder.getPrimitive() instanceof String) {
             drawnShape = this.mOutputFormat.drawText(point,
                     (Drawable<TextStyleable,String>) builder);
+            /* process the text on path primitive */
+        } else if (builder.getPrimitive() instanceof TextOnPath) {
+            drawnShape = this.mOutputFormat.drawText(
+                    (Drawable<TextStyleable,TextOnPath>) builder);
         } else {
             throw new java.lang.IllegalArgumentException(builder.getClass()
                     .toString());

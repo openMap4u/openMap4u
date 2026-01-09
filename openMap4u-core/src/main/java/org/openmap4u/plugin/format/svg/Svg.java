@@ -35,6 +35,7 @@ import org.openmap4u.interfaces.Drawable;
 import org.openmap4u.commons.Length;
 import org.openmap4u.commons.Point.Align;
 import org.openmap4u.commons.ShapeStyleable;
+import org.openmap4u.commons.TextOnPath;
 import org.openmap4u.commons.TextStyleable;
 import org.openmap4u.commons.TransformUtil;
 import org.openmap4u.commons.Util;
@@ -288,6 +289,11 @@ public class Svg implements Outputable {
             LOGGER.log(Level.WARNING, "", e);
         }
         return outline;
+    }
+
+    @Override
+    public Shape drawText(Drawable<TextStyleable, TextOnPath> textOnPath) {
+        throw new UnsupportedOperationException("Text on path not yet implemented for SVG.");
     }
 
     String getFontStyle(Align align, TextStyleable style) {
