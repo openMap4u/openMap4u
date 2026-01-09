@@ -57,6 +57,17 @@ public interface Outputable extends Plugable {
     Shape drawText(Point2D point, Drawable<TextStyleable,String> text);
 
     /**
+     * Draws text filled inside a polygon.
+     * @param point The point (optional).
+     * @param polygon The polygon.
+     * @param text The text.
+     * @return The bounds of the drawn shape.
+     */
+    default Shape drawTextFilledPolygon(Point2D point, Drawable<ShapeStyleable,Path2D> polygon, Drawable<TextStyleable,String> text) {
+        return null;
+    }
+
+    /**
      * Is only called once, before anything is drawn. It acts as initial setup.
      *
      * @param shape The canvas shape in drawing units.
